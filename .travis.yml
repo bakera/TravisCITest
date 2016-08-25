@@ -1,7 +1,7 @@
 language: java
 env:
   global:
-    - GH_REF: github.com/w3c/wcag.git
+    - GH_REF: github.com/bakera/TravisCITest.git
     - secure: nUWmExMimFdW3ekO80gpwD3644qsiuEbHV+UOv9k5V7Y4+jNeJ5j+9rCsmKri/KBhWLxOVcXRcohrwtPTuOkZpLlJxRACykKZ+tiGmXSVRg8gKJjtEHfhC036A3D7xxJRGi6MaW3she2FVLCJs/Hd8rtxRtP/Cjhx3o1mHRUn0D9DARsTCZqB5NqUVwhr+6TYlNo+F+TDJbXfXOWHGlIOVrffvePaO/Y2sLhUIkYdb8pe/bAF0FwicdhOvMESHjfwUL0tNe6uR284MoNM/UXdCCM9/lCLAFA1hWnX8kpidd/SXsQ27dK+TeOns9GzoDtEmM+HVmZDPRpas8EG86hvRHcvfTLAzC+8Ct50t+KGjhwRfPxfoUSViZByTayosRWsqxfWH2b9eBZM5zCw/VjFrA1gZv17fqh/HPN92PNO8SOP7tblv1V8X4jqcrwotb4yXG5ZrzLhG+1ojXawrhAKmBynXR8pZ2Pk6sUF7ybrJmL3prvlGCRUQTMLkrjsnzdk0JeWHKiIBKiuthvV19IPp3OMM+3lXberY7eQtJuptF8a2MkfLrDn4fiP/7hSXWmVkcx83QwZcps4yMSpIK9MEnxWasDDHwthvtMXX6DVIkVkmuMIloS3bACTiB1xnPpU6KV/74Cs7ofW5hPg640dzYinueDuvF0ClIBXV63HWA=
     
 install:
@@ -16,8 +16,8 @@ branches:
     /^Working-Branch-for-Q\d-\d\d\d\d$/
 
 before_script:
-  - git config --global user.email "cooper@w3.org"
-  - git config --global user.name "michael-n-cooper"
+  - git config --global user.email "bakera@star.email.ne.jp"
+  - git config --global user.name "MINAZUKI, Bakera"
   
 script:
   - ant -f wcag20/build.xml -lib saxon9he.jar gh-pages
@@ -26,7 +26,7 @@ after_success:
   - cd ../..
   - mkdir gh-pages
   - cd gh-pages
-  - git clone --depth=1 --branch=gh-pages https://github.com/w3c/wcag.git
+  - git clone --depth=1 --branch=gh-pages https://github.com/bakera/TravisCITest.git
   - cd wcag
   - cp -r ../../Generated/* .
   - git add .
