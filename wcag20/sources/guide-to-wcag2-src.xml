@@ -3,11 +3,15 @@
   SYSTEM "xmlspec.dtd">
 <spec status="final" w3c-doctype="wgnote" xmlns:xi="http://www.w3.org/2001/XInclude">
    <header>
-      <title>Understanding <abbr expansion="Web Content Accessibiity Guidelines">WCAG</abbr> 2.0</title>
-      <subtitle>A guide to understanding and implementing Web Content Accessibility Guidelines 2.0</subtitle>
+      <title><abbr expansion="Web Content Accessibiity Guidelines">WCAG</abbr> 2.0 解説書</title>
+      <subtitle>WCAG 2.0 を理解して実装するためのガイド</subtitle>    <trdisclaimer>
+      <p>【注意】 この文書は、<loc href="http://www.w3.org/WAI/GL/2010/WD-UNDERSTANDING-WCAG20-20100128/">W3Cワーキンググループノート「Understanding WCAG 2.0」（原文は英語）の2010年3月27日時点での最新のEditor's Draft</loc>を、情報通信アクセス協議会の「ウェブアクセシビリティ作業部会」が翻訳と修正をおこなって公開しているものです。（財団法人日本規格協会情報技術標準化研究センター「情報アクセシビリティ国際標準化に関する調査研究開発委員会・ウェブアクセシビリティ国際規格調査研究部会」が、「Understanding WCAG 2.0」の重要部分を翻訳して2009年1月に公開した文書が元になっています。）この文書の正式版は、あくまで W3Cのサイト内にある英語版であり、この文書には翻訳上の間違い、あるいは不適切な表現が含まれている可能性がありますのでご注意ください。また、リンク先が英語の場合、あるいはダミーのページである場合もあります。ご了承ください。</p>
+      <p>【重要】 Editor's Draftは、現在W3Cで公開されている<loc href="http://www.w3.org/TR/2008/NOTE-UNDERSTANDING-WCAG20-20081211/">2008年12月11日付けの「Understanding WCAG 2.0」</loc>が更新されたもので、この版と異なる部分を含んでいる可能性があります。原文の "Understanding WCAG 2.0"自体がまだ<emph role="bold">未完成</emph>であり、この文書の内容は、WCAGワーキンググループによって今後も継続的に修正されていくものと思われます。あくまでも参考程度にご覧ください。</p>
+    </trdisclaimer>
+
       <version/>
       <w3c-designation>UNDERSTANDING-WCAG20</w3c-designation>
-      <w3c-doctype>W3C Working Group Note</w3c-doctype>
+      <w3c-doctype>W3C ワーキンググループ・ノート</w3c-doctype>
       <pubdate>
          <day>17</day>
          <month>March</month>
@@ -18,9 +22,9 @@
       	<!--<loc href="http://www.w3.org/WAI/GL/2016/WD-UNDERSTANDING-WCAG20-20160223/">http://www.w3.org/WAI/GL/2016/WD-UNDERSTANDING-WCAG20-20160223/</loc>-->
 	</publoc>
       <altlocs>
-         <loc href="complete.html">Single file version</loc>
+      <loc href="complete.html">単一ファイル版</loc>
          <loc href="complete-diff.html">Single file diff-marked version showing revisions since 26 February 2015</loc>
-         <loc href="/WAI/WCAG20/versions/understanding/">Alternate Versions of Understanding WCAG 2.0</loc>
+         <loc href="/WAI/WCAG20/versions/understanding/">Understanding WCAG 2.0のその他のバージョン（英語）</loc>
       </altlocs>
       <latestloc>
       	<loc href="http://www.w3.org/TR/UNDERSTANDING-WCAG20/">http://www.w3.org/TR/UNDERSTANDING-WCAG20/</loc>
@@ -68,152 +72,144 @@ Austin)</affiliation>
 			</author>
 		</authlist>
 		<status>
-         <p>
-            <emph>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current W3C publications and the latest revision of this technical report can be found in the <loc href="http://www.w3.org/TR/">W3C technical reports index</loc> at <loc href="http://www.w3.org/TR/">http://www.w3.org/TR/</loc>.</emph>
-         </p>
-         <p>This is a <phrase role="final">Working Group Note</phrase>
-         	<phrase role="ext-review">Public Editors' Draft of</phrase><phrase role="int-review">Editors' Draft of</phrase> "Understanding WCAG 2.0". The <loc href="http://www.w3.org/WAI/GL/">Web Content Accessibility Guidelines Working Group</loc> considers this document to be important for understanding the success criteria in the <loc href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/">Web Content Accessibility Guidelines (WCAG) 2.0 Recommendation</loc>. Please note that the contents of this document are informative (they provide guidance), and not normative (they do not set requirements for conforming to WCAG 2.0).</p>
-			<p>Understanding WCAG 2.0 was previously published on 11 December 2008 as a Working Group Note and updated 14 October 2010, 3 January 2012, 5 September 2013, 3 March 2014, 8 April 2014, 16 September 2014, and 26 February 2015. This new version updates the support information provided for WCAG 2.0. Note that WCAG 2.0 itself remains unchanged, only the informative support materials have been updated. The only change in this version is to <loc href="conformance.html#uc-partial-third-head">add explanation about partial conformance claims due to third-party content</loc>.</p>
-      	<p><phrase role="ext-review">The purpose of this draft is to collect public feedback on proposed changes since the <loc href="http://www.w3.org/TR/2015/NOTE-UNDERSTANDING-WCAG20-20150226/">Understanding WCAG 2.0 Working Group Note of 26 February 2015</loc>. The Working Group intends to publish an updated Note once feedback from this review has been incorporated. <emph role="bold">The existing Understanding document remains in place as a W3C Note</emph> while this separate draft update is under review and the WCAG Working Group addresses comments.</phrase> The changes are highlighted in the <loc href="complete-diff">diff-marked version</loc>.</p>
-         <p>
-         	<phrase role="ext-review">Comments on this draft are due <emph role="bold">on or before 29 January 2016</emph>.</phrase> The Working Group requests that any comments be made using the options documented in <loc href="http://www.w3.org/WAI/WCAG20/comments/">Instructions for Commenting on WCAG 2.0 Documents</loc>. If this is not possible, comments can also be sent to <loc href="mailto:public-comments-wcag20@w3.org">public-comments-wcag20@w3.org</loc>. The <loc href="http://lists.w3.org/Archives/Public/public-comments-wcag20/">archives for the public comments list</loc> are publicly available. <phrase role="ext-review">Because this is a public review of changes to the Working Group Notes, only comments on changes made since the last Notes will be processed during this review; other comments will be saved and treated as comments on the updated Notes once published. </phrase><phrase role="final">Comments received on this document may be addressed in future versions of this document, or in another manner. </phrase><!--The Working Group does not plan to make formal responses to comments.--> Archives of the <loc href="http://lists.w3.org/Archives/Public/w3c-wai-gl/">WCAG WG mailing list discussions</loc> are also publicly available, and future work undertaken by the Working Group may address comments received on this document.</p>
-			<p>This document has been produced as part of the W3C <loc href="http://www.w3.org/WAI/">Web Accessibility Initiative</loc> (WAI). The goals of the WCAG Working Group are discussed in the <loc href="http://www.w3.org/WAI/GL/charter">WCAG Working Group charter</loc>. The WCAG Working Group is part of the <loc href="http://www.w3.org/WAI/Technical/Activity">WAI Technical Activity</loc>.</p>
-         <p> Publication as a <phrase role="final">Working Group Note</phrase>
-         	<phrase role="ext-review">Public Editors' Draft</phrase><phrase role="int-review">Editors' Draft</phrase> does not imply endorsement by the W3C Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress. </p>
-         <p>This document was produced by a group operating under the <loc href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 W3C Patent Policy</loc>. W3C maintains a <loc role="disclosures"
-                 href="http://www.w3.org/2004/01/pp-impl/35422/status">public list of any patent disclosures</loc> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <loc href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</loc> must disclose the information in accordance with <loc href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the W3C Patent Policy</loc>. </p>
-			<p>This document is governed by the <loc id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 W3C Process Document</loc>. </p>
+    	<p><emph>この節では、この文書の発行された時点でのステータスを説明する。他の文書が、この文書にとって代わっている場合もある。現行のW3Cの発行文書、及び、この技術レポートの改訂版は、<loc href="http://www.w3.org/TR/">http://www.w3.org/TR/</loc> にある <loc href="http://www.w3.org/TR/">W3C テクニカルレポート・インデックス（英語）</loc>で参照可能である。</emph></p>
+
+
+
+    	<p>これは、ワーキンググループ・ノートの「WCAG 2.0 解説書」である。<loc href="http://www.w3.org/WAI/GL/">WCAG (Web Content Accessibility Guidelines) ワーキンググループ（英語）</loc>では、この文書は <loc href="../WCAG20/">WCAG 2.0 勧告</loc>の達成基準を理解するために重要なものであると考えている。この文書のコンテンツはガイダンスを提供する参考情報であり、WCAG 2.0 に適合するための要件を定めた規定文書ではないことに留意してほしい。
+</p>
+    	<p>ワーキンググループへのコメントは、<loc href="http://www.w3.org/WAI/WCAG20/comments/">オンライン・コメントフォーム（英語）</loc>を使って送っていただきたい。もしそれができない場合は、<loc href="mailto:public-comments-wcag20@w3.org">public-comments-wcag20@w3.org</loc>宛に電子メールで送信することもできる。<loc href="http://lists.w3.org/Archives/Public/public-comments-wcag20/">公開メーリングリストのアーカイブ（英語）</loc>は一般に公開されている。この文書に関して寄せられたコメントは、この文書の将来のバージョン、もしくは、他の方法で対処されるかもしれない。なお、コメントに対して、ワーキンググループが正式な返答をする予定はない。<loc href="http://lists.w3.org/Archives/Public/w3c-wai-gl/">WCAG ワーキンググループのメーリングリスト（英語）</loc>での議論のアーカイブは一般に公開されており、この文書に関して寄せられたコメントについては、ワーキンググループが将来的に対処することがあるかもしれない。</p>
+<p>この文書は、W3Cの <loc href="http://www.w3.org/WAI/">ウェブアクセシビリティ・イニシアティブ（英語）</loc>(WAI)の活動の一環として作成されたものである。WCAG ワーキンググループの目的は、<loc href="http://www.w3.org/WAI/GL/new-charter-2000.html">ワーキンググループ趣意書（英語）</loc>に記載されている。WCAG ワーキンググループは、<loc href="http://www.w3.org/WAI/Technical/Activity">WAI テクニカル・アクティビティ（英語）</loc>の一つである。</p>
+    	<p>ワーキンググループ・ノートとしての公開は、W3C 会員による承認されたものという意味ではない。これはドラフト文書であり、いつでも更新されたり、いつでも他の文書に置き換えられたりすることがある。この文書を、作成作業中のものとして引用すること以外は不適切である。</p>
+<p>この文書は、<loc href="http://www.w3.org/Consortium/Patent-Policy-20040205/">2004年2月5日付W3C特許ポリシー（英語）</loc>に則って運営するワーキンググループによって作成された。W3C では、ワーキンググループの成果物に関係する<loc role="disclosures" href="http://www.w3.org/2004/01/pp-impl/35422/status">一般公開されている特許のリスト（英語）</loc>を管理しており、そのページには特許開示にあたっての指示も含まれている。<loc href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">基本的な請求項（英語）</loc>を含む特許について実際に知識のある人は、<loc href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">W3C 特許ポリシー 第6章（英語）</loc>に従って、その情報を開示することが求められる。 </p>
 		</status>
 		<abstract>
-         <p>This document, "Understanding WCAG 2.0," is an essential guide to  understanding and using <loc href="http://www.w3.org/TR/WCAG20/">Web Content Accessibility Guidelines (WCAG) 2.0</loc> 
-            <bibref ref="WCAG20"/>. It is part of a series of documents that support WCAG 2.0. Please note that the  contents of this document are informative  (they provide guidance), and not normative (they do not set  requirements for conforming to WCAG 2.0). See <loc href="http://www.w3.org/WAI/intro/wcag.php">Web Content Accessibility Guidelines (WCAG) Overview</loc> for an introduction to WCAG, supporting  technical documents, and educational material.</p>
-			<p>WCAG 2.0 establishes a set of Success Criteria to define conformance  to the WCAG 2.0 Guidelines. A Success Criterion is a testable statement  that will be either true or false when applied to specific Web content.  "Understanding WCAG 2.0" provides detailed information about each  Success Criterion, including its intent, the key terms that are used in  the Success Criterion, and how the Success Criteria in WCAG 2.0 help people with different types of disabilities. This document also provides examples of Web content that meet the success  criterion using various Web technologies (for instance, HTML, CSS, XML),  and common examples of Web content that does not meet the success  criterion. </p>
-			<p>This document indicates specific techniques to meet each Success Criterion. Details for how to implement each technique are available in <loc href="http://www.w3.org/TR/WCAG20-TECHS/">Techniques for WCAG 2.0</loc>, but "Understanding WCAG 2.0" provides the information about the relationship of each technique to the Success Criteria. Techniques are categorized by the level of support they provide for the Success Criteria. "Sufficient techniques" are <emph>sufficient</emph> to meet a  particular Success Criterion (either by themselves or in combination with  other techniques), while other techniques are advisory and therefore optional.  None of  the techniques are <emph>required</emph> to meet WCAG 2.0, although some may be the only  known method if a particular technology is used. "Advisory techniques" are not sufficient to meet the Success Criteria on their own (because they are not testable or provide incomplete support) but it is encouraged that authors follow them when possible to provide enhanced accessibility. </p>
-			<p>In addition to techniques for addressing the success criteria, "Common Failures" are also documented. These "Common Failures" are authoring practices that are known to cause Web content to fail to conform to WCAG 2.0. Authors must avoid those practices in order to meet the WCAG 2.0 Success Criteria.</p>
-			<p>This document is part of a series of documents published by the W3C Web  Accessibility Initiative (WAI) to support WCAG 2.0. This document was published as a Working Group Note at the same time WCAG 2.0 was published as a W3C Recommendation. Unlike WCAG 2.0, is expected that the information in Understanding WCAG 2.0 will be updated from time to time. See <loc href="http://www.w3.org/WAI/intro/wcag.php">Web Content Accessibility Guidelines (WCAG) Overview</loc> for an introduction to WCAG, supporting technical documents, and educational material.</p>
+
+      <p>この文書、「WCAG 2.0 解説書」は、<loc href="../WCAG20/">ウェブコンテンツ・アクセシビリティ・ガイドライン (WCAG) 2.0</loc> <bibref ref="WCAG20"/>を理解して実践するために不可欠な案内書である。WCAG 2.0 の関連文書群の中の一つだが、この文書のコンテンツはガイダンスを提供する参考文書であり、WCAG 2.0 に適合するための要件を定める規定文書ではない。WCAG、関連技術文書、教育用素材へのイントロダクションは、<loc href="http://www.w3.org/WAI/intro/wcag.php">ウェブコンテンツ・アクセシビリティ・ガイドライン (WCAG) 概要（英語）</loc>を参照のこと。</p>
+      <p>WCAG 2.0 には、WCAG 2.0 に適合するための達成基準がある。個々の達成基準は、テスト可能な記述内容になっており、特定のウェブコンテンツに適用した際に適合もしくは不適合であると判断できるようになっている。「WCAG 2.0 解説書」が提供するのは、それぞれの達成基準に関する詳細な情報で、達成基準の意図、達成基準の中で用いられている重要な用語、そして、WCAG 2.0の達成基準が様々な種類の障害のある利用者にどのように役に立つのかが記されている。また、この文書は、様々なウェブコンテンツ技術（例えば、HTML、CSS、XML）を用いて達成基準を満たしているウェブコンテンツの事例、そして達成基準を満たしていないウェブコンテンツのよくある事例も提供している。</p>
+        <p>この文書は、それぞれの達成基準を満たすための特定の実装方法も示している。それぞれの実装方法をどのように実装するかの詳細は、<loc href="http://www.w3.org/TR/WCAG20-TECHS/">WCAG 2.0 の実装方法（英語）</loc>で提供されているが、この「WCAG 2.0 解説書」では各実装方法と達成基準との関係に関する情報を提供している。実装方法は、達成基準への対応レベルによって分類されている。「達成基準を満たすことのできる実装方法」とは、（それ単体もしくは他の実装方法との併用により、）ある達成基準を満たすのに<emph>十分である</emph>と考えられる実装方法であり、それ以外は参考にすべき実装方法で用いるかどうかは任意である。いくつかの実装方法は、ある特定のウェブコンテンツ技術を用いる場合にはそれが唯一の既知の手法であるかもしれないが、どの実装方法も WCAG 2.0 に適合する上で<emph>必須</emph>というわけではない。「参考にすべき実装方法」とは、（テスト可能ではない、あるいは、完全な支援ができないので、）それ自体では達成基準を満たすのに十分ではないが、アクセシビリティをさらに向上させるために、コンテンツ制作者には可能であればそれらを用いることが推奨される。もう一つの分類は「よくある不適合事例」で、WCAG 2.0 に適合<emph>		していない</emph>ウェブコンテンツの事例として知られているものを説明している。「よくある不適合事例」は、特定のコンテンツ制作事例に関する参考情報を提供しているが、コンテンツ制作者は WCAG 2.0 の達成基準を満たすためにはそれらの事例を避けなければならない。</p>
+    	<p>この文書は、W3C Web Accessibility Initiative (WAI)が提供する WCAG 2.0 関連文書群の一つである。この文書は、WCAG 2.0 が W3C 勧告として公開されたのと同時に、ワーキンググループ・ノートとして公開されたものである。WCAG 2.0 とは異なり、「WCAG 2.0 解説書」の情報は随時更新されていく予定である。WCAG、関連技術文書、教育用素材へのイントロダクションは、<loc href="http://www.w3.org/WAI/intro/wcag.php">ウェブコンテンツ・アクセシビリティ・ガイドライン (WCAG) 概要（英語）</loc>を参照のこと。</p>
 		</abstract>
 		<langusage>
 			<language id="en-US"/>
 		</langusage>
 		<revisiondesc>
 			<p>
-				<loc href="/WAI/GL/WCAG20/change-history.html">History of Changes to WCAG 2.0 Working Drafts</loc>
+        <loc href="http://www.w3.org/WAI/GL/WCAG20/change-history.html">WCAG 2.0原案の変更履歴（英語）</loc>
 			</p>
 		</revisiondesc>
 	</header>
 	<front>
 		<div1 id="intro">
-			<head>Introduction to Understanding WCAG 2.0</head>
+      <head>「WCAG 2.0 解説書」のイントロダクション</head>
 			<div2 role="suppressed" id="introduction">
 				<head>Intro</head>
-            <p>Understanding WCAG 2.0 is an essential guide to understanding and using "Web Content Accessibility Guidelines 2.0" <bibref ref="WCAG20"/> Although the normative definition and requirements for WCAG 2.0 can all be found in the WCAG 2.0 document itself, the concepts and provisions may be new to some people. Understanding WCAG 2.0 provides a non-normative extended commentary on each guideline and each Success Criterion to help readers better understand the intent and how the guidelines and Success Criteria work together. It also provides examples of techniques or combinations of techniques that the Working Group has identified as being sufficient to meet each Success Criterion. Links are then provided to write-ups for each of the techniques.</p>
-				<p>This is not an introductory document. It is a detailed technical description of the guidelines and their Success Criteria. See <loc href="http://www.w3.org/WAI/intro/wcag.php">Web Content Accessibility Guidelines (WCAG) Overview</loc> for an introduction to WCAG, supporting  technical documents, and educational material.
+        <p>「WCAG 2.0 解説書」は、"WCAG (Web Content Accessibility Guidelines) 2.0" <bibref ref="WCAG20"/>を理解して実践するために不可欠な案内書である。WCAG 2.0 の規定となる定義や要件はすべて WCAG 2.0 自体の文書で読むことができるが、その考え方や条項に馴染みのない方もいるかもしれない。「WCAG 2.0 解説書」は、読者の皆さんがその意図やどのようにガイドラインと達成基準が連携しているのかをよりよく理解できるように、各ガイドライン、及び、各達成基準について、WCAG 2.0 の規定にはならない詳細な解説を提供している。また、それぞれの達成基準を満たすのに十分であることをワーキンググループが確認した実装方法、及び、実装方法の組合せの事例も紹介している。そして、それぞれの実装方法の詳細にもリンクを提供している。</p>
+          <p>この文書は、入門書ではなく、ガイドラインとその達成基準に関する詳細な技術解説である。WCAG やその関連技術文書、教育用素材などへのイントロダクションは、<loc href="http://www.w3.org/WAI/intro/wcag.php">ウェブコンテンツ・アクセシビリティ・ガイドライン (WCAG) 概要</loc>を参照のこと。 
       </p>
-				<p>Understanding WCAG 2.0 is organized by guideline. There is an <emph>Understanding Guideline X.X</emph> section for each guideline.  The intent and any advisory techniques that are related to the guideline but not specifically related to any of its Success Criteria are listed there as well.</p>
-				<p>The <emph>Understanding Guidelines X.X</emph> section is then followed by a <emph>Understanding Success Criterion X.X.X</emph> section for each Success Criterion of that guideline.   These sections each contain:</p>
+        <p>「WCAG 2.0 解説書」は、ガイドラインごとに構成されている。各ガイドラインには、ガイドライン X.X を理解する という節がある。そのガイドラインの意図が説明されているほか、実装方法の中でも、そのガイドラインには関係あるが特定の達成基準には関係のない実装方法が、そこに列挙されている。<emph>ガイドライン X.X を理解する</emph>という節がある。そのガイドラインの意図が説明されているほか、実装方法の中でも、そのガイドラインには関係あるが特定の達成基準には関係のない実装方法が、そこに列挙されている。</p>
+        <p><emph>ガイドライン X.X を理解する</emph> という節の後には、そのガイドラインの達成基準ごとに、<emph>達成基準 X.X.X を理解する</emph>という節が続いている。これらの節にはそれぞれ以下の情報が提供されている：</p>
 				<ulist>
 					<item>
-						<p>The Success Criterion as it appears in WCAG 2.0</p>
+            <p>WCAG 2.0 に書かれている達成基準</p>
 					</item>
 					<item>
-						<p>Intent of the Success Criterion</p>
+            <p>その達成基準の意図</p>
 					</item>
 					<item>
-						<p>Benefits (how the Success Criterion helps people with disabilities)</p>
+            <p>メリット（その達成基準が、どのように障害のある利用者の役に立つのか）</p>
 					</item>
 					<item>
-						<p>Examples</p>
+            <p>事例</p>
 					</item>
 					<item>
 						<p>
-            Related Resources
+関連リソース
           </p>
 					</item>
 					<item>
-						<p>Techniques or combinations of techniques that are sufficient to meet the guidelines</p>
+            <p>その達成基準を満たすのに十分であると考えられる実装方法及び実装方法の組合せ</p>
 					</item>
 					<item>
-						<p>Common failures of this Success Criterion</p>
+            <p>この達成基準のよくある不適合事例</p>
 					</item>
 					<item>
-						<p>Additional advisory techniques that go beyond what is required to meet the Success Criterion but can be used to make some or all types of content more accessible. Use of advisory techniques does not impact the level of conformance claimed.
+            <p>その達成基準を満たすための要求を超えているが、一部のあるいはすべてのコンテンツをさらにアクセシブルにするために用いることのできる参考にすべき実装方法。参考にすべき実装方法を使用することで、宣言する適合レベルに影響を及ぼすことはない。
           </p>
 					</item>
 					<item>
-						<p>Key terms for this Success Criterion  (taken from the WCAG 2.0 Glossary)</p>
+            <p>この達成基準における重要な用語（WCAG 2.0 の用語集から引用）</p>
 					</item>
 				</ulist>
-				<p>Links are provided from each Guideline in WCAG 2.0 directly to each <emph>Understanding Guideline X.X</emph> in this document.  Similarly, there is a link from each Success Criterion in WCAG 2.0 to the <emph>Understanding Success Criterion X.X.X</emph> section in this document. </p>
-				<p>For information about individual techniques, follow the links throughout this document to the techniques of interest in the <loc href="/TR/WCAG20-TECHS/">Techniques for WCAG 2.0</loc> document.</p>
-				<p>For links to information on different disabilities and assistive technologies see <loc href="https://en.wikipedia.org/wiki/Disability">Disabilities on Wikipedia</loc>.
+        <p>WCAG 2.0 文書の各ガイドラインからは、この文書の<emph>ガイドライン X.X を理解する</emph> という節に直接リンクしている。同様に、WCAG 2.0 文書の各達成基準からも、この文書の <emph>達成基準 X.X.X を理解する</emph> という節に直接リンクしている。</p>
+        <p>個々の実装方法に関する情報については、この文書中にあるリンクから、<loc href="http://www.w3.org/TR/WCAG20-TECHS/">WCAG 2.0 の実装方法（英語） </loc>で関心のある実装方法を参照のこと。</p>
+        <p>様々な障害や支援技術に関する情報については、<loc href="http://en.wikipedia.org/wiki/Disabilities">Wikipedia にある「障害 (disabilities)」（英語）</loc> を参照のこと。
         </p>
 				<div3 id="fourprincs" role="normal">
-					<head>Understanding the Four Principles of Accessibility</head>
-					<p>The guidelines and Success Criteria are organized around the following four principles, which lay the foundation necessary for anyone to access and use Web content. Anyone who wants to use the Web must have content that is:</p>
+          <head>アクセシビリティの4つの原則を理解する</head>
+          <p>ガイドライン及び達成基準は、誰もがウェブコンテンツにアクセスして利用するために必要な土台となる、次の4つの原則を中心に構成されている。ウェブを利用したい誰もが、コンテンツに求めるのは次のことである：</p>
 					<olist>
 						<item>
-							<p> Perceivable - Information and user interface components must be presentable to users in ways they can perceive.</p>
+                <p>知覚可能 － 情報及びユーザーインタフェース･コンポーネントは、利用者が知覚できる方法で利用者に提示可能でなければならない。</p>
 							<ulist>
 								<item>
-									<p>This means that users must be able to perceive the information being presented (it can't be invisible to all of their senses)</p>
+                  <p>これは、利用者が提示されている情報を知覚できなければならないことを意味する（利用者の感覚すべてに対して知覚できないものであってはならない）。</p>
 								</item>
 							</ulist>
 						</item>
 						<item>
-							<p>Operable - User interface components and navigation must be operable.</p>
+                <p>操作可能 － ユーザーインタフェース･コンポーネント及びナビゲーションは操作可能でなければならない。</p>
 							<ulist>
 								<item>
-									<p>This means that users must be able to operate the interface (the interface cannot require interaction that a user cannot perform) </p>
+                  <p>これは、利用者がインタフェースを操作できなければならないことを意味する（インタフェースが、利用者の実行できないインタラクションを要求してはならない）。</p>
 								</item>
 							</ulist>
 						</item>
 						<item>
-							<p>Understandable - Information and the operation of user interface must be understandable.</p>
+                <p>理解可能 － 情報及びユーザーインタフェースの操作は理解可能でなければならない。</p>
 							<ulist>
 								<item>
-									<p>This means that users must be able to understand the information as well as the operation of the user interface (the content or operation cannot be beyond their understanding)</p>
+                  <p>これは、利用者がユーザーインタフェースの操作と情報とを理解できなければならないことを意味する（コンテンツ又は操作が、理解できないものであってはならない）。</p>
 								</item>
 							</ulist>
 						</item>
 						<item>
-							<p>Robust - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.</p>
+                <p>堅牢性 - コンテンツは、支援技術を含む様々なユーザーエージェントが確実に解釈できるように十分に堅牢でなければならない。</p>
 							<ulist>
 								<item>
-									<p>This means that users must be able to access the content as technologies advance (as technologies and user agents evolve, the content should remain accessible)</p>
+                  <p>これは、利用者が技術の進歩に応じてコンテンツにアクセスできなければならないことを意味する（技術やユーザーエージェントの進化していったとしても、コンテンツはアクセシブルなままであるべきである）。</p>
 								</item>
 							</ulist>
 						</item>
 					</olist>
-					<p>If any of these are not true, users with disabilities will not be able to use the Web. </p>
-					<p>Under each of the principles are guidelines and Success Criteria that help to address these principles for people with disabilities. There are many general usability guidelines that make content more usable by all people, including those with disabilities. However, in WCAG 2.0, we only include those guidelines that address problems particular to people with disabilities. This includes issues that block access or interfere with access to the Web more severely for people with disabilities.</p>
+          <p>もし、これらのいずれかが当てはまらなければ、障害のある利用者はウェブを利用することができなくなる。</p>
+          <p>それぞれの原則の下には、障害のある利用者のためのこれらの原則に対処するのに役立つ、ガイドライン及び達成基準がある。障害のある利用者を含むすべての利用者にとってコンテンツをより使いやすくする一般的なユーザビリティ・ガイドラインは数多く存在する。しかし、WCAG 2.0 においては、障害のある利用者に特有の問題に対処するガイドラインだけが含まれている。つまり、障害のある利用者がウェブにアクセスすることを阻む問題、あるいはアクセスをひどく妨げる問題が、WCAG 2.0 には含まれている。</p>
 				</div3>
 				<div3 id="layers" role="normal">
-					<head>Layers of Guidance</head>
+          <head>ガイダンスのレイヤー</head>
 					<div4 id="layers-guidelines" role="normal">
-						<head>The Guidelines</head>
-                  <p>Under each principle there is a list of guidelines that address the principle. There are a total of 12 guidelines. A convenient list of just the guidelines can be found in the <loc href="contents"
-                          linktype="guideline">WCAG 2.0 table of contents</loc>. One of the key objectives of the guidelines is to ensure that content is directly accessible to as many people as possible, and capable of being re-presented in different forms to match different peoples' sensory, physical and cognitive abilities.</p>
+            <head>ガイドライン</head>
+            <p>それぞれの原則の下には、その原則に対応するガイドラインのリストがある。全部で12のガイドラインがある。ガイドラインだけの一覧は、<loc href="contents" linktype="guideline">WCAG 2.0 目次</loc>で見ることができる。ガイドラインの重要な目的の一つは、コンテンツが、できるだけ多くの利用者にとってそのままでアクセシブルであるようにすることであり、様々な利用者の感覚的、身体的及び認知的能力に合った様々な形態で再提示できるようにすることである。</p>
 					</div4>
 					<div4 id="layers-sc" role="normal">
-						<head>Success Criteria</head>
-                  <p>Under each guideline, there are Success Criteria that describe specifically what must be achieved in order to <loc href="conformancedef"
-                          linktype="guideline">conform</loc> to this standard. They are similar to the "checkpoints" in WCAG 1.0. Each Success Criterion is written as a statement that will be either true or false when specific Web content is tested against it. The Success Criteria are written to be technology neutral.</p>
-						<p>All WCAG 2.0 Success Criteria are written as testable criteria for objectively determining if content satisfies the Success Criteria. While some of the testing can be automated using software evaluation programs, others require human testers for part or all of the test.</p>
-						<p>Although content may satisfy the Success Criteria, the content may not always be usable by people with a wide variety of disabilities. Professional reviews utilizing recognized qualitative heuristics are important in achieving accessibility for some audiences. In addition, usability testing is recommended. Usability testing aims to determine how well people can use the content for its intended purpose.</p>
-						<p>The content should be tested by those who understand how people with different types of disabilities use the Web. It is recommended that users with disabilities be included in test groups when performing human testing.
+            <head>達成基準</head>
+            <p>それぞれのガイドラインの下には、WCAG 2.0 に<loc href="conformancedef" linktype="guideline">適合</loc>するためには何をしなければならないのかを具体的に記述した達成基準がある。それは、WCAG 1.0 における「チェックポイント」によく似たものである。それぞれの達成基準は、特定のウェブコンテンツをその達成基準によってテストしたときに適合もしくは不適合が判別できるように記述されている。そして、達成基準はウェブコンテンツ技術に依存しないように書かれている。</p>
+            <p>WCAG 2.0 の達成基準はすべて、コンテンツがその達成基準を満たしているかどうかを客観的に判断するテスト可能な基準として記述されている。テストには、評価プログラムのソフトウェアを用いた自動化可能なものもあれば、その一部又は全部に人間によるテストを必要とするものもある。</p>
+            <p>コンテンツが達成基準を満たしていたとしても、そのコンテンツは様々な障害のある利用者にとって利用可能であるとは限らない。ある利用者にとってのアクセシビリティを確保する上では、専門家による広く認められている定性的なヒューリスティック評価が重要である。さらに、ユーザビリティ・テスティングが推奨される。ユーザビリティ・テスティングは、その用途に応じて、利用者がコンテンツをどれだけうまく使えるかを判断することを目的としている。 </p>
+            <p>様々な種類の障害のある人がどのようにウェブを利用しているのかを理解している人が、コンテンツをテストすべきである。人間によるテストを行う際には、障害のある利用者をテストグループに含めることを推奨する。
             </p>
-						<p>Each Success Criterion for a guideline has a link to the section of the How to Meet document that provides:</p>
-						<ulist>
-							<item>
-								<p>sufficient techniques for meeting the Success Criterion,</p>
-							</item>
-							<item>
-								<p>optional advisory techniques, and</p>
-							</item>
-							<item>
-								<p>descriptions of the intent of the Success Criteria, including benefits, and examples.</p>
-							</item>
-						</ulist>
+            <p>ガイドラインの各達成基準には、「WCAG 2.0 への適合方法」という文書へのリンクがあり、その文書では次のものが提供されている：</p>
+            <ulist>
+              <item>
+                <p>その達成基準を満たすことのできる実装方法</p>
+              </item>
+              <item>
+                <p>任意の参考にすべき実装方法</p>
+              </item>
+              <item>
+                <p>達成基準の意図、及びメリットの説明、事例</p>
+              </item>
+            </ulist>
 					</div4>
 					<div4 id="layers-techs" role="normal">
 						<head>Sufficient Techniques, Advisory Techniques, and Failures</head>
