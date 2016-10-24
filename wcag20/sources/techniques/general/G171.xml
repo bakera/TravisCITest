@@ -2,27 +2,25 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G171">
-   <short-name>Playing sounds only on user request</short-name>
+   <short-name>利用者の要求に応じてのみ、音声を再生する</short-name>
    <applicability>
-      <p>All technologies that can play sound.</p>
+      <p>音を再生できるウェブコンテンツ技術すべて</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-dis-audio" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The intent of this technique is to allow a user to control the use of sounds in Web content. Someone that uses a screen reader may find it very distracting and difficult to listen to their screen reader if there are also sounds coming from Web content. Providing a way to play sounds only upon request will give a user the control needed to listen to any sounds or other audio without interfering with the output from a screen reader.</p>
-   </description>
+    <p>この達成方法の目的は、ウェブコンテンツにおける音声の使用を利用者が制御できるようにすることである。スクリーンリーダーを使う利用者にとっては、ウェブコンテンツから音声が再生されていると、スクリーンリーダーの音声を聞き取る上で非常に気が散ったり聞き取るのが困難になるかもしれない。利用者の要求によってのみ音声を再生する方法を提供することで、利用者はスクリーンリーダーからの出力と干渉せずに音声を聴くために必要な制御を行えるようになる。</p>
+  </description>
    <examples>
       <eg-group>
-         <description>
-            <p>A Web page from a grey whale conservation society has a looping background sound of grey whales singing. There are also sounds of water splashing. The sounds do not start automatically. Instead, the Web content provides a link at the top of the page to allow the user to start the sounds manually. The button says "Turn sounds on." After pressing the "turn sounds on" button, the sounds are heard. The user is then presented with an option to "turn sounds off."</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <description>
-            <p>A link is provided to a sound file that includes the sounds of the grey whales. The link text says, "Hear the song of the grey whale (mp3)."</p>
-         </description>
-      </eg-group>
+      <description><p>あるコククジラ保護団体のウェブページでは、コククジラの鳴き声と水しぶきの音が背景として繰り返し流れるようになっている。その音声は自動的には開始されない。その代わり、ウェブコンテンツには先頭付近に、利用者が手動で再生を開始できるボタンが置かれている。ボタンには「音声を再生」と書かれており、このボタンを押すことで音声が聞こえてくる。再生が始まると利用者には「音声を停止する」という選択肢が提供される。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <description><p>コククジラの音が含まれる音声ファイルへのリンクが提供されている。リンクテキストには「コククジラの鳴き声を聴く(MP3)」と書かれている。</p>
+</description>
+    </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G60"/>
@@ -30,22 +28,22 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Load a Web page that is known to contain sounds that play for 3 seconds or longer.</p>
-            </item>
-            <item>
-               <p>Check that no sounds play automatically.</p>
-            </item>
-            <item>
-               <p>Check that there is a way for a user to start sounds manually.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>3秒間以上の音声を再生するウェブページを読み込む。</p>
+        </item>
+        <item>
+          <p>音声が自動的に再生されない。</p>
+        </item>
+        <item>
+          <p>利用者が手動で音声の再生を開始する方法が提供されている</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Check #3 is true.</p>
+               <p>3.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

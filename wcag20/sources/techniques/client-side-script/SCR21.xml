@@ -2,57 +2,52 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SCR21">
-   <short-name>Using functions of the Document Object Model (DOM) to add content to a page</short-name>
+   <short-name>DOM（ドキュメント・オブジェクト・モデル）を用いて、ページにコンテンツを追加する</short-name>
    <applicability>
-      <p>ECMAScript used inside HTML and XHTML</p>
+      <p>HTML及びXHTMLの中で利用されるECMAScript</p>
    </applicability>
    <applies-to>
       <success-criterion idref="content-structure-separation-programmatic"
                          relationship="sufficient"/>
+      <success-criterion idref="ensure-compat-rsv"/>
    </applies-to>
    <ua-issues>
       <ua-issue name="" version="">
-         <p>This example was successfully tested on Windows XP with IE 6 and Firefox 1.5.0.1 using both JAWS 7 and WindowEyes 5.5. Note that when adding new content onto a page, the screen readers may not automatically speak the new content.  In order to ensure that new content is spoken, set focus to the new element or make certain that it is added below the current location and will be encountered as the user continues to traverse the page.
-</p>
-      </ua-issue>
+      <p>この例は、Windows XP上のIE 6とFirefox 1.5.0.1において、JAWS 7とWindow-Eyes 5.5の両方で正常にテストされた。ページ内に新しいコンテンツが追加されたとき、スクリーンリーダーはそれを自動的に読み上げないことに注意しなければならない。新しいコンテンツを確実に読み上げさせるには、新しい要素にフォーカスを与えるか、又は現在位置よりもあとに追加して、利用者ーがページを読み進めていく際に気がつけるようにする。</p>
+    </ua-issue>
    </ua-issues>
    <description>
-      <p>The objective of this technique is to demonstrate how to use functions of the Document Object Model (DOM) to add content to a page instead of using <code><![CDATA[document.write]]></code> or <code><![CDATA[object.innerHTML]]></code>. The <code><![CDATA[document.write()]]></code> method does not work with XHTML when served with the correct MIME type (application/xhtml+xml), and the <code><![CDATA[innerHTML]]></code> property is not part of the DOM specification and thus should be avoided.  If the DOM functions are used to add the content, user agents can access the DOM to retrieve the content. The <code><![CDATA[createElement()]]></code> function can be used to create elements within the DOM.  The <code><![CDATA[createTextNode()]]></code> is used to create text associated with elements.  The <code><![CDATA[appendChild()]]></code>, <code><![CDATA[removeChild()]]></code>, <code><![CDATA[insertBefore()]]></code> and <code><![CDATA[replaceChild()]]></code> functions are used to add and remove elements and nodes. Other DOM functions are used to assign attributes to the created elements.</p>
-      <note>
-         <p>When adding focusable elements into the document, do not add <code><![CDATA[tabindex]]></code> attributes to explicitly set the tab order as this can cause problems when adding focusable elements into the middle of a document. Let the default tab order be assigned to the new element by not explicitly setting a <code><![CDATA[tabindex]]></code> attribute.</p>
-      </note>
-   </description>
+    <p>この達成方法の目的は、<code>document.write</code>又は<code>object.innerHTML</code>の代わりにDocument Object Model (DOM)の機能を用いて、ページ中にコンテンツを追加することである。<code>document.write()</code>メソッドはXHTMLで正しいMIMEタイプ(application/xhtml+xml)が指定されているときに動作せず、<code>innerHTML</code>プロパティはDOMの仕様ではないため利用すべきでない。もしDOMの機能を利用してコンテンツを追加すれば、利用者ーエージェントはDOMにアクセスしてコンテンツを取り込むことができる。<code>createElement()</code>関数を使ってDOMの中に要素を作成することもできる。<code>createTextNode()</code>は要素に関連付けられたテキストを作成するのに用いられる。<code>appendChild()</code>、<code>removeChild()</code>、<code>insertBefore()</code>及び<code>replaceChild()</code>関数は、要素やノードを追加したり削除したりするのに用いられる。その他のDOM関数は、作成された要素に属性を与えるときに使用される。</p>
+    <note><p class="prefix">フォーカス可能な要素を文書に追加するとき、<att>tabindex</att>属性を用いて明示的なタブ順序を指定してはならない。なぜなら、文書の中央にフォーカス可能な要素を追加するときに問題が発生するからである。<att>tabindex</att>属性を明示的に設定しないことで、デフォルトのタブ順序が新しい要素に割り当てられるようにする。</p>
+  </note>
+  </description>
    <examples>
       <eg-group>
-         <description>
-            <p>This example demonstrates use of client-side scripting to validate a form. If errors are found appropriate error messages are displayed.  The example uses the DOM functions to add error notification consisting of a title, a short paragraph explaining that an error has occurred, and a list of errors in an ordered list. The content of the title is written as a link so that it can be used to draw the user's attention to the error using the focus method. Each item in the list is also written as a link that places the focus onto the form field in error when the link is followed.</p>
-            <p>For simplicity, the example just validates two text fields, but can easily be extended to become a generic form handler. Client-side validation should not be the sole means of validation , and should be backed up with server-side validation. The benefit of client-side validation is that you can provide immediate feedback to the user to save them waiting for the errors to come back from the server, and it helps reduce unnecessary traffic to the server.</p>
-            <p>Here is the script that adds the event handlers to the form. If scripting is enabled, the validateNumbers() function will be called to perform client-side validation before the form is submitted to the server. If scripting is not enabled, the form will be immediately submitted to the server, so validation should also be implemented on the server. 
-              </p>
-         </description>
-         <code role="html401"><![CDATA[
+      <description><p>この例では、クライアントサイドスクリプトの使用法として、フォームの検証方法を紹介している。もしエラーがみつかれば、適切なエラーメッセージが表示される。この例ではDOM関数を使用し、タイトル、エラーに関する短い説明、及びエラー一覧の順序付リストを含むエラー通知を追加している。タイトルの内容はリンクとして書かれているので、focusメソッドを使って利用者の注意をエラーに向けることができる。個別のリスト項目もまた、リンクとして書かれているので、そのリンク先に移動したときにエラーのあるフォームのフィールドにフォーカスできるように書かれている。</p>
+<p>この例では、簡単にするために二つのテキストフィールドだけを検証しているが、一般的なフォームハンドラにするために容易に拡張することができる。クライアントサイドの検証は、それを唯一の検証とすべきではなく、サーバーサイドの検証でも確認するべきである。クライアントサイドでの検証の利点は、利用者にすぐにフィードバックを提供することで、サーバーからエラーが帰ってくるまでの間、彼らを待たせることがないこと、及びサーバーへの余計なトラフィックを軽減できることである。</p>
+<p>次の例はフォームにイベント・ハンドラを追加するスクリプトである。もしスクリプトが有効であれば、サーバーにフォームが送信される前にvalidateNumbers()関数がクライアントサイドの検証のために呼び出される。もしスクリプトが有効でなければ、フォームはすぐにサーバー側に送信されるので、検証機能はサーバーにも実装されるべきである。</p>
+</description>
+      <code role="html401"><![CDATA[
 window.onload = initialise;
 function initialise()
 {
-  // Ensure we're working with a relatively standards compliant user agent
+  // 標準に準拠した利用者ーエージェントが対象
   if (!document.getElementById || !document.createElement || !document.createTextNode)
     return;
 
-  // Add an event handler for the number form
+  // フォームにイベントハンドラを付加
   var objForm = document.getElementById('numberform');
   objForm.onsubmit= function(){return validateNumbers(this);};
-}
-]]></code>
-         <description>
-            <p>Here is the validation function.  Note the use of the createElement(), createTextNode(), and appendChild() DOM functions to create the error message elements.</p>
-         </description>
-         <code role="html401"><![CDATA[
+} ]]></code>
+      <description><p>次の例はvalidationの機能である。エラーメッセージの要素を作成するためにcreateElement()、createTextNode()、及びappendChild() DOM関数を使用しているところに注目して欲しい。</p>
+</description>
+      <code role="html401"><![CDATA[
 function validateNumbers(objForm)
 {
-  // Test whether fields are valid
+  // フィールドを検証
   var bFirst = isNumber(document.getElementById('num1').value);
   var bSecond = isNumber(document.getElementById('num2').value);
-  // If not valid, display errors
+  // 問題がある場合、エラーを表示
   if (!bFirst || !bSecond)
   {
     var objExisting = document.getElementById('validationerrors');
@@ -63,9 +58,9 @@ function validateNumbers(objForm)
     var objAnchor = document.createElement('a');
     var strID = 'firsterror';
     var strError;
-    // The heading element will contain a link so that screen readers
-    // can use it to place focus - the destination for the link is 
-    // the first error contained in a list
+    // 見出し要素にリンクを含めることによって、スクリーンリーダーは
+    // フォーカスを置くことができる － そのリンク先はエラー一覧の中で 
+    // 一番最初のエラー項目とする
     objAnchor.appendChild(document.createTextNode('Errors in Submission'));
     objAnchor.setAttribute('href', '#firsterror');
     objTitle.appendChild(objAnchor);
@@ -73,23 +68,23 @@ function validateNumbers(objForm)
     objNew.setAttribute('id', 'validationerrors');
     objNew.appendChild(objTitle);
     objNew.appendChild(objParagraph);
-    // Add each error found to the list of errors
+    // 発見したエラーすべてをエラー一覧に追加
     if (!bFirst)
     {
-      strError = 'Please provide a numeric value for the first number';
+      strError = '最初の数字には、数値を入力してください。';
       objList.appendChild(addError(strError, '#num1', objForm, strID));
       strID = '';
     }
     if (!bSecond)
     {
-      strError = 'Please provide a numeric value for the second number';
+      strError = '2番目の数字には、数値を入力してください。';
       objList.appendChild(addError(strError, '#num2', objForm, strID));
       strID = '';
     }
-    // Add the list to the error information
+    // エラー情報に一覧を追加
     objNew.appendChild(objList);
-    // If there were existing errors, replace them with the new lot,
-    // otherwise add the new errors to the start of the form
+    // 既存のエラーがあった場合、新規のエラーと置き換える
+    // あるいは、新規のエラーをフォームの先頭に追加する
     if (objExisting)
       objExisting.parentNode.replaceChild(objNew, objExisting);
     else
@@ -97,28 +92,26 @@ function validateNumbers(objForm)
       var objPosition = objForm.firstChild;
       objForm.insertBefore(objNew, objPosition);
     }
-    // Place focus on the anchor in the heading to alert
-    // screen readers that the submission is in error
+    // フォーカスを見出しにあるアンカーに置いて、スクリーンリーダーに
+    // 対してエラーがあることを警告する
     objAnchor.focus();
-    // Do not submit the form
+    // フォームを送信しない
     objForm.submitAllowed = false;
     return false;
   }
   return true;
 }
 
-// Function to validate a number
+// 数字を検証する関数
 function isNumber(strValue)
 {
-  return (!isNaN(strValue) && strValue.replace(/^\s+|\s+$/, '') !== '');
-} 
-]]></code>
-         <description>
-            <p>Below are the helper functions to create the error message and to set focus to the associated form field.</p>
-         </description>
-         <code role="html401"><![CDATA[
-// Function to create a list item containing a link describing the error
-// that points to the appropriate form field
+  return (!isNaN(strValue) &amp;&amp; strValue.replace(/^\s+|\s+$/, '') !== '');
+} ]]></code>
+      <description><p>以下は、エラーメッセージを作成して、関連するフォームのフィールドにフォーカスさせるための補助関数である。</p>
+</description>
+      <code role="html401"><![CDATA[
+// エラー内容を説明する、エラーのフォームフィールドへのリンクの
+// リスト項目を作成する関数
 function addError(strError, strFragment, objForm, strID)
 {
   var objAnchor = document.createElement('a');
@@ -127,66 +120,62 @@ function addError(strError, strFragment, objForm, strID)
   objAnchor.setAttribute('href', strFragment);
   objAnchor.onclick = function(event){return focusFormField(this, event, objForm);};
   objAnchor.onkeypress = function(event){return focusFormField(this, event, objForm);};
-  // If strID has a value, this is the first error in the list
+  // strIDに値がある場合、これがリストで一番目のエラーとなる
   if (strID.length > 0)
     objAnchor.setAttribute('id', strID);
   objListItem.appendChild(objAnchor);
   return objListItem;
 }
 
-// Function to place focus to the form field in error
+// エラーのフォームフィールドにフォーカスを置く関数
 function focusFormField(objAnchor, objEvent, objForm)
 {
-  // Allow keyboard navigation over links
-  if (objEvent && objEvent.type == 'keypress')
-    if (objEvent.keyCode != 13 && objEvent.keyCode != 32)
+  // キーボードナビゲーションを可能にするAllow keyboard navigation over links
+  if (objEvent &amp;&amp; objEvent.type == 'keypress')
+    if (objEvent.keyCode != 13 &amp;&amp; objEvent.keyCode != 32)
       return true;
-  // set focus to the form control
+  // フォーカスをフォーム・コントロールに設定する
   var strFormField = objAnchor.href.match(/[^#]\w*$/);
   objForm[strFormField].focus();
   return false;
-}]]></code>
-         <description>
-            <p>Here is the HTML for the example form.</p>
-         </description>
-         <code role="html401"><![CDATA[
+} ]]></code>
+      <description><p>以下は事例のフォーム用HTMLである。</p>
+</description>
+      <code role="html401"><![CDATA[
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<html lang="ja">
 <head>
-	<title>ECMAScript Form Validation</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>ECMAScript フォームの検証</title>
 	<script type="text/javascript" src="validate.js"></script>
 </head>
 <body>
-<h1>Form Validation</h1>
+<h1>フォームの検証</h1>
 <form id="numberform" method="post" action="form.php">
+
 <fieldset>
-<legend>Numeric Fields</legend>
+<legend>数字のフィールド</legend>
 <p>
-<label for="num1">Enter first number</label>
+<label for="num1">最初の数字を入力</label>
 <input type="text" size="20" name="num1" id="num1">
 </p>
 <p>
-<label for="num2">Enter second number</label>
+
+<label for="num2">2番目の数字を入力</label>
 <input type="text" size="20" name="num2" id="num2">
 </p>
 </fieldset>
 <p>
-<input type="submit" name="submit" value="Submit Form">
+<input type="submit" name="submit" value="フォームを送信">
 </p>
 </form>
+
 </body>
-</html>
-]]></code>
-         <description>
-            <p>This example is limited to client-side scripting, and should be backed up with server-side validation. The example is limited to the creation of error messages when client-side scripting is available. 
-              </p>
-            <p>Here is a link to a working example: <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                    href="ex1.html"
-                    linktype="examples">Form Validation</loc> 
-            </p>
-         </description>
-      </eg-group>
+</html> ]]></code>
+      <description><p>この例はクライアントサイドスクリプトに限定しているため、サーバーサイドの検証によって補完されるべきである。例では、クライアントサイドスクリプトが利用できるときのエラーメッセージの作成に限定される。</p>
+<p>このコードの実装サンプル：<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/SCR21/ex1.html" linktype="examples">フォームの検証</loc> </p>
+</description>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -208,17 +197,17 @@ function focusFormField(objAnchor, objEvent, objForm)
    <related-techniques/>
    <tests>
       <procedure>
-         <p>For pages that dynamically create new content:</p>
-         <olist>
-            <item>
-               <p>Examine the source code and check that the new content is not created using document.write(), innerHTML, outerHTML, innerText or outerText.</p>
-            </item>
-         </olist>
-      </procedure>
+      <p>動的に新しいコンテンツを作成するページに対して：</p>
+      <olist>
+        <item>
+          <p>（ソースコードを検証して、）新しいコンテンツがdocument.write()、innerHTML,、outerHTML、innerText又はouterTextを用いて作成されていない。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Check #1 is true.</p>
+               <p>1.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

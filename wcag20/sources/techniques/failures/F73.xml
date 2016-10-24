@@ -2,36 +2,30 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F73">
-   <short-name>Failure of Success Criterion 1.4.1 due to creating links that are not visually evident without color vision</short-name>
+   <short-name>達成基準 1.4.1 の不適合事例 － 色覚なしではリンクであることが視覚的にはっきりと分からない</short-name>
    <applicability>
-      <p>Any technology.</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-without-color" relationship="failure"/>
    </applies-to>
    <description>
-      <p>The objective of this failure is to avoid situations in which people who cannot perceive color differences cannot identify links (when people with color vision can identify links). Link underlines or some other non-color visual distinction are required (when the links are discernible to those with color vision). </p>
-      <p>While some links may be visually evident from page design and context, such as navigational links, links within text are often visually understood only from their own display attributes. Removing the underline and leaving only the color difference for such links would be a failure because there would be no other visual indication (besides color) that it is a link.</p>
-      <note>
-         <p>Red and Pink are the same color (hue) but they have different lightness (which is not color ).   So red and pink would pass the requirement for "not distinguished by color (hue) alone" since they differ by lightness (which is not color) - as long as the difference in lightness (contrast) is 3:1 or greater.   (e.g. if surrounding text is RED and the link is PINK it would pass.  Similarly a light green and a dark red differ BOTH by color AND by lightness so they would pass if the contrast (lightness) difference is 3:1 or greater) before focus or pointing. )</p>
-         <p>There is no requirement that links be identifiable by people who cannot perceive color if they are not perceivable for those with color vision. (e.g. if the links are hidden for everyone – as in a game or test).</p>
-         <p>If the non-color cue only happens when the mouse hovers over the link or when the link receives focus, it is still a failure.</p>
-         <p>If the link is a different color and bold it would not fail because the boldness is not color dependent.</p>
-      </note>
-   </description>
+    <p>これは、色の違いを知覚できない利用者がリンクを特定できない不適合事例について述べている。リンクには、下線又は色を使わない他の視覚的な区別が必要である。リンクのなかには、ナビゲーションリンクなどのように、ページのデザインや文脈から視覚的に明らかなリンクもあるが、テキスト内のリンクはしばしば、その表示属性のみから視覚的に理解されている。こうしたリンクの下線を取り除いて色の違いだけを残すと、これがリンクであると視覚的に見分けるための他の（色以外の）識別方法がなくなるため、不適合となる。</p>
+    <note><p class="prefix">色以外の手掛かりが、リンクをマウスオーバーした際、又はリンクがフォーカスを受けた際にだけ提示される場合、それもやはり不適合となる。</p>
+		<p class="prefix">リンクが他のテキストとは異なる色でかつ太字にされている場合、太字は色に依存していないため、不適合とはならない。</p>
+</note>
+  </description>
    <examples>
       <eg-group role="failure">
-         <head/>
-         <description>
-            <p>A Web page includes a large number of links within the body text. The links are styled so that they do not have underlines and are very similar in color to the body text. This would be a failure because users would be unable to differentiate the links from the body text.</p>
-         </description>
-      </eg-group>
-      <eg-group role="failure">
-         <head/>
-         <description>
-            <p>The following code is an example of removing the underline from a link in a sentence or paragraph without providing another visual cue besides color.</p>
-         </description>
-         <code role="css"><![CDATA[
+      <head>不適合となる</head>
+      <description><p>ウェブページの本文のテキスト内に、多数のリンクが含まれている。これらのリンクは、下線がなく、ボディテキストに非常によく似た色で表示されている。利用者は、本文のテキストとリンクを見分けられないため、このウェブページは不適合である。</p>
+</description>
+    </eg-group>
+    <eg-group role="failure">
+      <head>不適合となる</head>
+      <description><p>次のコードは、文章内又は段落内のリンクから下線を取り除いていて、なおかつ色以外に別の視覚的な手掛かりを提供していない例である。</p>
+</description>
+      <code role="css"><![CDATA[
 <head>
 <style type="text/css">
 p a:link {text-decoration: none}
@@ -43,34 +37,28 @@ p a:hover {text-decoration: underline; color: red;}
 
 <body>
 
-<p>To find out more about the <a href="rain_in_spain.htm">rain in spain</a>there are many resources.</p>
+<p>もし<a href="rain_in_spain.htm">スペインでの雨</a>に
+関する情報を見つけたいならば、多くのリソースがある。</p>
 
-</body>
-]]></code>
-         <description>
-            <note>
-               <p>If the visual cue is only provided on hover (as in the example above), it would still fail.
-</p>
-            </note>
-         </description>
-      </eg-group>
+</body>]]></code>
+      <description><note><p class="prefix">視覚的な手掛かりが、（上の例のように）マウスオーバーした際のみ提供される場合、それはやはり不適合となる。</p>
+</note>
+</description>
+    </eg-group>
    </examples>
-   <related-techniques>
-      <relatedtech idref="G182"/>
-      <relatedtech idref="G183"/>
-   </related-techniques>
+   <related-techniques/>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check that each link in the page that is identifiable by color (hue) is visually identifiable via some other means (e.g., underlined, bolded, italicized, sufficient difference in lightness, etc). </p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>ウェブページにある文章中又は段落内（あるいは、リンクではないテキストと区別しづらいその他のエリア）のテキストにあるリンクそれぞれに、下線が付いているか、又は色（色相）に依存することなく視覚的にリンクとして区別できる（太字、イタリックなど）。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>If check #1 is false, then this failure condition applies and the content fails this Success Criterion.</p>
+               <p>1. を満たしていなければ、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

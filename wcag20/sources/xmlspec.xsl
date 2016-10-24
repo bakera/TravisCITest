@@ -125,7 +125,7 @@
   -->
 	<!-- ====================================================================== -->
 	<xsl:preserve-space elements="*"/>
-	<xsl:strip-space elements="abstract arg attribute authlist author back bibref blist body case col    colgroup component constant constraint constraintnote copyright def    definitions descr div div1 div2 div3 div4 div5 ednote enum enumerator    example exception footnote front gitem glist graphic group header    htable htbody inform-div1 interface issue item itemizedlist langusage    listitem member method module note notice ol olist orderedlist orglist    param parameters prod prodgroup prodrecap proto pubdate pubstmt raises    reference resolution returns revisiondesc scrap sequence slist    sourcedesc spec specref status struct table tbody tfoot thead tr    typedef ul ulist union vc vcnote wfc wfcnote issue"/>
+	<xsl:strip-space elements="abstract arg attribute authlist author back bibref blist body case col    colgroup component constant constraint constraintnote copyright def    definitions descr div div1 div2 div3 div4 div5 ednote enum enumerator    example exception footnote front gitem glist graphic group header    htable htbody inform-div1 interface issue item itemizedlist langusage    listitem member method module note notice ol olist orderedlist orglist    param parameters prod prodgroup prodrecap proto pubdate pubstmt raises    reference resolution returns revisiondesc scrap sequence slist    sourcedesc spec specref status struct table tbody tfoot thead tr translationcredit trdisclaimer trnote typedef ul ulist union vc vcnote wfc wfcnote issue"/>
 	<xsl:param name="validity.hacks" select="1"/>
 	<xsl:param name="show.diff.markup" select="1"/>
 	<xsl:param name="additional.title"/>
@@ -205,8 +205,15 @@
 					<xsl:with-param name="conditional" select="0"/>
 					<xsl:with-param name="default.id" select="'abstract'"/>
 				</xsl:call-template>
-				<xsl:text>Abstract</xsl:text>
+				<xsl:text>概要</xsl:text>
 			</h2>
+			<xsl:apply-templates/>
+		</div>
+	</xsl:template>
+	<xsl:template match="trdisclaimer">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<xsl:text>
+</xsl:text>
 			<xsl:apply-templates/>
 		</div>
 	</xsl:template>
@@ -258,9 +265,9 @@
        context -->
 	<xsl:template match="authlist">
 		<dt>
-			<xsl:text>Editor</xsl:text>
+			<xsl:text>編集者</xsl:text>
 			<xsl:if test="count(author) &gt; 1">
-				<xsl:text>s</xsl:text>
+				<xsl:text></xsl:text>
 			</xsl:if>
 			<xsl:text>:</xsl:text>
 		</dt>
@@ -363,7 +370,7 @@
        notes) -->
 	<xsl:template match="body">
 		<xsl:if test="$toc.level &gt; 0">
-			<div id="toc">
+			<div class="toc">
 				<xsl:text>
 </xsl:text>
 				<h2>
@@ -406,8 +413,8 @@
 						</a>
 					</p>
 				</xsl:if>
-				<hr/>
 			</div>
+			<hr/>
 		</xsl:if>
 		<div class="body">
 			<xsl:apply-templates/>
@@ -968,11 +975,12 @@
 	<!-- header: metadata about the spec -->
 	<!-- pull out information into standard W3C layout -->
 	<xsl:template match="header">
+		<p align="center">[<a href="#contents">contents</a>]</p>
 		<div class="head">
 			<xsl:if test="not(/spec/@role='editors-copy')">
 				<p>
 					<a href="http://www.w3.org/">
-						<img src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C" height="48" width="72"/>
+						<img src="http://www.w3.org/Icons/w3c_home" alt="W3C" height="48" width="72"/>
 					</a>
 					<xsl:choose>
 						<xsl:when test="/spec/@w3c-doctype='memsub'">
@@ -1031,13 +1039,14 @@
 					</xsl:otherwise>
 				</xsl:choose>
 				<xsl:text> </xsl:text>
+				<xsl:apply-templates select="pubdate/year"/>
+				<xsl:text>年 </xsl:text>
+				<xsl:apply-templates select="pubdate/month"/>
+				<xsl:text>月 </xsl:text>
 				<xsl:if test="pubdate/day">
 					<xsl:apply-templates select="pubdate/day"/>
-					<xsl:text> </xsl:text>
+					<xsl:text>日 </xsl:text>
 				</xsl:if>
-				<xsl:apply-templates select="pubdate/month"/>
-				<xsl:text> </xsl:text>
-				<xsl:apply-templates select="pubdate/year"/>
 			</h2>
 			<dl>
 				<xsl:apply-templates select="publoc"/>
@@ -1088,8 +1097,8 @@
 					</p>
 				</xsl:otherwise>
 			</xsl:choose>
-			<hr/>
 		</div>
+		<hr/>
 		<xsl:apply-templates select="notice"/>
 		<xsl:apply-templates select="abstract"/>
 		<xsl:apply-templates select="status"/>
@@ -1192,7 +1201,7 @@
 				</xsl:for-each>
 			</xsl:when>
 			<xsl:otherwise>
-				<dt>Latest version:</dt>
+				<dt>最新バージョン:</dt>
 				<dd>
 					<xsl:apply-templates/>
 				</dd>
@@ -1382,8 +1391,8 @@
 	<!-- called in a <dl> context from header -->
 	<xsl:template match="prevlocs">
 		<dt>
-			<xsl:text>Previous version</xsl:text>
-			<xsl:if test="count(loc) &gt; 1">s</xsl:if>
+			<xsl:text>前のバージョン</xsl:text>
+			<xsl:if test="count(loc) &gt; 1"></xsl:if>
 			<xsl:text>:</xsl:text>
 		</dt>
 		<dd>
@@ -1449,7 +1458,7 @@
 	<!-- publoc: location of current version of spec -->
 	<!-- called from header in <dl> context -->
 	<xsl:template match="publoc">
-		<dt>This version:</dt>
+		<dt>このバージョン:</dt>
 		<dd>
 			<xsl:apply-templates/>
 		</dd>
@@ -1624,8 +1633,8 @@
 			<body>
 				<xsl:apply-templates/>
 				<xsl:if test="//footnote[not(ancestor::table)]">
+					<hr/>
 					<div class="endnotes">
-						<hr/>
 						<xsl:text>
 </xsl:text>
 						<h3>
@@ -1640,7 +1649,6 @@
 						</dl>
 					</div>
 				</xsl:if>
-				<script src="//www.w3.org/scripts/TR/2016/fixup.js" type="text/javascript"></script>
 			</body>
 		</html>
 	</xsl:template>
@@ -2398,7 +2406,7 @@
 	<link media="print" type="text/css" rel="stylesheet" href="print.css" />
 	<link rel="stylesheet" type="text/css" href="additional.css" />
 	<link rel="stylesheet" type="text/css">
-		<xsl:attribute name="href"><xsl:text>https://www.w3.org/StyleSheets/TR/2016/</xsl:text>
+		<xsl:attribute name="href"><xsl:text>http://www.w3.org/StyleSheets/TR/</xsl:text>
 		    <xsl:choose>
 				<!-- Editor's review drafts are a special case. -->
 			    	<xsl:when test="/spec/@role='editors-copy'">W3C-ED</xsl:when>
@@ -2422,7 +2430,7 @@
 	</xsl:template>
         
 	<xsl:template name="additional-head">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!-- nop -->
 	</xsl:template>
 	<xsl:template name="href.target">
 		<xsl:param name="target" select="."/>

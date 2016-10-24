@@ -2,25 +2,20 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SM6">
-   <short-name>Providing audio description in SMIL 1.0</short-name>
+   <short-name>SMIL 1.0で音声ガイドを提供する</short-name>
    <applicability>
-      <p> Applies whenever SMIL 1.0 player is available </p>
+      <p>SMIL 1.0 プレーヤーが利用可能な場合</p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-audio-desc" relationship="sufficient"/>
-      <success-criterion idref="media-equiv-audio-desc-only" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p> The objective of this technique is to provide a way for people who are blind
-                        or otherwise have trouble seeing the video in audio-visual material to be
-                        able to access the material. With this technique a description of the video
-                        is provided via audio description that will fit into the gaps in the dialogue
-                        in the audio-visual material. </p>
-   </description>
+    <p>この達成方法の目的は、全盲又は視聴覚素材の映像を見るのが困難な利用者が、その素材の情報を得られるようにすることである。この達成方法では、視聴覚素材の会話の合間に入る音声ガイドによって、映像の説明が提供される。</p>
+  </description>
    <examples>
       <eg-group>
-         <head> SMIL 1.0 audio description sample for QuickTime player</head>
-         <code><![CDATA[   
+      <head>QuickTimeプレーヤー向けのSMIL 1.0の音声ガイドの例</head>
+      <code><![CDATA[ 
 <?xml version="1.0" encoding="UTF-8"?>
 <smil xmlns:qt="http://www.apple.com/quicktime/resources/smilextensions" 
   xmlns="http://www.w3.org/TR/REC-smil" qt:time-slider="true">
@@ -39,11 +34,11 @@
       alt="Sales Demo Audio Description"/>
     </par>
   </body>
-</smil> ]]></code>
-      </eg-group>
-      <eg-group>
-         <head> SMIL 1.0 audio description sample for RealTime player</head>
-         <code><![CDATA[ 
+</smil>]]></code>
+    </eg-group>
+    <eg-group>
+      <head>RealTimeプレーヤー向けのSMIL 1.0の音声ガイドの例</head>
+      <code><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
 <smil xmlns="http://www.w3.org/TR/REC-smil">
   <head>
@@ -62,7 +57,7 @@
     </par>
   </body>
 </smil>]]></code>
-      </eg-group>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -100,9 +95,10 @@
                   <loc href="http://developer.apple.com/documentation/QuickTime/REF/refDataExchange.6.htm">QuickTime QTText</loc>
                 </p>
               </item-->
-            <item diff="del">
-               <p diff="del"> 
-                  Realtext 
+            <item>
+               <p> 
+                  <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                       href="http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/realtext.htm">Realtext</loc> 
                </p>
             </item>
             <item>
@@ -127,23 +123,22 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p> Find method for turning on audio description from
-                                    content/player (unless it is always played by default) </p>
-            </item>
-            <item>
-               <p> Play file with audio description </p>
-            </item>
-            <item>
-               <p> Check whether audio description is played </p>
-            </item>
-         </olist>
-      </procedure>
-      <expected-results>
-         <ulist>
-            <item>
-               <p> #3 is true </p>
+      <olist>
+        <item>
+          <p>（デフォルトで常に再生されている場合を除いて、）コンテンツ／プレーヤーから音声ガイドを再生する方法を見つける。</p>
+        </item>
+        <item>
+          <p>音声ガイドのあるファイルを再生する。</p>
+        </item>
+        <item>
+          <p>音声ガイドが再生される。</p>
+        </item>
+      </olist>
+    </procedure>
+    <expected-results>
+      <ulist>
+        <item>
+          <p>3.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

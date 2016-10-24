@@ -2,26 +2,17 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G180">
-   <short-name>Providing the user with a means to set the time limit to 10 times the default time limit</short-name>
+   <short-name>利用者が初期設定の制限時間を10倍に設定できる手段を提供する</short-name>
    <applicability>
-      <p>All technologies.</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-required-behaviors" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to give people with disabilities enough time to complete tasks which may take them longer than someone without those challenges. Some mechanism such as a preference setting or a control on the page lets the user change the time limits to at least 10 times the default time limit. Preferably, the mechanism would have a variable adjustment that lets the user change the time limit to any value in its range, but could also provide ways to change the time limit by discrete increments. The user changes the time limit at the beginning of his session, before any activity that has a time limit.</p>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>An airline has an online ticket purchasing application. By default, the application has a 1 minute time limit for each step of the purchase process. At the beginning of the session, a Web page includes information that says, "We expect that each step in the purchasing process will take users one minute to complete. Would you like to adjust the time limit?" followed by several radio buttons "1 minute, 2 minutes, 5 minutes, 10 minutes."</p>
-         </item>
-         <item>
-            <p>A Web based email application automatically logs users out when there has been no activity for 30 minutes. The application includes a preference that allows users to adjust the amount of time to any value.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>この達成方法の目的は、障害のない利用者に比べて障害のある利用者が長時間必要とするかもしれないタスクにおいて、障害のある利用者に完了するための十分な時間を提供することである。環境設定又はページ上のコントロールのようなメカニズムによって、利用者がデフォルトの制限時間の少なくとも10倍まで制限時間を延長できるようにする。可能であれば、このメカニズムはさまざまな調整機能を備え、利用者が制限時間を範囲内の任意の値に変えられるだけでなく、任意の増減幅で変えられる方法も提供するとよい。これにより、利用者は、制限時間のあるセッションを始める前に、制限時間を変更できるようになる。</p>
+  </description>
+   <examples/>
    <related-techniques>
       <relatedtech idref="G133"/>
       <relatedtech idref="SCR1"/>
@@ -29,28 +20,28 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check to see if there is a mechanism to set the time limit to 10 times the default time limit.</p>
-            </item>
-            <item>
-               <p>Change the time limit to a new value that is 10 times the default time limit.</p>
-            </item>
-            <item>
-               <p>Perform an action that has a time limit.</p>
-            </item>
-            <item>
-               <p>Wait until the default time limit has passed.</p>
-            </item>
-            <item>
-               <p>Check that the time limit does not expire until the limit specified in step 2 has passed.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>制限時間をデフォルトの10倍に設定できるメカニズムがある。</p>
+        </item>
+        <item>
+          <p>制限時間をデフォルトの10倍にあたる新しい値に変更する。</p>
+        </item>
+        <item>
+          <p>制限時間のあるタスクを遂行する。</p>
+        </item>
+        <item>
+          <p>デフォルトの制限時間が経過するのを待つ。</p>
+        </item>
+        <item>
+          <p>上記 2. で設定した制限時間になるまで時間切れにならない。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Checks #1 and #5 are true.</p>
+               <p>1. 及び 5. を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

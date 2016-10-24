@@ -2,39 +2,37 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F82">
-   <short-name>Failure of Success Criterion 3.3.2 by visually formatting a set of phone number fields but not including a text label</short-name>
+   <short-name>達成基準 3.3.2 の不適合事例 － 電話番号を入力するテキスト・フィールド一式を視覚的にフォーマットしているが、テキストのラベルが提供されていない</short-name>
    <applicability>
-      <p>Any technology</p>
+      <p>あらゆるウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="minimize-error-cues" relationship="failure"/>
    </applies-to>
    <description>
-      <p>This failure ensures that people with visual or cognitive disabilities will recognize phone number fields and understand what information to provide to fill in the fields. Phone numbers are frequently formatted in fixed, distinctive ways, and authors may feel that just providing visual formatting of the fields will be sufficient to identify them. However, even if all the fields have programmatically determined names, a text label must also identify the set of fields as a phone number.</p>
-   </description>
+    <p>この文書では、視覚障害、又は認知障害のある利用者が、電話番号入力欄であることを認識し、フィールドにどのような情報を入力すればよいかを理解できない不適合事例について述べている。電話番号は多くの場合、固定の、特有の書式で示されるため、コンテンツ制作者は電話番号入力欄であることを示すにはフィールドに視覚的な書式を設定すれば十分であると考えているかもしれない。しかし、全てのフィールドがプログラムで解釈可能な識別名を持っている場合においても、テキストラベルでフィールドの一式を電話番号として特定するようにしなければならない。</p>
+  </description>
    <examples>
       <eg-group role="failure">
-         <head/>
-         <description>
-            <p>In the United States, phone numbers are broken into a three digit area code, a three digit prefix, and a four digit extension. A web page creates fixed length text input fields for the three parts of the phone number, surrounding the first field with parenthesis and separating the second and third fields with a dash. Because of this formatting, some users recognize the fields as a phone number. However, there is no text label for the phone number on the web page. This is because the label for each field will be the closest preceding text, so the three fields would be labeled "(", ")" , and "-" respectively.</p>
-         </description>
-      </eg-group>
+      <description><p>アメリカ合衆国では、電話番号は3桁の市外局番と3桁の市内局番、及び4桁の番号に区切られている。あるウェブページ上で電話番号の3つの部分に対して固定長のテキスト入力フィールドを作成し、最初のフィールドをカッコで囲い、ダッシュ「-」で2番目と3番目のフィールドを区切っている。この書式から、利用者はフィールドを電話番号として認識するが、そのウェブページではそれが電話番号であることを示すテキストラベルがつけられていない。それぞれのフィールドのラベルはその直前にあるテキストであることが多いので、3つのフィールドのラベルはそれぞれ「（」、「）」と「-」ということになってしまう。</p>
+</description>
+    </eg-group>
    </examples>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>For each set of phone number fields in the web page that represents a single phone number, check that the set of fields are labeled with a visible text label that is positioned near the set of phone number fields.</p>
-            </item>
-            <item>
-               <p>For each set of phone number fields in the Web page that represent a single phone number, instructions are provided about how to fill in the fields.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>一つの電話番号を表すウェブページ上の電話番号フィールド一式に対して、電話番号フィールド一式が近くに配置された目に見えるテキストラベルでラベル付けされている。</p>
+        </item>
+        <item>
+          <p>一つの電話番号を表すウェブページ上の電話番号フィールド一式に対して、フィールドへの入力方法の説明がある。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>If both check #1 and check #2 are false, then this failure condition applies and the content fails this success criterion.</p>
+               <p>1.及び2.の両方を満たさなければ、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

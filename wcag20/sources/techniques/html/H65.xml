@@ -2,11 +2,9 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="H65">
-   <short-name>Using the title attribute to identify form controls when the label element
-          cannot be used</short-name>
+   <short-name>label要素を用いることができないとき、title属性を用いてフォーム・コントロールを特定する</short-name>
    <applicability>
-      <p>HTML and XHTML form controls that are not identified using <att>value</att>,
-            <att>alt</att>, or element content </p>
+      <p><att>value</att>属性、<att>alt</att>属性、または要素内容で特定できないHTML及びXHTMLのフォーム・コントロール</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="sufficient"/>
@@ -17,85 +15,50 @@
    </applies-to>
    <ua-issues>
       <ua-issue name="" version="">
-         <ulist>
-            <item>
-               <p>User agents will display a tool tip when the mouse hovers above an
-                  <el>input</el> element containing a <att>title</att> attribute. </p>
-            </item>
-            <item>
-               <p>If no <el>label</el> is available, JAWS and Window-Eyes speak the
-                  <att>title</att> attribute when the form control receives focus </p>
-               <ulist>
-                  <item>
-                     <p>JAWS 6.0 and later can be set to speak both <el>label</el> and
-                        <att>title</att> when the two items are different; however, very few users
-                      are aware of this setting.</p>
-                  </item>
-                  <item>
-                     <p>WindowEyes 5.5 has a hot key, ins-E, that will display additional
-                      information, including the title attribute, for the item with focus. </p>
-                  </item>
-               </ulist>
-            </item>
-         </ulist>
-      </ua-issue>
+      <ulist>
+        <item>
+          <p>利用者ーエージェントは、<att>title</att>要素が指定してある<att>input</att>要素にマウスオーバーしたときに、ツールチップを表示するだろう。</p>
+        </item>
+        <item><p>JAWSとWindow-Eyesでは、フォーム・コントロールがフォーカスを受けとったとき、<el>label</el>要素が指定されていなければ、<att>title</att>属性の内容を読み上げる。</p>
+                
+                        <ulist><item><p>JAWS 6.0以降では、<el>label</el>要素と<att>title</att>属性に異なる内容が指定されている場合、両方を読み上げるように設定できる。しかし、この設定方法を知っている利用者ーは非常に少ない。</p></item><item><p>Window-Eyes 5.5には、フォーカスを受けとったアイテムの追加情報（<att>title</att>属性を含む）を読み上げるホットキー（insert＋E）がある。</p></item></ulist></item>
+      </ulist>
+    </ua-issue>
    </ua-issues>
    <description>
-      <p>The objective of this technique is to use the <att>title</att> attribute to label
-            form controls when the visual design cannot accommodate the label (for example, if there
-            is no text on the screen that can be identified as a label) or where it might be
-            confusing to display a label. User agents, including assistive technology, can speak the
-              <att>title</att> attribute.</p>
-   </description>
+    <p>この達成方法の目的は、ラベルを付けるのが視覚デザイン上そぐわない場合（たとえば、ラベルとなりうるテキストが画面上にない場合）や、ラベルを表示することで混乱を引き起こしてしまう場合に、<att>title</att>属性を利用してフォーム・コントロールにラベルを付けることである。それによって、利用者ーエージェントや支援技術が、<att>title</att>属性を読み上げることができる。</p>
+  </description>
    <examples>
-      <eg-group>
-         <head>A pulldown menu that limits the scope of a search</head>
-         <description>
-            <p>A search form uses a pulldown menu to limit the scope of the search. The pulldown
-                menu is immediately adjacent to the text field used to enter the search term. The
-                relationship between the search field and the pulldown menu is clear to users who
-                can see the visual design, which does not have room for a visible label. The
-                  <att>title</att> attribute is used to identify the <el>select</el> menu. The
-                  <att>title</att> attribute can be spoken by screen readers or displayed as a
-                tool tip for people using screen magnifiers.</p>
-         </description>
-         <code role="html401"><![CDATA[<label for="searchTerm">Search for:</label>
+     <eg-group>
+      <head>検索対象を絞り込むプルダウンメニュー</head>
+      <description><p>検索フォームで検索対象を絞り込むプルダウンメニューを用いている。そのプルダウンメニューは、検索語を入力するテキストフィールドのすぐそばにある。テキストフィールドとプルダウンメニューの関係は、見た目のデザインを目で見ることができる利用者ーには明白であり、ラベルを置くスペースはない。そこで、<el>select</el>要素を特定するのに<att>title</att>属性を利用している。<att>title</att>属性はスクリーンリーダーによって読み上げられたり、画面拡大ソフトを使っている利用者ーにはツールチップとして表示されたりする。</p>
+</description>
+      <code role="html401"><![CDATA[<label for="searchTerm">検索語：</label>
 <input id="searchTerm" type="text" size="30" value="" name="searchTerm">
-<select title="Search in" id="scope">
+<select title="検索対象" id="scope">
 …
-</select> ]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Input fields for a phone number</head>
-         <description>
-            <p>A Web page contains controls for entering a phone number in the United States, with
-                three fields for area code, exchange, and last four digits.</p>
-         </description>
-         <code role="html401"><![CDATA[<fieldset><legend>Phone number</legend>
-<input id="areaCode" name="areaCode" title="Area Code" 
+</select>]]></code>
+    </eg-group>
+    <eg-group>
+      <head>電話番号の入力フィールド</head>
+      <description><p>ウェブページの中に、アメリカでの電話番号を入力するコントロールがあり、市外局番、市内局番、下4桁の3つのフィールドで構成されている。</p>
+</description>
+      <code role="html401"><![CDATA[<fieldset><legend>電話番号</legend>
+<input id="areaCode" name="areaCode" title="市外局番" 
 type="text" size="3" value="" >
-<input id="exchange" name="exchange" title="First three digits of phone number" 
+<input id="exchange" name="exchange" title="電話番号の上3桁" 
 type="text" size="3" value="" >
-<input id="lastDigits" name="lastDigits" title="Last four digits of phone number" 
+<input id="lastDigits" name="lastDigits" title="電話番号の下4桁" 
 type="text" size="4" value="" >
-</fieldset> ]]></code>
-      </eg-group>
-      <eg-group>
-         <head> A Search Function</head>
-         <description>
-            <p>A Web page contains a text field where the user can enter search terms and a button labeled "Search" for performing the search. The <att>title</att> attribute is used to identify the form control and the button is positioned right after the text field so that it is clear to the user that the text field is where the search term should be entered.</p>
-         </description>
-         <code role="html401"><![CDATA[
-<input type="text" title="Type search term here"/> <input type="submit" value="Search"/>
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head>A data table of form controls</head>
-         <description>
-            <p>A data table of form controls needs to associate each control with the column and row headers for that cell. Without a title (or off-screen LABEL) it is difficult for non-visual users to pause and interrogate for corresponding row/column header values using their assistive technology  while tabbing through the form.</p>
-            <p>For example, a survey form has four column headers in first row: Question, Agree, Undecided, Disagree. Each following row contains a question and a radio button in each cell 			corresponding to answer choice in the three columns. The title attribute for every radio button is a concatenation of the answer choice (column header) and the text of the question (row header) with a hyphen or colon as a separator.</p>
-         </description>
-      </eg-group>
+</fieldset>]]></code>
+    </eg-group>
+    <eg-group>
+      <head>検索機能</head>
+      <description><p>ウェブページに、利用者ーが検索語を入力できるテキストフィールドと、検索を実行するための「検索」というラベルが付いたボタンがある。フォーム・コントロールを特定するの<att>title</att>属性を利用し、ボタンはテキストフィールドの直後に置いてあるので、テキストフィールドに検索語を入力すべきことは利用者ーにとって明白である。</p>
+</description>
+      <code role="html401"><![CDATA[<input type="text" title="ここに検索語を入力"/> 
+<input type="submit" value="検索"/>]]></code>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -103,20 +66,15 @@ type="text" size="4" value="" >
             <item>
                <p>HTML 4.01 <loc xmlns:xlink="http://www.w3.org/1999/xlink"
                        href="http://www.w3.org/TR/html4/struct/global.html#h-7.4.3">The
-                    title attribute</loc>
-								       </p>
+                    title attribute</loc></p>
             </item>
             <item>
-               <p>
-									         <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                       href="http://www.jimthatcher.com/webcourse8.htm">Accessible Forms</loc>
-								       </p>
+               <p><loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                       href="http://www.jimthatcher.com/webcourse8.htm">Accessible Forms</loc></p>
             </item>
             <item>
-               <p>
-									         <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                       href="http://usability.com.au/2008/09/accessible-forms-using-wcag-2-0/">Accessible Forms using WCAG 2.0</loc>
-								       </p>
+               <p><loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                       href="http://www.usability.com.au/resources/wcag2/">Accessible Forms using WCAG 2.0</loc></p>
             </item>
          </ulist>
       </see-also>
@@ -127,26 +85,24 @@ type="text" size="4" value="" >
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Identify each form control that is not associated with a <el>label</el>
-                  element </p>
-            </item>
-            <item>
-               <p>Check that the control has a <att>title</att> attribute</p>
-            </item>
-            <item>
-               <p>Check that the <att>title</att> attribute identifies the purpose of the
-                control</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p><el>label</el>要素によって関連付けられていないフォーム・コントロールを特定する。</p>
+        </item>
+        <item>
+          <p>そのコントロールに<att>title</att>属性が指定されている。</p>
+        </item>
+        <item>
+          <p><att>title</att>属性によってそのコントロールの目的を特定している。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
-            <item>
-               <p>All checks above are true.</p>
-            </item>
-         </ulist>
+        <item>
+          <p>上記全てを満たしている</p>
+        </item>
+      </ulist>
       </expected-results>
    </tests>
 </technique>

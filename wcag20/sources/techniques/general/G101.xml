@@ -2,84 +2,70 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G101">
-   <short-name>Providing the definition of a word or phrase used in an unusual or restricted way</short-name>
+   <short-name>一般的ではない、又は限定された用法で用いられている単語や語句の定義を提供する</short-name>
    <applicability>
-      <p>Any technology containing text.</p>
+      <p>テキストを含むあらゆるウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="meaning-idioms" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide a definition for any word used in an unusual or restricted way.</p>
-      <p>A word is used in an unusual or restricted way when:</p>
-      <ulist>
-         <item>
-            <p>dictionaries give several definitions of the word but one specific definition must be used in order to understand the content;</p>
-         </item>
-         <item>
-            <p>a specific definition must be used in order to understand the content and dictionaries list that definition as rare, archaic, obsolete, etc.;</p>
-         </item>
-         <item>
-            <p>the author creates a new definition that must be used in order to understand the content.</p>
-         </item>
-      </ulist>
-      <p>This technique can also be used to provide definitions for jargon, that is, the specialized vocabulary used in a particular profession or technical field and understood by people in that field but not by people outside the field.</p>
-      <p>The technique can also be used to define idiomatic expressions.  For example, speakers of a language who live in a particular region may use idiomatic expressions that are accepted by everyone in the region but not by people from other regions where the same language is spoken.</p>
-   </description>
+    <p>この達成方法の目的は、一般的ではない、又は限定された用途で用いられているあらゆる単語の定義を提供することである。</p>
+    <p>単語が、一般的ではない、又は限定された用途で用いられているのは、次のような場合である:</p>
+    <ulist>
+      <item>
+        <p>辞書にはその単語の定義がいくつかあるが、コンテンツを理解するためには一つの特定の定義が用いらなければならない。</p>
+      </item>
+      <item>
+        <p>コンテンツを理解するために特定の定義が用いられている、又辞書には、それらの定義はまれな、廃れた、旧式のと書かれている。</p>
+      </item>
+      <item>
+        <p>コンテンツ制作者が、コンテンツを理解するために用いられる新しい定義を作り出す。</p>
+      </item>
+    </ulist>
+    <p>この達成方法は、業界用語、すなわち、特有の専門又は技術分野で用いられる専門用語に対して定義を提供するためにも用いられる。分野外の人には理解できないが、その分野の人には理解できる。</p>
+    <p>この達成方法は慣用表現を定義するためにも用いられる。例えば、同じ言語を話す人でも、特定の地域に住んでいる場合、その地域の人には理解されるが、同じ言語を話す他の地域からの人には理解されない慣用表現を用いるかもしれない。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>A term used in a restricted way</head>
-         <description>
-            <p>The word "technology" is widely used to cover everything from the stone tools used by early humans to contemporary digital devices such as cell phones.  But in WCAG 2.0, the word technology is used in a more restricted way:  it means a mechanism for encoding instructions to be rendered, played or executed by user agents, including  markup languages, data formats, and programming languages used in producing and delivering Web content.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>A word used according to an obsolete definition</head>
-         <description>
-            <p>The word "ether" is defined as a substance that filled interplanetary space:  "He believed that sound traveled through the ether."</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Jargon</head>
-         <description>
-            <p>The word "driver" is defined as software that contains specific instructions for a printer: "It may be necessary to update the driver for your printer."</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>An idiomatic expression</head>
-         <description>
-            <p>Some people say "spill the beans" when they mean "reveal a secret", e.g., "In the police station, Joe spilled the beans about the plot to kidnap the prime minister."</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>An idiomatic expression in Japanese</head>
-         <description>
-            <p>This example uses parentheses to provide the definition of an idiomatic expression in Japanese. The phrase in Japanese says that "he throws a spoon." It means that there was nothing he can do and finally he gives up.</p>
-            <p>
-                <phrase xml:lang="jp">さじを投げる（どうすることもできなくなり、あきらめること）。</phrase>
-              </p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>An unfamiliar adopted foreign word in English</head>
-         <description>
-            <p>Users may not understand the meaning of an unfamiliar word adopted from another language: "We need to leave town pronto (quickly).</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Unfamiliar adopted words in Japanese</head>
-         <description>
-            <p>In Japanese, Kata-kana is used for adopted foreign words. If words are unfamiliar to users, provide the meaning or translation so that users can understand them.</p>
-            <p>
-                <phrase xml:lang="jp">アクセシビリティ（高齢者・障害者を含む全ての人が利用できること）は、Webサイトに不可欠である。</phrase>
-              </p>
-            <p>English translation: "Accessibility" (it can be accessed by all users including elderly people and people with disabilities) is an essential aspect of the Websites.</p>
-            <p>
-                <phrase xml:lang="jp">レイアウトテーブルとCSSの併用をハイブリッド（複合型）という。</phrase>
-              </p>
-            <p>English translation: Using both layout table and CSS is called "hybrid" (combination of multiple forms).</p>
-         </description>
-      </eg-group>
+      <head>限定された用途で用いられている専門用語</head>
+      <description><p>「技術」という単語は、原始人が使った石器から携帯電話のような現代のデジタル機器までの全てを含め広く用いられている。しかし、WCAG 2.0では、「技術」という単語はより限定された用途で用いられている: それは、利用者ーエージェントにより描画、再生、又は実行されるように指示をコード化するためのメカニズムを意味しており、ウェブコンテンツを生成及び提供する際に用いられるマークアップ言語、データフォーマット、及びプログラム言語を含んでいる。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>一般的にはもう使われていない定義が用いられている用語</head>
+      <description><p>「エーテル」という用語は、宇宙空間に満たされた物質として定義されている: 「彼はエーテルを介して音が伝わると信じていた。」</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>業界用語</head>
+      <description><p>「ドライバー」という用語は、プリンターでは特定の指示をするソフトウェアとして定義されている: 「あなたのプリンタのドライバーをアップデートする必要があるかもしれない。」</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>固有表現</head>
+      <description><p>例えば、「警察署で、ジョーは首相を誘拐するたくらみについて口をすべらした。」のように、「秘密を漏らす」の意味で「口をすべらす」と言う人がいる。
+</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>日本語の慣用表現</head>
+      <description><p>この事例は、日本語の慣用表現の定義を提供するために括弧を使用する。日本語の語句では、「さじを投げる。」と書かれている。これは、彼のできることが何もなく、最終的にあきらめたことを意味している。</p>
+<p><phrase lang="jp" xml:lang="jp">さじを投げる（どうすることもできなくなり、あきらめること）。</phrase></p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>英語で馴染みのない外来語</head>
+      <description><p>利用者は、他の言語からの馴染みのない外来語を理解できないかもしれない: 「我々はすぐに(すばやく)街を離れる必要がある。」</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>日本語で馴染みのない外来語</head>
+      <description><p>日本語では、外来語に対してカタカナが用いられる。単語が利用者にとって馴染みがない場合、利用者が理解できるように意味又は翻訳を提供する。</p>
+<p>「アクセシビリティ（高齢者・障害のある人を含む全ての人が利用できること）」は、Webサイトに不可欠である。 </p>
+<p>レイアウトテーブルとCSSの併用を「ハイブリッド（複合型）」という。 </p>
+</description>
+    </eg-group>
    </examples>
    <resources/>
    <related-techniques>
@@ -90,17 +76,17 @@
    </related-techniques>
    <tests>
       <procedure>
-         <p>For each word or phrase used in an unusual or restricted way:</p>
-         <olist>
-            <item>
-               <p>Check that a definition is provided for the word or phrase</p>
-            </item>
-         </olist>
-      </procedure>
+      <p>一般的でない、又は限定された用途で用いられる個々の単語又は語句に対して:</p>
+      <olist>
+        <item>
+          <p>単語又は語句に対して定義が提供されている。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Check #1 is true.</p>
+               <p>1.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

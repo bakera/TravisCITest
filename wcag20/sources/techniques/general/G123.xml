@@ -2,89 +2,42 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G123">
-   <short-name>Adding a link at the beginning of a block of repeated content to go to the end of the block</short-name>
+   <short-name>繰り返しているコンテンツのブロックの開始位置に、そのブロックの終了位置へのリンクを追加する</short-name>
    <applicability>
-      <p>All technologies that contain links.</p>
+      <p>リンクを実装できる全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-skip" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide a mechanism to bypass a block of material by skipping to the end of the block. The first link in the block or the link directly preceding the block moves focus to the content immediately after the block. Activating the link advances the keyboard focus past the block. When there are multiple blocks to be skipped, the user skips from block to block via these links.</p>
-   </description>
+    <p>この達成方法の目的は、ブロックの終わりまで飛び越えることで、構成要素のブロックを回避するメカニズムを提供することである。ブロックの最初のリンク又はブロックの直前にあるリンクによって、フォーカスをそのブロックの直後にあるコンテンツに遷移させる。リンクを選択することでキーボードフォーカスはブロックを飛ばして進んでいく。複数のブロックを飛び越える場合は、利用者はこれらのリンクを使ってブロックを一つずつスキップしていく。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>Skip navigation links</head>
-         <description>
-            <p>The pages on an organization's Web site include a navigation bar or main menu containing links to major sections of the site, the site map, information about the organization, and how to contact the organization. The first link in this area is titled "Skip Navigation Links". A user activates the link to skip over these links.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>A book index</head>
-         <description>
-            <p>A book contains an index that is divided into a set of pages. In the content at the beginning of each page of the index are links for each letter of the alphabet, linking into the index where the entries start with that letter. The first link in the set is titled "Skip Links into Index". A user activates this link to skip over the links.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Several sets of links</head>
-         <description>
-            <p>All the pages on a Web site include a section containing links to the site map, information about the organization, and how to contact the organization. All the pages in each section of the site also contain a set of links to its subsections. The first link in the first block is titled "Skip Navigation Links" and skips over the first set of links. The first link in the second block is titled "Skip Section Links" and skips over the subsection links.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>HTML page with several blocks of navigation links</head>
-         <description>
-            <p>This example demonstrates both the use of Heading elements at the beginning of each section (H69) and links that skip to the end of each section. This allows people to skip blocks of repeated content using keyboard navigation or using heading navigation, depending on the capabilities of their user agents. Note that some sections of the content are wrapped in a
-                <el>div</el>
-                element to work around a limitation of Internet Explorer (see the User Agents Notes for Creating HTML links to skip blocks of content (future link)).</p>
-         </description>
-         <code role="html401"><![CDATA[
-              <p><a href="#content">Content title</a></p>
-                <h2>Main Navigation</h2>
-                <ul>
-                <li><a href="#subnav">Sub Navigation</a></li>
-                <li><a href="/a/">Link A</a></li>
-                <li><a href="/b/">Link B</a></li>
-                <li><a href="/c/">Link C</a></li>
-                ...
-                <li><a href="/j/">Link J</a></li>
-                </ul>
-                <div class="iekbfix">
-                <h2 id="subnav">Sub Navigation</h2>
-                <ul>
-                <li><a href="#ultranav">Ultra Sub Navigation</a></li>
-                <li><a href="/suba/">Sub A</a></li>
-                <li><a href="/subb/">Sub B</a></li>
-                <li><a href="/subc/">Sub C</a></li>
-                ...
-                <li><a href="/subj/">Sub J</a></li>
-                </ul>
-                </div>
-                <div class="iekbfix">
-                <h2 id="ultranav">Ultra Sub Navigation</h2>
-                <ul>
-                <li><a href="#content">Content title</a></li>
-                <li><a href="/ultraa/">Ultra A</a></li>
-                <li><a href="/ultrab/">Ultra B</a></li>
-                <li><a href="/ultrac/">Ultra C</a></li>
-                ...
-                <li><a href="/ultraj/">Ultra J</a></li>
-                </ul>
-                </div>
-                <div>
-                <h2 id="content">Content title</h2>
-                <p>Now that I have your attention...</p>
-                </div>
-            ]]></code>
-         <description>
-            <p>And the CSS</p>
-         </description>
-         <code role="css"><![CDATA[
-              div.iekbfix {
-                width: 100%;
-                }
-            ]]></code>
-      </eg-group>
+      <head>ナビゲーションリンクをスキップする</head>
+      <description><p>ある組織のウェブサイトのページには、サイトの主なセクション、サイトマップ、組織についての情報、及び組織との連絡方法へのリンクを含むナビゲーションバー又はメインメニューがある。このエリアの最初のリンクは「ナビゲーションリンクをスキップする」で、利用者はそのリンクを選択してこれらのリンクをスキップする。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>本の索引</head>
+      <description><p>本の中に何ページかのセットになって区分されている索引がある。索引のそれぞれのページの冒頭にあるコンテンツの中には、アルファベットのそれぞれの文字に対するリンクがあり、その文字で始まる記載内容の索引にリンクしている。そのセットの中の最初のリンクは「リンクをスキップして索引へ」である。利用者は、このリンクを選択して他のリンクをスキップする。 </p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>複数のリンクの集合</head>
+      <description><p>ウェブサイト内の全てのページにはサイトマップ、組織に関する情報、及び組織との連絡方法へのリンクが含まれているセクションがある。サイトにある各セクションの全てのページには、同様にその下位の区分へのリンクの集合がある。1番目のブロックの最初のリンクは「ナビゲーション・リンクをスキップ」で、最初のリンクの集合をスキップする。2番目のブロックの最初のリンクは「セクションのリンクをスキップ」で、そのサブセクションのリンクをスキップする。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>ナビゲーション・リンクのブロックが複数あるHTMLページ</head>
+      <description><p>この事例では、各セクションの冒頭の見出し要素（<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="H69.html">達成方法 H69</loc>）、及びそれぞれのセクションの最後までスキップするリンクの両方が用いられている。利用する利用者ーエージェントの能力に依存するが、これによってキーボード・ナビゲーション又は見出しナビゲーションを用いて、繰り返されるコンテンツのブロックをスキップすることができる。
+              </p>
+</description>
+      <code/>
+      <description><p>CSS：</p>
+</description>
+      <code/>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -104,25 +57,26 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check that a link is the last focusable control before the block of repeated content or the first link in the block.</p>
-            </item>
-            <item>
-               <p>Check that the description of the link communicates that it skips the block.</p>
-            </item>
-            <item>
-               <p>Check that the link is either always visible or visible when it has keyboard focus.</p>
-            </item>
-            <item>
-               <p>Check that after activating the link, the keyboard focus has moved to the content immediately after the block.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>リンクが、繰り返されるコンテンツのブロックの前にある最後のフォーカス可能なコントロールである、又はブロック内の最初のリンクである。</p>
+        </item>
+        <item>
+          <p>リンクテキストがブロックをスキップすることを伝えている。</p>
+        </item>
+        <item>
+          <p>リンクは常に表示されている、又はキーボード・フォーカスを受け取ったときに表示される。
+                </p>
+        </item>
+        <item>
+          <p>リンクを選択すると、そのブロックの直後のコンテンツにフォーカスが移動する。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>All checks above are true.</p>
+               <p>上記の全てを満たしている。</p>
             </item>
          </ulist>
       </expected-results>

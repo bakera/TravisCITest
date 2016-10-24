@@ -2,40 +2,30 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G188">
-   <short-name>Providing a button on the page to increase line spaces and paragraph spaces</short-name>
+   <short-name>行送りや段落の間隔を広げるボタンをウェブページ上に提供する</short-name>
    <applicability>
-      <p>Any technology.</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-visual-presentation"
                          relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>Many people with cognitive disabilities have trouble reading text that is single spaced. A button that increases the line height will help them read the content. In order to retain the separation of paragraphs, the space between paragraphs should also increase so that it is at least 1.5 times as high as the line spacing.</p>
-      <note>
-         <p>This technique can be used in combination with a style switching technique to present a page that is a
-              <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                 href="conforming-alternate-versiondef"
-                 linktype="glossary">conforming alternate version</loc>
-              for non-conforming content. Refer to
-              <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29" linktype="css">C29: Using a style switcher to provide a conforming alternate version</loc>
-              and
-              <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                 href="conformance"
-                 locn-note="uc-conforming-alt-versions-head"
-                 linktype="understanding">Understanding Conforming Alternate Versions</loc>
-              for more information.</p>
-      </note>
-   </description>
+    <p>多くの認知障害を持つ人々は行間がシングル・スペースに設定されたテキストを読む事が困難である。行の高さを増やすボタンは彼らが内容を読む助けとなる。段落の間が離れている状態を維持するためには、段落間の幅は、行送り幅の少なくとも1.5倍の高さになるように広げられるべきである。</p>
+    <note><p class="prefix">
+		この達成方法は、非適合コンテンツに対して、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#conforming-alternate-versiondef" linktype="glossary">適合している代替バージョンのページ</loc>を提供するための、スタイルスイッチの達成方法と組み合わせて用いることができる。詳細は、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29.html" linktype="css">C29: スタイル・スイッチャーを用いて、適合している代替バージョンを提供する</loc> (CSS)、及び<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/UNDERSTANDING-WCAG20/conformance.html#uc-conforming-alt-versions-head" xlink:type="simple" linktype="understanding">適合している代替バージョンを理解する</loc>を参照のこと。
+		</p>
+	</note>
+  </description>
    <examples>
       <eg-group>
-         <description>
-            <p>Use standard style page switching and have a button or link on the page that switches the stylesheet. The new stylesheet contains a rule to increase the line height and a class to increase the paragraph spacing.</p>
-         </description>
-         <code><![CDATA[
-              p {line-height: 150%; margin-bottom: 2em;}
-            ]]></code>
-      </eg-group>
+      <description><p>ページを変更するための標準的なスタイル・スイッチングを用いる。スタイルシートを切り替えるためのボタン又はリンクをページに用意する。新しいスタイルシートには、行送りを広げるルールと段落の間隔を広げるクラスが含まれている。
+		 </p>
+</description>
+      <code><![CDATA[
+        p {line-height: 150%; margin-bottom: 2em;}
+      ]]></code>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -56,25 +46,26 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check that there is a button or link on the page that increases the size of the line height and the paragraph spacing, which is labeled as such.</p>
-            </item>
-            <item>
-               <p>Activate the button or link.</p>
-            </item>
-            <item>
-               <p>Check that the button or link increases the line height to at least 1.5 (150%)</p>
-            </item>
-            <item>
-               <p>Check that the button or link increases the paragraph spacing at least 1.5 times greater than the line spacing.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>ページ内に行送りや段落の間隔を広げるためのボタン又はリンクがあり、そのことがわかるようにラベルづけされている。
+		</p>
+        </item>
+        <item>
+          <p>そのボタン又はリンクを起動する。</p>
+        </item>
+        <item>
+          <p>その機能によって行送りや段落の間隔が広がる。</p>
+        </item>
+        <item>
+          <p>各段落の間隔が行送りの少なくとも1.5倍より広くなる。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Checks #1, #3 and #4 are true.</p>
+               <p>1.、3. 及び 4.を満たしている</p>
             </item>
          </ulist>
       </expected-results>

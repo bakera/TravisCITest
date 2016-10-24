@@ -2,29 +2,23 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F9">
-   <short-name>Failure of Success Criterion 3.2.5 due to changing the context when the user removes
-                    focus from a form element</short-name>
+   <short-name>達成基準 3.2.5 の不適合事例：　利用者がフォーカスをフォーム要素から他の要素へ移動させた際に状況を変化させる</short-name>
    <applicability>
-      <p>General. </p>
+      <p>全般</p>
    </applicability>
    <applies-to>
       <success-criterion idref="consistent-behavior-no-extreme-changes-context"
                          relationship="failure"/>
    </applies-to>
    <description>
-      <p>This document describes a failure that occurs when removing focus from a form
-                        element, such as by moving to the next element, causes a change of context.
-                    </p>
-   </description>
+    <p>この文書では、次の要素にフォーカスを移動させることのように、フォーカスをフォーム要素から移動させた場合に状況の変化を引き起こす不適合事例について述べている。</p>
+  </description>
    <examples>
       <eg-group role="failure">
-         <head/>
-         <description>
-            <p> The user is going through the form filling out the fields in order.
-                                When he moves from the third field to the forth, the form submits.
+      <description><p>順番に従って、フォームのフィールドに入力している。3つめのフィールドから4つめのフィールドに移動するとき、フォームが送信されてしまった。
                             </p>
-         </description>
-      </eg-group>
+</description>
+    </eg-group>
    </examples>
    <resources>
       <see-also/>
@@ -35,32 +29,28 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p> Find all form elements. </p>
-            </item>
-            <item>
-               <p> Go through them in order. </p>
-            </item>
-            <item>
-               <p> Check if the form submits when you move from one field to the
-                                    next. </p>
-            </item>
-            <item>
-               <p> Check if moving from one field to the next launches any new
-                                    windows. </p>
-            </item>
-            <item>
-               <p> Check if moving from one field to the next navigates to another
-                                    screen. </p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>フォーム要素をすべて探す。</p>
+        </item>
+        <item>
+          <p>フォーム要素を順番に進んでいく。</p>
+        </item>
+        <item>
+          <p>次のフォーム要素に移動するときにフォームが送信される。</p>
+        </item>
+        <item>
+          <p>次のフォーム要素に移動するときに新しいウィンドウが開く。</p>
+        </item>
+        <item>
+          <p>次のフォーム要素に移動するときに別のスクリーンに遷移する。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p> If step #3, step #4, or step #5 is true, then this failure condition applies and
-                                    the content fails the Success Criterion. </p>
+               <p>3.、4.、又は 5.に該当すれば、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

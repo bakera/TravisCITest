@@ -2,47 +2,22 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G145">
-   <short-name>Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text) 
-          and background behind the text</short-name>
+   <short-name>テキスト（及び画像化された文字）とその背景の間に、少なくとも3:1以上のコントラスト比をもたせる</short-name>
    <applicability>
-      <p>Any technology that produces visual output.</p>
+      <p>あらゆるウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-contrast" relationship="sufficient"/>
    </applies-to>
-   <description>
-      <p>The objective of this technique is to make sure that users can read text
-            that is presented over a background. This technique relaxes the 4.5:1
-            contrast ratio requirement for text that is at least 18 point (if not bold) or at least 14 point (if bold).</p>
-      <p>If the background is a solid color (or all black or all white) then the
-            contrast ratio of the larger-scale text can be maintained by making sure that each
-            of the text letters have a 3:1 contrast ratio with the background.</p>
-      <p>If the background or the letters vary in relative luminance (or are patterned), then
-            the background around the letters can be chosen or shaded so that the
-            letters maintain a 3:1 contrast ratio with the background behind them
-            even if they do not have that contrast ratio with the entire background.</p>
-      <p>The contrast ratio can sometimes be maintained by changing the
-            relative luminance of the letters as the relative luminance of the background changes across
-            the page.</p>
-      <p>Another method is to provide a halo around the text that provides the
-            necessary contrast ratio if the background image or color would not
-            normally be sufficiently different in relative luminance.</p>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>A black background is chosen so that light colored letters that match the company's logo can be used.</p>
-            <p>Larger-scale text is placed over a picture of the college campus. Since a wide variety of colors and darknesses appear in the picture, the area behind the text is fogged white so that the picture is very faint and the maximum darkness is still light enough to maintain a 3:1 contrast ratio with the black text written over the picture.</p>
-         </item>
-      </ulist>
-   </examples>
+   <description/>
+   <examples/>
    <resources>
       <see-also>
          <ulist>
             <item>
                <p>
                   <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                       href="https://www.paciellogroup.com/resources/contrastanalyser/">Contrast Analyser – Application</loc>
+                       href="http://www.paciellogroup.com/resources/contrastanalyser/">Contrast Analyser – Application</loc>
                 </p>
             </item>
             <item>
@@ -93,144 +68,26 @@
    <related-techniques/>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Measure the relative luminance of each letter (unless they are all
-                  uniform) using the formula:</p>
-               <ulist>
-                  <item>
-                     <p>L = 0.2126 *
-                      <emph role="bold">R</emph>
-                      + 0.7152 *
-                      <emph role="bold">G</emph>
-                      + 0.0722 *
-                      <emph role="bold">B</emph>
-                      where
-                      <emph role="bold">R</emph>,
-                      <emph role="bold">G</emph>
-                      and
-                      <emph role="bold">B</emph>
-                      are defined as:</p>
-                     <ulist>
-                        <item>
-                           <p>if R
-                          <sub>sRGB</sub>
-                          &lt;= 0.03928 then
-                          <emph role="bold">R</emph>
-                          = R
-                          <sub>sRGB</sub>
-                          /12.92 else
-                          <emph role="bold">R</emph>
-                          = ((R
-                          <sub>sRGB</sub>
-                          +0.055)/1.055) ^ 2.4</p>
-                        </item>
-                        <item>
-                           <p>if G
-                          <sub>sRGB</sub>
-                          &lt;= 0.03928 then
-                          <emph role="bold">G</emph>
-                          = G
-                          <sub>sRGB</sub>
-                          /12.92 else
-                          <emph role="bold">G</emph>
-                          = ((G
-                          <sub>sRGB</sub>
-                          +0.055)/1.055) ^ 2.4</p>
-                        </item>
-                        <item>
-                           <p>if B
-                          <sub>sRGB</sub>
-                          &lt;= 0.03928 then
-                          <emph role="bold">B</emph>
-                          = B
-                          <sub>sRGB</sub>
-                          /12.92 else
-                          <emph role="bold">B</emph>
-                          = ((B
-                          <sub>sRGB</sub>
-                          +0.055)/1.055) ^ 2.4</p>
-                        </item>
-                     </ulist>
-                     <note role="nonumber">
-                        <p>and R
-                        <sub>sRGB</sub>, G
-                        <sub>sRGB</sub>, and B
-                        <sub>sRGB</sub>
-                        are defined as:</p>
-                     </note>
-                     <ulist>
-                        <item>
-                           <p>R
-                          <sub>sRGB</sub>
-                          = R
-                          <sub>8bit</sub>
-                          /255</p>
-                        </item>
-                        <item>
-                           <p>G
-                          <sub>sRGB</sub>
-                          = G
-                          <sub>8bit</sub>
-                          /255</p>
-                        </item>
-                        <item>
-                           <p>B
-                          <sub>sRGB</sub>
-                          = B
-                          <sub>8bit</sub>
-                          /255</p>
-                        </item>
-                     </ulist>
-                     <note role="nonumber">
-                        <p>The "^" character is the exponentiation operator.</p>
-                     </note>
-                  </item>
-               </ulist>
-               <note>
-                  <p>For aliased letters, use the relative luminance value found two pixels in
-                    from the edge of the letter.</p>
-               </note>
-            </item>
-            <item>
-               <p>Measure the relative luminance of the background pixels
-                  immediately next to the letter using same formula.</p>
-            </item>
-            <item>
-               <p>Calculate the contrast ratio using the following
-                  formula.</p>
-               <ulist>
-                  <item>
-                     <p>(L1 + 0.05) / (L2 + 0.05), where</p>
-                     <ulist>
-                        <item>
-                           <p>L1 is the
-                          <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                                   href="relativeluminancedef"
-                                   linktype="guideline">relative luminance</loc>
-                          of the lighter of the foreground or background colors, and</p>
-                        </item>
-                        <item>
-                           <p>L2 is the
-                          <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                                   href="relativeluminancedef"
-                                   linktype="guideline">relative luminance</loc>
-                          of the darker of the foreground or background colors.</p>
-                        </item>
-                     </ulist>
-                  </item>
-               </ulist>
-            </item>
-            <item>
-               <p>Check that the contrast ratio is equal to or
-                  greater than 3:1</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item><p> 以下の公式を用いて、各文字（すべて同一ではない限り）の相対輝度を測る： </p>
+<ulist><item><p>色の相対輝度 L = 0.2126 * <strong>R</strong> + 0.7152 * <strong>G</strong> + 0.0722 * <strong>B</strong> と定義されている。この場合の<strong>R</strong>, <strong>G</strong> 及び <strong>B</strong> は：</p>
+<ulist><item><p>R<sub>sRGB</sub> &lt;= 0.03928 の場合：<strong>R</strong> = R<sub>sRGB</sub>/12.92、それ以外の場合： <strong>R</strong> = ((R<sub>sRGB</sub>+0.055)/1.055) ^ 2.4</p></item><item><p>G<sub>sRGB</sub> &lt;= 0.03928 の場合：<strong>G</strong> = G<sub>sRGB</sub>/12.92、それ以外の場合：<strong>G</strong> = ((G<sub>sRGB</sub>+0.055)/1.055) ^ 2.4</p></item><item><p>B<sub>sRGB</sub> &lt;= 0.03928 の場合：<strong>B</strong> = B<sub>sRGB</sub>/12.92、それ以外の場合：<strong>B</strong> = ((B<sub>sRGB</sub>+0.055)/1.055) ^ 2.4</p></item></ulist><note><p class="prefix">また、R<sub>sRGB</sub>, G<sub>sRGB</sub>, 及び B<sub>sRGB</sub>は以下のように定義される：</p></note><ulist><item><p>R<sub>sRGB</sub> = R<sub>8bit</sub>/255</p></item><item><p>G<sub>sRGB</sub> = G<sub>8bit</sub>/255</p></item><item><p>B<sub>sRGB</sub> = B<sub>8bit</sub>/255</p></item></ulist><note><p class="prefix">"^"記号は指数演算子である。</p></note></item></ulist><note><p class="prefix">エイリアス文字では文字の端から2ピクセルの部分の相対輝度の値を使用する。</p>
+</note></item>
+        <item>
+          <p> 同じ公式を用いて、文字のすぐ隣の背景のピクセルの相対輝度を測る。 </p>
+        </item>
+        <item><p> 次の公式を用いて、コントラスト比を算出する。</p>
+<ulist><item><p>(L1 + 0.05) / (L2 + 0.05)</p>
+<ulist><item><p>L1は前景または背景色の明るい方の<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">相対輝度</loc>である。及び、 </p></item><item><p>L2は前景または背景色の暗い方の<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">相対輝度</loc>である。 </p></item></ulist></item></ulist></item>
+        <item>
+          <p> コントラスト比が3：1と同じ、又はそれ以上である。【訳注：この計算式を用いているチェックツールで、コントラスト比が3:1以上であることを確認すればよい。】</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>#4 is true</p>
+               <p>4.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

@@ -2,9 +2,9 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="C22">
-   <short-name>Using CSS to control visual presentation of text</short-name>
+   <short-name>CSSを用いて、テキストの視覚的な表現を制御する</short-name>
    <applicability>
-      <p>All technologies that support CSS.</p>
+      <p>CSSをサポートする全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="content-structure-separation-programmatic"
@@ -15,263 +15,186 @@
       <success-criterion idref="visual-audio-contrast-text-images" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to demonstrate how CSS can be used to control the visual presentation of text. This will allow users to modify, via the user agent, the visual characteristics of the text to meet their requirement. The text characteristics include aspects such as size, color, font family and relative placement.</p>
-      <p>CSS benefits accessibility primarily by separating document structure from presentation. Style sheets were designed to allow precise control - outside of markup - of character spacing, text alignment, object position on the page, audio and speech output, font characteristics, etc. By separating style from markup, authors can simplify and clean up the markup in their content, making it more accessible at the same time.</p>
-      <p>Text within images has several accessibility problems, including the inability to:</p>
-      <ulist>
-         <item>
-            <p>be scaled according to settings in the browser</p>
-         </item>
-         <item>
-            <p>be displayed in colors specified by settings in the browser or rules in user-defined style sheets</p>
-         </item>
-         <item>
-            <p>honor operating system settings, such as high contrast</p>
-         </item>
-      </ulist>
-      <p>It is better to use real text for the text portion of these elements, and a combination of semantic markup and style sheets to create the appropriate visual presentation. For this to work effectively, choose fonts that are likely to be available on the user's system and define fallback fonts for users who may not have the first font that is specified. Newer machines and user agents often smooth or anti-alias all text, so it is likely that your headings and buttons will look nice on these systems without resorting to images of text.</p>
-      <p>The following CSS properties are useful to style text and avoid the need for text in images:</p>
-      <ulist>
-         <item>
-            <p>The <code><![CDATA[font-family]]></code> property is used to display the code aspect in a monospace font family.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[text-align]]></code> property is used to display the text to the right of the viewport.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[font-size]]></code> property is used to display the text in a larger size.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[font-style]]></code> property is used to display text in italics.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[font-weight]]></code> property is used to set how thick or thin characters in text should be displayed.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[color]]></code> property is used to display the color of text or text containers.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[line-height]]></code> property is used to display the line height for a block of text.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[text-transform]]></code> property is used to control the case of letters in text.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[letter-spacing]]></code> property is used to control the spacing of letters in text.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[background-image]]></code> property can be used to display text on a non-text background.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[first-line]]></code> pseudo class can be used to modify the presentation of the first line in a block of text.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[:first-letter]]></code> pseudo class can be used to modify the presentation of the first letter in a block of text.</p>
-         </item>
-         <item>
-            <p>The <code><![CDATA[:before]]></code> and <code><![CDATA[:after]]></code> pseudo classes can be used to insert decorative non-text content before or after blocks of text.</p>
-         </item>
-      </ulist>
-   </description>
+    <p>この達成方法の目的は、CSSを使ってテキストの視覚的な表現を制御する方法を実践することである。これにより利用者が要求を満たすたように、利用者ーエージェントを通してテキストの視覚的な特徴を変更できるようになる。テキストの特徴にはサイズ、色、書体、相対配置などの外観を含んでいる。</p>
+    <p>CSSは主に表現からドキュメント構造を分離することによってアクセシビリティに有益さを与える。スタイルシートは、マークアップの外部から字間、文字配列、ページにおけるオブジェクトの配置、音声やスピーチのアウトプット、フォントなどの正確な制御ができるように設計されている。マークアップからスタイルを分離することにより、コンテンツ制作者はコンテンツの中でマークアップを単純化し、整理することができ、同時によりアクセシブルにすることができる。</p>
+    <p>画像内にあるテキストはいくつかのアクセシビリティ上の問題があり、以下のことができない：</p>
+    <ulist>
+      <item>
+        <p>ブラウザの設定に応じて大きさを調整する</p>
+      </item>
+      <item>
+        <p>ブラウザの設定、又は利用者ー定義のスタイルシートのルールによって指定された色で表示する</p>
+      </item>
+      <item>
+        <p>ハイコントラストといった、オペレーティングシステムの設定を反映させる</p>
+      </item>
+    </ulist>
+    <p>適切な視覚的表現を作り出すためには、これらの要素のテキスト部分には、テキストを使い、セマンティックマークアップとスタイルシートの組み合わせを用いるとよい。このことが効果的に作用するために、利用者のシステム上で利用できると思われるフォントを選び、定義された最初のフォントを持たない利用者のために代替フォントを定義する。最新のマシンと利用者ーエージェントはしばしばすべてのテキストにスムーズもしくはアンチエイリアスをかけている。そのため見出しやボタンは画像化された文字に頼ることなくこれらのシステム上できれいに表示される。</p>
+    <p>次のCSSのプロパティは、テキストのスタイルを指定し、画像化された文字を使う必要性を回避するのに有効である：</p>
+    <ulist>
+      <item>
+        <p><code><![CDATA[font-family]]></code>プロパティをを使って、文字の外観を等幅フォントで表示する。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[text-align]]></code>プロパティをを使って、表示域の右側にテキストを表示する。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[font-size]]></code>プロパティをを使って、テキストをより大きいサイズで表示する。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[font-style]]></code>プロパティを使って、テキストをイタリック体で表示する。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[font-weight]]></code>プロパティを使って、テキストの文字をどのくらい太く又は細く表示すべきか設定する。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[color]]></code>プロパティを使って、テキストやテキストコンテナに色を表示する。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[line-height]]></code>プロパティを使って、テキストのブロックに対してラインの高さを指定する。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[text-transform]]></code>プロパティを使って、テキストの文字（大文字小文字の区別）を制御する。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[letter-spacing]]></code>プロパティを使って、テキストの文字間隔を制御する。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[background-image]]></code>プロパティを使って、非テキストの背景上にテキストを表示させることができる。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[first-line]]></code>の擬似クラスを使って、テキストのブロックにおける最初の行の表現を修正することができる。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[first-letter]]></code>の擬似クラスを使って、テキストのブロックにおける最初の文字の表現を修正することができる。</p>
+      </item>
+      <item>
+        <p><code><![CDATA[:before]]></code>と<code><![CDATA[:after]]></code>の擬似クラスを使って、テキストのブロックの前後に装飾的な非テキストコンテンツを挿入することができる。</p>
+      </item>
+    </ulist>
+  </description>
    <examples>
       <eg-group>
-         <head>Using CSS font-family to control the font family for text</head>
-         <description>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p>The Javascript method to convert a string to uppercase is <code>toUpperCase()</code>.</p>
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-code { font-family:"Courier New", Courier, monospace }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Using CSS text-align to control the placement (alignment) of text</head>
-         <description>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p class="right">This text should be to the right of the viewport.</p>  
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.right { text-align: right; }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head> Using CSS font-size to control the size of text</head>
-         <description>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p>09 <strong class="largersize">March</strong> 2008</p>  
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-strong.largersize { font-size: 1.5em; }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Using CSS color to control the color of text</head>
-         <description>
-            <note>
-               <p>The style used in this example is not used to convey information, structure or relationships.</p>
-            </note>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p>09 <em class="highlight">March</em> 2008</p>  
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.highlight{ color: red; }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Using CSS font-style to italicize text</head>
-         <description>
-            <note>
-               <p>The style used in this example is not used to convey information, structure or relationships.</p>
-            </note>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p>The article is available in the <a href="http://www.example.com" class="featuredsite">Endocrinology 
-Blog</a>.</p>
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.featuredsite{ font-style:italic; }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Using CSS font-weight to control the font weight of the text</head>
-         <description>
-            <note>
-               <p>The style used in this example is not used to convey information, structure or relationships.</p>
-            </note>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p>This deal is available <span class="highlight">now!</span></p> 
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.highlight { font-weight:bold; color:#990000; }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Using CSS text-transform to control the case of text</head>
-         <description>
-            <note>
-               <p>The style used in this example is not used to convey information, structure or relationships.</p>
-            </note>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p>09 <span class="caps">March</span> 2008</p>  
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.caps { text-transform:uppercase; }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Using CSS line-height to control spacing between lines of text</head>
-         <description>
-            <p>The CSS <code><![CDATA[line-height]]></code> property is used to display the line height for the paragraph at twice the height of the font.</p>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p>Concern for man and his fate must always form the<br />  
-chief interest of all technical endeavors. <br />
-Never forget this in the  midst of your diagrams and equations. </p>
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-p { line-height:2em; }
-]]></code>
-         <description>
-            <p>The CSS <code><![CDATA[line-height]]></code> property is used to display the line height for the text at less than the height of the font. The second line of text is positioned after the first line of text and visually appears as though the text is part of the first line but dropped a little.</p>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<h1 class="overlap"><span class="upper">News</span><br />
-<span class="byline">today</span></h1>
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.overlap { line-height:0.2em;  }
+      <head>フォントファミリーを制御するためにCSSのfont-familyを使用する。</head>
+      <description><p>XHTML：</p>
+</description>
+      <code><![CDATA[<p>Javascriptで文字列を変換して大文字にする方法は<code>toUpperCase()</code>である。</p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[code { font-family:"Courier New", Courier, monospace }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>テキストの配置（配列）を制御するためにCSSのtext-alignを使用する。</head>
+      <description><p>XHTML：</p>
+</description>
+      <code><![CDATA[<p class="right">このテキストは表示域の右側にあるべきである。</p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.right { text-align: right; }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>テキストのサイズを制御するためにCSSのfont-size&#13;
+を使用する。</head>
+      <description><p>XHTML：</p>
+</description>
+      <code><![CDATA[<p>2008年<strong class="largersize">3月</strong>9日</p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[strong.largersize { font-size: 1.5em; }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>テキストの色を制御するためにCSSのcolorを使用する。</head>
+      <description><note><p class="prefix">この例で用いているスタイルは、情報や構造又は関係性を伝えるためのものではない。</p>
+                     </note>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<p>2008年<em class="highlight">3月</em>9日</p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.highlight{ color: red; }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>イタリック体のテキストにするためにCSSのfont-styleを使用する。</head>
+      <description><note><p class="prefix">この例で用いているスタイルは、情報や構造又は関係性を伝えるためのものではない。</p></note>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<p>この記事は <a href="http://www.example.com" class="featuredsite">内分泌学のブログ</a>で入手可能である。</p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.featuredsite{ font-style:italic; }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>テキストの太さを制御するためにCSSのfont-weightを使用する。</head>
+      <description><note><p class="prefix">この例で用いているスタイルは、情報や構造又は関係性を伝えるためのものではない。</p></note>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<p>この取引は <span class="highlight">今</span>利用可能です！</p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.highlight { font-weight:bold; color:#990000; }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>テキストの大文字小文字の区別を制御するためにCSSのtext-transformを使用する。</head>
+      <description><note><p class="prefix">この例で用いているスタイルは、情報や構造又は関係性を伝えるためのものではない。</p></note>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<p>2008年 <span class="caps">3月</span> 9日</p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.caps { text-transform:uppercase; }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>テキストの行間を制御するためにCSSのline-heightを使用する。</head>
+      <description><p>CSSの<code>line-height</code>プロパティを使って、段落の行間をフォントの高さの２倍に表示する。</p>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<p>人とその人の運命についての考察はいつも<br />  
+全ての技術的な試みの最重要な関心を形成する。 <br />
+あなたの図式と方程式においてそれを忘れてはいけない。 </p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[p { line-height:2em; }]]></code>
+      <description><p>CSSの<code>line-height</code>プロパティを使って、テキストの行間をフォントの高さより少なく表示させる。テキストの2行目は、テキストの1行目の後に配置されて、あたかも1行目の一部だがやや下がっているように見える。</p>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<h1 class="overlap"><span class="upper">本日の</span><br />
+<span class="byline">ニュース</span></h1>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.overlap { line-height:0.2em;  }
 .upper { text-transform:uppercase; }
-.byline { color:red; font-style:italic; font-weight:bold; padding-left:3em; }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Using CSS letter-spacing to space text</head>
-         <description>
-            <p>The CSS <code><![CDATA[letter-spacing]]></code> property is used to display the letters farther apart in the heading.</p>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<h1 class="overlap"><span class="upper">News</span><br />
-<span class="byline">today</span></h1>
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.overlap { line-height:0.2em;  }
+.byline { color:red; font-style:italic; font-weight:bold; padding-left:3em; }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>文字間を設定するためにCSSのletter-spacingを使用する。</head>
+      <description><p>CSSの<code>letter-spacing</code>プロパティを使って、テキストの2行目では、文字をより接近させて表示する。</p>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<h1 class="overlap"><span class="upper">本日の</span><br />
+<span class="byline">ニュース</span></h1>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.overlap { line-height:0.2em;  }
 .upper { text-transform:uppercase; }
-.byline { color:red; font-style:italic; font-weight:bold; padding-left:3em; letter-spacing:-0.1em; }
-]]></code>
-         <description>
-            <p>The CSS <code><![CDATA[letter-spacing]]></code> property is used to display the letters closer together in the second line of text.</p>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<h1 class="upper2">News</h1>
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.upper2 { text-transform:uppercase; letter-spacing:1em; }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Using CSS background-image to layer text and images</head>
-         <description>
-            <p>The CSS <code><![CDATA[font-style]]></code> property is used to display the textual component of a banner and <code><![CDATA[background-image]]></code> property is used to display a picture behind the text.</p>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<div id="banner"><span id="bannerstyle1">Welcome</span> 
-<span id="bannerstyle2">to your local city council</span></div>
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
+.byline { color:red; font-style:italic; font-weight:bold; padding-left:3em; letter-spacing:-0.1em; }]]></code>
+      <description><p>CSSの<code>letter-spacing</code>プロパティを使って、テキストの2行目では、文字をより接近させて表示する。【訳注：おそらく原文が間違っています。WCAGワーキンググループに確認中です。】</p>
+<p>XHTMLの構成：</p>
+</description>
+      <code><![CDATA[<h1 class="upper2">ニュース</h1>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.upper2 { text-transform:uppercase; letter-spacing:1em; }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>0：テキストと画像をレイヤー化するためにCSSのbackground-imageを使用する。</head>
+      <description><p>CSSの<code>font-style</code>プロパティを使って、バナーのテキスト要素を表示させ、<code>background-image</code>プロパティを使って、テキストの後ろの画像を表示させる。</p>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<div id="banner"><span id="bannerstyle1">地域の審議会へ</span> 
+<span id="bannerstyle2">ようこそ</span></div>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[
 #banner { 
   color:white; 
   background-image:url(banner-bg.gif); 
@@ -292,40 +215,28 @@ p { line-height:2em; }
   letter-spacing:-0.1em;
   font-size:1.5em; 
 }]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Using CSS first-line to control the presentation of the first line of text</head>
-         <description>
-            <p>The CSS <code><![CDATA[:first-line]]></code> pseudo class is used to display the first line of text in a larger, red font.</p>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p class="startline">Once upon a time...<br />
-...in a land far, far away...  </p>  
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.startline:first-line { font-size:2em; color:#990000; }
-]]></code>
-      </eg-group>
-      <eg-group>
-         <head> Using CSS first-letter to control the presentation of the first letter of text</head>
-         <description>
-            <p>The CSS <code><![CDATA[:first-letter]]></code> pseudo class is used to display the first letter in a larger font size, red and vertically aligned in the middle.</p>
-            <p>The XHTML component:</p>
-         </description>
-         <code><![CDATA[
-<p class="startletter">Once upon a time...</p>  
-]]></code>
-         <description>
-            <p>The CSS component:</p>
-         </description>
-         <code><![CDATA[
-.startletter:first-letter { font-size:2em; color:#990000; vertical-align:middle; }
-]]></code>
-      </eg-group>
+    </eg-group>
+    <eg-group>
+      <head>1：テキストの最初の行の表現を制御するためにCSSのfirst-lineを使用する。</head>
+      <description><p>CSSの<code>:first-line</code>擬似クラスを使って、最初の行をより大きなサイズで赤色に表示する。</p>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<p class="startline">むかしむかし...<br />
+...遠い地で, 遠くへ...  </p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.startline:first-line { font-size:2em; color:#990000; }]]></code>
+    </eg-group>
+    <eg-group>
+      <head>2： テキストの最初の文字の表現を制御するためにCSSのfirst-letterを使用する。</head>
+      <description><p>CSSの<code>:first-letter</code>擬似クラスを使って、最初の文字をより大きなサイズで赤く、縦位置を中央揃えにして表示する。</p>
+<p>XHTML：</p>
+</description>
+      <code><![CDATA[<p class="startletter">むかしむかし...</p>]]></code>
+      <description><p>CSS：</p>
+</description>
+      <code><![CDATA[.startletter:first-letter { font-size:2em; color:#990000; vertical-align:middle; }]]></code>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -361,16 +272,16 @@ p { line-height:2em; }
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check whether CSS properties were used to control the visual presentation of text </p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>CSSのプロパティを用いてテキストの視覚的な表現を制御している。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Check #1 is true.</p>
+               <p>1.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

@@ -2,23 +2,22 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F88">
-   <short-name>Failure of Success Criterion 1.4.8 due to using text that is justified (aligned to both the left and the right margins)</short-name>
+   <short-name>達成基準 1.4.8 の不適合事例：両端揃え（左右両端を揃えた配置）のテキストを用いる</short-name>
    <applicability>
-      <p>All technologies.</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-visual-presentation"
                          relationship="failure"/>
    </applies-to>
    <description>
-      <p>Many people with cognitive disabilities have a great deal of trouble with blocks of text that are justified (aligned to both the left and the right margins). The spaces between words create "rivers of white" running down the page, which can make the text difficult for some people to read. This failure describes situations where this confusing text layout occurs. The best way to avoid this problem is not to create text layout that is fully justified (aligned to both the left and the right margins).</p>
-   </description>
+    <p>認知障害のある利用者の多くは、両端揃え(左右両端を揃えた配置)されたテキストのブロックで重大なトラブルに陥ることがある。単語間のスペースによって、ページ上を流れる「余白（隙間）の川」ができる。それによって、一部の人々はテキストを読むことが困難になる。この不適合事例は、この混乱させるテキストレイアウトが発生する状況について説明している。この問題を回避する最良の方法は、両端揃え(左右両端を揃えた配置)されたテキストレイアウトにしないことである。</p>
+  </description>
    <examples>
       <eg-group role="failure">
-         <description>
-            <p>In the following example of a failure, the HTML <att>align</att> attribute is used to create justified text.</p>
-         </description>
-         <code role="html"><![CDATA[ 
+      <description><p>次の不適合事例では、HTMLの<code>align</code>要素が両端揃えのテキストを生成するために用いられている。</p>
+</description>
+      <code role="html"><![CDATA[ 
 <p align="justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vestibulum sit amet pede. Phasellus 
 nec sem id mauris vehicula tincidunt. Morbi ac arcu. Maecenas vehicula velit et orci. Donec 
 ullamcorper porttitor velit. Sed arcu lorem, cursus sit amet, auctor eu, convallis ut, purus. 
@@ -26,12 +25,11 @@ Vivamus imperdiet accumsan nunc. Maecenas pellentesque nunc a libero. Vestibulum
 primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur pharetra commodo 
 justo. Nulla facilisi. Phasellus nulla lacus, tempor quis, tincidunt ac, rutrum et, mauris.
 </p>]]></code>
-      </eg-group>
-      <eg-group role="failure">
-         <description>
-            <p>In this example of a failure, the CSS <code><![CDATA[text-align]]></code> property is used to create justified text.</p>
-         </description>
-         <code role="css"><![CDATA[ 
+    </eg-group>
+    <eg-group role="failure">
+      <description><p>この不適合事例では、CSSの<code>text-align</code>属性が両端揃えのテキストを生成するために用いられている。</p>
+</description>
+      <code role="css"><![CDATA[ 
 ...
 p {text-align: justify}
 
@@ -43,26 +41,26 @@ ullamcorper porttitor velit. Sed arcu lorem, cursus sit amet, auctor eu, convall
 Vivamus imperdiet accumsan nunc. Maecenas pellentesque nunc a libero. Vestibulum ante ipsum 
 primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur pharetra commodo 
 justo. Nulla facilisi. Phasellus nulla lacus, tempor quis, tincidunt ac, rutrum et, mauris.</p>]]></code>
-      </eg-group>
+    </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="C22"/>
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Open the page in a common browser.</p>
-            </item>
-            <item>
-               <p>Verify that content is not justified (aligned to both the left and the right margins).</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>一般的なブラウザでページを開く。</p>
+        </item>
+        <item>
+          <p>コンテンツが両端揃え(左右両端を揃えた配置)されていない。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>If test procedure #2 is false, then this failure condition applies and the content fails to meet Success Criterion 1.4.8.</p>
+               <p>2. を満たしていないならは、この不適合の条件が適用され、コンテンツは達成基準 1.4.8 を満たすことができない。</p>
             </item>
          </ulist>
       </expected-results>

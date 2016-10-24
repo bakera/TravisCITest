@@ -2,74 +2,39 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F12">
-   <short-name>Failure of Success Criterion 2.2.5 due to having a session time limit without a mechanism
-                    for saving user's input and re-establishing that information upon
-                    re-authentication</short-name>
+   <short-name>達成基準 2.2.5 の不適合事例：　利用者の入力を保存し再認証時にその情報を回復させるメカニズムがない状態で、セッションの制限時間がある</short-name>
    <applicability>
-      <p>Sites that require user login to submit input and that terminate the session
-                        after a some period of inactivity.</p>
+      <p>入力を送信するのに利用者のログインが必要で、しばらく操作しない期間の後にセッションを切断するサイト。</p>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-server-timeout" relationship="failure"/>
    </applies-to>
    <description>
-      <p>Web servers that require user authentication usually have a session mechanism
-                        in which a session times out after a period of inactivity from the user.
-                        This is sometimes done for security reasons, to protect users who are
-                        assumed to have left their computer exposed in a state where someone could
-                        do something harmful to them such as transfer bank funds or make an
-                        unauthorized purchase. A user with a disability may actually still be
-                        working to complete the form as it may take him or her longer to complete
-                        the form than would normally be expected. Upon re-authentication, if the
-                        state of the user's session is not restored, including all data that had
-                        been previously entered into the form, he or she will have to start over.
-                        And for these users, it is likely that the session will time out again
-                        before they can complete the form. This sets up a situation where a user who
-                        needs more time to complete the form can never complete it.</p>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>A user submits a form on an authenticated site after their login has
-                                expired. On submitting the form, they are prompted to log in again,
-                                and then taken to a general welcome page. The data is not processed
-                                and they must try again.</p>
-         </item>
-         <item>
-            <p>A user submits a form on an authenticated site after their login has
-                                expired. On submitting the form, they are prompted to log in again,
-                                and then taken back to the page they were on just before the login,
-                                which in this case contains the form they attempted to submit.
-                                However, the form is not populated with the data they just entered,
-                                and they must re-enter it.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>通常、利用者の認証を必要とするウェブサーバーは、利用者が操作しない期間の後、セッションをタイムアウトするセッションのメカニズムを持っている。これは往々にしてセキュリティ上の理由のためで、銀行の資金を振り込んだり、勝手に購入したりといった、他の誰かがその利用者にとって何か有害なことができる状態にさらされたコンピュータから利用者を守るために、行われる。障害のある利用者は、フォームに入力する時間が普通に予測される時間よりもかかることがあるため、実際はまだフォームの入力中かもしれない。再認証のとき、これまでフォームに入力したすべてのデータを含め、利用者のセッションの状態が復旧しないと、利用者はやり直さなければならなくなる。そして、そういった利用者の場合には、再びフォームを入力し終わる前に、セッションは再びタイムアウトしてしまうだろう。これは、フォームに入力するのにより多くの時間を必要とする利用者が、決してそれを完了できない状況を引き起こしてしまう。</p>
+  </description>
+   <examples/>
    <related-techniques>
       <relatedtech idref="G105"/>
    </related-techniques>
    <tests>
       <procedure>
-         <p>On a site where authentication is required, user input is collected, and
-                            which ends the user's session after a known period of inactivity:</p>
-         <olist>
-            <item>
-               <p>Provide user input as required but allow the session to time out,
-                                    then submit the form.</p>
-            </item>
-            <item>
-               <p>When requested, re-authenticate with the server.</p>
-            </item>
-            <item>
-               <p>Determine if the function is performed using the previously
-                                    submitted data.</p>
-            </item>
-         </olist>
-      </procedure>
+      <p>認証が必要で、利用者の入力を収集していて、一定の時間の間何も操作がないと利用者のセッションを切断するサイトにおいて:</p>
+      <olist>
+        <item>
+          <p>必要な入力をした後、セッションをタイムアウトさせ、それからフォームを送信する。</p>
+        </item>
+        <item>
+          <p>要求された場合、サーバで再認証する。</p>
+        </item>
+        <item>
+          <p>タイムアウト後に送信したデータが処理されない。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>If step #3 is false, the site fails the Success Criterion.</p>
+               <p>3.に該当すれば、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

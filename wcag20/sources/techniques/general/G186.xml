@@ -2,29 +2,31 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G186">
-   <short-name>Using a control in the Web page that stops moving, blinking, or auto-updating content</short-name>
+   <short-name>動きのあるコンテンツ、点滅するコンテンツ、又は自動更新されるコンテンツを停止させるコントロールを用いる</short-name>
    <applicability>
-      <p>All technologies.</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-pause" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide the user a control that allows him to stop moving or blinking content. Since the control is in the web page, the control itself meets the appropriate level of WCAG conformance e.g., it has appropriate contrast, it has a name that identifies it, it is keyboard accessible. The control is either at the top of the page or adjacent to the moving content. A single control may stop all moving or blinking content on the page, or there may be separate controls for separate parts of the content.</p>
-   </description>
+    <p>この達成方法の目的は、動きのあるコンテンツや点滅するコンテンツを、利用者が停止できるコントロールを提供することである。このようなコントロールがウェブページ上にあれば、そのコントロール自体は適切なレベルでのWCAGの適合要件、たとえば適切なコントラストであること、特定できる名前を持つこと、キーボードによるアクセスが可能であることに合致する。コントロールはページの先頭か、動きのあるコンテンツの近くに配置する。動きのあるコンテンツ又は点滅するコンテンツのすべてを1つのコントロールで停止できるか、コンテンツの別々の部分を別々のコントロールで停止できればよい。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>Stock Market Ticker Tape</head>
-         <description>
-            <p>A Web page displays the latest stock market results in a "ticker tape" that automatically scrolls across the bottom of the screen. A "Pause" button lets the user stop the ticker tape. When the ticker tape is unpaused, it resumes displaying the current stock market information.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Teleconferencing Tool</head>
-         <description>
-            <p>A teleconferencing Web page displays a speaker queue of people who wish to speak. A checkbox on the page lets the user choose whether the display of the queue should be updated automatically when a new person is added or removed, or whether it should only be updated when the user presses the "Refresh" button. When the queue is being updated automatically, the Refresh button is deactivated.</p>
-         </description>
-      </eg-group>
+      <head>株式市場のティッカーテープ</head>
+      <description><p>
+													あるウェブページに、株式市場の最新結果を表示する「ティッカーテープ」があり、画面の下に向かって自動スクロールする。利用者は「一時停止」ボタンでティッカーテープの動きを停止させることができる。一時停止を解除すれば、現在の株式市場の情報表示を再開する。
+												</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>電子会議ツール</head>
+      <description><p>
+													電子会議用のウェブページに、発言待ちのスピーカーの一覧がある。利用者は、新しい人が加わったり外れたりするときに一覧を自動更新するか、それとも「更新」ボタンを押したときにだけ更新するかを、ページ上のチェックボックスで選択できる。一覧が自動更新に設定されている場合、更新ボタンは非活性になっている。
+													</p>
+</description>
+    </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G4"/>
@@ -33,22 +35,22 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check that there is a control on the Web page to stop the motion.</p>
-            </item>
-            <item>
-               <p>Activate the control.</p>
-            </item>
-            <item>
-               <p>Check that the motion, blinking  or auto-updating has stopped.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>コンテンツの動き、点滅、自動更新を停止させるコントロールがウェブページ上にある。</p>
+        </item>
+        <item>
+          <p>そのコントロールを有効にする。</p>
+        </item>
+        <item>
+          <p>コンテンツの動き、点滅、自動更新が停止する。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Checks #1 and #3 are true.</p>
+               <p>1.及び3.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

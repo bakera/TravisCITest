@@ -2,63 +2,44 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F39">
-   <short-name>Failure of Success Criterion 1.1.1 due to providing a text alternative that is not null (e.g., alt="spacer" or alt="image") for images that should be ignored by assistive technology</short-name>
+   <short-name>達成基準 1.1.1 の不適合事例 － 支援技術が無視すべき画像に対して、空ではない代替テキストを提供している（例： alt="spacer" 又は alt="image"）</short-name>
    <applicability>
-      <p> Applies to HTML and XHTML.</p>
+      <p>HTML 及び XHTML</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="failure"/>
    </applies-to>
    <description>
-      <p>This technique describes a failure condition for images that should
-            be ignored by assistive technologies. A text alternative for an image
-            should convey the meaning of the image. When an image is used for decoration,
-            spacing or other purpose that is not part of the meaningful content
-            in the page then the image has no meaning and should be ignored by
-            assistive technologies. </p>
-      <p>Providing a null text alternative (i.e., <code><![CDATA[alt=""]]></code> )
-            will allow assistive technology to ignore the image and avoid a failure
-            of this Success Criterion. </p>
-   </description>
-   <examples>
-      <eg-group role="failure">
-         <head>Decorative images that have no <att>alt</att> attribute</head>
-         <description>
-            <p>An image is used to create a blank space between content, where the
-                spacing itself is not meaningful to the content. The image has an alt
-                text value of "spacer". This image fails the Success Criterion
-                because the text alternative does not serve an equivalent purpose.
-                The image is meant to be ignored but its alternative text "spacer" is
-                announced by screen readers and displayed in some alternate color schemes. </p>
-            <codeblock xml:space="preserve"><![CDATA[<div>Tree type: <img src="spacer.gif" width="100" height="1" alt="spacer"/>Cedrus deodara</div>
-]]></codeblock>
-         </description>
-      </eg-group>
-   </examples>
+    <div class="annotation">
+		<p><strong>日本語訳における注記：</strong></p>
+		<p>この文書（F39）は、W3Cサイトで公開されている英語の文書の日本語訳ですが、内容がF38と全く同じです。F39が文書化されていないのではないか（F38をコピーしただけではないか）と考えられ、WCAGワーキンググループに確認中です。</p>
+</div>
+    <p>この文書は、支援技術によって無視されなければならない画像の代替テキストに対する不適合事例について述べている。alt属性が全くない場合、支援技術は非テキストコンテンツを無視することができない。この達成基準の不適合とならないように、alt属性を検証し、空（alt ="" 又は alt =" "）にしなければならない。</p>
+    <note>
+      <p class="prefix"><code>alt=" "</code>でも有効だが、<code>alt=""</code>とすることを推奨する。</p>
+    </note>
+  </description>
+   <examples/>
    <resources/>
-   <related-techniques>
-      <relatedtech idref="H37"/>
-      <relatedtech idref="C9"/>
-      <relatedtech idref="F38"/>
-   </related-techniques>
+   <related-techniques/>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p> Identify any img elements that are used for decoration, spacing
-              or other purpose that is not part of the meaningful content in the
-              page </p>
-            </item>
-            <item>
-               <p> Check that the alt attribute for these elements is null. </p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>純粋に装飾目的のコンテンツとして使用されている<el>img</el>要素及び<el>applet</el>要素を特定する。</p>
+        </item>
+        <item>
+          <p>これらの要素に対する<att>alt</att>属性が存在する。</p>
+        </item>
+        <item>
+          <p>これらの要素に対する<att>alt</att>の値が空である。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p> If step #2 is false, this failure condition applies and the content
-              fails the Success Criterion. </p>
+               <p>2.又は3.を満たさない場合、この不適合事例が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

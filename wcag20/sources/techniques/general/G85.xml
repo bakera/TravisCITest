@@ -2,63 +2,48 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G85">
-   <short-name>Providing a text description when user input falls outside the required format or values</short-name>
+   <short-name>利用者の入力が要求されたフォーマット又は値ではなかった際に、テキストの説明文を提供する</short-name>
    <applicability>
-      <p>Content that accepts user data input, with restrictions on the format, value, and/or type of the input.</p>
+      <p>利用者のデータ入力を受け付け、そのフォーマット、値及び/又は入力の種類に制限があるコンテンツ</p>
    </applicability>
    <applies-to>
       <success-criterion idref="minimize-error-identified" relationship="sufficient"/>
       <success-criterion idref="minimize-error-suggestions" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide assistance in correcting input errors where the information supplied by the user is not accepted. When users enter data input that is validated, and input errors are detected, information about the nature and location of the input error is provided in text to enable the users to identify the problem. One approach is to use client-side validation and provide an alert dialog box that describes the error immediately when users enter invalid data in field. Another approach, using server-side validation, is to re-display the form (including any previously entered data), and a text description at the top of the page that indicates the fact that there was an error, describes the nature of the problem, and provides ways to easily locate the field(s) with a problem.</p>
-      <p>However the text description is provided, it should do one of the following things to assist the user:</p>
-      <ulist>
-         <item>
-            <p>Provide examples of the correct data entry for the field,</p>
-         </item>
-         <item>
-            <p>Describe the correct data entry for the field,</p>
-         </item>
-         <item>
-            <p>Show values of the correct data entry that are similar to the user's data entry, with instructions to the user as to how to enter one of these correct values should the user choose to do so.</p>
-         </item>
-      </ulist>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>The user inputs invalid data on a form field. When the user exits the field, an alert dialog appears that describes the nature of the error so the user can fix it.</p>
-         </item>
-         <item>
-            <p>The user inputs invalid data on a form field and submits the form. The server returns the form, with the user's data still present, and indicates clearly in text at the top of the page that there were input errors. The text describes the nature of the error(s) and clearly indicates which field had the problem so the user can easily navigate to it to fix the problem.</p>
-         </item>
-         <item>
-            <p>The user inputs invalid data on a form field and attempts to submit the form. Client side scripting detects the error, cancels the submit, and modifies the document to provide a text description after the submit button describing the error, with links to the field(s) with the error. The script also modifies the labels of the fields with the problems to highlight them.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>この達成方法の目的は、利用者によって提供された情報が受け付けられない場合に、入力エラーの修正を支援することである。利用者による入力データをバリデートした結果、入力エラーが検出された場合に、この入力エラーの内容と場所に関する情報をテキストで提供することによって、利用者は問題のある箇所を特定することができる。一つのアプローチとして、クライアントサイドでのバリデーションを用いて、利用者が無効なデータを項目に入力すると、即座にエラーを説明するアラートのダイアログボックスを提示する方法がある。また、もう一つのアプローチとして、サーバサイドでのバリデーションを用いて、フォームを再表示し（すでに入力されたデータも含む）、ページの上部にテキストでの説明文を表示して、エラーがあったことを知らせるとともに問題の内容を説明して、利用者が問題のあった項目を簡単に見つけられるような方法を提供することがある。</p>
+    <p>ただし、テキストでの説明は、どのように提供するとしても、次のいずれかの方法に則って、利用者を支援すべきである：</p>
+    <ulist>
+      <item>
+        <p>その項目における正しいデータ入力の例を示す</p>
+      </item>
+      <item>
+        <p>その項目における正しいデータ入力を説明する</p>
+      </item>
+      <item>
+        <p>利用者のデータ入力を踏まえ、それから推測できるそれに近い正しいデータ入力の値を示すことにより、正しい値を入力する方法について利用者に説明する。</p>
+      </item>
+    </ulist>
+  </description>
+   <examples/>
    <related-techniques>
       <relatedtech idref="SCR18"/>
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Fill out a form, deliberately enter user input that falls outside the required format or values</p>
-            </item>
-            <item>
-               <p>Check that a text description is provided that identifies the field in error and provides some information about the nature of the invalid entry and how to fix it.</p>
-            </item>
-            <item>
-               <p>Check that other data previously entered by the user is re-displayed, unless the data is in a security related field where it would be inappropriate to retain the data for re-display (e.g. password).</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>要求されているフォーマット又は値ではない入力を故意に行う。</p>
+        </item>
+        <item>
+          <p>エラーになった項目を特定して、無効な入力の内容及びその修正方法に関する情報を提供する説明文がテキストで提供される。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>#2 and #3 are true</p>
+               <p>2. を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

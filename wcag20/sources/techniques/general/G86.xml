@@ -2,42 +2,41 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G86">
-   <short-name>Providing a text summary that can be understood by people with lower secondary education level reading ability</short-name>
+   <short-name>中学校教育レベルを超えた読解力を必要としないテキストで要約を提供する</short-name>
    <applicability>
-      <p>All technologies.</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="meaning-supplements" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide a summary of complex content. The summary is provided in addition to the original content.</p>
-      <p>Users with disabilities that make it difficult to decode words and sentences are likely to have trouble reading and understanding complex text. This technique provides a short statement of the most important ideas and information in the content. The summary is easier to read because it uses shorter sentences and more common words than the original.</p>
-      <p>The following steps can be used to prepare the summary:</p>
-      <olist>
-         <item>
-            <p>Identify the most important ideas and information in the content.</p>
-         </item>
-         <item>
-            <p>Write one or more paragraphs that use shorter sentences and more common words to express the same ideas and information. (The number of paragraphs depends on the length of the original.)</p>
-         </item>
-         <item>
-            <p>Measure the readability of the summary.</p>
-         </item>
-         <item>
-            <p>Edit the summary. Consider dividing longer sentences into two or replacing long or unfamiliar words with shorter, more common terms.</p>
-         </item>
-         <item>
-            <p>Repeat steps 3 and 4 as needed.</p>
-         </item>
-      </olist>
-   </description>
+    <p>この達成方法の目的は、難解なコンテンツの要約を提供することである。要約は元のコンテンツに追加で提供する。</p>
+    <p>単語や文章の読解が難しいという障害のある利用者は、難解なテキストを読んだり理解するのに苦労することが多い。この達成方法は、コンテンツにおける最も重要なアイデアと情報を短い文章で提供するものである。読みやすい要約にするためには、元のコンテンツよりも短い文章にし、一般的な言葉を用いるとよい。</p>
+    <p>要約の作成には、次のステップを用いることができる：</p>
+    <olist>
+      <item>
+        <p>コンテンツの中で最も重要なアイデアと情報を見出す。</p>
+      </item>
+      <item>
+        <p>それと同じアイデアと情報を表現すべく、より短い文章で、一般的な言葉を用いて、1つまたはそれ以上のパラグラフを書く（パラグラフの数は、元の文章の長さによる）。</p>
+      </item>
+      <item>
+        <p>要約の読みやすさを評価する。</p>
+      </item>
+      <item>
+        <p>要約を編集する。長い文章を2つに分けたり、長い単語やなじみのない言葉はより短く一般的な用語に置き換えることを検討する。</p>
+      </item>
+      <item>
+        <p>必要であれば、3 と 4 を繰り返す。</p>
+      </item>
+    </olist>
+  </description>
    <examples>
       <eg-group>
-         <head>A technical article with a readable summary</head>
-         <description>
-            <p>An article describes a technical innovation. The first item after the title of the article is a section with the heading, “Summary." The average length of the sentences in the summary is 16 words (compared to 23 words for sentences in the article), and it uses short, common words instead of the technical jargon in the article.  A readability formula is applied; the summary requires reading ability less advanced than the lower secondary education level.</p>
-         </description>
-      </eg-group>
+      <head>読みやすい要約をつけた技術記事</head>
+      <description><p>技術革新を説明した記事がある。記事タイトルの直後には、「要約」という見出しのついたセクションがある。要約に含まれる文章の平均的な長さは16語で（記事中の文章は23語である）、記事中の専門的な技術用語に代えて、短く一般的な言葉を用いている。そして、中学校教育レベルを超えた読解力を必要としない、という読みやすさの基準を適用している。</p>
+</description>
+    </eg-group>
    </examples>
    <resources/>
    <related-techniques>
@@ -48,20 +47,20 @@
    </related-techniques>
    <tests>
       <procedure>
-         <p>For each summary provided as supplemental content:</p>
-         <olist>
-            <item>
-               <p>Measure the readability of the summary.</p>
-            </item>
-            <item>
-               <p>Check that the summary requires reading ability less advanced than the lower secondary education level.</p>
-            </item>
-         </olist>
-      </procedure>
+      <p>補足コンテンツとして提供した要約それぞれについて：</p>
+      <olist>
+        <item>
+          <p>その要約の読みやすさを評価する。</p>
+        </item>
+        <item>
+          <p>その要約が中学校教育レベルを超えた読解力を必要としていない。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p># 2 is true.</p>
+               <p>2. を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

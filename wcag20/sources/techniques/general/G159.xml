@@ -2,26 +2,20 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G159">
-   <short-name>Providing an alternative for time-based media for video-only content</short-name>
+   <short-name>時間の経過に伴って変化するメディアの映像しか含まないコンテンツに対して代替コンテンツを提供する</short-name>
    <applicability>
-      <p>General technique. Applies to all technologies.</p>
+      <p>全てのウェブコンテンツ技術。</p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-av-only-alt" relationship="sufficient"/>
       <success-criterion idref="media-equiv-text-doc" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The purpose of this technique is to provide an accessible alternative way of presenting the information in a video-only presentation.</p>
-      <p>In a video-only presentation, information is presented in a variety of ways including animation, text or graphics, the setting and background, the actions and expressions of people, animals, etc. In order to present the same information in accessible form, this technique involves creating a document that tells the same story and presents the same information as the prerecorded video-only content. In this technique, the document serves as a long description for the content and includes all of the important information as well as descriptions of scenery, actions, expressions, etc. that are part of the presentation.</p>
-      <p>If a screenplay for the video-only content was used to create the content in the first place, this can be a good place to start. In production and editing however, the final version often varies somewhat from the screenplay. To use the screenplay, it would need to be corrected to match the final edited form of the video-only presentation.</p>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>An animation shows how to assemble a woodworking project. There is no audio, but the animation includes a series of numbers to represent each step in the process as well as arrows and picture-in-picture highlights illustrating how the assembly is completed. It also includes short outtake animations illustrating what will happen if assembly is done incorrectly. A text alternative that identifies the video-only content reads, "Breadbox assembly video (text description follows)," and the text description of the video includes a full text description of each step in the video.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>この達成方法の目的は、映像しか含まないプレゼンテーションで提示する情報に対して、アクセシブルな代替コンテンツを提供することである。</p>
+    <p>映像しか含まないプレゼンテーションにおいては、アニメーション、テキスト又はグラフィック、また状況及び背景、人物や動物の動き及び表情などを含め、情報はさまざまな方法で提示される。同じ情報をアクセシブルな形式で提示するために、この達成方法では、収録済の映像しか含まないコンテンツと同じストーリーを伝えて同じ情報を提示するドキュメントを作成する。この達成方法において、そのドキュメントはコンテンツの長い説明としての役割を果たし、重要な情報のすべてとプレゼンテーションの一部である風景、動き、表情などの説明を含んでいる。</p>
+    <p>映像しか含まないコンテンツを制作する初めの段階で台本を用いている場合には、それを手始めにすることができる。しかし、制作及び編集過程において、コンテンツの内容が台本からいくぶん変わってしまうことがよくある。この達成方法で台本を用いる際は、もともとの台本を映像しか含まないプレゼンテーションの最終版の内容に合わせて修正する必要がある。</p>
+  </description>
+   <examples/>
    <resources/>
    <related-techniques>
       <relatedtech idref="G69"/>
@@ -30,36 +24,24 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>View the video-only content while referring to the alternative for time-based media.</p>
-            </item>
-            <item>
-               <p>Check that the information in the transcript includes the same information that is in the video-only presentation.</p>
-            </item>
-            <item>
-               <p>If the video includes multiple people or characters, check that the transcript identifies which person or character is associated with each action described.</p>
-            </item>
-            <item>
-               <p>Check that at least one of the following is true:</p>
-               <olist>
-                  <item>
-                     <p>The transcript itself can be programmatically determined from the text alternative for the video-only content</p>
-                  </item>
-                  <item>
-                     <p>The transcript is referred to from the programmatically determined text alternative for the video-only content</p>
-                  </item>
-               </olist>
-            </item>
-            <item>
-               <p>If the alternate version(s) are on a separate page, check for the availability of link(s) to allow the user to get to the other versions.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>時間の経過に伴って変化するメディアに対する代替コンテンツを参照しながら、映像しか含まないコンテンツを閲覧する。</p>
+        </item>
+        <item>
+          <p>トランスクリプト内の情報によって、映像しか含まないプレゼンテーションと同じ情報が提供されている。</p>
+        </item>
+        <item>
+          <p>映像に複数の登場人物がいる場合、トランスクリプトで説明されている動きに対して、それぞれがどの登場人物によるものかが示されている。</p>
+        </item>
+        <item><p>次のうち少なくとも一つを満たしている：</p>
+					<olist><item><p>トランスクリプト自体が、映像しか含まないコンテンツに対する代替テキストからプログラムで解釈可能である。</p></item><item><p>トランスクリプトが、映像しか含まないコンテンツに対するプログラムで解釈可能な代替テキストから参照されている。</p></item><item><p>代替バージョンが別ページにある場合、利用者が他のバージョンへ移動できるリンクが提供されている。</p></item></olist></item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>All of the above checks are true.</p>
+               <p>上記のチェックポイント全てを満たしている。</p>
             </item>
          </ulist>
       </expected-results>

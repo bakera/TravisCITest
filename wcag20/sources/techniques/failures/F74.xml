@@ -2,41 +2,40 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F74">
-   <short-name>Failure of  Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative</short-name>
+   <short-name>達成基準 1.2.2 及び 達成基準 1.2.8 の不適合事例 － テキストに対する代替である同期したメディアを代替コンテンツとしてラベル付けしていない</short-name>
    <applicability>
-      <p>Pages that provide synchronized media alternatives to text.</p>
+      <p>テキストに対する代替である同期したメディアを提供しているウェブページ</p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-captions" relationship="failure"/>
       <success-criterion idref="media-equiv-text-doc" relationship="failure"/>
    </applies-to>
    <description>
-      <p>The objective of this failure is to avoid situations in which synchronized media alternatives are not labeled with the text for which they are alternatives. Synchronized media alternatives provide enhanced access to users for whom synchronized media is a more effective format than text. Since they are alternatives to text, they do not need themselves to have redundant text alternatives. However, they need to be clearly labeled with the text for which they substitute, so users can find them and so users who normally expect text alternatives to synchronized media know not to look for them.</p>
-   </description>
+    <p>この不適合事例の目的は、テキストの代替メディアとなる同期したメディアに対して、そのテキストを含んだラベルが付けられていないという状況を回避することである。テキストの代替メディアとなる同期したメディアは、同期したメディアの方がテキストよりも有効なフォーマットとなる利用者に対して、情報へのより良いアクセスを提供する。同期したメディアがテキストの代替メディアであるため、それ自体の代替テキストを提供すると内容が重複してしまうため、同期したメディアのコンテンツに対する代替テキストを提供する必要はない。しかし、その同期したメディアに対して、テキストの代替メディアであることを明確にラベル付けすることによって、利用者がテキストの代替メディアである同期したメディアを見つけられるようにし、また同期したメディアに対して通常はその代替テキストを期待する利用者が、代替テキストを探さないようにする必要がある。</p>
+  </description>
    <examples>
       <eg-group role="failure">
-         <head>Synchronized media alternatives provided elsewhere on page</head>
-         <description>
-            <p>A page with instructions to complete a tax form provides a prose description of the fields to complete, data to provide, etc. Additionally, a synchronized media alternative provides spoken instructions, with video of a person completing the section being discussed in the audio. Although both versions are provided on the page, the synchronized media version is provided elsewhere on the page and is not clearly labeled with the part of the text for which it is a substitute. This makes it difficult for users encountering the text to find it, and users encountering the video do not know where its text alternative is.</p>
-         </description>
-      </eg-group>
+      <head>不適合となるウェブページ上の他のどこかで提供されている、テキストの代替コンテンツとなる同期したメディア</head>
+      <description><p>納税申告書の記入方法を説明したウェブページで、記入すべき項目や提供すべきデータなどの説明が文章で書かれている。さらに、テキストの代替メディアとなる同期したメディアが、音声による説明を提供しており、その音声で説明されている部分を記入している人の映像がある。文章のバージョンと同期したメディアのバージョンの両方がウェブページで提供されているにもかかわらず、同期したメディアのバージョンはそのウェブページの他の場所にあり、それがテキストの代替メディアであること示すラベルが明確に付けられていない。このため、テキストを見つけた利用者が同期したメディアのバージョンを見つけるのは難しく、また、音声付きの映像（同期したメディア）を見つけた利用者は、それがどのテキストの代替コンテンツであるのかが分からない。</p>
+</description>
+    </eg-group>
    </examples>
    <related-techniques/>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check pages that provide synchronized media alternatives to text.</p>
-            </item>
-            <item>
-               <p>Check that synchronized media is clearly labeled with the text for which it is an alternative.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>ウェブページがテキストの代替メディアとなる同期したメディアを提供している。</p>
+        </item>
+        <item>
+          <p>同期したメディアがテキストの代替メディアであって，代替メディアであることが明確にラベル付けされている。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>If check #2 is false, then this failure condition applies and the content fails these Success Criteria.</p>
+               <p>2. を満たしていない場合、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

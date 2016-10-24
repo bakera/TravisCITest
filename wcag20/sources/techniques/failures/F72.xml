@@ -2,25 +2,22 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F72">
-   <short-name>Failure of Success Criterion 1.1.1 due to using ASCII art without providing a text alternative</short-name>
+   <short-name>達成基準 1.1.1 の不適合事例 － 代替テキストを提供せずに、ASCIIアートを用いている</short-name>
    <applicability>
-      <p>Any technology.</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="failure"/>
    </applies-to>
    <description>
-      <p>The objective of this failure condition is to avoid the use of <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-              href="asciiartdef"
-              linktype="glossary">ASCII art</loc> when a text alternative is not provided. Although ASCII art is implemented as a character string, its meaning comes from the pattern of glyphs formed by a visual presentation of that string, not from the text itself. Therefore ASCII art is non-text content and requires a text alternative. Text alternatives, or links to them, should be placed near the ASCII art in order to be associated with it.</p>
-   </description>
+    <p>これは、代替テキストを提供せずにASCIIアートを使用するという不適合事例について述べている。ASCIIアートは文字列として実装されるが、その意味は、その文字列の視覚的な表現によって形成される絵柄のパターンから来るのであって、テキスト自体から来るのではない。そのため、ASCIIアートは非テキストコンテンツであり、代替テキストが必要となる。代替テキスト又は代替テキストへのリンクは、ASCIIアートと関連付けるために、その近くに置くべきである。</p>
+  </description>
    <examples>
       <eg-group role="failure">
-         <head> ASCII Art chart without a text alternative </head>
-         <description>
-            <p>The following ASCII art chart lacks a text alternative and therefore does not meet Success Criterion 1.1.1. Note this failure example does in fact cause this page to fail, but you may <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#F72-related-techs">skip over the example</loc>.</p>
-         </description>
-         <code role="xhtml"><![CDATA[
+      <head>不適合となる代替テキストのないASCIIアートのチャート</head>
+      <description><p>次のASCIIアートのチャートは、代替テキストがないため、達成基準1.1.1を満たしていない。事実、この不適合となる事例を含んでいるため、このウェブページは適合していないページとなっている。ただし、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#F72-related-techs">ASCIIアートの例をスキップする</loc>ことはできる。</p>
+</description>
+      <code role="xhtml"><![CDATA[
 <pre>
   %   __ __ __ __ __ __ __ __ __ __ __ __ __ __   
 100 |             *                             |
@@ -34,27 +31,26 @@
  20 |                                           |
  10 |    @                       @  @  @  @     |
       0  5 10 15 20 25 30 35 40 45 50 55 60 65 70
-      Flash frequency (Hz)
-</pre>
-]]></code>
-      </eg-group>
+      閃光頻度 (Hz)
+</pre>]]></code>
+    </eg-group>
    </examples>
    <related-techniques/>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Access a page with ASCII art.</p>
-            </item>
-            <item>
-               <p>For each instance of ASCII art, check that it has a text alternative.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>ASCIIアートのあるページを開く。</p>
+        </item>
+        <item>
+          <p>それぞれのASCIIアートに対して、代替テキストが提供されている。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>If check #2 is false, then this failure condition applies and the content fails this Success Criterion.</p>
+               <p>2. を満たしていなければ、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

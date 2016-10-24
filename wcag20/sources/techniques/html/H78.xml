@@ -2,152 +2,57 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="H78">
-   <short-name>Identifying the purpose of a link using link text combined with its enclosing
-          paragraph</short-name>
+   <short-name>リンクテキストとそれが含まれているパラグラフとを組み合わせて、リンクの目的を特定する</short-name>
    <applicability>
-      <p>All technologies that contain links.</p>
+      <p>リンクが含まれる全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-refs" relationship="sufficient"/>
    </applies-to>
    <ua-issues>
-      <ua-issue name="JAWS" version="5.0+">
-         <p>JAWS 5.0 and later includes the following keystrokes:</p>
-         <ulist>
-            <item>
-               <p> alt+leftArrow: read previous sentence </p>
-            </item>
-            <item>
-               <p> alt+rightArrow: read next sentence </p>
-            </item>
-            <item>
-               <p> alt+NumPad 5: read current sentence </p>
-            </item>
-            <item>
-               <p> Ctrl+NumPad5: read current paragraph </p>
-            </item>
-         </ulist>
-      </ua-issue>
-      <ua-issue name="" version="">
-         <p>If
-              alt+numPad5 is pressed when a link has focus, the sentence is read without changing
-              the focus.</p>
-      </ua-issue>
-      <ua-issue name="" version="">
-         <p>If Ctrl+NumPad 5 is
-              pressed when the link has focus, the entire paragraph is read without changing the
-              focus.</p>
-      </ua-issue>
-      <ua-issue name="WindowEyes" version="5.5">
-         <p>Window-Eyes 5.5 has hotkeys to read the current sentence and current paragraph.</p>
-         <p>To surf the internet with WindowEyes you must be in browse mode. Current sentence and
-              current paragraph hot keys do not work in browse mode in version 6.1. </p>
-         <p>The factory default settings for reading surrounding link context are as follows:</p>
-         <p>Desktop settings:</p>
-         <ulist>
-            <item>
-               <p>Character = CTRL-NUMPAD-LEFT ARROW</p>
-            </item>
-            <item>
-               <p>Word = CTRL-NUMPAD-RIGHT ARROW</p>
-            </item>
-            <item>
-               <p>Line = CTRL-NUMPAD-CENTER</p>
-            </item>
-            <item>
-               <p>Sentence = Not available in Browse mode</p>
-            </item>
-            <item>
-               <p>(Next Sentence command is undefined by default on Desktop mode but the next line
-                  is the DOWN Arrow.) </p>
-            </item>
-            <item>
-               <p>Next Paragraph = P</p>
-            </item>
-            <item>
-               <p>Prior Paragraph = Shift P </p>
-            </item>
-            <item>
-               <p>Current Paragraph = Not Available in Browse mode</p>
-            </item>
-         </ulist>
-         <p>Laptop</p>
-         <ulist>
-            <item>
-               <p>Character = ALT-SHIFT-LESS THAN</p>
-            </item>
-            <item>
-               <p>Word Prior = ALT-SHIFT-J</p>
-            </item>
-            <item>
-               <p>Word = ALT-SHIFT-K</p>
-            </item>
-            <item>
-               <p>Word Next = ALT-SHIFT-L</p>
-            </item>
-            <item>
-               <p>Sentence Prior = ALT-SHIFT-7</p>
-            </item>
-            <item>
-               <p>Sentence = unavailable in browse mode</p>
-            </item>
-            <item>
-               <p>Sentence Next = unavailable in browse mode</p>
-            </item>
-            <item>
-               <p>Paragraph = Undefined on Laptop by default </p>
-            </item>
-            <item>
-               <p>Line Prior = ALT-SHIFT-U</p>
-            </item>
-            <item>
-               <p>Line = ALT-SHIFT-I</p>
-            </item>
-            <item>
-               <p>Line Next = ALT-SHIFT-O</p>
-            </item>
-         </ulist>
-      </ua-issue>
-      <ua-issue name="" version="">
-         <p>The "speak parent element" command in Fire Vox (Ctrl+Shift+u) works without changing the focus. <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                 href="http://www.firevox.clcworld.net/">Fire Vox</loc> is a free screen reader
-              designed specifically for Firefox 1.0 and later. It supports Windows, Macintosh, and
-              Linux.</p>
-      </ua-issue>
+     <ua-issue name="JAWS" version="5.0+">
+       <p>JAWS 5.0以降は、次のキーストロークを実装している。</p>
+            
+                  <ulist><item><p>Alt+左矢印：前の文を読む</p></item><item><p>Alt+右矢印：次の文を読む</p></item><item><p>Alt+テンキーの5：現在の文を読む</p></item><item><p>Ctrl+テンキーの5：現在のパラグラフを読む</p></item></ulist></ua-issue>
+    <ua-issue>
+      <p>「この文を読む」というキーストロークは、下記の事例1、2、及び4をサポートしている【訳者注：この文書には事例1しかありません。WCAGワーキンググループに確認中です。】。リンクがフォーカスを受けているときにAlt+テンキーの5を押せば、フォーカスの変更なしにその文が読み上げられる。</p>
+    </ua-issue>
+    <ua-issue name="" version="">
+      <p>「このパラグラフを読む」というキーストロークは、下記の事例3をサポートしている【訳者注：この文書には事例1しかありません。WCAGワーキンググループに確認中です。】。リンクがフォーカスを受けているときにCtrl+テンキーの5を押せば、フォーカスの変更なしにそのパラグラフ全体が読み上げられる。</p>
+    </ua-issue>
+    <ua-issue name="WindowEyes" version="5.5"><p>Window-Eyes 5.5には、現在の位置にある文やパラグラフを読み上げるホットキーがあり、下記の事例全てをサポートしている【訳者注：この文書には事例1しかありません。WCAGワーキンググループに確認中です。】。</p>
+            <p>Window-Eyesでインターネットを利用するには「ブラウズモード」でなければならないが、現在の位置にある文やパラグラフを読むホットキーは、バージョン6.1の「ブラウズモード」では動作しない。</p>
+            <p>Window-Eyesについて、周囲にあるリンクの文脈の読み上げに関する工場出荷時の初期設定は、次の通りである。</p>
+            <p>デスクトップマシンの初期設定</p>
+            <ulist><item><p>文字：Ctrl+テンキーの左矢印</p></item><item><p>単語：Ctrl+テンキーの右矢印</p></item><item><p>行：Ctrl+テンキーのCENTER</p></item><item><p>文：「ブラウズモード」では使用不可</p></item><item><p>（「次の文」のコマンドは、デスクトップモードの初期設定では定義されていないが、次の行を読むには下矢印を押す）</p></item><item><p>次のパラグラフ：P</p></item><item><p>前のパラグラフ：Shift+P</p></item><item><p>現在のパラグラフ：「ブラウズモード」では使用不可</p></item></ulist><p>ラップトップマシンの初期設定</p>
+            <ulist><item><p>文字：Alt+Shift+&lt;</p></item><item><p>前の単語：Alt+Shift+J</p></item><item><p>単語：Alt+Shift+K</p></item><item><p>次の単語：Alt+Shift+L</p></item><item><p>次の文：Alt+Shift+7</p></item><item><p>文：「ブラウズモード」では使用不可</p></item><item><p>次の文：「ブラウズモード」では使用不可</p></item><item><p>パラグラフ：ラップトップマシンの初期設定では定義されていない</p></item><item><p>次の行：Alt+Shift+U</p></item><item><p>行：Alt+Shift+I</p></item><item><p>次の行：Alt+Shift+O</p></item></ulist></ua-issue>
+    <ua-issue name="" version="">
+      <p>Fire Voxの「親要素の読み上げ」というコマンド（Ctrl+Shift+U）は、事例3をサポートしている<span style="color: #c00;">【訳者注：この文書には事例1しかありません。WCAGワーキンググループに確認中です。】</span>。このキーストロークは、フォーカス位置の変更なしに動作する。<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.firevox.clcworld.net/" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest">Fire Vox（英語）</loc>は、Firefox 1.0以降のために設計されたフリーのスクリーンリーダーであり、Windows、Macintosh、Linux用のFirefoxでサポートされている。</p>
+    </ua-issue>
    </ua-issues>
    <description>
-      <p>The objective of this technique is to identify the purpose of a link from the link in
-            its paragraph context. The paragraph enclosing the link provides context for an
-            otherwise unclear link when the paragraph is the nearest enclosing block-level ancestor
-            element. The description lets a user distinguish this link from links in the Web page
-            that lead to other destinations and helps the user determine whether to follow the link.
-            Note that simply providing the URI of the destination is generally not sufficiently
-            descriptive. </p>
-      <note>
-         <p>These descriptions will be most useful to the user if the additional information
-              needed to understand the link precedes the link. If the additional information follows
-              the link, there can be confusion and difficulty for screen reader users who are
-              reading through the page in order (top to bottom).</p>
-      </note>
-   </description>
+    <p>この達成方法の目的は、リンクとそれを含んでいるパラグラフの文脈から、リンクの目的を特定することである。リンクを含んでいるパラグラフが、先祖要素であるブロックレベル要素の中で最もそのリンクに近い場合、リンクテキストだけでは不明瞭なリンクに文脈を与えることになる。その説明によって、利用者ーがそのリンクと、そのウェブページ内にある他のリンクとを区別できるようになり、そのリンク先へ移動するかどうかを判断しやすくなる。一般的に、リンクテキストとして単に目的地のURIを示すだけでは、リンク先の説明として不十分であることに注意すべきである。</p>
+    <note>
+      <p class="prefix">このような説明が利用者ーにとって最も役立つのは、リンクを理解するのに必要な追加情報が、そのリンクよりも前に書かれている場合である。追加情報がリンクの後に書かれていると、ページを（先頭から最後へと）順番に読むスクリーンリーダーの利用者ーには混乱や支障が生じることがある。</p>
+    </note>
+  </description>
    <examples>
       <eg-group>
-         <description>
-            <p> Announcements column on a Folk Festival Web page.</p>
-         </description>
-         <code><![CDATA[<h3>The final 15</h3>
-<p>Coming soon to a town near you...the final 15 in the 
-National Folk Festival lineup.
-<a href="final15.html">[Read more...]</a>
+      <description><p>民族音楽祭のウェブページの告知文。</p>
+</description>
+      <code><![CDATA[<h3>最終15組</h3>
+<p>間もなくあなたの近くの町に行きます……。
+全米民族音楽祭にラインナップしている最終15組です。
+<a href="final15.html">［続きを読む］</a>
 </p>
 
-<h3>Folk artists get awards</h3>
-<p>Performers from the upcoming National Folk Festival receive 
- National Heritage Fellowships. 
- <a href="nheritage.html">[Read more...]</a>
+<h3>民族音楽のアーティストが賞を受ける</h3>
+<p>来たる全米民族音楽祭の出演者が、
+全米芸術基金の国家遺産フェローシップを受賞します。
+ <a href="nheritage.html">［続きを読む］</a>
 </p>
-…   ]]></code>
-      </eg-group>
+… ]]></code>
+    </eg-group>
    </examples>
    <resources/>
    <related-techniques>
@@ -162,23 +67,22 @@ National Folk Festival lineup.
    </related-techniques>
    <tests>
       <procedure>
-         <p>For each link in the content that uses this technique:</p>
-         <olist>
-            <item>
-               <p> Check that the link is part of a paragraph. </p>
-            </item>
-            <item>
-               <p> Check that text of the link combined with the text of its enclosing paragraph
-                  describes the purpose of the link. </p>
-            </item>
-         </olist>
-      </procedure>
+      <p>コンテンツの中で、この達成方法を用いているリンクそれぞれに対して：</p>
+      <olist>
+        <item>
+          <p>そのリンクがパラグラフの一部である。</p>
+        </item>
+        <item>
+          <p>そのリンクテキストとパラグラフを組み合わせると、リンクの目的が説明されている。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
-            <item>
-               <p> The above checks are true. </p>
-            </item>
-         </ulist>
+        <item>
+          <p>上記全てを満たしている。</p>
+        </item>
+      </ulist>
       </expected-results>
    </tests>
 </technique>

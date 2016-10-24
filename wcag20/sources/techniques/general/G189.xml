@@ -2,71 +2,57 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G189">
-   <short-name>Providing a control near the beginning of the Web page that changes the link text</short-name>
+   <short-name>ウェブページの先頭近くに、リンクのラベルを変更するコントロールを提供する</short-name>
    <applicability>
-      <p>All technologies that contain links.</p>
+      <p>リンクを実装できる全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-refs" relationship="sufficient"/>
       <success-criterion idref="navigation-mechanisms-link" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide the user with a control near the beginning of the page that takes the user to a conforming alternate version of the Web page where the link text alone of each link is sufficient to determine its purpose out of context.</p>
-      <p>Some users prefer to have links that are self-contained, where there is no need to explore the context of the link. Other users find including the context information in each link to be repetitive and to reduce their ability to use a site. Among users of assistive technology, the feedback to the working group on which is preferable has been divided. This technique allows users to pick the approach that works best for them. Users who need or prefer potentially longer but complete link text use this version.</p>
-      <p>If the control for switching to the alternate version is a link, it must always be possible to understand the purpose of the control directly from its link text.</p>
-      <p>This technique provides the alternate version for the current page view. It is also possible, and in some cases would be advisable, to save this preference in a cookie or server-side user profile, so that users would only have to make the selection once per site and would automatically be taken to their preferred version.</p>
-      <note>
-         <p>This technique can be used in combination with a style switching technique to present a page that is a
-              <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                 href="conforming-alternate-versiondef"
-                 linktype="glossary">conforming alternate version</loc>
-              for non-conforming content. Refer to
-              <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29" linktype="css">C29: Using a style switcher to provide a conforming alternate version</loc>
-              and
-              <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                 href="conformance"
-                 locn-note="uc-conforming-alt-versions-head"
-                 linktype="understanding">Understanding Conforming Alternate Versions</loc>
-              for more information.</p>
-      </note>
-   </description>
+    <p>この達成方法の目的は、ウェブページの先頭近くに、そのウェブページの適合している代替バージョンへ利用者を誘導するコントロールを提供することである。その代替バージョンでは、各リンクのリンクテキストだけで前後の文脈を見なくてもリンクの目的がわかるようになっている。</p>
+    <p>利用者の中には、リンクの文脈を見なくても、リンクの目的がわかるのでリンクテキストにその文脈も含んだリンクを好む利用者がいる。一方で、文脈の情報を各リンクに含めることでリンクテキストが冗長になるため、サイトの使い勝手が悪くなると感じる利用者もいる。WCAGワーキンググループに支援技術の利用者から寄せられたフィードバックでも、どちらを好むかは意見が分かれている。この達成方法を用いることにより、利用者は、自分にとって最適なアプローチを選べるようになる。長くなる可能性があっても完全なリンクテキストを必要とする又はそれを好む利用者は、代替バージョンを使用することができる。</p>
+    <p>代替バージョンに変換するコントロールがリンクである場合、そのコントロールの目的が、常にリンクテキストだけでわかるようにしておかなければならない。</p>
+    <p>この達成方法は、現在のページ表示に対する代替バージョンを提供する。この環境設定をクッキー又はサーバーサイドの利用者プロフィールに保存して、利用者が一度選択すれば、その後はサイトを訪れるごとに選択しなくても、自動的に利用者の好むバージョンが表示されるようにすることもでき、そうするのが望ましい場合もある。</p>
+    <note><p class="prefix">この達成方法は、表示スタイルを変更して非適合コンテンツに対する<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#conforming-alternate-versiondef" linktype="glossary">適合した代替バージョン</loc>となるページを提供する達成方法と併せて使うことができる。詳しくは、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29.html" linktype="css">C29： スタイル・スイッチャーを用いて、適合している代替バージョンを提供する</loc>（CSS）及び<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/UNDERSTANDING-WCAG20/conformance.html#uc-conforming-alt-versions-head" linktype="understanding">適合している代替バージョン</loc>を参照のこと。</p>
+</note>
+  </description>
    <examples>
       <eg-group>
-         <head>Providing a Link to another Version</head>
-         <description>
-            <p>A Web page lists books for download in different formats. Alternate versions of the Web page use just the book format as the link text or the book title and format type.</p>
-            <p>Version with short link text:</p>
-         </description>
-         <code><![CDATA[
-              ...
-                <h1>Books for download</h1>
-                <p><a href="books-full-links.html" >Full link Version</a></p>
-                <ul>
-                <li>The History of the Web: 
-                <a href="history.docx" class="hist">Word</a>, 
-                <a href="history.pdf" class="hist">PDF</a>, 
-                <a href="history.html" class="hist">HTML</a>
-                </li>
-                ...
-                </ul>
-            ]]></code>
-         <description>
-            <p>Version with full link text:</p>
-         </description>
-         <code><![CDATA[
-              ...
-                <h1>Books for download</h1>
-                <p><a href="books-short-links.html" >Short link Version</a></p>
-                <ul>
-                <li>The History of the Web: 
-                <a href="history.docx" class="hist">The History of the Web(Word)</a>, 
-                <a href="history.pdf" class="hist">The History of the Web(PDF)>/a>, 
-                <a href="history.html" class="hist">The History of the Web(HTML)</a>
-                </li>
-                ...
-                </ul>
-            ]]></code>
-      </eg-group>
+      <head>別バージョンへのリンクを提供する</head>
+      <description><p>ウェブページに、様々なフォーマットでダウンロードできる書籍のリストがある。このウェブページの代替バージョンでは、書籍のフォーマットだけ、又は書籍名とフォーマットのタイプが、リンクテキストとして使われている。</p>
+<p>短いリンクテキストのバージョン：</p>
+</description>
+      <code><![CDATA[
+...
+<h1>書籍のダウンロード</h1>
+  <p><a href="books-full-links.html" >完全なリンクのバージョン</a></p>
+
+  <ul>
+  <li>ウェブの歴史： 
+  <a href="history.docx" class="hist">Word形式</a>, 
+  <a href="history.pdf" class="hist">PDF形式</a>, 
+  <a href="history.html" class="hist">HTML形式</a>
+  </li>
+  ...
+  </ul>]]></code>
+      <description><p>完全なリンクテキストを用いたバージョン</p>
+</description>
+      <code><![CDATA[
+...
+<h1>書籍のダウンロード</h1>
+  <p><a href="books-short-links.html" >短いリンクのバージョン</a></p>
+
+  <ul>
+  <li>ウェブの歴史：
+  <a href="history.docx" class="hist">ウェブの歴史（Word形式）</a>, 
+  <a href="history.pdf" class="hist">ウェブの歴史（PDF形式）</a>, 
+  <a href="history.html" class="hist">ウェブの歴史（HTML形式）</a>
+  </li>
+  ...
+  </ul>]]></code>
+    </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G91"/>
@@ -80,22 +66,22 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check that there is a control near the beginning of the Web page to change link text.</p>
-            </item>
-            <item>
-               <p>Activate the control.</p>
-            </item>
-            <item>
-               <p>Check that all links in the resulting Web page have link text that describes their purpose.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>ウェブページの先頭近くに、リンクテキストを変換するコントロールがある。</p>
+        </item>
+        <item>
+          <p>コントロールを起動する。</p>
+        </item>
+        <item>
+          <p>変換されたウェブページでは、全てのリンクのリンクテキストがその目的を説明している。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Checks #1 and #3 are true.</p>
+               <p>1. 及び 3. を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

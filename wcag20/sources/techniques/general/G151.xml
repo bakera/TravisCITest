@@ -2,27 +2,18 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G151">
-   <short-name>Providing a link to a text transcript of a prepared statement or script if the script is followed</short-name>
+   <short-name>予め用意されたスピーチ原稿のトランスクリプト、又は台本通りのコンテンツの場合には台本へのリンクを提供する</short-name>
    <applicability>
-      <p>All technologies that present live audio-only information</p>
+      <p>ライブの音声しか含まない情報を提示する全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-live-audio-only" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide a transcript or script if the live audio content is following a set script. Because it is prepared in advance, the script can be more accurate and complete than live transcription. However, the script will not be synchronized with the audio as it plays. Live audio should not deviate from the script for this technique.</p>
-      <p>With this technique, a link to the transcript or script is provided and should conform to WCAG 2.0 and could either be included at another location on the same Web page or at another URI.</p>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>A live radio play of a fringe theatre group is being broadcast to the Web. As the actors stick largely to a set script, and the budget for the program is small, the producers provide a link (with the playwright's permission) to the script of the play in HTML.</p>
-         </item>
-         <item>
-            <p>A member of the government broadcasts an important policy speech on the Web. A transcript of the speech is made available on the Web site when the speech starts.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>この達成方法の目的は、トランスクリプト（書き起こしたテキスト）又はライブの音声コンテンツが予め用意された台本に従っている場合は台本を提供することである。台本は予め用意されているので、ライブの書き起こしより正確で完全である。台本は音声の再生には同期しないこともあるが、この達成方法を用いるには、ライブの音声は台本から逸脱するべきではない。</p>
+    <p>この達成方法をもちいることによって、トランスクリプト又は台本へのリンクが提供され、WCAG 2.0に適合する。そのトランスクリプト又は台本は、同じウェブページ上にあってもよいし、別のURIにあってもよい。</p>
+  </description>
+   <examples/>
    <resources>
       <see-also>
          <ulist>
@@ -49,22 +40,22 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check for the presence of a link that points directly to the script or transcript.</p>
-            </item>
-            <item>
-               <p>Check that the live audio follows the script.</p>
-            </item>
-            <item>
-               <p>If the alternate version(s) are on a separate page, check for the availability of link(s) to allow the user to get to the other versions.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>台本又はトランスクリプトに直接遷移するリンクがある。</p>
+        </item>
+        <item>
+          <p>ライブの音声が台本に従っている。</p>
+        </item>
+        <item>
+          <p>代替バージョンが別のページにある場合、その別バージョンに利用者がたどり着けるようにリンクが設けられている。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>All checks above are true.</p>
+               <p>上記全てを満たしている。</p>
             </item>
          </ulist>
       </expected-results>

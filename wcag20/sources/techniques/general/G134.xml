@@ -2,79 +2,39 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G134">
-   <short-name>Validating Web pages</short-name>
+   <short-name>ウェブページをバリデートする</short-name>
    <applicability>
-      <p>Any markup languages and many other technologies.</p>
+      <p>全てのマークアップ言語及びその他の多くのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="ensure-compat-parses" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to avoid ambiguities in Web pages
-            that often result from code that does not validate against formal
-            specifications. Each technology's mechanism to specify the technology and
-            technology version is used, and the Web page is validated against the
-            formal specification of that technology. If a validator for that technology
-            is available, the developer can use it.</p>
-      <p>Validation will usually eliminate ambiguities (and more) because an
-            essential step in validation is to check for proper use of that technology's
-            markup (in a markup language) or code (in other technologies). Validation
-            does not necessarily check for full conformance with a specification but it
-            is the best means for automatically checking content against its
-            specification.</p>
-   </description>
+    <p>この達成方法の目的は、正式な仕様に則ってバリデートされていないコードにしばしば起因するウェブページの曖昧さをなくすことである。ウェブコンテンツ技術及びそのバージョンを特定するために、それぞれのウェブコンテンツ技術に備えられているメカニズムを用いて、そのウェブコンテンツ技術の正式な仕様に照らし合わせてウェブページをバリデートする。対象となるウェブコンテンツ技術にバリデータがある場合、コンテンツ制作者/開発者はそれを使うことができる。</p>
+    <p>通常は、バリデーションによって曖昧さ（及びその他の問題点）を排除することが可能である。これは、バリデーションに不可欠なステップの一つが、ウェブコンテンツ技術のマークアップ（マークアップ言語）又はコード（他のウェブコンテンツ技術）が適正に使用されているかどうかをチェックすることだからである。バリデーションは、必ずしも仕様への完全な準拠をチェックするものではないが、コンテンツを仕様に照らし合わせて自動チェックするには最適な手段である。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>Validating HTML</head>
-         <description>
-            <p>HTML pages include a document type declaration (sometimes referred
-                to as
-                <code><![CDATA[
-                  !DOCTYPE
-                ]]></code>
-                statement) and are valid according to
-                the HTML version specified by the document type declaration. The
-                developer can use off-line or online validators (see Resources
-                below) to check the validity of the HTML pages.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Validating XML</head>
-         <description>
-            <p>XHTML, SVG, SMIL and other XML-based documents reference a Document
-                Type Definition (DTD) or other type of XML schema. The developer can
-                use online or off-line validators (including validation tools built
-                into editors) to check the validity of the XML documents.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Batch validation with Ant</head>
-         <description>
-            <p>The
-                <code><![CDATA[
-                  xmlvalidate
-                ]]></code>
-                task of Apache Ant can be used for
-                batch validation of XML files. The following Apache Ant target is a
-                simple example for the validation of files with the extension
-                <code><![CDATA[
-                  .xml
-                ]]></code>
-                in the directory
-                <code><![CDATA[
-                  dev\\Web
-                ]]></code>
-                (relative to the Ant build file).</p>
-         </description>
-         <code><![CDATA[
-              
-              <target name="validate-xml"> 
-                <xmlvalidate lenient="no"> 
-                <fileset dir="dev/web" includes="*.xml" /> 
-                </xmlvalidate> 
-              </target>
-            ]]></code>
-      </eg-group>
+      <head>HTMLのバリデーション</head>
+      <description><p>HTMLページに文書型宣言（<code>!DOCTYPE</code> として記述されることが多い）があり、その文書型宣言で指定されたHTMLのバージョンに対して妥当（Valid）である。コンテンツ制作者/開発者は、オフライン又はオンラインのバリデータ（下記「参考リソース」を参照）を使用して、このHTMLページの妥当性をチェックできる。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>XMLのバリデーション</head>
+      <description><p>XHTML、SVG、SMIL及びその他のXMLをベースしたドキュメントが、文書型定義（DTD）又はその他のタイプのXMLスキーマを参照している。コンテンツ制作者/開発者は、オンライン又はオフラインのバリデータ（エディタに内蔵されている検証ツールを含む）を使用して、このXMLドキュメントの妥当性をチェックできる。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>Antのバッチによるバリデーション</head>
+      <description><p>XMLファイルのバリデーションをバッチで行う際には Apache Antの <code>xmlvalidate</code> タスクを使用することができる。次のApache Antターゲットは、（Antのビルドファイルに相対する）ディレクトリ <code>dev\\Web</code> 内にある拡張子 <code>.xml</code> のファイルをバリデートするシンプルな例である。</p>
+</description>
+      <code><![CDATA[
+   <target name="validate-xml"> 
+   <xmlvalidate lenient="no"> 
+   <fileset dir="dev/web" includes="*.xml" /> 
+   </xmlvalidate> 
+   </target>]]></code>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -376,22 +336,32 @@
    <related-techniques/>
    <tests>
       <procedure>
-         <p>For HTML, SGML-based and XML-based technologies:</p>
-         <olist>
-            <item>
-               <p>Load each page or document into a validating parser.</p>
-            </item>
-            <item>
-               <p>Check that no validation errors are found.</p>
-            </item>
-         </olist>
-         <p>For other technologies:</p>
-         <p>Follow the validation procedure defined for the technology in use, if any
-              exists.</p>
-      </procedure>
+      <p>HTML、SGMLベース及びXMLベースのウェブコンテンツ技術に対して：</p>
+      <olist>
+        <item>
+          <p>それぞれのページ又はドキュメントをバリデーションを行うパーサーで読み込む。</p>
+        </item>
+        <item>
+          <p>バリデーションエラーがない。</p>
+        </item>
+      </olist>
+      <p>CSSに対して：</p>
+      <olist>
+        <item>
+          <p>外部又は内部スタイルシートをCSSバリデータにかける。</p>
+        </item>
+        <item>
+          <p>バリデーションエラーがない。</p>
+        </item>
+      </olist>
+      <p>その他のウェブコンテンツ技術に対して：</p>
+      <p>用いているウェブコンテンツ技術に対してバリデーションの手順が定められていれば、それに従う。</p>
+    </procedure>
       <expected-results>
-         <p>For HTML, SGML-based and XML-based technologies:</p>
-         <p>Step 2 is true.</p>
+         <p>HTML、SGMLベース、及びXMLベースのウェブコンテンツ技術に対して：</p>
+      <p>2. を満たしている。</p>
+      <p>CSSに対して：</p>
+      <p>2. を満たしている。</p>
       </expected-results>
    </tests>
 </technique>

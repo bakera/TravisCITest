@@ -2,85 +2,43 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G73">
-   <short-name>Providing a long description in another location with a link to it that
-          is immediately adjacent to the non-text content</short-name>
+   <short-name>非テキストコンテンツのすぐ隣に別の場所へのリンクを置き、その別の場所で長い説明を提供する</short-name>
    <applicability>
-      <p>Applies to all technologies</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="cosufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide a way to link to remote long
-            descriptions in technologies that do not have a long description feature
-            built directly into them (e.g., longdesc) or where the feature is known to
-            not be supported.</p>
-      <p>With this technique, the long description is provided in another location
-            than the non-text content. This could be at another location within the same
-            URI or at another URI. A link to that long description is provided that is
-            immediately adjacent to the non-text content. The link can be immediately
-            before or after the non-text content. If the description is located along
-            with other text then put "End of description" at the end so that they know
-            when to stop reading and return to the main content. If a "Back" button will
-            not take the person back to the point from which they jumped, then a link
-            back to the non-text content location is provided.</p>
-      <p>This technique was commonly used in HTML before 'longdesc' was added to the
-            specification. In HTML it was called a D-Link because it was usually
-            implemented by putting a D next to images and using the D as a link to the
-            long description. This technique is not technology specific and can be used
-            in any technology that supports links.</p>
-   </description>
+    <p>この達成方法の目的は、長い説明文を直接組み込む機能（例：HTMLの<att>longdesc</att>属性）を持たない、又はサポートされないことが確認されているウェブコンテンツ技術において、離れた場所にある長い説明文へのリンクを提供することである。</p>
+    <p>この達成方法によって、長い説明文が非テキストコンテンツとは別の場所に提供される。同じURIの中の異なる場所、又は別のURIの場合もある。長い説明文へのリンクが非テキストコンテンツに近接して提供されるが、そのリンクは非テキストコンテンツの直前又は直後に提供できる。もし説明が他のテキストと一緒に配置されているならば、どこで読み終えてメインコンテンツに戻るかがわかるように最後に「説明の終わり」と入れる。「戻る」ボタンでジャンプしてきた場所に戻れない場合は、その非テキストコンテンツに戻るためのリンクを提供する。</p>
+    <p>この達成方法は、<att>longdesc</att>属性がHTMLの仕様に加えられる以前に一般的に使用されていた。HTMLでは、通常、画像の隣にDを配置して長い説明文へのリンクとして実装していたためDリンクと呼ばれていた。この達成方法は技術に依存していないため、リンクをサポートするあらゆるウェブコンテンツ技術で利用できる。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>Bar chart</head>
-         <description>
-            <p>There is a bar chart on a Web page showing the sales for the top
-                three salespeople.</p>
-            <p>The short text alternative says "October sales chart for top three
-                salespeople."</p>
-            <p>Immediately after the non-text content is a small image denoting a
-                long description. The alternate text for the image is "Long
-                description of chart". The image links to the bottom of the page
-                where there is a section titled "Description of charts on this
-                page". The link points to this specific description: "Sales for
-                October show Mary leading with 400 units. Mike follows closely with
-                389. Chris rounds out our top 3 with sales of 350. [end of
-                description]"</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Bar chart - in non-HTML technology where user agent "back"
-              is not supported for security reasons.</head>
-         <description>
-            <p>There is a bar chart on a Web page showing the sales for the top
-                three salespeople.</p>
-            <p>The short text alternative says "October sales chart for top three
-                salespeople."</p>
-            <p>Immediately after the non-text content is a small image denoting the
-                long description. The alternate text for the image is "Long
-                description of chart". The image links to another page titled
-                "Description of charts in October Sales Report". The description
-                link points to this specific description: "Sales for October show
-                Mary leading with 400 units. Mike follows closely with 389. Chris
-                rounds out our top 3 with sales of 350. End of description.
-                <code><![CDATA[<link>]]></code>Back to Sales Chart<code><![CDATA[</link>]]></code>"</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Caption used as link</head>
-         <description>
-            <p>There is a chart. The figure caption immediately below the chart
-                serves as a link to the long description. The Title attribute of the
-                link makes it clear that this is a link to a long description.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Transcript of an audio-only file</head>
-         <description>
-            <p>There is a recording of a speech by Martin Luther King. Links to the
-                audio file and the transcript appear side by side.</p>
-         </description>
-      </eg-group>
+      <head>棒グラフ</head>
+      <description><p>ウェブページ に上位3名の販売員の売上げを示した棒グラフがある。</p>
+<p>それには簡潔な代替テキストがあり、「上位3名の販売員の10月の売上げ表」と書かれている。</p>
+<p>非テキストコンテンツの直後には長い説明文を示唆する小さな画像がある。その画像に対する代替テキストには「グラフの詳細な説明」と書かれている。画像は「このページのグラフの説明」という表題がつけられたページ下部のセクションへのリンクになっている。リンクは次のような具体的な説明を指している：「 10月の売上げはメアリーが400個でトップ、マイクが389個の僅差で続いており、クリスが350個でトップ3の最後となっている。[説明の終わり]」</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>棒グラフ -利用者ーエージェントの「戻る」がセキュリティ上の理由からサポートされていない非HTML技術の場合</head>
+      <description><p>ウェブページ上に上位3名の販売員を表示した棒グラフがある。</p>
+<p>それには簡潔な代替テキストがあり、「上位3名の販売員の10月の売上げ表」と書かれている。</p>
+<p>非テキストコンテンツの直後には長い説明文を示唆する小さな画像がある。その画像に対する代替テキストには「グラフの詳細な説明」と書かれている。その画像は「10月の売上げ報告にあるグラフの説明」というタイトルの別のページへリンクとなっている。その説明へのリンクは次のような具体的な説明を指している:「10月の売上げはメアリーが400個でトップ、マイクが389個の僅差で続いており、クリスが350個でトップ3の最後となっている。説明の終わり。<code><![CDATA[<link>]]></code> 売上げグラフに戻る<code><![CDATA[</link>]]></code> 」</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>リンクとして使用されるキャプション</head>
+      <description><p>グラフがある。グラフの直下にある図表のキャプションが詳細な説明へのリンクとなっている。リンクのtitle属性により、詳細な説明へのリンクであることが明確になっている。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>音声しか含まないファイルのトランスクリプト</head>
+      <description><p>マーチン・ルーサー・キングのスピーチの録音記録がある。音声ファイルへのリンクとその内容をテキストに書き起こしたトランスクリプトへのリンクが隣同士にある。</p>
+</description>
+    </eg-group>
    </examples>
    <resources>
       <see-also/>
@@ -91,27 +49,23 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>check for the presence of a link immediately before or after the
-                  non-text content</p>
-            </item>
-            <item>
-               <p>check that the link is a valid link that points directly to the
-                  long description of this particular non-text content.</p>
-            </item>
-            <item>
-               <p>check that the long description conveys the same information as
-                  the non-text content</p>
-            </item>
-            <item>
-               <p>check for the availability of a link or back function to get the
-                  user back to the original location of the non-text content</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>非テキストコンテンツの直前又は直後にリンクがある。</p>
+        </item>
+        <item>
+          <p>非テキストコンテンツの長い説明文を直接指し示す有効なリンクとなっている。</p>
+        </item>
+        <item>
+          <p>長い説明文が非テキストコンテンツと同じ情報を伝達している。</p>
+        </item>
+        <item>
+          <p>利用者が非テキストコンテンツのある元の場所に戻れるようにするためのリンク又は「戻る」機能が利用可能である。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
-         <p>All 4 of the above are true</p>
+         <p>上記の4つ全てを満たしている。</p>
       </expected-results>
    </tests>
 </technique>

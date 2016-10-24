@@ -2,30 +2,24 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G91">
-   <short-name>Providing link text that describes the purpose of a link</short-name>
+   <short-name>リンクの目的を説明したリンクテキストを提供する</short-name>
    <applicability>
-      <p>All technologies that contain links.</p>
+      <p>リンク機能を含む全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-refs" relationship="sufficient"/>
       <success-criterion idref="navigation-mechanisms-link" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to describe the purpose of a link in the text of the link. The description lets a user distinguish this link from links in the Web page that lead to other destinations and helps the user determine whether to follow the link. The URI of the destination is generally not sufficiently descriptive.</p>
-   </description>
+    <p>この達成方法の目的は、リンクの目的をリンクテキストで説明することである。その説明により、利用者はこのリンクとウェブページ内にある他のリンクへのリンクとの違いを区別でき、利用者がリンクをたどるかどうかを決定するのを助ける。一般的に、遷移先のURIではそのリンクの目的を説明したことにならない。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>Describing the purpose of a link in HTML in the text content of the
-              <code><![CDATA[
-                a
-              ]]></code>
-              element</head>
-         <code role="html401"><![CDATA[
-              <a href="routes.html">
-                Current routes at Boulders Climbing Gym
-                </a>
-            ]]></code>
-      </eg-group>
+      <head>HTMLにおいて、a 要素のテキストコンテンツを用いてリンクの目的を説明する。</head>
+      <code role="html401"><![CDATA[<a href="routes.html">
+  ボルダーズ・クライミング・ジムの現在のルート
+</a>]]></code>
+    </eg-group>
    </examples>
    <resources/>
    <related-techniques>
@@ -33,17 +27,17 @@
    </related-techniques>
    <tests>
       <procedure>
-         <p>For each link in the content that uses this technique:</p>
-         <olist>
-            <item>
-               <p>Check that text of the link describes the purpose of the link</p>
-            </item>
-         </olist>
-      </procedure>
+      <p>この達成方法を用いるコンテンツ内の各リンクに対して: </p>
+      <olist>
+        <item>
+          <p>リンクテキストがそのリンクの目的を説明している。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>The above check is true.</p>
+               <p>1.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

@@ -2,43 +2,33 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G183">
-   <short-name>Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on focus for links or controls where color alone is used to identify them</short-name>
+   <short-name>色の違いだけで示されているリンク又はコントロールは、その文字色と周囲にあるテキストとのコントラスト比を 3:1 以上にして、フォーカスを受け取ったときには視覚的な手がかりを補足して強調する</short-name>
    <applicability>
-      <p>Colored text when color alone is used to convey information such as words that are links in a paragraph</p>
+      <p>段落中にあるリンクの文字列のように、情報を伝達するために色だけが使われているテキスト</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-without-color" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The intent of this technique is to provide a redundant visual cue for users who may not be able to discern a difference in text color. Color is commonly used to indicate words that are links within a paragraph or other block of text. For example, scattered words in text may be hypertext links that are identified only by a difference in color with surrounding text. This technique describes a way to provide additional cues on hover and focus so that users who may have difficulty perceiving color differences or have low vision can identify them.</p>
-      <p>With this technique, a
-            <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-              href="relativeluminancedef"
-              linktype="glossary">relative luminance</loc>
-            (lightness) difference of 3:1 or greater with the text around it can be used if additional visual confirmation is available when a user points or tabs to the link. Visual highlights may, for example, take the form of underline, a change in font style such as bold or italics, or an increase in font size.</p>
-      <p>While using this technique is sufficient to meet this success criteria, it is not the preferred technique to differentiate link text. This is because links that use the relative luminance of color alone may not be obvious to people with black/white color blindness. If there are not a large number of links in the block of text, underlines are recommended for links.</p>
-      <note>
-         <p>This technique is about the use of color in addition to luminosity. In this technique, the contrast ratio refers to the contrast between a link and the words around it. In Success Criterion 1.4.3 and 1.4.6, contrast ratio refers to the contrast between a word and its background. The difference is that  this technique is about the ability for users to tell the difference (a noticeable difference) between different pieces of text whereas the contrast ratio used in success criterion 1.4.3 and 1.4.6 is about the readability of the text with its background for different color and vision disabilities.</p>
-         <p>If an author wants to use the color portion of this technique (i.e., using different colors for the words where the colors have sufficient contrast with each other) and the author also wants to conform to SC 1.4.3 (contrast of both words with their backgrounds) the following colors can be used. (e.g., black text in a paragraph on a white background with the links shown as one of the colors in example 1 below.</p>
-         <p>If assistive technology or Web browsers at some point all provide an option to underline all links on Web pages for users, this could be used instead of an author-provided link highlighting mechanism.</p>
-      </note>
-   </description>
+    <p>この達成方法の目的は、テキストの色の違いを識別することができない利用者に対して、同じ情報を示す豊富な視覚的な手がかりを提供することである。色は、段落や他のテキストのブロックの中にある文字列がリンクであることを示すために、一般的に使用されている。例えば、テキスト中に散らばる文字列が、周囲のテキストとの色の違いだけでハイパーテキストのリンクであると認識される。この達成方法は、色の違いを知覚することが困難である、又はロービジョンである利用者がそれらを見分けることができるよう、カーソルを重ねたりフォーカスが当たったときに、手がかりを補足する方法を説明している。</p>
+    <p>利用者がカーソルを合わせるかタブキーでリンクに移動するとき、この達成方法とともに視覚的な補足の確認手段があれば、テキストとその周りの<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#relativeluminancedef" linktype="glossary">相対輝度</loc>(明るさ)の差を3:1かそれ以上にしてもよい。視覚的なハイライトとは、例えば、アンダーライン、太字又は斜体といったフォントスタイルの変化、又はフォントサイズが大きくなるといった形になる。</p>
+    <p>この達成方法を使うことは、この達成基準を満たすために十分であるが、リンクテキストを区別するには、好ましい達成方法ではない。これは、色の相対輝度だけを使用するリンクは、全色盲の人々には分からないかもしれないからである。もしテキストのブロックに大量のリンクがないならば、リンクにはアンダーラインが推薦される。</p>
+    <note><p class="prefix"> この達成方法は輝度に加えて色の使用に関するものである。この達成方法では、コントラスト比はリンクとその周囲の語句とのコントラストについて言及している。達成基準1.4.3と1.4.6では、コントラスト比は単語とその背景とのコントラストについて言及している。この違いは、達成基準1.4.3と1.4.6に使用されるコントラスト比は、異なる色覚及び視覚障害のための、テキストとその背景の可読性に関するものであるが、この達成方法は利用者がテキストの異なる部分の違い(明らかな違い)を識別する能力に関するものだからである。
+               </p>
+<p class="prefix"> コンテンツ制作者がこの達成方法の色の部分(すなわち、互いに十分なコントラストが確保されている異なる色を語句に使用する)を使用したいと望んでいて、また、コンテンツ制作者が達成基準1.4.3(両方の語句と背景のコントラスト)に適合したいなら、以下の色を使用することができる。(例えば、以下のリストにある色のひとつを使ったリンクを持つ、白地の段落中の黒いテキスト)</p>
+               <p class="prefix"> もしある時点でのすべての支援技術又はウェブブラウザが、利用者のためにウェブページのすべてのリンクにアンダーラインを引く選択肢を提供するなら、これは、コンテンツ制作者によって提供されたリンクをハイライトするメカニズムの代わりに使用することができる。</p></note>
+  </description>
    <examples>
       <eg-group>
-         <head>Colors that would provide 3:1 contrast with black words and 4.5:1 contrast with a white background</head>
-         <description>
-            <p>Refer to
-                <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                    href="link-contrast.html"
-                    linktype="examples">Links with a 3:1 contrast ratio with surrounding text</loc>
-              </p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <description>
-            <p>The hypertext links in a document are medium-light blue (#3366CC) and the regular text is black (#000000). Because the blue text is light enough, it has a contrast of 3.9:1 with the surrounding text and can be identified as being different than the surrounding text by people with all types of color blindness, including those individuals who cannot see color at all.</p>
-         </description>
-      </eg-group>
+      <head>黒い文字列に3:1のコントラスト、及び白地に4.5:1のコントラストを提供する色</head>
+      <description><p>この事例のサンプル：<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/G183/link-contrast.html" linktype="examples">周囲のテキストと3:1のコントラスト比を持つリンク</loc>
+                     </p>
+</description>
+    </eg-group>
+    <eg-group>
+      <description><p>ドキュメントのハイパーテキストのリンクは中位の明るい青(#3366CC)で、通常のテキストは黒(#000000)である。なぜなら青のテキストは十分に明るく、周囲のテキストと3.9:1のコントラストを持ち、まったく色を見ることができない人も含め、すべての種類の色覚障害を持つ人々が周囲のテキストと違うことを識別することができるからである。</p>
+</description>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -46,7 +36,7 @@
             <item>
                <p>
                   <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                       href="https://www.paciellogroup.com/resources/contrastanalyser/">Contrast Analyser – Application</loc>
+                       href="http://www.paciellogroup.com/resources/contrastanalyser/">Contrast Analyser – Application</loc>
                 </p>
             </item>
             <item>
@@ -66,35 +56,31 @@
    </resources>
    <related-techniques>
       <relatedtech idref="G14"/>
-      <relatedtech idref="G205"/>
+      <relatedtech idref="G122"/>
       <relatedtech idref="G145"/>
       <relatedtech idref="G182"/>
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Locate all instances where color alone is used to convey information about text.</p>
-            </item>
-            <item>
-               <p>Check that the
-                  <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                       href="relativeluminancedef"
-                       linktype="glossary">relative luminance</loc>
-                  of the color of the text differs from the relative luminance of the surrounding text by a contrast ratio of at least 3:1.</p>
-            </item>
-            <item>
-               <p>Check that pointing (mouseover) to the link causes a visual enhancement (such as an underline, font change, etc.)</p>
-            </item>
-            <item>
-               <p>Check that moving keyboard focus to the link causes a visual enhancement (such as an underline, font change, etc.)</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>テキストにおいて、情報を伝えるために色だけが使われているすべての箇所を見つける。</p>
+        </item>
+        <item>
+          <p>テキストの色の<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#relativeluminancedef" linktype="glossary">相対輝度</loc>が、周囲のテキストの相対輝度と少なくとも3:1のコントラスト比の違いがある。</p>
+        </item>
+        <item>
+          <p>リンクにカーソルを合わせる(マウスオーバーする)と視覚的に強調(アンダーラインやフォントの変更など)される。</p>
+        </item>
+        <item>
+          <p>キーボード・フォーカスをリンクに合わせると視覚的に強調(アンダーラインやフォントの変更など)される。 </p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Checks #2, #3, and #4 are all true.</p>
+               <p>2.、3.、及び4.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

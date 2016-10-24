@@ -2,185 +2,57 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="PDF15">
-   <short-name>Providing submit buttons with the submit-form action in PDF forms</short-name>
+   <short-name>PDF フォームで送信フォームアクションのある送信ボタンを提供する</short-name>
    <applicability>
-      <p>Tagged PDF documents with forms. </p>
+     <p>フォームが含まれているタグ付き PDF 文書</p>
    </applicability>
    <applies-to>
       <success-criterion idref="consistent-behavior-unpredictable-change"
                          relationship="sufficient"/>
    </applies-to>
    <ua-issues>
-      <ua-issue use-id="pdf.ua-issue.general"/>
-   </ua-issues>
-   <description>
-      <p>The objective of this technique is to provide a mechanism that allows
-    				users to explicitly request a change of context using the submit-form
-    				action in a PDF form. The intended use of a submit button is to generate
-    				an HTTP request that submits data entered in a form, so it is an appropriate
-    				control to use for causing a change of context. In PDF documents, submit buttons are normally implemented using a tool for authoring PDF. </p>
-      <p>Examples 1 and 2 demonstrate how to add a submit button using specific
-authoring tools. There are other PDF tools that perform similar
-functions. Check the functionality provided by <specref ref="pdf_notes_acc-sup_files_applications"/>.</p>
-   </description>
+     <ua-issue>
+      <p>利用者ーエージェント及び支援技術に関する情報は、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="pdf_notes.html">PDF テクノロジーノート</loc>を参照のこと。</p>
+    </ua-issue>
+  </ua-issues>
+  <description>
+    <p>この達成方法の目的は、PDF フォームの送信フォームアクションを使用して、利用者ーが明示的に文脈の変更を要求できるメカニズムを提供することがある。送信ボタンの使用目的は、フォームに入力されたデータを送信する HTTP 要求を生成することなので、送信ボタンは文脈を変更するための適切なコントロールである。PDF 文書の送信ボタンは通常、PDF のオーサリングツールを使用して実装される。</p>
+    <p>事例 1 および 2 は、特定のオーサリングツールを使用して送信ボタンを追加する方法を示している。同様の機能を実行する PDF ツールは他にも存在する。「<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="pdf_notes.html#pdf_notes_acc-sup_files_applications">アクセシビリティがサポートされている PDF オーサリングツール</loc>」により提供される機能を参照のこと。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>Adding a submit button using Adobe Acrobat 9 Pro</head>
-         <description>
-            <p>This example is shown with Adobe Acrobat Pro. There are other software tools that perform similar functions. See the list of other software tools in <specref ref="pdf_notes_acc-sup_files_applications"/>.</p>
-            <olist>
-               <item>
-                  <p> From the toolbar, select Forms &gt; Form Tools &gt; Button and
-    						create a button on the form. </p>
-               </item>
-               <item>
-                  <p> Access the context menu for the button and select Properties...
-    							to open the Button Properties dialog. </p>
-               </item>
-               <item>
-                  <p> In the General tab, provide a tooltip for the button. </p>
-               </item>
-               <item>
-                  <p> In the Options tab, choose an option in the Layout menu for the
-    								button label, icon image, or both. Then, type text in the Label box
-    								to identify the button as a submit button and/or click Choose Icon
-    								and locate the image file you want to use. </p>
-               </item>
-               <item>
-                  <p> In the Actions tab:</p>
-                  <ulist>
-                     <item>
-                        <p> For Select Trigger, choose Mouse Up. (The Mouse Up event is
-    										keyboard accessible and, in addition, ensures that the button
-    										will not change context unexpectedly, as it might with, e.g.,
-    										a Mouse Enter event.) </p>
-                     </item>
-                     <item>
-                        <p> For Select Action, choose Submit A Form. </p>
-                     </item>
-                     <item>
-                        <p> Click Add. </p>
-                     </item>
-                  </ulist>
-               </item>
-               <item>
-                  <p> In the Add dialog, enter a URL to collect data on a server or
-    									collect form data as e-mail attachments. </p>
-               </item>
-            </olist>
-            <p>The following image shows the Options tab on the Button Properties
-    						dialog. </p>
-            <p>
-               <image>
-                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
-                       source="/WAI/WCAG20/Techniques/working-examples/PDF15/submit-button2.jpg"
-                       height="481"
-                       width="562"/>
-                  <alt>The Options tab in the Button Properties dialog, showing the layout and label button properties.</alt>
-               </image> 
-            </p>
-            <p>The following image shows the Actions tab on the Button Properties
-    						dialog. </p>
-            <p>
-               <image>
-                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
-                       source="/WAI/WCAG20/Techniques/working-examples/PDF15/submit-button.jpg"
-                       height="570"
-                       width="560"/>
-                  <alt>The Action tab in the Button Properties dialog with the Select Action option specified.</alt>
-               </image> 
-            </p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Adding a submit button using Adobe LiveCycle Designer
-    				ES 8.2.1</head>
-         <description>
-            <p>This example is shown with Adobe LiveCycle Designer. There are other software tools that perform similar functions. See the list of other software tools in <specref ref="pdf_notes_acc-sup_files_applications"/>.</p>
-            <olist>
-               <item>
-                  <p> On the Insert &gt; Standard menu, select the HTTP Submit Button
-    						item. </p>
-               </item>
-               <item>
-                  <p> On the Object panel for the HTTP Submit Button, insert the URL
-    							for form-submission processing. </p>
-               </item>
-            </olist>
-            <p>The following image shows the Standard menu with the list of form
-    						controls. </p>
-            <p>
-               <image>
-                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
-                       source="/WAI/WCAG20/Techniques/working-examples/PDF15/http.gif"
-                       height="257"
-                       width="399"/>
-                  <alt>The Standard menu showing the list of form controls, including the selection of the HTTP Submit Button.</alt>
-               </image> 
-            </p>
-            <p>The following image shows the Object panel with the URL and other
-    						fields for button appearance. </p>
-            <p>
-               <image>
-                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
-                       source="/WAI/WCAG20/Techniques/working-examples/PDF15/submit-panel.gif"
-                       height="287"
-                       width="239"/>
-                  <alt>The Object panel showing the URL and other fields for specifying the submit button's appearance and action.</alt>
-               </image> 
-            </p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Adding a script action to a submit button in a PDF document
-    				using JavaScript</head>
-         <description>
-            <p>The following JavaScript code illustrates the use of a script to specify
-    						the submit-form action. To add this script to the form field: </p>
-            <olist>
-               <item>
-                  <p> Open the Button Properties dialog, as shown in Example 1, and
-    						select the Actions tab </p>
-               </item>
-               <item>
-                  <p> Select Run a JavaScript from the drop-down list, and select the
-    							Add button </p>
-               </item>
-               <item>
-                  <p> Enter JavaScript code in the JavaScript Editor dialog, for example: </p>
-               </item>
-            </olist>
-            <codeblock xml:space="preserve"><![CDATA[var aSubmitFields = new Array( "name", "id", "juser" );
+      <head>Adobe Acrobat 9 Pro を使用して送信ボタンを追加する</head>
+      <description><p>この事例は Adobe Acrobat Pro の場合を示している。同様の機能を実行するソフトウェアツールは他にも存在する。 他のソフトウェアツールのリストについては、「<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="pdf_notes.html#pdf_notes_acc-sup_files_applications">アクセシビリティがサポートされている PDF オーサリングツール</loc>」を参照のこと。</p>
+<olist><item><p>ツールバーからフォーム &gt; フォームツール &gt; ボタンを選択し、フォーム上にボタンを作成する</p></item><item><p>ボタンのコンテキストメニューから「プロパティ」を選択し、［ボタンのプロパティ］ダイアログボックスを開く</p></item><item><p>［一般］タブで、ボタンのツールヒントを入力する</p></item><item><p>［オプション］タブで、ボタンラベルかアイコンイメージまたはその両方に対して、レイアウトメニューのオプションを選択する。次に、ボタンを送信ボタンとして指定するために「ラベル」ボックスにテキストを入力したり、「アイコンを選択」をクリックして、使用するイメージファイルを配置したりする</p></item><item><p>［アクション］タブで次の操作を行う</p>
+<ulist><item><p>「トリガを選択」で「マウスアップ」を選択する（Mouse Upイベントは、キーボードでアクセス可能である。また、Mouse Upイベントでは、Mouse Enterイベントなどが発生しても、ボタンで予想外にコンテキストが変更されない）</p></item><item><p>「アクションを選択」で「フォームを送信」を選択する</p></item><item><p>［追加］を押下する</p></item></ulist></item><item><p>［追加］ダイアログボックスで、サーバー上のデータを収集したり、電子メールの添付ファイルとしてフォームデータを収集したりするための URL を入力する</p></item></olist>
+<p>次の画像は、ボタンのプロパティダイアログボックスの［オプション］タブを示している。</p>
+<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF15/submit-button2.jpg" alt="レイアウトおよびラベルボタンのプロパティが表示されている、［ボタンのプロパティ］ダイアログボックスの［オプション］タブ" height="481" width="562"/></p><p>次の画像は、ボタンのプロパティダイアログボックスの「アクション」タブを示している。</p>
+<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF15/submit-button.jpg" alt="スクリーンショット：「アクションを選択」オプションが指定されている、［ボタンのプロパティ］ダイアログボックスの［アクション］タブ" height="570" width="560"/></p></description>
+    </eg-group>
+    <eg-group>
+      <head>Adobe LiveCycle Designer ES 8.2.1 を使用して送信ボタンを追加する</head>
+      <description><p>この事例は Adobe LiveCycle Designer の場合を示している。同様の機能を実行するソフトウェアツールは他にも存在する。 他のソフトウェアツールのリストについては、「<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="pdf_notes.html#pdf_notes_acc-sup_files_applications">アクセシビリティがサポートされている PDF オーサリングツール</loc>」を参照のこと。</p>
+<olist><item><p>挿入 &gt; 標準メニューで、「HTTP 送信ボタン」項目を選択する</p></item><item><p>「HTTP 送信ボタン」の［オブジェクト］パネルに、フォーム送信処理の URL を挿入する</p></item></olist>
+<p>次の画像は、フォーム・コントロールの一覧が表示されている標準メニューを示している。</p>
+<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF15/http.gif" alt="スクリーンショット：「HTTP 送信ボタン」が選択されている、フォーム・コントロールの一覧が表示されている標準メニュー" height="257" width="399"/></p><p>次の画像は、URL とボタンの外観に関するその他のフィールドが表示されたオブジェクトパネルを示している。</p>
+<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF15/submit-panel.gif" alt="スクリーンショット：URL と送信ボタンの外観およびアクションを指定するためのその他のフィールドが表示されている［オブジェクト］パネル" height="287" width="239"/></p></description>
+    </eg-group>
+    <eg-group>
+      <head>JavaScript を使用して PDF 文書内の送信ボタンにスクリプトアクションを追加する</head>
+      <description><p>次の JavaScript コードは、送信フォームアクションを指定するために使用されるスクリプトを示している。このスクリプトをフォームフィールドに追加するには、次の操作を行う。</p>
+<olist><item><p>事例 1 に示されているように、［ボタンのプロパティ］ダイアログボックスを開き、［アクション］タブを選択する</p></item><item><p>ドロップダウンリストから「JavaScript を実行」を選択し、「追加」ボタンを選択する</p></item><item><p>［JavaScript エディター］ダイアログボックスで、次のような JavaScript コードを入力する</p></item></olist>
+</description>
+      <codeblock xml:space="preserve"><![CDATA[
+var aSubmitFields = new Array( "name", "id", "juser" );
 this.submitForm({
   cURL: "http://www.example.com/cgi-bin/myscript.cgi#FDF",
   aFields: aSubmitFields,
-  cSubmitAs: "FDF" // the default, not needed here
-});
-]]></codeblock>
-            <p>The following images illustrate this process: </p>
-            <p>
-               <image>
-                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
-                       source="/WAI/WCAG20/Techniques/working-examples/PDF15/submit-button1.jpg"
-                       height="552"
-                       width="587"/>
-                  <alt>The Button Properties dialog for a submit button.</alt>
-               </image> 
-            </p>
-            <p>
-               <image>
-                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
-                       source="/WAI/WCAG20/Techniques/working-examples/PDF15/submit-button3.jpg"
-                       height="443"
-                       width="518"/>
-                  <alt>The JavaScript added to the Action tab of the Button Properties dialog.</alt>
-               </image> 
-            </p>
-            <p>This example is shown in operation in the <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                    href="submit-button-js.pdf"
-                    linktype="examples">working example of adding a script action to a submit button</loc>.</p>
-         </description>
-      </eg-group>
+  cSubmitAs: "FDF" // デフォルト、ここでは不要
+});]]></codeblock>
+      <description><p>次の画像は、このプロセスを示している。</p>
+<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF15/submit-button1.jpg" alt="スクリーンショット：送信ボタンの［ボタンのプロパティ］ダイアログボックス" height="552" width="587"/></p><p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF15/submit-button3.jpg" alt="スクリーンショット：［ボタンのプロパティ］ダイアログボックスの［アクション］タブに追加された JavaScript" height="443" width="518"/></p><p>この事例のサンプルとして、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF15/submit-button-js.pdf" linktype="examples">スクリプトアクションを送信ボタンに追加したサンプル</loc>がある。</p>
+</description>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -221,28 +93,15 @@ this.submitForm({
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p> For each page that submits a form, visually verify that the form
-    					contains a submit button and check one of the following:</p>
-               <ulist>
-                  <item>
-                     <p> Tab to the button and check that it submits the form in response
-    						to user action to select the button. </p>
-                  </item>
-                  <item>
-                     <p> Open the PDF document with a tool that is capable of showing
-    								the submit-form action and check that the button action is to
-    								submit the form. </p>
-                  </item>
-               </ulist>
-            </item>
-         </olist>
-      </procedure>
-      <expected-results>
-         <ulist>
-            <item>
-               <p>#1 is true for each page that contains a form. </p>
+      <olist>
+        <item><p>フォームを送信するページごとに、送信ボタンが含まれているフォームを視覚的に確認し、以下のいずれかを確認する。</p>
+<ulist><item><p>ボタンにタブ移動し、ボタンを選択する利用者ーのアクションに反応してフォームが送信される</p></item><item><p>送信フォームアクションを示すことができるツールを使用して PDF 文書を開き、ボタンアクションがフォームの送信であることを確認する</p></item></ulist></item>
+      </olist>
+    </procedure>
+    <expected-results>
+      <ulist>
+        <item>
+          <p>フォームが含まれている各ページにおいて、1. を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

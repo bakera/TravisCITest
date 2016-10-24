@@ -2,118 +2,72 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SVR1">
-   <short-name>Implementing automatic redirects on the server side instead of on the
-                    client side</short-name>
+   <short-name>クライアントサイドではなく、サーバサイドで自動リダイレクトを実装する</short-name>
    <applicability>
-      <p> Server-side technologies, including server-side scripting languages and
-                        server configuration files with URLs or URL patterns for redirects. </p>
+      <p>サーバーサイド・スクリプト言語、及びリダイレクトためのURL又はURLパターンのあるサーバ環境設定ファイルを含む、サーバーサイドのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="consistent-behavior-no-extreme-changes-context"
                          relationship="sufficient"/>
    </applies-to>
    <description>
-      <p> The objective of this technique is to avoid confusion that may be caused
-                        when two new pages are loaded in quick succession because one page (the one
-                        requested by the user) redirects to another. Some user agents support the
-                        use of the HTML <code><![CDATA[meta]]></code> element to redirect the user to another page
-                        after a specified number of seconds. This makes a page inaccessible to some
-                        users, especially users with screen readers. Server-side technologies
-                        provide methods to implement redirects in a way that does not confuse users.
-                        A server-side script or configuration file can cause the server to send an
-                        appropriate HTTP response with a status code in the 3xx range and a Location
-                        header with another URL. When the browser receives this response, the location
-                        bar changes and the browser makes a request with the new URL. </p>
-   </description>
+    <p>この達成方法の目的は、あるページ(利用者によって要求されたページ)が別のページにリダイレクトされたために、2つの新しいページが間断なく読みこまれることによって引き起こされる混乱を回避することである。いくつかの利用者ーエージェントは、利用者を指定された秒数の後に別のページにリダイレクトするHTMLの<el>meta</el>要素の使用をサポートしている。これは、一部の利用者、特にスクリーンリーダーを使用している利用者にとって、ページをアクセシブルではないものにしている。サーバーサイドのウェブコンテンツ技術は、利用者を混乱させないリダイレクトを実装する方法を提供している。サーバーサイド・スクリプト又はサーバ環境設定ファイルで、3xx番台のステータスコード、及び転送先のURLのLocationヘッダーを持つ適切な HTTPレスポンスをサーバが送るようにできる。ブラウザがこのレスポンスを受けると、ロケーションバーが変わり、ブラウザは新しいURLのリクエストをする。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>JSP/Servlets</head>
-         <description>
-            <p> In Java Servlets or JavaServer Pages (JSP), developers can use
-                                    <code><![CDATA[HttpServletResponse.sendRedirect(String url)]]></code>. </p>
-         </description>
-         <code><![CDATA[
-…
+      <head>JSP/サーブレット</head>
+      <description><p>Java サーブレット又はJavaServer Pages(JSP)では、開発者は <code><![CDATA[HttpServletResponse.sendRedirect(String url)]]></code> を使用できる。</p>
+</description>
+      <code><![CDATA[…
 public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 …
   response.sendRedirect("/newUserLogin.do");
 }]]></code>
-         <description>
-            <p> This sends a response with a 302 status code ("Found") and a
-                                Location header with the new URL to the user agent. It is also
-                                possible to set another status code with
-                                    <code><![CDATA[response.sendError(int code, String message)]]></code> with
-                                one of the constants defined in the interface
-                                javax.servlet.http.HttpServletResponse as status code. </p>
-         </description>
-         <code><![CDATA[
-…
+      <description><p>このコードは、302ステータスコード(「Found」)及び新しいURLのLocationヘッダーを含むレスポンスを利用者ーエージェントに送る。また、<code><![CDATA[response.sendError(int code, String message)]]></code> で、ステータスコードとしてインタフェース javax.servlet.http.HttpServletResponse で定義されている定数の一つを用いて、別のステータスコードに設定することも可能である。 </p>
+</description>
+      <code><![CDATA[…
 public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 …
   response.sendError(response.SC_MOVED_PERMANENTLY, "/newUserLogin.do");
 }]]></code>
-         <description>
-            <p> If an application uses <code><![CDATA[HttpServletResponse.encodeURL(String
-                                    url)]]></code> for URL rewriting because the application depends on
-                                sessions, the method
-                                    <code><![CDATA[HttpServletResponse.encodeRedirectURL(String url)]]></code>
-                                should be used instead of
-                                    <code><![CDATA[HttpServletResponse.sendRedirect(String url)]]></code>. It is
-                                also possible to rewrite a URL with
-                                    <code><![CDATA[HttpServletResponse.encodeURL(String url)]]></code> and then
-                                pass this URL to <code><![CDATA[HttpServletResponse.sendRedirect(String
-                                url)]]></code>. </p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>ASP</head>
-         <description>
-            <p> In Active Server Page (ASP) with VBScript, developers can use
-                                    <code><![CDATA[Response.Redirect]]></code>. </p>
-         </description>
-         <code><![CDATA[
-  Response.Redirect "newUserLogin.asp"]]></code>
-         <description>
-            <p> or </p>
-         </description>
-         <code><![CDATA[
-Response.Redirect("newUserLogin.asp")]]></code>
-         <description>
-            <p> The code below is a more complete example with a specific HTTP
-                                status code. </p>
-         </description>
-         <code><![CDATA[
-Response.Clear
+      <description><p>アプリケーションがセッションに依存するために、アプリケーションがURLのリライトに <code><![CDATA[HttpServletResponse.encodeURL(String url)]]></code> を使用するなら、メソッド <code><![CDATA[HttpServletResponse.encodeRedirectURL(String url)]]></code> が <code><![CDATA[HttpServletResponse.sendRedirect(String url)]]></code> の代わりに使用されるべきである。また、<code><![CDATA[HttpServletResponse.encodeURL(String url)]]></code> でURLをリライトして、それから <code><![CDATA[HttpServletResponse.sendRedirect(String url)]]></code> にこのURLを渡すことも可能である。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>ASP</head>
+      <description><p>VBScriptで書かれたActive Server Page(ASP)では、開発者は <code>Response.Redirect</code> を使用できる。</p>
+</description>
+      <code><![CDATA[
+Response.Redirect "newUserLogin.asp"]]></code>
+      <description><p>又は</p>
+</description>
+      <code><![CDATA[Response.Redirect("newUserLogin.asp")]]></code>
+      <description><p>以下のコードは、特定のHTTPステータスコードを含む、より完全な例である。</p>
+</description>
+      <code><![CDATA[Response.Clear
 Response.Status = 301
 Response.AddHeader "Location", "newUserLogin.asp"
 Response.Flush
 Response.End]]></code>
-      </eg-group>
-      <eg-group>
-         <head>PHP</head>
-         <description>
-            <p> In PHP, developers can send a raw HTTP header with the
-                                <code><![CDATA[header]]></code> method. The code below sends a 301 status code
-                                and a new location. If the status is not explicitly set, the
-                                redirect response sends an HTTP status code 302. </p>
-         </description>
-         <code><![CDATA[
- <?php
-header("HTTP/1.1 301 Moved Permanently);
+    </eg-group>
+    <eg-group>
+      <head>PHP</head>
+      <description><p>PHPでは、開発者は <code><![CDATA[header]]></code> メソッドで生のHTTPヘッダーを送ることができる。以下のコードは、301ステータスコードと新しい場所を送る。ステータスが明示的に設定されないなら、リダイレクトのレスポンスはHTTPステータスコード302を送る。</p>
+</description>
+      <code><![CDATA[
+<?php
+header("HTTP/1.1 301 Moved Permanently");
 header("Location: http://www.example.com/newUserLogin.php");
 ?>]]></code>
-      </eg-group>
-      <eg-group>
-         <head>Apache</head>
-         <description>
-            <p> Developers can configure the Apache Web server to handle redirects,
-                                as in the following example. </p>
-         </description>
-         <code><![CDATA[
-redirect 301 /oldUserLogin.jsp http://www.example.com/newUserLogin.do]]></code>
-      </eg-group>
+    </eg-group>
+    <eg-group>
+      <head>Apache</head>
+      <description><p>以下の例のようにして、開発者は Apache ウェブサーバがリダイレクトを処理するように構成できる。</p>
+</description>
+      <code><![CDATA[redirect 301 /oldUserLogin.jsp http://www.example.com/newUserLogin.do]]></code>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -171,29 +125,22 @@ redirect 301 /oldUserLogin.jsp http://www.example.com/newUserLogin.do]]></code>
    <related-techniques/>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p> Find each link or programmatic reference to another page or
-                                    Web page. </p>
-            </item>
-            <item>
-               <p> For each link or programmatic reference to a URI in the set of
-                                    Web pages being evaluated, check if the referenced
-                                    Web page contains code (e.g., meta element or script) that
-                                    causes a client-side redirect. </p>
-            </item>
-            <item>
-               <p> For each link or programmatic reference to a URI in the set of
-                                    Web pages being evaluated, check if the referenced URI
-                                    does not cause a redirect OR causes a server-side redirect
-                                    without a time-out. </p>
-            </item>
-         </olist>
-      </procedure>
-      <expected-results>
-         <ulist>
-            <item>
-               <p> Step 2 is false AND step 3 is true. </p>
+      <olist>
+        <item>
+          <p>別のウェブページへのリンク又はプログラムによる参照を見つける。</p>
+        </item>
+        <item>
+          <p>ウェブページ一式におけるURIのリンク又はプログラムによる参照において、参照されたウェブページがクライアントサイド・リダイレクトを引き起こすコード(例えば、meta要素又はスクリプト)を含んでいない。</p>
+        </item>
+        <item>
+          <p>ウェブページ一式におけるURIのリンクやプログラムによる参照において、参照されたURIがリダイレクトしない、又は、一時停止なしのサーバーサイド・リダイレクトをしない。</p>
+        </item>
+      </olist>
+    </procedure>
+    <expected-results>
+      <ulist>
+        <item>
+          <p>2. 及び 3. を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

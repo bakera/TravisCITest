@@ -2,52 +2,42 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G162">
-   <short-name>Positioning labels to maximize predictability of relationships</short-name>
+   <short-name>ラベルを配置して、関係性を最大限に予測できるようにする</short-name>
    <applicability>
-      <p>All technologies that support forms</p>
+      <p>フォームをサポートするウェブコンテンツ技術全て</p>
    </applicability>
    <applies-to>
-      <success-criterion idref="content-structure-separation-programmatic"
-                         relationship="sufficient"/>
       <success-criterion idref="minimize-error-cues" relationship="cosufficient"/>
    </applies-to>
    <description>
-      <p>When labels for form fields are positioned where the user expects them visually, it is easier to understand complex forms and to locate specific fields. Labels for most fields are positioned immediately before the field, that is, for left-to-right languages, either to the left of the field or above it, and for right-to-left languages, to the right of the field or above it. Labels for radio buttons and checkboxes are positioned after the field.</p>
-      <p>These positions are defined because that is the usual (and therefore most predictable) position for the label for fields, radiobuttons and checkboxes.</p>
-      <p>Labels are positioned before input fields since the fields sometimes vary in length. Positioning them before allows the labels to line up. It also makes labels easier to locate with a screen magnifier since they are immediately before the field and also can be found in a vertical column (when the start of the fields line up vertically). Finally, if the field has data in it, it is easier to understand or check the data if one reads the label first and then the content rather than the other way around.</p>
-      <p>Checkboxes and radio buttons have a uniform width while their labels often do not. Having the radio button or checkbox first therefore allows both the buttons and the labels to line up vertically.</p>
-   </description>
+    <p>フォームのフィールドに対するラベルを、視覚的に利用者が予想しやすい位置に置くと、複雑なフォームを理解したり、特定のフィールドを見つけるのが容易になる。ほとんどのフィールドに対するラベルは、そのフィールドの直前、すなわち、書字方向が左から右の言語の場合、そのフィールドの左か上に、書字方向が右から左の言語の場合、そのフィールドの右か上に置かれる。ラジオボタン及びチェックボックスのためのラベルはそのフィールドの後に置かれる。</p>
+    <p>これらの配置は自明である。フィールド、ラジオボタン、及びチェックボックスのラベルを置く一般的な(そのために最も予測できる)位置だからである。</p>
+    <p>入力フィールドはさまざまな長さになることがあるため、ラベルはフィールドの前に置かれる。フィールドの前にそれらを置くことでラベルを整列させることができる。また、ラベルがフィールドの直前にあるため、画面拡大ツール使用時でもラベルの場所を見つけることが容易になり、また、(フィールドの始まりが縦に整列しているとき)縦の列の中でも見つけることができる。最後に、フィールドにデータが入力されているならば、ラベルを読んでから内容を読むほうが、逆の場合よりもデータを理解したりチェックすることが容易になる。</p>
+    <p>チェックボックス及びラジオボタンは一定の幅を持っているが、それらのラベルは往々にしてそうではない。チェックボックス又はラジオボタンを最初に置くことで、ボタンとラベルの両方を縦に整列させることができる。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>Labels above text fields</head>
-         <description>
-            <p>
-                <graphic xmlns:xlink="http://www.w3.org/1999/xlink"
-                        source="/WAI/WCAG20/Techniques/working-examples/G162/lbl-position_01.gif"
-                        alt="Two form fields with labels positioned immediately above them."/>
-              </p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Labels to the left of text fields</head>
-         <description>
-            <p>
-                <graphic xmlns:xlink="http://www.w3.org/1999/xlink"
-                        source="/WAI/WCAG20/Techniques/working-examples/G162/lbl-position_02.gif"
-                        alt="Two form fields with labels positioned immediately to the left."/>
-              </p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>Labels to the right of radio buttons</head>
-         <description>
-            <p>
-                <graphic xmlns:xlink="http://www.w3.org/1999/xlink"
-                        source="/WAI/WCAG20/Techniques/working-examples/G162/lbl-position_03.gif"
-                        alt="A group of form controls contains two radio buttons with labels positioned to the right of the radio buttons."/>
-              </p>
-         </description>
-      </eg-group>
+      <head>テキストフィールドの上側のラベル</head>
+      <description>
+        <p>&#13;
+&#13;
+                        <img src="http://www.w3.org/TR/2008/NOTE-WCAG20-TECHS-20081211/working-examples/G162/lbl-position_01.gif" alt="すぐ上にラベルが配置された二つのテキストフィールド"/></p>
+      </description>
+    </eg-group>
+    <eg-group>
+      <head>テキストフィールドの左側のラベル</head>
+      <description>
+        <p>&#13;
+                        <img src="http://www.w3.org/TR/2008/NOTE-WCAG20-TECHS-20081211/working-examples/G162/lbl-position_02.gif" alt="すぐ左側にラベルが配置されたふたつのフィールド."/></p>
+      </description>
+    </eg-group>
+    <eg-group>
+      <head>ラジオボタンの右側のラベル</head>
+      <description>
+        <p>&#13;
+                        <img src="http://www.w3.org/TR/2008/NOTE-WCAG20-TECHS-20081211/working-examples/G162/lbl-position_03.gif" alt="ラジオボタンの右側にラベルが配置されたふたつのラジオボタンを含むフォームのコントロールのグループ"/></p>
+      </description>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -94,23 +84,23 @@
    </related-techniques>
    <tests>
       <procedure>
-         <p>For each form field on the Web page:</p>
-         <olist>
-            <item>
-               <p>Check that the form field has a visible label.</p>
-            </item>
-            <item>
-               <p>If the form field is a checkbox or radio button, check that the label is immediately after the field.</p>
-            </item>
-            <item>
-               <p>If the form field is not a checkbox or radio button, check that the label is immediately before the field.</p>
-            </item>
-         </olist>
-      </procedure>
+      <p>ウェブページの各フォームのフィールドに対して:</p>
+      <olist>
+        <item>
+          <p>フォームのフィールドに目に見えるラベルがある。</p>
+        </item>
+        <item>
+          <p>フォームのフィールドがチェックボックス又はラジオボタンであれば、ラベルがそのフィールドの直後にある。</p>
+        </item>
+        <item>
+          <p>フォームのフィールドがチェックボックス又はラジオボタンでなければ、ラベルがそのフィールドの直前にある。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>All checks are true.</p>
+               <p>全てを満たしている。</p>
             </item>
          </ulist>
       </expected-results>

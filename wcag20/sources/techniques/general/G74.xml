@@ -2,39 +2,26 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G74">
-   <short-name>Providing a long description in text near the non-text content, with a
-          reference to the location of the long description in the short description</short-name>
+   <short-name>短い説明の中で長い説明のある場所を示して、非テキストコンテンツの近くにあるテキストで長い説明を提供する</short-name>
    <applicability>
-      <p>Applies to all technologies</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="cosufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide a long description without
-            requiring the user to jump off to another location for the description. It
-            also allows all users to see the description which may be useful to anyone
-            who might miss some features in the non-text content.</p>
-      <p>With this technique, the long description is provided as part of the
-            standard presentation (i.e., everyone receives it). The description is
-            located near the non-text content but does not have to be the very next
-            item. For example, there may be a caption under a chart with the long
-            description provided in the following paragraph.</p>
-      <p>The location of this long description is then provided within the short text
-            alternative so the user knows where to look for it if they cannot view the
-            non-text content.</p>
-   </description>
+    <p>この達成方法の目的は、利用者を別の場所にジャンプさせることなく長い説明文を提供することである。非テキストコンテンツの内容の一部が失われる恐れがある利用者にとって有益な説明文が、すべての利用者にも見られるようになる。</p>
+    <p>この達成方法によって、長い説明文が標準のプレゼンテーションの一部として提供される（つまり、すべての利用者が受け取ることができる）。説明文は非テキストコンテンツの近くに配置されるが、隣接させる必要はない。例えばグラフの下にキャプションがあり、長い説明文が次の段落で提供されているといった場合である。</p>
+    <p>非テキストコンテンツを閲覧できないときに、どこを探せば良いかわかるように、簡潔な代替テキストの中に長い説明文の場所を示す。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>Bar chart</head>
-         <description>
-            <p>There is a bar chart on a Web page showing the sales for the top
-                three salespeople.</p>
-            <p>The short text alternative says: "October sales chart for top three
-                salespeople. Details in text following the chart:"</p>
-            <p>The following is in the paragraph immediately below the chart. "Sales for October show Mary leading with 400 units. Mike follows closely with 389. Chris rounds out our top 3 with sales of 350."</p>
-         </description>
-      </eg-group>
+      <head>棒グラフ</head>
+      <description><p>ウェブページ に上位3名の販売員の売上げを示した棒グラフがある。</p>
+<p>簡潔な代替テキストでは「上位3名の販売員の10月の売上表。グラフに続いてテキストの詳細」と書かれている。</p>
+<p>次の説明文が棒グラフの直下の段落にある。「10月の売上げはメアリーが400個でトップ、マイクが389個の僅差で続き、クリスが350個でトップ3の最後となっている。」</p>
+</description>
+    </eg-group>
    </examples>
    <resources>
       <see-also/>
@@ -45,23 +32,20 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>check that the short text alternative includes the location of
-                  the long description</p>
-            </item>
-            <item>
-               <p>Check that the long description is near the non-text content
-                  both visually and in the linear reading order</p>
-            </item>
-            <item>
-               <p>check that the long description conveys the same information as
-                  the non-text content</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>簡潔な代替テキストに長い説明文の場所が含まれている。</p>
+        </item>
+        <item>
+          <p>長い説明文が視覚的な配置順及び音声読み上げ順序でも非テキストコンテンツの近くにある。</p>
+        </item>
+        <item>
+          <p>長い説明文が非テキストコンテンツと同じ情報を伝達している。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
-         <p>All 3 of the above are true</p>
+         <p>上記の3つ全てを満たしている。</p>
       </expected-results>
    </tests>
 </technique>

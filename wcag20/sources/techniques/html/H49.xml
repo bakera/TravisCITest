@@ -2,9 +2,9 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="H49">
-   <short-name>Using semantic markup to mark emphasized or special text</short-name>
+   <short-name>セマンティックなマークアップを用いて、強調又は特別なテキストをマークアップする</short-name>
    <applicability>
-      <p>HTML and XHTML</p>
+      <p>HTML 及び XHTML</p>
    </applicability>
    <applies-to>
       <success-criterion idref="content-structure-separation-programmatic"
@@ -12,91 +12,59 @@
    </applies-to>
    <ua-issues>
       <ua-issue name="" version="">
-         <ulist>
-            <item>
-               <p>Some semantic elements are not supported well by assistive technologies. Elements and attributes that are known to have limited support include <el>code</el>, <el>del</el>, <el>dfn</el>, <el>ins</el>, <el>kbd</el>, <el>s</el>, <el>sub</el>, <el>sup</el>, <el>tt</el>, and <el>q</el>. For these elements, authors are encouraged to consider whether they are using them in a way that would require users to be able to access the semantic meaning of the markup in order to understand the content and, where understanding the semantics is required, to provide this information in text.
-                  </p>
-            </item>
-            <item>
-               <p>Most screen readers do not provide automatic notification about <el>em</el>, <el>strong</el>, <el>b</el>, or <el>i</el>.
-                  </p>
-            </item>
-            <item>
-               <p>JAWS contains support for <el>blockquote</el> and <el>cite</el>. WindowEyes contains support for <el>blockquote</el>, <el>q</el> and <el>cite</el>. </p>
-            </item>
-            <item>
-               <p>Firefox 1.0 (Windows) and higher, Opera 7.54 (Windows) and higher, Mozilla 1.7.3 (Windows) and higher automatically generate quotes around <el>q</el> elements, but Internet Explorer 6 for Windows does not.
-                  </p>
-            </item>
-         </ulist>
-      </ua-issue>
+      <ulist>
+        <item>
+          <p>セマンティックな要素の中には、支援技術によって十分にサポートされていないものもある。サポートが限られる要素として、<el>code</el>、<el>del</el>、<el>dfn</el>、<el>ins</el>、<el>kbd</el>、<el>s</el>、<el>sub</el>、<el>sup</el>、<el>tt</el>、<el>q</el>がよく知られている。これらの要素について、コンテンツ制作者には次を考慮することが推奨される。すなわち、利用者が内容を理解するために、またセマンティクスの理解が求められる部分ではその情報をテキストで提供するために、マークアップのセマンティックな意味に利用者がアクセスできる方法で、これらの要素を利用することである。</p>
+        </item>
+        <item>
+          <p>スクリーンリーダーの大部分が、<el>em</el>、<el>strong</el>、<el>b</el>、<el>i</el>について、自動的に通知をしない。</p>
+        </item>
+        <item>
+          <p>JAWSは、<el>blockquote</el>及び<el>cite</el>をサポートしている。Window-Eyesは、<el>blockquote</el>、<el>q</el>及び<el>cite</el>をサポートしている。</p>
+        </item>
+        <item>
+          <p>Firefox 1.0以降、Opera 7.54以降、Mozilla 1.7.3以降（以上、Windows版）は、<el>q</el>要素の前後に自動的に引用符を生成するが、Windows用Internet Explorer 6は生成しない。</p>
+        </item>
+      </ulist>
+    </ua-issue>
    </ua-issues>
    <description>
-      <p>The objective of this technique is to demonstrate how semantic markup can be used to
-            mark emphasized or special text so that it can be programmatically determined. Using
-            semantic markup to mark emphasized or special text also provides structure to the
-            document. User agents can then make the structure perceivable to the user, for example
-            using a different visual presentation for different types of structures or by using a
-            different voice or pitch in an auditory presentation. </p>
-      <p>Most user agents will visually distinguish text that has been identified using semantic
-            markup. Some assistive technologies provide a mechanism for determining the
-            characteristics of content that has been created using proper semantic markup.</p>
-   </description>
+    <p>この達成方法の目的は、強調または特別なテキストのマークアップをするとき、プログラムで解釈可能なようにする方法を示すことである。また、強調または特別なテキストのマークアップにセマンティックなマークアップを用いることで、その文書に構造を与えることができる。例えば、利用者ーエージェントは、構造が異なるものは異なる視覚表現にしたり、聴覚表現で異なる声やピッチにしたりすることで、利用者の構造の理解を促すことができる。</p>
+    <p>大部分の利用者ーエージェントは、セマンティックなマークアップによって特定されたテキストを、ほかとは別の見た目にする。支援技術の中には、セマンティックなマークアップを適切に用いることで、コンテンツの特性を決定するためのメカニズムを提供するものもある。</p>
+  </description>
    <examples>
-      <p>See <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-              href="semantictext.html"
-              linktype="examples">rendered examples of semantic
-              text</loc>.</p>
       <eg-group>
-         <description>
-            <p>This example shows how to use the <el>em</el> and <el>strong</el> elements
-                to emphasize text. The <el>em</el> and <el>strong</el> elements were
-                designed to indicate structural emphasis that may be rendered in a variety of ways
-                (font style changes, speech inflection changes, etc.).</p>
-         </description>
-         <code role="html401"><![CDATA[ ...What she <em>really</em> meant to say was, &quot;This is not ok, 
- it is <strong>excellent</strong>&quot;!... ]]></code>
-      </eg-group>
-      <eg-group>
-         <description>
-            <p>This example shows using the <el>blockquote</el> element to mark up long
-                quotations which may require paragraph breaks. It also demonstrates the use of the
-                  <el>cite</el> element to specify a reference.</p>
-         </description>
-         <code role="html401"><![CDATA[<p>The following is an excerpt from the <cite>The Story of my Life</cite> by Helen Keller</p>
+      <description><p>この事例では、テキストの強調に<el>em</el>要素と<el>strong</el>要素を利用する方法を示している。<el>em</el>要素と<el>strong</el>要素は、構造的な強調を示すのに用意されているものであり、さまざまな形式で描画されうる（フォントスタイルの変更、読み上げ時の抑揚の変更など）。</p>
+</description>
+      <code role="html401"><![CDATA[……彼女が<em>本当に</em>言いたかったのは、&quot;オーケーどころか、 
+ <strong>すばらしい</strong>&quot;ということでした！…… ]]></code>
+    </eg-group>
+    <eg-group>
+      <description><p>この事例では、長い引用文をマークアップするのに<el>blockquote</el>要素を利用している。<el>blockquote</el>要素ではパラグラフ分けが必要となる場合もある。また、参考資料を示すのに<el>cite</el>要素も利用している。</p>
+</description>
+      <code role="html401"><![CDATA[<p>次の文章は、ヘレン・ケラーの<cite>The Story of my Life</cite>からの引用である。</p>
  <blockquote>
    <p>Even in the days before my teacher came, I used to feel along the square stiff boxwood
    hedges, and, guided by the sense of smell, would find the first violets and lilies.  
    There, too, after a fit of temper, I went to find comfort and to hide my hot face 
    in the cool leaves and grass.</p>
- </blockquote>]]></code>
-      </eg-group>
-      <eg-group>
-         <description>
-            <p>Here is the use of the <el>q</el> element to mark up a shorter quotation.
-                Quotes are provided around the <el>q</el> element, because many user agents do
-                not support this element yet and therefore do not display it properly (see UA
-                notes). CSS rules to suppress automatic generation of quotes are provided for those
-                user agents that do support the <el>q</el> element, to prevent them from
-                generating quotes automatically in addition to the quotes provided by the author,
-                resulting in double-quoted content. In the future, when the <el>q</el> element
-                is more broadly supported, the need to provide quotes and suppress browser-generated
-                quotes will go away. </p>
-         </description>
-         <code role="css"><![CDATA[q:before { content: ""; } 
-q:after { content: ""; }  ]]></code>
-         <code role="html401"><![CDATA[ <p>Helen Keller said, "<q>Self-pity is our worst enemy and if we yield to it, 
-we can never do anything good in the world.</q>"</p>]]></code>
-         <description/>
-      </eg-group>
-      <eg-group>
-         <description>
-            <p>Superscripts and subscripts are created using the <el>sup</el> and
-                <el>sub</el> elements.</p>
-         </description>
-         <code role="html401"><![CDATA[ <p>Beth received 1<sup>st</sup> place in the 9<sup>th</sup> grade science competition.</p>
-<p>The chemical notation for water is H<sub>2</sub>O.</p>]]></code>
-      </eg-group>
+ </blockquote> ]]></code>
+    </eg-group>
+    <eg-group>
+      <description><p>この事例では、短い引用文のマークアップに<el>q</el>要素を利用している。<el>q</el>要素を引用符で囲んであるのは、利用者ーエージェントの多くがいまだにこの要素をサポートせず、適切に表示しないからである（前述「利用者ーエージェント及び支援技術によるサポート」を参照）。CSSで引用符を自動生成しないように設定し、<el>q</el>要素をサポートしている利用者ーエージェントに適用することで、自動生成された引用符とコンテンツ制作者が付けた引用符が二重に表示されてしまう問題を避けている。将来、<el>q</el>要素が広くサポートされるようになれば、引用符を付けたり、ブラウザの引用符生成を避けたりする必要はなくなるだろう。</p>
+</description>
+      <code role="css"><![CDATA[q:before { content: ""; } 
+q:after { content: ""; } ]]></code>
+      <code role="html401"><![CDATA[<p>ヘレン・ケラーは、"<q>Self-pity is our worst enemy and if we yield to it, 
+we can never do anything good in the world.</q>"と述べている。</p> ]]></code>
+      <description/>
+    </eg-group>
+    <eg-group>
+      <description><p>上付き文字と下付き文字を、<el>sup</el>要素と<el>sub</el>要素を使って生成している。</p>
+</description>
+      <code role="html401"><![CDATA[<p>Beth received 1<sup>st</sup> place in the 9<sup>th</sup> grade science competition.</p>
+<p>水の化学式は、H<sub>2</sub>O です。</p> ]]></code>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -131,25 +99,22 @@ we can never do anything good in the world.</q>"</p>]]></code>
       <relatedtech idref="G115"/>
    </related-techniques>
    <tests>
-      <procedure>
-         <olist>
-            <item>
-               <p>Examine the content for information that is conveyed through variations in
-                  presentation of text.</p>
-            </item>
-            <item>
-               <p>Check that appropriate semantic markup (such as <el>em</el>, <el>strong</el>, <el>cite</el>,
-                    <el>blockquote</el>, <el>sub</el>, and <el>sup</el>) have been used to mark the
-                  text that conveys information through variations in text.</p>
-            </item>
-         </olist>
-      </procedure>
+    <procedure>
+      <olist>
+        <item>
+          <p>コンテンツにテキストの表現を変えることで伝達できる情報がある。</p>
+        </item>
+        <item>
+          <p>（<el>em</el>、<el>strong</el>、<el>cite</el>、<el>blockquote</el>、<el>quote</el>、<el>sub</el>のような）適切なセマンティックなマークアップを、テキストを変えることで情報を伝達するテキストのマークアップに利用している。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
-            <item>
-               <p>Check #2 is true.</p>
-            </item>
-         </ulist>
+        <item>
+          <p>2.を満たしている。</p>
+        </item>
+      </ulist>
       </expected-results>
    </tests>
 </technique>

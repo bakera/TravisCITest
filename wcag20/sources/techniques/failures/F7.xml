@@ -2,55 +2,37 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F7">
-   <short-name>Failure of Success Criterion 2.2.2 due to an object or applet, such as Java or Flash,
-                    that has blinking content without a mechanism to pause the content that blinks
-                    for more than five seconds</short-name>
+   <short-name>達成基準 2.2.2 の不適合事例 － 例えばJava又はFlashのようなオブジェクト又はアプレットに点滅するコンテンツがあり、5秒よりも長く点滅するコンテンツを一時停止させるメカニズムがない</short-name>
    <applicability>
-      <p>Technologies that support blinking content within an object, applet, or a
-                        plug-in.</p>
+      <p>オブジェクト、アプレット又はプラグインにおいて、点滅するコンテンツをサポートするウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-pause" relationship="failure"/>
    </applies-to>
    <description>
-      <p>When content that is rendered by a plug-in or contained in an applet blinks,
-                        there may be no way for the user agent to pause the blinking. If neither the
-                        plug-in, applet, nor the content itself provides a mechanism to pause the
-                        content, the user may not have sufficient time to read the content between
-                        blinks or it may be so distracting that the user will not be able to read
-                        other content on the page.</p>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>An applet displays an advertisement on a news site. The applet blinks
-                                key words in the advertisement in order to call the user's attention
-                                to it. The blinking cannot be paused through any user agent settings
-                                and the applet does not provide a mechanism to stop it.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>プラグインによってレンダリングされるコンテンツ又はアプレットに含まれているコンテンツが点滅している際、利用者ーエージェントがその点滅を一時停止させることができない場合がある。
+			   プラグイン、アプレット又はコンテンツ自体がその点滅を一時停止させるメカニズムを提供していない場合、利用者が点滅しているコンテンツを読み取れない、又は点滅によって気が散ってしまってそのページにある他のコンテンツを読むことができなくなる恐れがある。</p>
+  </description>
+   <examples/>
    <related-techniques>
       <relatedtech idref="SCR22"/>
    </related-techniques>
    <tests>
       <procedure>
-         <p>For each page that has blinking content in a plugin or applet:</p>
-         <olist>
-            <item>
-               <p>Determine if the content continues to blink for longer than 5
-                                    seconds.</p>
-            </item>
-            <item>
-               <p>Determine if there is a means to pause the blinking content.</p>
-            </item>
-         </olist>
-      </procedure>
+      <p>プラグイン又はアプレットで点滅するコンテンツのあるページに対して：</p>
+      <olist>
+        <item>
+          <p>コンテンツが5秒よりも長く点滅するかどうかを測定する。</p>
+        </item>
+        <item>
+          <p>点滅しているコンテンツを一時停止させる手段があるかどうかを確認する。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>If step #1 is true and step #2 is false, the content fails the success
-                                    criterion.</p>
+               <p>1.で5秒よりも長く点滅し、2.で手段がない場合、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

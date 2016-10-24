@@ -2,42 +2,38 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G150">
-   <short-name>Providing text based alternatives for live audio-only content</short-name>
+   <short-name>ライブの音声しか含まないコンテンツに対して、テキストベースの代替コンテンツを提供する</short-name>
    <applicability>
-      <p>All technologies that present live audio-only information</p>
+      <p>ライブの音声しか含まない情報を提示する全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-live-audio-only" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to allow users who cannot hear to be able to access real-time audio broadcasts. It is more difficult to create accurate real-time alternatives because there is little time to correct mistakes, to listen a second time or to consult someone to be sure the words are accurately reproduced. It is also harder to simplify or paraphrase information if it is flowing too quickly.</p>
-      <p>Real-time typing text entry techniques exist using stenographic and rapid typing technologies. Re-voicing speech-to-text (where a person listens to speech and then carefully re-voices it into a computer trained to their speech) is used today for telephone relay services and may be used in the future for captioning. Eventually speech-to-text with correction will be possible.</p>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>A radio station uses Web based captioning services to provide alternatives for live sporting events; the output from the service is incorporated in a viewport of the Web page which also includes a streaming audio control.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>この達成方法の目的は、耳の聞こえない利用者がリアルタイムの音声の放送にアクセスできるようにすることである。間違いを修正する、聞きなおす、又は言葉が正しく再現できているかを誰かに確認する時間がほとんどないため、リアルタイムの代替物を制作することは困難である。また、音声の放送が非常に速く流れている場合は、情報を簡略化したり、言い換えたりすることも困難である。</p>
+    <p>リアルタイムのタイピングによるテキスト入力技術には、速記及び高速タイピングがある。復唱して音声認識入力する方法（話を聞き取って、注意深く復唱し、復唱する話者の音声認識トレーニングをしたコンピュータで入力する）は、現在では電話伝送サービスに使用されており、将来的にはキャプション制作に使用されるかもしれない。いずれは修正機能付きの音声認識入力も可能になるだろう。</p>
+  </description>
+   <examples/>
    <related-techniques>
       <relatedtech idref="G9"/>
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check that a procedure and policy is in place to ensure that text alternatives are delivered in real-time.</p>
-            </item>
-            <item>
-               <p>Check that procedure and policy are working by conducting a random sample to see if text alternatives appear.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>代替テキストがリアルタイムで伝達されるように手順とポリシーが整っている。</p>
+        </item>
+        <item>
+          <p>
+            <phrase diff="add">代替テキストが提供されているかどうかをランダムにチェックすると、手順とポリシーの通りである。</phrase>
+          </p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Both #1 and #2 are true.</p>
+               <p>1.<phrase diff="add"> 及び 2. </phrase>を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

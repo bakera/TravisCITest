@@ -2,43 +2,34 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G84">
-   <short-name>Providing a text description when the user provides information that is not in the list of allowed values</short-name>
+   <short-name>利用者が認められた値以外の情報を提供した際に、テキストの説明文を提供する</short-name>
    <applicability>
-      <p>Content that collects user input where a limited set of values must be input.</p>
+      <p>限定された値の入力のみを受け付けるコンテンツ</p>
    </applicability>
    <applies-to>
       <success-criterion idref="minimize-error-identified" relationship="sufficient"/>
       <success-criterion idref="minimize-error-suggestions" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>When users enter input that is validated, and errors are detected, the nature of the error needs to be described to the user in manner they can access. One approach is to present an alert dialog that describes fields with errors when the user attempts to submit the form. Another approach, if validation is done by the server, is to return the form (with the user's data still in the fields) and a text description at the top of the page that indicates the fact that there was a validation problem, describes the nature of the problem, and provides ways to locate the field(s) with a problem easily. The "in text" portion of the Success Criterion underscores that it is not sufficient simply to indicate that a field has an error by putting an asterisk on its label or turning the label red. A text description of the problem should be provided.</p>
-      <p>When input must be one of a set of allowed values, the text description should indicate this fact. It should include the list of values if possible, or suggest the allowed value that is most similar to the entered value.</p>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>The user inputs invalid data on a form field. Before the user submits the form, an alert dialog appears that describes the nature of the error so the user can fix it.</p>
-         </item>
-         <item>
-            <p>The user inputs invalid data on a form field and submits the form. The server returns the form, with the user's data still present, and indicates clearly in text at the top of the page that there were input errors. The text describes the nature of the error(s) and clearly indicates which field had the problem so the user can easily navigate to it to fix the problem.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>この文書の目的は、利用者による入力がバリデートされた結果、エラーが検出された場合に、そのエラーの内容は、利用者がアクセスできる方法で説明することである。一つのアプローチとして、利用者がフォームを送信しようとするときに、エラーのある項目を説明したアラートのダイアログを提示する方法がある。また、もう一つのアプローチとしては、バリデーションがサーバサイドで行われるのであれば、（利用者が入力した項目のデータは残した状態で）フォームを再表示し、ページの上部にテキストでの説明文を表示して、バリデーションで問題が発見されたことを知らせるとともに、その問題の内容を説明して、利用者が問題のあった項目を簡単に見つけられる方法を提供することがある。達成基準に「テキストで」と書かれているのは、項目のラベルにアスタリスクを付けたり、ラベルのテキストを赤色に変えたりしてエラーがあることを示すだけでは十分でないことを強調している。つまり、エラーであることの説明文をテキストで提供すべきである。</p>
+    <p>利用者による入力内容が、許可された値のいずれかでなければならない場合は、テキストでの説明文によってそのことを示すべきである。そして、可能であれば、許可された値のリストを示す、又は入力値に最も近い許可値を提示するとよい。</p>
+  </description>
+   <examples/>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Enter invalid data in a form field.</p>
-            </item>
-            <item>
-               <p>Check that information is provided in text about the problem.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>フォーム項目に無効なデータを入力する。</p>
+        </item>
+        <item>
+          <p>エラーに関する情報がテキストで提供される。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>#2 is true.</p>
+               <p>2. を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

@@ -2,61 +2,38 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F30">
-   <short-name>Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not
-                    alternatives (e.g., filenames or placeholder text)</short-name>
+   <short-name>達成基準 1.1.1 及び 達成基準 1.2.1 の不適合事例 － 代替ではない代替テキストを用いている（例：ファイル名、プレースホルダー・テキストなど）</short-name>
    <applicability>
-      <p> Applies to all technologies. </p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="failure"/>
       <success-criterion idref="media-equiv-av-only-alt" relationship="failure"/>
    </applies-to>
    <description>
-      <p> This describes a failure condition for all techniques involving text
-                        alternatives. If the text in the "text alternative" cannot be used in place
-                        of the non-text content without losing information or function then it fails
-                        because it is not, in fact, an alternative to the non-text content. </p>
-   </description>
+    <p>この文書では、代替テキストを使用している全ての達成方法に対する不適合事例について述べている。「代替テキスト」の中のテキストを、情報又は機能を失うことなく非テキストコンテンツの代わりに使用することができない場合、事実上、非テキストコンテンツに対する代替物としては意味をなさなくなる。</p>
+  </description>
    <examples>
       <eg-group role="failure">
-         <description>
-            <p> Examples of text that are not text alternatives include: </p>
-            <ulist>
-               <item>
-                  <p> placeholder text such as " " or "spacer" or "image" or
-                                        "picture" etc that are put into the 'text alternative'
-                                        location on images or pictures. </p>
-               </item>
-               <item>
-                  <p> programming references that do not convey the information or
-                                        function of the non-text content such as "picture 1",
-                                        "picture 2" or "0001", "0002" or "Intro#1", "Intro#2". </p>
-               </item>
-               <item>
-                  <p> filenames that are not valid text alternatives in their own
-                                        right such as "Oct.jpg" or "Chart.jpg" or
-                                        "sales\\oct\\top3.jpg" </p>
-               </item>
-            </ulist>
-         </description>
-      </eg-group>
+      <description><p>代替テキストとはならないテキストの事例は次の通り：</p>
+<ulist><item><p>画像や絵の「代替テキスト」の位置に埋め込まれた、" "、"スペーサー"、"画像"、"絵" といったプレースホルダーテキスト。</p></item><item><p>非テキストコンテンツの情報又は機能を伝達しない、"絵 1"及び"絵 2" 、"0001"及び"0002" 又は"イントロ #1"及び"イントロ #2"といったプログラム上の参照情報</p></item><item><p>"10月.jpg"、"グラフ.jpg" 又は "売上げ\\10月\\上位3名.jpg"といったそれ自体では有効な代替テキストとならないファイル名</p></item></ulist>
+</description>
+    </eg-group>
    </examples>
    <resources/>
    <related-techniques/>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p> Check each text alternative to see if it is not actually a text
-                                    alternative for the non-text content. </p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>代替テキストが実際には非テキストコンテンツに対する代替テキストにはなっていない。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p> If step #1 is true then this failure condition applies and content
-                                    fails the Success Criterion. </p>
+               <p>1.を満たしてる場合、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

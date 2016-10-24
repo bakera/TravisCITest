@@ -2,84 +2,52 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G176">
-   <short-name>Keeping the flashing area small enough</short-name>
+   <short-name>閃光を放つエリアを十分に小さくする</short-name>
    <applicability>
-      <p>Appropriate to use for all general Web content including special cases like material that is specifically designed for a display in a foyer.</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="seizure-does-not-violate" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The purpose of this technique is to provide an easy way to pass the success criterion for things that flash, but are small.</p>
-      <p>If you have something that flashes
-            <emph>more</emph>
-            than 3 times in a one second period (so G19 can't be used), but the area that is flashing is less than 25% of 10 degrees of visual field (which represents the central area of vision in the eye), then it would automatically pass.</p>
-      <p>The 10 degree of visual field represents the central area of vision in the eye. This area is highly packed with visual sensors. Flashes in this area are transmitted to the visual cortex. For those with photosensitivity, this flashing of activity on the visual cortex can cause seizures. Flashing on other areas of the eye (which have far fewer sensors) has much less effect on the cortex. Hence, the focus on just the 10 degrees of central vision.</p>
-      <ulist>
-         <item>
-            <p>If the content is for general Web use, you can use
-                <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#smallsafe1">Formula 1: Small Safe Area for Web Content</loc>.</p>
-         </item>
-         <item>
-            <p>If the content is for a known display (e.g., in a company foyer) then
-                <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#smallsafe2">Formula 2: Small Safe Area for Known Displays</loc>
-                should be used.</p>
-         </item>
-      </ulist>
-      <p id="smallsafe1">
-            <emph role="bold">Formula 1: Small Safe Area for Web Content</emph>
-          </p>
-      <p>Most Web authors do not know how to translate visual field to pixels, which is what they generally can deal with. This technique provides that translation.</p>
-      <p>At this point in time, the most prevalent display is 1024 x 768 and about 15-17 inches diagonally. When viewed at a typical viewing distance (22-26 inches) a 10 degree visual field will capture an area approximately 341 x 256 pixels. This is not circular, but neither is the central vision of most users, and the difference is so small (and at the edge of the central vision where sensors are fewer) that it is not important.</p>
-      <p>Since the criterion is 25% of any 10 degree visual field,
-            <emph role="bold">any single flashing event on a screen (there is no other flashing on screen) that is smaller than a contiguous area of 21,824 sq pixels (any shape), would pass the General and Red Flash Thresholds</emph>.</p>
-      <p>1024 x 768 was chosen because it represents the most common screen size. It also works with higher resolution screens since the tighter pixel density would result in a smaller and safer image size.</p>
-      <p>Users with lower resolution displays or that enlarge or view their screens closely would have a higher risk depending on the viewing distance. To address the needs of this group,
-            <specref ref="G19"/>
-            should be used since it is independent of screen resolution or viewing distance.</p>
-      <p id="smallsafe2">
-            <emph role="bold">Formula 2: Small Safe Area for Known Displays</emph>
-          </p>
-      <p>To calculate the
-            <emph>small safe area</emph>
-            (in pixels) on the screen when the screen size, resolution, and viewing distance is known, use the following procedure.</p>
-      <note>
-         <p>For a number of reasons (distribution of central vision sensors often non-circular, simplicity, computational convenience, historical), a 4:3 rectangular approximation of the central 10 degree of visual field is used that is 10 degrees wide and 7.5 degrees high. This has an area of 75 square degrees, vs the 78.5 square degree area of a true circle of 10 degrees.</p>
-      </note>
-      <olist>
-         <item>
-            <p>To convert viewing distance to rectangle size, multiply the viewing distance by 0.1745 (10 * Pi / 180) to get the width of the rectangle, and multiply the viewing distance by 0.1309 (7.5 * Pi / 180) to get the height of the rectangle. (This calculation can be done in inches, or millimeters, or any other unit of length.)</p>
-         </item>
-         <item>
-            <p>Determine size of 10 degree angle of view in pixels.</p>
-            <p>To do this, multiply the width and height of the rectangle from step 1 by the resolution of the screen, in pixels per unit length, to get the horizontal and vertical size of the rectangle in pixels.</p>
-            <ulist>
-               <item>
-                  <p>For a 1080p widescreen display (which is 1920 by 1080 pixels), the resolution of the screen in pixels per inch is 2203 divided by the diagonal screen size, in inches.</p>
-               </item>
-               <item>
-                  <p>For a 720p widescreen display (which is usually 1365 by 768 pixels), the resolution of the screen in pixels per inch is 1566 divided by the diagonal screen size, in inches.</p>
-               </item>
-               <item>
-                  <p>For an LCD computer monitor which specifies the pixel pitch in millimeters / pixel, the resolution of the screen in pixels per inch is 25.4 divided by the pixel pitch in millimeters.</p>
-               </item>
-            </ulist>
-            <p>For any display, if you know the actual diagonal screen size in inches, and the horizontal and vertical resolution of the display in pixels, then the resolution of the screen in pixels per inch is the square-root of ( (horizontal resolution in pixels) * (horizontal resolution in pixels) + (vertical resolution in pixels) * (vertical resolution in pixels) ).</p>
-         </item>
-         <item>
-            <p>Multiply the width of the rectangle by the height and divide by 4.</p>
-         </item>
-      </olist>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>An author creates an animation that will be displayed on a screen in the entrance lounge at a company. Using the size and resolution of the display and the closest distance that a person can stand when viewing the display, they calculate the size of 25% of the 10 degree of central vision in pixels (using the formula above). This would be the
-                <emph>small safe area</emph>. They then are careful to never flash any area larger than the
-                <emph>small safe area</emph>.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>この達成方法の目的は、閃光を放つが小さいものに関して、達成基準を満たす容易な方法を提供することである。</p>
+    <p>ある1秒間において3回<em>以上</em>の閃光を放つものがある（つまり、G19の達成方法を用いることができない）が、閃光を放つ領域が視野10度（これは視界における中心視野に相当する）の25％未満である場合、自動的に達成基準を満たすことになる。</p>
+    <p>視野10度は、視界における中心視野にあたる。この視野には、視覚センサーがたくさんある。この視野における閃光は、視覚野に送られる。光過敏性発作のある利用者は、視覚野上において閃光を受け取ることで発作を引き起こす恐れがある。その他の視野（視覚センサーがずっと少ない部分）での閃光は、視覚野に与える影響がずっと少ない。そのため、中心視野の10度だけを対象とする。</p>
+    <ulist>
+      <item>
+        <p>コンテンツを一般的なウェブで使用する場合には、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#smallsafe1">公式 1: ウェブコンテンツにおける小さくて安全な領域</loc>を用いることができる。</p>
+      </item>
+      <item>
+        <p>コンテンツを既知のディスプレイ（例：会社のロビーにあるディスプレイ）で使用する場合には、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="#smallsafe2">公式 2: 既知のディスプレイにおける小さくて安全な領域</loc>を用いるべきである。</p>
+      </item>
+    </ulist>
+    <p>
+      <strong>公式 1: ウェブコンテンツにおける小さくて安全な領域</strong>
+    </p>
+    <p>ほとんどのウェブコンテンツ制作者は、視野をピクセルに変換する方法を知らない。が、それは一般に対処可能なものである。この達成方法では、その変換方法を提供する。</p>
+    <p>この文書を執筆している時点では、最も一般的なディスプレイの解像度は 1024 x 768ピクセルで、画面は約15～17型である。一般的な画面との距離（56～66センチメートル）で閲覧している際、視野10度はおおよそ341 x 256ピクセルの領域を占めることになる。これは円形ではないが、ほとんどの利用者の中心視野も円形ではない。その差異はとても小さいので（そして、中心視野でも視覚センサーの少ない端のことなので）、重要なことではない。</p>
+    <p>基準は視野10度の25%なので、<strong>（画面上に他に閃光を放つものがなければ）画面上で（どんな形であれ）21,824平方ピクセルの隣接した領域よりも小さい単一の閃光を放つものは、一般閃光)及び赤色閃光の閾値を下回っていることになる。</strong></p>
+    <p>1024 x 768ピクセルの画面解像度は、それが最も一般的であるという理由で選ばれている。よりぎっしり詰まったピクセル密度ではより小さくより安全な画像サイズになるので、高解像度のディスプレイでも前述の内容は通用する。</p>
+    <p>低解像度のディスプレイ、拡大した画面、又はより近い画面との距離で閲覧している利用者は、その画面との距離によっては危険が高まることになる。そのような利用者のニーズに対処するためには、画面解像度又は画面との距離に依存しない達成方法であるということで<specref ref="G19"/>を用いるべきである。</p>
+    <p>
+      <strong>公式 2: 既知のディスプレイにおける小さくて安全な領域</strong>
+    </p>
+    <p>画面サイズ、解像度、及び画面からの距離が明らかな際に画面上の<em>小さくて安全な領域</em>を（ピクセルで）計算するには、次の手順を用いる。</p>
+    <note><p class="prefix">（中心視野のセンサーの分布は円形ではない、簡易さ、計算上の便宜、歴史的）など幾つもの理由から、中心の視野10度に相当する4:3の矩形の近似値が用いられる。それは10度の幅と7.5度の高さに相当する。これは、75平方度の領域を持ち、10度の真円の78.5平方度に相当する領域である。</p>
+</note>
+    <olist>
+      <item>
+        <p>画面との距離を矩形サイズに変換するには、その画面との距離に0.1745 (10 * Pi / 180)を掛けて矩形の幅を算出し、画面との距離に0.1309 (7.5 * Pi / 180)を掛けて矩形の高さを算出する（この計算は、インチ、ミリメートル、又はその他のあらゆる長さの単位で用いることが可能）。</p>
+      </item>
+      <item><p>視野角10度のサイズをピクセルで定める。 </p>
+				<p>それには、単位長さあたりピクセルで、手順1で算出した矩形の幅及び高さに画面解像度を掛けて、矩形の水平方向及び垂直方向のサイズをピクセルで算出する。</p>
+				<ulist><item><p>1080p（1920 x 1080 ピクセル）のワイドスクリーンのディスプレイの場合、ピクセル・パー・インチでの画面の解像度は、2203を対角線の画面サイズ（インチ）で割った数になる。</p></item><item><p>720p（通常は、1365 x 768 ピクセル）のワイドスクリーンのディスプレイの場合、ピクセル・パー・インチでの画面の解像度は、1566を対角線の画面サイズ（インチ）で割った数になる。</p></item><item><p>ピクセルピッチをミリメートル又はピクセルで指定したLCDのコンピュータのモニタの場合、ピクセル・パー・インチでの画面の解像度は、25.4をピクセルピッチ（ミリメートル）で割った数になる。</p></item></ulist><p>どんなディスプレイでも、実際の対角線の画面サイズがインチでわかっていて、ディスプレイの水平方向と垂直方向の解像度がピクセルでわかっている場合、ピクセル・パー・インチでの画面解像度は、 ( (水平方向の解像度：ピクセル) x (水平方向の解像度：ピクセル) + (垂直方向の解像度：ピクセル) x (垂直方向の解像度：ピクセル) )の平方根である。</p></item>
+      <item>
+        <p>矩形の幅に高さを掛けて、4で割る。</p>
+      </item>
+    </olist>
+  </description>
+   <examples/>
    <resources>
       <see-also>
          <ulist>
@@ -128,25 +96,22 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>The
-                  <emph>small safe area</emph>
-                  is calculated.</p>
-            </item>
-            <item>
-               <p>Check that only one area of the screen is flashing at any time.</p>
-            </item>
-            <item>
-               <p>Check that the flashing content would fit into a contiguous container whose area is less than the
-                  <emph>small safe area</emph>.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p><em>小さくて安全な領域</em>を計算する。</p>
+        </item>
+        <item>
+          <p>どのタイミングにおいても画面の一つの領域だけが閃光を放っている。</p>
+        </item>
+        <item>
+          <p>閃光を放つコンテンツは、<em>小さくて安全な領域</em>よりも小さいコンテナ内に収まっている。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Checks #2 and #3 are true.</p>
+               <p>2.及び3.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

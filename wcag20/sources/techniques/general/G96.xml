@@ -2,88 +2,83 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G96">
-   <short-name>Providing textual identification of items that otherwise rely only on sensory information to be understood</short-name>
+   <short-name>理解すべき情報を感覚的にだけ伝えることのないように、テキストでもアイテムを特定する</short-name>
    <applicability>
-      <p>All technologies that present description of a content rendering to the user.</p>
+      <p>利用者に対して、コンテンツの説明を描画して提示する全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
       <success-criterion idref="content-structure-separation-understanding"
                          relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to ensure that items within a Web page are referenced in the content not only by shape, size, sound or location, but also in ways that do not depend on that sensory perception. For example, a reference may also describe the function of the item or its label.</p>
-   </description>
+    <p>この達成方法の目的は、ウェブページ内のアイテムがコンテンツの中で、形や大きさや音又は位置だけでなく、知覚に依存しない言い回しによっても言及されるようにすることである。例えば、アイテムについて言及する文では、アイテムのラベル又はその機能についてもあわせて説明する。</p>
+  </description>
    <examples>
       <eg-group>
-         <description>
-            <p>A round button is provided on a form to submit the form and move onto the next step in a progression.  The button is labeled with the text "go."  The instructions state, "to submit the form press the round button labeled
-                <emph>go</emph>
-                ".  This includes both shape and textual information to locate the button.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <description>
-            <p>Instructions for a Web page providing on-line training state, "Use the list of links to the right with the heading, 'Class Listing' to navigate to the desired on-line course."  This description provides location as well as textual clues to help find the correct list of links.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <description>
-            <p>The following layout places a button in the lower right corner and indicates it by position. An indication of the text label clarifies which button to use for users who access a linearized version in which the position is not meaningful.</p>
-         </description>
-         <code><![CDATA[
-              <table>
-                <tbody>
-                <tr>
-                <td colspan="2">Push the lower right [Preview] button.</td>
-                <td>
-                <span style="background: ButtonFace; color: ButtonText; border: 
-                medium outset ButtonShadow; 
-                width: 5em; display: block; font-weight: bold; text-align: center;">
-                Print</span>
-                </td>
-                </tr>
-                <tr>
-                <td>
-                <span style="background: ButtonFace; color: ButtonText; border: 
-                medium outset ButtonShadow; 
-                width: 5em; display: block; font-weight: bold; text-align: center;">
-                Cancel</span>
-                </td>
-                <td>
-                <span style="background: ButtonFace; color: ButtonText; border: 
-                medium outset ButtonShadow; 
-                width: 5em; display: block; font-weight: bold; text-align: center;">
-                OK</span>
-                </td>
-                <td>
-                <span style="background: ButtonFace; color: ButtonText; border: 
-                medium outset ButtonShadow; 
-                width: 5em; display: block; font-weight: bold; text-align: center;">
-                Preview</span>
-                </td>
-                </tr>
-                </tbody>
-                </table>
-              ]]><!--BBC: Add a working example here? --><![CDATA[
-              
-            ]]></code>
-      </eg-group>
+      <head>事例１</head>
+      <description><p>フォームには、入力内容を送信して一連の過程の次の手順に進むために円形のボタンがある。そのボタンにはテキストで「次へ」とラベルが付けられている。説明には、「フォームを送信するには、<emph>次へ</emph>と記された円形のボタンを押して下さい」と示されている。これは、そのボタンを特定するための形とテキスト情報の両方を含んでいる。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>事例２</head>
+      <description><p>オンライントレーニングを提供するウェブページの説明には、「希望のオンラインコースへ進むには、右側の『クラス一覧』という見出しがついたリンクのリストを使用して下さい。」と書いてある。この説明は、適切なリンクのリストを見つけること補助するために位置と同様にテキストの手がかりを提供している。
+		</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>事例３</head>
+      <description><p>以下のレイアウトではボタンを右下隅に配置して位置によってそれを示している。テキストラベルの指示は、位置が意味をなさない線形化バージョンにアクセスする利用者ーにも、どのボタンを使用するかを明確にしている。</p>
+</description>
+      <code><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td colspan="2">右下の「前へ戻る」ボタンを押して下さい。</td>
+      <td>
+        <span style="background: ButtonFace; color: ButtonText; border: 
+        medium outset ButtonShadow; 
+        width: 5em; display: block; font-weight: bold; text-align: center;">
+        印刷</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span style="background: ButtonFace; color: ButtonText; border: 
+        medium outset ButtonShadow; 
+        width: 5em; display: block; font-weight: bold; text-align: center;">
+        中止</span>
+      </td>
+      <td>
+        <span style="background: ButtonFace; color: ButtonText; border: 
+        medium outset ButtonShadow; 
+        width: 5em; display: block; font-weight: bold; text-align: center;">
+        OK</span>
+      </td>
+      <td>
+        <span style="background: ButtonFace; color: ButtonText; border: 
+        medium outset ButtonShadow; 
+        width: 5em; display: block; font-weight: bold; text-align: center;">
+        前へ戻る</span>
+      </td>
+    </tr>
+  </tbody>
+</table>]]></code>
+    </eg-group>
    </examples>
    <resources/>
    <related-techniques/>
    <tests>
       <procedure>
-         <p>Find all references in the Web page that mention the shape, size, or position of an object.  For each such item:</p>
-         <olist>
-            <item>
-               <p>Check that the reference contains additional information that allows the item to be located and identified without any knowledge of its shape, size, or relative position.</p>
-            </item>
-         </olist>
-      </procedure>
+      <p>ウェブページ内において、オブジェクトの形、大きさ、又は位置を使って説明しているすべての言及箇所を探し出す。そのような各アイテムにおいて：</p>
+      <olist>
+        <item>
+          <p>その言及箇所には、形や大きさ、又は相対的な位置についての情報がない場合でもアイテムを見つけて、特定するための追加情報が含まれている。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>Check #1 is true.</p>
+               <p>1.を満たしている。</p>
             </item>
          </ulist>
       </expected-results>

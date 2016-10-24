@@ -64,7 +64,6 @@
 						<xsl:call-template name="canonical-link"/>
 						<link rel="stylesheet" type="text/css" href="slicenav.css" xmlns="http://www.w3.org/1999/xhtml"/>
 						<xsl:call-template name="css"/>
-						<xsl:call-template name="additional-head"/>
 					</head>
 					<body>
 					<xsl:if test="$show.diff.markup != 0">
@@ -113,7 +112,6 @@
 						<xsl:call-template name="canonical-link"/>
 						<link rel="stylesheet" type="text/css" href="slicenav.css"/>
 						<xsl:call-template name="css"/>
-						<xsl:call-template name="additional-head"/>
 					</head>
 					<body>
 					<xsl:if test="$show.diff.markup != 0">
@@ -166,7 +164,6 @@
 						<xsl:call-template name="canonical-link"/>
 						<link rel="stylesheet" type="text/css" href="slicenav.css"/>
 						<xsl:call-template name="css"/>
-						<xsl:call-template name="additional-head"/>
 					</head>
 					<body>
 					<xsl:if test="$show.diff.markup != 0">
@@ -215,7 +212,6 @@
 						<xsl:call-template name="canonical-link"/>
 						<link rel="stylesheet" type="text/css" href="slicenav.css"/>
 						<xsl:call-template name="css"/>
-						<xsl:call-template name="additional-head"/>
 					</head>
 					<body>
 					<xsl:if test="$show.diff.markup != 0">
@@ -266,7 +262,6 @@
 						<xsl:call-template name="canonical-link"/>
 						<link rel="stylesheet" type="text/css" href="slicenav.css"/>
 						<xsl:call-template name="css"/>
-						<xsl:call-template name="additional-head"/>
 					</head>
 					<body>
 					<xsl:if test="$show.diff.markup != 0">
@@ -279,10 +274,11 @@
             <hr/>
           </div>
         </xsl:if>
+						<a name="top" xmlns="http://www.w3.org/1999/xhtml"> </a>
 						<xsl:apply-templates></xsl:apply-templates>
 						<xsl:if test="//footnote">
+							<hr/>
 							<div class="endnotes">
-								<hr/>
 								<h3>
 									<a name="endnotes">
 										<xsl:text>End Notes</xsl:text>
@@ -297,7 +293,6 @@
 						<xsl:call-template name="navigation.bottom">
 							<xsl:with-param name="next" select="$next"/>
 						</xsl:call-template>
-						<script src="//www.w3.org/scripts/TR/2016/fixup.js" type="text/javascript"></script> 
 					</body>
 				</html>
 			</xsl:with-param>

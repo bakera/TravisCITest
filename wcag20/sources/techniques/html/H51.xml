@@ -2,71 +2,51 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="H51">
-   <short-name>Using table markup to present tabular information</short-name>
+   <short-name>テーブルのマークアップを用いて、表の情報を提示する</short-name>
    <applicability>
-      <p>HTML and XHTML</p>
+      <p>HTML 及び XHTML</p>
    </applicability>
    <applies-to>
       <success-criterion idref="content-structure-separation-programmatic"
                          relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to present tabular information in a way that
-            preserves relationships within the information even when users cannot see the table or
-            the presentation format is changed. Information is considered tabular when logical
-            relationships among text, numbers, images, or other data exist in two dimensions
-            (vertical and horizontal). These relationships are represented in columns and rows, and
-            the columns and rows must be recognizable in order for the logical relationships to be
-            perceived.</p>
-      <p>Using the <el>table</el> element with the child elements <el>tr</el>,
-              <el>th</el>, and <el>td</el> makes these relationships perceivable. Techniques
-            such as inserting tabs to create columns or using the <el>pre</el> element are
-            purely visual, and visually implied logical relationships are lost if the user cannot
-            see the table or the visual presentation is changed.</p>
-      <p>Simple tables generally have only one level of headers for columns and/or one level of headers on the rows. </p>
-      <p>Usually, for simple tables, row 1 column 1 is either blank or describes the contents of the entire column 1. Row 1 columns are not blank (i.e. they contain "column headings"), describe the contents of the entire column, and allow the reader to distinguish the difference in meaning between that column and other columns. </p>
-      <p>Column 1 rows are usually not blank, they often contain "row headings" which describe the contents of the entire row, and allow the reader to distinguish the difference in meaning between that row and the other rows. Otherwise, the Column 1 would contain simple data.</p>
-   </description>
+    <p>この達成方法の目的は、利用者がテーブルを見ることができない場合、又は表現形式が変更された場合でも、含まれる情報の関係を保てる方法で、表の情報を提示することである。情報を表として提示すべきと考えられるのは、テキスト、数値、画像、あるいは他のデータの論理関係が（垂直・水平に）二次元で存在するときである。論理関係は列と行で示され、列と行は論理関係が認識できる状態でなければならない。</p>
+    <p><el>table</el>要素は、子要素<el>tr</el>、<el>th</el>、<el>td</el>といっしょに用いることで、論理関係を認識可能にする。一方、列を整形するのにタブを入れたり、<el>pre</el>要素を利用するのは、純粋に見た目だけを考えた方法である。利用者がテーブルを見ることができない場合、又は表現形式が変更された場合は、視覚的に暗に示された論理関係は失われてしまう。</p>
+  </description>
    <examples>
       <eg-group>
-         <head>A schedule marked up as a simple data table with column and row headers</head>
-         <description>
-            <p>This example uses markup for a simple data table. The first row shows the days of
-                the week. Time intervals are shown in the first column. These cells are marked with
-                the <el>th</el> element. This identifies the days of the week as column headers
-                and the time intervals as row headers.</p>
-            <p>Screen readers speak header information that changes as the user navigates the
-                table. Thus, when screen reader users move to left or right along a row, they will
-                hear the day of the week (the column header) followed by the appointment (if any).
-                They will hear the time interval as they move up or down within the same column.</p>
-         </description>
-         <code role="html401"><![CDATA[ <table>
+      <head>列見出しと行見出しが付いた簡単なデータテーブルとしてマークアップしたスケジュール表</head>
+      <description><p>この事例では、簡単なデータテーブルに<el>table</el>要素を利用している。1行目は曜日、1列目は時間である。これらのセルは<el>th</el>要素でマークアップしてあり、列見出しが曜日、行見出しが時間という役割になっている。</p>
+<p>スクリーンリーダーは、利用者がテーブルを読み進めるとき、対応する見出し情報の変化を読み上げる。それゆえ、スクリーンリーダーの利用者が同じ行を左右に動くときは、（もしあれば）予定に対応する曜日（列見出し）の読み上げを、同じ列を上下に移動するときは、対応する時間の読み上げを聞くであろう。</p>
+</description>
+      <code role="html401"><![CDATA[<table>
   <tr>
     <td> </td>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
+    <th>月</th>
+    <th>火</th>
+    <th>水</th>
+    <th>木</th>
+    <th>金</th>
   </tr>
   <tr>
-    <th>8:00-9:00</th>
-    <td>Meet with Sam</td>
+    <th>8:00から9:00</th>
+    <td>サムと会う</td>
     <td> </td>
     <td> </td>
     <td> </td>
     <td> </td>
   </tr>
   <tr>
-    <th>9:00-10:00</th>
+    <th>9:00から10:00</th>
     <td> </td>
     <td> </td>
-    <td>Doctor Williams</td>
-    <td>Sam again</td>
-    <td>Leave for San Antonio</td>
+    <td>ウィリアムズ先生</td>
+    <td>サムとまた会う</td>
+    <td>サン・アントニオから出発</td>
   </tr>
 </table> ]]></code>
-      </eg-group>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -96,27 +76,21 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check for the presence of tabular information.</p>
-            </item>
-            <item>
-               <p>For each occurrence of tabular information: </p>
-               <olist>
-                  <item>
-                     <p>Check that table markup with at least the elements <el>table</el>,
-                        <el>tr</el>, <el>th</el>, and <el>td</el> is used. </p>
-                  </item>
-               </olist>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>表形式の情報がある。</p>
+        </item>
+        <item><p>表形式の情報それぞれについて：</p>
+								
+          <olist><item><p>テーブルを、少なくとも<el>table</el>、<el>tr</el>、<el>th</el>、<el>td</el>要素を使ってマークアップしている。</p></item></olist></item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
-            <item>
-               <p>All checks above are true.</p>
-            </item>
-         </ulist>
+        <item>
+          <p>上記全てを満たしている。</p>
+        </item>
+      </ulist>
       </expected-results>
    </tests>
 </technique>

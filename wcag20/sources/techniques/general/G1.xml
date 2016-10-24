@@ -2,34 +2,29 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G1">
-   <short-name>Adding a link at the top of each page that goes directly to the main content area</short-name>
+   <short-name>メインコンテンツエリアへ直接移動するリンクを各ページの先頭に追加する</short-name>
    <applicability>
-      <p>All technologies that contain links</p>
+      <p>リンク機能を提供するウェブコンテンツ技術すべて</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-skip" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to provide a mechanism to bypass blocks of material that are repeated on multiple Web pages by skipping directly to the main content of the Web page. The first interactive item in the Web page is a link to the beginning of the main content. Activating the link sets focus beyond the other content to the main content. This technique is most useful when a Web page has one main content area, rather than a set of content areas that are equally important, and when there are not multiple navigation sections on the page.</p>
-      <note>
-         <p>It is preferable for links to be visible at all times, since users navigating via the keyboard include switch users, those using techniques that generate keyboard strokes slowly, screen magnification software users, screen reader users working with sighted colleagues, keyboard only users and those navigating using voice recognition software. However, <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                 href="navigation-mechanisms-skip"
-                 linktype="guideline">Success Criterion 2.4.1</loc> does not require that they be visible when they do not have focus, and links that are visible only when they have focus can meet this success criterion.</p>
-      </note>
-   </description>
+    <p>この達成方法の目的は、ウェブページのメインコンテンツへ直接移動できるようにすることによって、複数のウェブページ上で繰り返されているコンテンツのブロックをスキップできるメカニズムを提供することである。メインコンテンツの開始位置へのリンクが、そのウェブページの最初のインタラクティブなアイテムとなるようにする。そのリンクを実行することにより、その他のコンテンツを通過して、フォーカスをメインコンテンツへ移動させる。この達成方法は、ウェブページに同じくらい重要なコンテンツエリアが複数ある場合よりも、ウェブページのメインコンテンツエリアが一つである際に最も効果的である。</p>
+    <note><p diff="chg">キーボードで操作している利用者（スイッチの利用者を含む）、キーボード・ストロークを遅めにしている利用者、画面拡大ソフトウェアの利用者、画面を見ている人と一緒に作業しているスクリーンリーダーの利用者、キーボードだけで操作している利用者、及び音声認識ソフトウェアの利用者にとっては、このリンクは常に表示されていることが望ましい。しかし、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="navigation-mechanisms-skip" linktype="guideline">達成基準 2.4.1</loc>は、フォーカスを受け取っていないときには表示されていることを要求してはいない。フォーカスを受け取っているときだけ表示されるリンクも達成基準を満たすことが可能である。</p>
+</note>
+  </description>
    <examples>
       <eg-group>
-         <head>An online newspaper</head>
-         <description>
-            <p>An on-line newspaper contains many sections of information: a search function, a corporate banner, sidebars, minor stories, how to contact the newspaper, etc. The lead story is located in the middle of the page. The first link that the user reaches when tabbing through the page is titled "Skip to Lead Story". Activating the link moves visual focus to the story. Pressing tab again takes the user to the first link in the main story.</p>
-         </description>
-      </eg-group>
-      <eg-group>
-         <head>A "Skip to main content" link</head>
-         <description>
-            <p>A Web page includes a variety of navigation techniques on each page: a bread crumb trail, a search tool, a site map, and a list of related resources. The first link on the page is titled "Skip to Main Content". A user activates the link to skip over the navigation tools.</p>
-         </description>
-      </eg-group>
+      <head>オンライン新聞</head>
+      <description><p>あるオンライン新聞には、次のような情報のセクションが多くある：例えば、検索機能、企業ロゴ、関連記事、マイナーな記事、問合せ方法、など。ページの真ん中には、トップ記事が掲載されている。利用者がそのページをTabキーで操作する際、最初のリンクは「トップ記事へスキップ」というリンクである。そのリンクを押下すると、視覚的に認識できるフォーカスがトップ記事へ移動する。その次にTabキーを押下すると、そのトップ記事にある最初のリンクへ移動する。</p>
+</description>
+    </eg-group>
+    <eg-group>
+      <head>「メインコンテンツへスキップ」というリンク</head>
+      <description><p>あるウェブページには、（メインコンテンツの前に）各ページで提供されている様々なナビゲーション機能がある：例えば、パンくずリスト、検索、サイトマップ、そして関連情報の一覧など。そのページの最初のリンクは、「メインコンテンツへスキップ」というリンクである。利用者は、そのリンクを押下すると、それらのナビゲーション機能をスキップすることができる。</p>
+</description>
+    </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -49,28 +44,25 @@
    </related-techniques>
    <tests>
       <procedure>
-         <olist>
-            <item>
-               <p>Check that a link is the first focusable control on the Web page.</p>
-            </item>
-            <item>
-               <p>Check that the description of the link communicates that it links to the main content.</p>
-            </item>
-            <item>
-               <p>Check that the link is either always visible or visible when it has keyboard focus.</p>
-            </item>
-            <item>
-               <p>Check that activating the link moves the focus to the main content.</p>
-            </item>
-            <item>
-               <p>Check that after activating the link, the keyboard focus has moved to the main content.</p>
-            </item>
-         </olist>
-      </procedure>
+      <olist>
+        <item>
+          <p>リンクがそのウェブページ上で最初のフォーカス可能なコントロールである。</p>
+        </item>
+        <item>
+          <p>リンクのラベルがメインコンテンツへのリンクであることを示している。</p>
+        </item>
+        <item>
+          <p>リンクが、常に画面に表示されている、又はキーボード・フォーカスを受け取っている際には画面に表示されている。</p>
+        </item>
+        <item>
+          <p>リンクを押下した後、キーボード・フォーカスがメインコンテンツへ移動する。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>All checks above are true.</p>
+               <p>上記のチェック全てを満たしている。</p>
             </item>
          </ulist>
       </expected-results>

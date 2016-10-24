@@ -2,57 +2,35 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F13">
-   <short-name>Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not
-                    include information that is conveyed by color differences in the image</short-name>
+   <short-name>達成基準 1.4.1 の不適合事例 － イメージ上の色の違いで伝えている情報が、代替テキストに含まれていない</short-name>
    <applicability>
-      <p>All technologies.</p>
+      <p>全てのウェブコンテンツ技術</p>
    </applicability>
    <applies-to>
-      <success-criterion idref="text-equiv-all" relationship="failure"/>
       <success-criterion idref="visual-audio-contrast-without-color" relationship="failure"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to describe the failure that occurs when
-                        an image uses color differences to convey information, but the text alternative for the
-                        image does not convey that information. This can cause problems for people
-                        who are blind or colorblind because they will not be able to perceive the
-                        information conveyed by the color differences.</p>
-   </description>
-   <examples>
-      <ulist>
-         <item>
-            <p>A bar chart of sales data is provided as an image. The chart includes
-                                yearly sales figures for four employees in the Sales Department. The
-                                text alternative for the image says, "The following bar chart
-                                displays the yearly sales figures for the Sales Department. Mary
-                                sold 3.1 Million; Fred, 2.6 Million; Bob, 2.2 Million; and Andrew,
-                                3.4 Million. The red bars indicate sales that were below the yearly
-                                quota". This text alternative fails to provide the information which
-                                is conveyed by the color red in the image. The alternative should
-                                indicate which people did not meet the sales quota rather than
-                                relying on color.</p>
-         </item>
-      </ulist>
-   </examples>
+    <p>この文書は、画像が色の違いを用いて情報を伝えているが、その画像の代替テキストがその情報を伝えていないことによる不適合事例について述べている。
+			   全盲又は色弱の利用者は色の違いによって伝えられている情報を知覚することができないため、そのような利用者に対して問題を引き起こす恐れがある。</p>
+  </description>
+   <examples/>
    <resources/>
    <related-techniques>
       <relatedtech idref="G94"/>
    </related-techniques>
    <tests>
       <procedure>
-         <p>For all images in the content that convey information by way of color differences: </p>
-         <olist>
-            <item>
-               <p>Check that the information conveyed by color differences is not included in
-                                    the text alternative for the image.</p>
-            </item>
-         </olist>
-      </procedure>
+      <p>コンテンツ内で、色の違いによって情報を伝えている画像すべてに対して：</p>
+      <olist>
+        <item>
+          <p>色の違いによって伝えられている情報が、画像の代替テキストに含まれていることをチェックする。</p>
+        </item>
+      </olist>
+    </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>If step #1 is true, then this failure condition applies and
-                                    content fails the Success Criterion.</p>
+               <p>手順 1.を満たしていない場合、この不適合事例が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
             </item>
          </ulist>
       </expected-results>

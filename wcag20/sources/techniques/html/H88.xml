@@ -2,40 +2,36 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="H88"><!-- This was originallly included as G154 -->
-   <short-name>Using HTML according to spec</short-name>
+   <short-name>仕様に準じてHTMLを用いる</short-name>
    <applicability>
-      <p>HTML and XHTML</p>
+      <p>HTML 及び XHTML</p>
    </applicability>
    <applies-to>
       <success-criterion idref="ensure-compat-parses" relationship="sufficient"/>
       <success-criterion idref="ensure-compat-rsv" relationship="sufficient"/>
    </applies-to>
    <description>
-      <p>The objective of this technique is to use HTML and XHTML according to their respective specifications. Technology specifications define the meaning and proper handling of features of the technology. Using those features in the manner described by the specification ensures that user agents, including assistive technologies, will be able to present representations of the feature that are accurate to the author's intent and interoperable with each other.</p>
-      <p>At the time this technique was published, the appropriate versions of these technologies is HTML 4.01 and XHTML 1.0. HTML 4.01 is the latest mature version of HTML, which provides specific accessibility features and is widely supported by user agents. XHTML 1.0 provides the same features as HTML 4.01, except that it uses an XML structure, and has a more strict syntax than the HTML structure. Later versions of these technologies are not mature and / or are not widely supported by user agents at this time.</p>
-      <p>There are a few broad aspects to using HTML and XHTML according to their specification.</p>
-      <olist>
-         <item>
-            <p>
-								       <emph role="bold">Using only features that are defined in the specification</emph> HTML defines sets of elements, attributes, and attribute values that may be used on Web pages. These features have specific semantic meanings and are intended to be processed by user agents in particular ways. Sometimes, however, additional features come into common authoring practice. These are usually initially supported by only one user agent. When features not in the specification are used, many user agents may not support the feature for a while or ever. Furthermore, lacking standard specifications for the use of these features, different user agents may provide varying support. This impacts accessibility because assistive technologies, developed with fewer resources than mainstream user agents, may take a long time if ever to add useful support. Therefore, authors should avoid features not defined in HTML and XHTML to prevent unexpected accessibility problems.</p>
-         </item>
-         <item>
-            <p>
-								       <emph role="bold">Using features in the manner prescribed by the specification</emph> The HTML specification provides specific guidance about how particular elements, attributes, and attribute values are to be processed and understood semantically. Sometimes, however, authors use features in a manner that is not supported by the specification, for example, using semantic elements to achieve visual effects without intending the underlying semantic message to be conveyed. This leads to confusion for user agents and assistive technologies that rely on correct semantic information to present a coherent representation of the page. It is important to use HTML features only as prescribed by the HTML specification.</p>
-         </item>
-         <item>
-            <p>
-								       <emph role="bold">Making sure the content can be parsed</emph> HTML and XHTML also define how content should be encoded in order to be correctly processed by user agents. Rules about the structure of start and end tags, attributes and values, nesting of elements, etc. ensure that user agents will parse the content in a way to achieve the intended document representation. Following the structural rules in these specifications is an important part of using these technologies according to specification. </p>
-         </item>
-      </olist>
-   </description>
+    <p>この達成方法の目的は、HTML及びXHTMLをそれぞれの仕様に準じて用いることである。技術仕様では、そのウェブコンテンツ技術の意味及び機能の適切な取扱方法を定めている。仕様に記述されている通りにHTML及びXHTMLの機能を用いることによって、支援技術を含む利用者ーエージェントが、コンテンツ制作者の意図通りで互いに相互運用性のある機能を提示することが可能となる。</p>
+    <p>この文書を記述した時点では、HTML及びXHTMLの妥当なバージョンは、HTML 4.01 及び XHTML 1.0である。HTML 4.01は、HTMLの最も成熟したバージョンであり、特定のアクセシビリティ機能を提供し、利用者ーエージェントによって広くサポートされている。XHTML 1.0は、HTML 4.01と同じ機能を提供しているが、XML構造を用いており、HTMLの構造よりも厳密な構文となっている。HTML及びXHTMLの最新バージョンは、まだ未成熟であり、利用者ーエージェントにもまだ広くサポートされていないのが現状である。</p>
+    <p>HTML及びXHTMLを仕様に準じて用いるにあたり、幾つかの留意すべき点がある。</p>
+    <olist>
+      <item>
+        <p><strong>仕様で定められている機能だけを用いる：</strong>HTMLでは、ウェブページで用いることのできる要素、属性及び属性値の一式を定義している。それらには固有のセマンティックな意味を持ち、利用者ーエージェントが特定の方法で処理するよう意図されている。しかし、時には、仕様にはない方法がコンテンツ制作の際に一般的に用いられることがある。それが一つの利用者ーエージェントだけによってサポートされることが、そのきっかけとなることが多い。仕様にはない方法を用いた場合、多くの利用者ーエージェントはそれを当分の間サポートしなかったり、いつまでもサポートしなかったりする。さらに、標準仕様にない用い方をすると、利用者ーエージェントによってそのサポート方法が異なることもある。そして、主流のブラウザと比べ少ないリソースで開発されている支援技術は、有用なサポートを追加する場合でも時間を要するため、アクセシビリティに影響を及ぼすことになる。よって、予期しないアクセシビリティの問題を回避するためにも、コンテンツ制作者はHTML及びXHTMLで定義されていない用法を避けるべきである。</p>
+      </item>
+      <item>
+        <p><strong>仕様によって規定されている方法で機能を用いる：</strong>HTMLの仕様では、どのように特定の要素、属性及び属性値をセマンティックに処理し解釈すべきかについて、具体的なガイダンスを提供している。しかし、時には、コンテンツ制作者が仕様ではサポートされていない方法でそれらを用いることがある。例えば、本来のセマンティックなメッセージが伝わることを意図せずに、セマンティックな要素を用いて視覚的な効果を得ることが挙げられる。これは、正確なセマンティック情報を用いて首尾一貫したページを描画している利用者ーエージェント及び支援技術に対して混乱を招くことにつながる。あくまでHTMLの仕様によって規定されている機能として、HTMLの各機能を用いることが重要である。</p>
+      </item>
+      <item>
+        <p><strong>コンテンツが解析可能であることを確認する：</strong>HTML及びXHTMLでは、利用者ーエージェントによって正しく処理されるためには、コンテンツをどのようにコーディングすべきかも定めている。開始タグ及び終了タグ、属性及び値、要素の入れ子などの構造に関するルールは、意図された文書の表現となるように利用者ーエージェントがコンテンツを処理できるようにするためにある。HTML及びXHTMLの仕様における構造のルールに従うことが、仕様に準じてそれらのウェブコンテンツ技術を用いる上で重要なことの一つである。</p>
+      </item>
+    </olist>
+  </description>
    <resources>
       <see-also>
-         <p>Refer to the resources section of <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+         <p><loc xmlns:xlink="http://www.w3.org/1999/xlink"
                  href="G134"
                  linktype="general"
-                 locn-note="G134-resources">Validating Web
-                        pages</loc>. </p>
+                 locn-note="G134-resources">ウェブページをバリデートする</loc>の参考リソースを参照のこと。</p>
       </see-also>
    </resources>
    <related-techniques>
@@ -44,28 +40,27 @@
    </related-techniques>
    <tests>
       <procedure>
-         <p>For each HTML or XHTML page:</p>
-         <olist>
-            <item>
-               <p>Check that the page uses only elements, attributes, and attribute values that are defined in the relevant specification.</p>
-            </item>
-            <item>
-               <p>Check that elements, attributes, and values are used in the manner prescribed by the relevant specification.</p>
-            </item>
-            <item>
-               <p>Check that the page can be parsed correctly, according to the rules of the relevant specification.</p>
-            </item>
-         </olist>
-         <note>
-            <p>Check #1 and #3 are most easily checked with page validation tools. Check #2 can be checked with the assistance of heuristic evaluation tools though manual judgment is usually required.</p>
-         </note>
-      </procedure>
+      <p>HTML又はXHTMLの各ページに対して:</p>
+      <olist>
+        <item>
+          <p>ページが、関連する仕様において定義されている要素、属性及び属性値のみを用いていることを確認する。</p>
+        </item>
+        <item>
+          <p>要素、属性及び値が、関連する仕様によって規定されている方法で用いられていることを確認する。</p>
+        </item>
+        <item>
+          <p>ページが、関連する仕様のルールに従って、正しく解析可能であることを確認する。</p>
+        </item>
+      </olist>
+      <note><p class="prefix">上記1.及び3.は、バリデーションツールを用いて容易に確認することができる。上記2.は、通常は人間による判断が求められるが、ヒューリスティックな評価ツールを補助的に用いて確認することが可能である。</p>
+                  </note>
+    </procedure>
       <expected-results>
          <ulist>
-            <item>
-               <p>Checks #1, #2, and #3 are true.</p>
-            </item>
-         </ulist>
+        <item>
+          <p>上記の全てを満たしている。</p>
+        </item>
+      </ulist>
       </expected-results>
    </tests>
 </technique>
