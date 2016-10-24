@@ -2,48 +2,76 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G178">
-   <short-name>利用者がウェブページ上のすべてのテキストを200％まで徐々に変更できるコントロールをウェブページ上で提供する</short-name>
+   <short-name>Providing controls on the Web page that allow users to incrementally change the size of all text on the page up to 200 percent</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p>All technologies.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-scale" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、文字のサイズを徐々に大きくするメカニズムをウェブサイト上で提供することである。多くのロービジョンの人々は拡大鏡ソフトウェアを使っておらず、そしてブラウザの文字サイズの調整について精通していない。このことは、あとからコンピューターを学んだり、また失明に近い症状の高齢者にも特に当てはまる。
-                 これはフォントサイズを大きくしたいと思っている認知障害者もまた同様である。</p>
-    <p>この達成方法は、利用者ーがより簡単に使うことのできるメカニズムを提供する。このメカニズムは視覚的表現を異なるスタイルシートに切り替えたり、文字サイズをダイナミックに変化するためのスクリプトを使用したりするリンクやボタンを含んでいる。</p>
-    <p>この達成方法を実装するために、コンテンツ制作者は利用者ーがページ上のすべてのテキストの文字サイズをデフォルト文字サイズの少なくとも200％の大きさに徐々に拡大縮小することができるコントロールを提供する。</p>
-    <p>これはリンクやボタンまたはリンク画像によって達成可能であり、そしてそれらコントロールは可能な限り簡単に見つけられるべきである。（ページ内で目立つ場所にある、大きなテキスト、ハイコントラストで表現されているなど。）</p>
-    <p>この達成方法は、レガシーコードの場合のように、拡大縮小可能なフォントを用いることができない状況でも同様に用いることができる。</p>
-    <note><p class="prefix">この達成方法は、非適合コンテンツのための<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#conforming-alternate-versiondef" linktype="glossary">適合している代替バージョン</loc>のページを表示させるためのスタイル切り替えの達成方法との組み合わせで用いることができる。更なる情報は<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29.html" linktype="css">C29： スタイル・スイッチャーを用いて、適合している代替バージョンを提供する</loc>(CSS)と<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/UNDERSTANDING-WCAG20/conformance.html#uc-conforming-alt-versions-head"  linktype="understanding">適合している代替バージョンを理解する</loc>を参照。</p>
-               </note>
-  </description>
-   <examples/>
+      <p>The purpose of this technique is to provide a mechanism on the Web page to incrementally increase the size of text. Many people with low vision do not use magnifying software, and they may not be familiar with their browser's text size adjustments. This may be particularly true of older people who are learning about computers later in life and who may be experiencing age related vision loss. It may also be true of some people with cognitive disabilities who require increased font size.</p>
+      <p>This technique provides a mechanism that some users will find easier to use. The mechanism may include links or buttons that will switch the visual presentation to a different style sheet or use scripts to change the text size dynamically.</p>
+      <p>To implement this technique, an author provides controls that allow the user to incrementally increase or decrease the text size of all of the text on the page to a size that is at least 200% of the default text size.</p>
+      <p>This can be achieved by providing links, buttons or linked images and the controls themselves should be as easy to find (e.g. prominently positioned within the page, presented in a larger text size, high contrast, etc.) as possible.</p>
+      <p>This technique can also be used in circumstances where scalable fonts cannot be used, such as legacy code situations.</p>
+      <note>
+         <p>This technique can be used in combination with a style switching technique to present a page that is a
+              <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                 href="conforming-alternate-versiondef"
+                 linktype="glossary">conforming alternate version</loc>
+              for non-conforming content. Refer to
+              <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29" linktype="css">C29: Using a style switcher to provide a conforming alternate version</loc>
+              and
+              <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                 href="conformance"
+                 locn-note="uc-conforming-alt-versions-head"
+                 linktype="understanding">Understanding Conforming Alternate Versions</loc>
+              for more information.</p>
+      </note>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>A newspaper article has two buttons near the top of the page. The "increase text size" button has a big letter "T" with an upward arrow and the "decrease text size" button has a small letter "T" with a down arrow. There is
+                <att>alt</att>
+                text on each button.</p>
+         </item>
+         <item>
+            <p>A site has a number of style sheets with different text size. The user can choose any of the style sheets if their browser provides this functionality. Each page also includes the links "Increase text size" and "Decrease text size" that will change the style sheet currently applied to the appropriate alternate style sheet.</p>
+         </item>
+         <item>
+            <p>A site includes the text "Change text size:" followed by text links "Up" and "Down" on every Web page. The links trigger a Javascript that alters the value of the text-size property accordingly.</p>
+         </item>
+         <item>
+            <p>A site includes a link on every page that reads "Change text size." The resulting page includes a series of links that includes options representing the available sizes. The links read, "Smallest font size," "Small font size," "Default font size," "Large font size," etc. Instructions preceding the list direct users to choose a link to change to the desired font size.</p>
+         </item>
+      </ulist>
+   </examples>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p diff="add">ビューポートのサイズを 1024px × 768px 以上に設定する。</p>
-        </item>
-        <item>
-          <p>文字サイズを大きくできる。</p>
-        </item>
-        <item>
-          <p>文字サイズが元のサイズから200％まで大きくすることができる。</p>
-        </item>
-        <item>
-          <p diff="add">文字サイズが元のサイズから200％まで大きくした後、コンテンツまたは機能が損なわれていない（例えば、テキストの一部が表示されなくなる、ボックスが重なり合う、コントロールが隠れてしまったりラベルから離れてしまったりする、というような状態にならない）。</p>
-        </item>
-        <item>
-          <p>文字サイズを初期値まで小さく戻すことができる。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Set the viewport size to 1024px by 768px or larger.</p>
+            </item>
+            <item>
+               <p>Increase the text size and check to see if the text size increased.</p>
+            </item>
+            <item>
+               <p>Check that the text size can be increased to 200% of the original size.</p>
+            </item>
+            <item>
+               <p>Check that after increasing the text size to 200% of the original size, there is no loss of content or functionality (e.g. no parts of the text are clipped, boxes do not overlap, controls are not obscured or separated from their labels, etc.).</p>
+            </item>
+            <item>
+               <p>Decrease the text size to its default value and check to see if it in fact returned to the default size.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p><phrase diff="del">1.及び 2.</phrase><phrase diff="add">2. ～ 4. </phrase>を満たしている。</p>
+               <p>Checks #2, #3, #4 and #5 are true.</p>
             </item>
          </ulist>
       </expected-results>

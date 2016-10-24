@@ -2,26 +2,28 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SCR31">
-   <short-name>スクリプトを用いて、フォーカスのある要素の背景色又はボーダーを変更する</short-name>
+   <short-name>Using script to change the background color or border of the element with focus</short-name>
    <applicability>
-      <p>HTML 及び XHTML、CSS、Script</p>
+      <p>HTML and XHTML, CSS, Script</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-focus-visible" relationship="sufficient"/>
    </applies-to>
    <ua-issues>
       <ua-issue name="" version="">
-      <p>この達成方法は<code>:focus</code>疑似クラスをサポートしていないがスクリプトをサポートしている、マイクロソフトのInternet Explorerを含むユーザエージェント上で用いることができる。</p>
-    </ua-issue>
+         <p>This technique can be used on user agents that don't support the <code><![CDATA[:focus]]></code> pseudoclass but do support script, including Microsoft Internet Explorer.</p>
+      </ua-issue>
    </ua-issues>
    <description>
-    <p>この達成方法の目的は、コンテンツ制作者がCSSを適用してフォーカス表示を通常よりもより見やすくするためにJavaScriptを使えるようにすることである。要素がフォーカスを受ける時、背景色またはボーダーは視覚的に異なるように変化する。要素からフォーカスがはずれたとき元のスタイルにもどる。この達成方法は:focus疑似クラスをサポートしているいないに関わらず、スクリプトやCSSをサポートしているどんなHTMLのユーザエージェントでも用いることができる。</p>
-  </description>
+      <p>This purpose of this technique is to allow the author to use JavaScript to apply CSS, in order to make the focus indicator more visible than it would ordinarily be. When an element receives focus, the background color or border is changed to make it visually distinct. When the element loses focus, it returns to its normal styling. This technique can be used on any HTML user agent that supports Script and CSS, regardless of whether it supports the :focus pseudoclass.</p>
+   </description>
    <examples>
       <eg-group>
-      <description><p>この事例において、リンクにフォーカスが当たった時、背景は黄色に変わる。フォーカスがはずれたとき、黄色ではなくなる。もしリンクに背景色がある場合は、スクリプト内で””よりむしろその色を用いることに注意する。</p>
-</description>
-      <code><![CDATA[...
+         <description>
+            <p>In this example, when the link receives focus, its background turns yellow. When it loses focus, the yellow is removed. Note that if the link had a background color to begin with, you would use that color rather than "" in the script.</p>
+         </description>
+         <code><![CDATA[
+...
 <script>
  function toggleFocus(el)
  {
@@ -31,28 +33,29 @@
 
 ...
 
-<a href="example.html" onfocus="toggleFocus(this)" onblur="toggleFocus(this)">ここにフォーカスを置く</a>
-...]]></code>
-    </eg-group>
+<a href="example.html" onfocus="toggleFocus(this)" onblur="toggleFocus(this)">focus me</a>
+...
+]]></code>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="C15"/>
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>キーボード操作でページ内の各要素にタブ移動する。</p>
-        </item>
-        <item>
-          <p>フォーカス表示が視覚的に認識可能である。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Tab to each element in the page</p>
+            </item>
+            <item>
+               <p>Check that the focus indicator is visible</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.を満たしている。</p>
+               <p>Step #2 is true</p>
             </item>
          </ulist>
       </expected-results>

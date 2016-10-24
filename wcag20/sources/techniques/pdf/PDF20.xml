@@ -2,78 +2,210 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="PDF20">
-   <short-name>Adobe Acrobat Pro のテーブルエディタを使用して、間違ってタグ付けされているテーブルを修復する</short-name>
+   <short-name>Using Adobe Acrobat Pro's Table Editor to repair mistagged tables</short-name>
    <applicability>
-     <p>テーブルが含まれているタグ付き PDF 文書</p>
+      <p>Tagged PDF documents with tables.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="content-structure-separation-programmatic"
                          relationship="sufficient"/>
    </applies-to>
    <ua-issues>
-     <ua-issue>
-      <p>利用者ーエージェント及び支援技術に関する情報は、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="pdf_notes.html">PDF テクノロジーノート</loc>を参照のこと。</p>
-    </ua-issue>
-  </ua-issues>
-  <description>
-    <p>この達成方法の目的は、行と列の間の論理的な関係が維持され、支援技術により認識されるように、PDF 文書内のテーブルセルをマークアップする方法を示すことである。これは通常、PDF のオーサリングツールを使用して行う。</p>
-    <p>ただし、オーサリングツールで正しくマークアップされている場合でも、PDF に変換されたテーブルに、正しく結合または分割されないテーブルセルが存在する場合がある。コンテンツ制作者は、Adobe Acrobat Pro の TouchUp 読み上げ順序ツールのテーブルエディタを使用して、テーブルセルが適切に構造化されていることを確認できる。</p>
-  </description>
+      <ua-issue use-id="pdf.ua-issue.general"/>
+   </ua-issues>
+   <description>
+      <p>The purpose of this technique is to show how table cells in PDF documents
+    				can be marked up so that the logical relationships among rows and columns
+    				are preserved and recognized by assistive technology. This is typically
+    				accomplished by using a tool for authoring PDF. </p>
+      <p>However, tables converted to PDF may have incorrectly merged or split
+    				table cells, even if they were marked up correctly in the authoring
+    				tool. Authors can ensure that table cells are structured properly by
+    				using the Table Editor in Adobe Acrobat Pro's TouchUp Reading Order
+    				tool. </p>
+   </description>
    <examples>
       <eg-group>
-      <head>Adobe Acrobat 9 Pro の TouchUp 読み上げ順序ツールのテーブルエディターを使用してテーブルセルを修復する</head>
-      <description><p>この事例は Adobe Acrobat Pro の場合を示している。同様の機能を実行するソフトウェアツールは他にも存在する。 他のソフトウェアツールのリストについては、「<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="pdf_notes.html#pdf_notes_acc-sup_files_applications">アクセシビリティがサポートされている PDF オーサリングツール</loc>」を参照のこと。</p>
-<p>この事例では、Microsoft Word での作成時に正しくマークアップされていたテーブルを使用する。一部のテーブルヘッダは、ヘッダ行が 2行あり、テーブルヘッダが 2列に分かれている。</p>
-<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF20/table-word.jpg" alt="スクリーンショット：複雑なヘッダのある、Word で正しくマークアップされたテーブル（PDF への変換前）&#13;&#10;" height="289" width="516"/></p><p>PDF 文書内のテーブルを確認するには、次の操作を行う。</p>
-<olist><item><p>アドバンスト > アクセシビリティ > TouchUp 読み上げ順序を選択する</p></item><item><p>テーブルの左上隅にある数字（以下の画像の読み上げ順序 3）をクリックしてテーブルを選択する</p></item><item><p>TouchUp 読み上げ順序パネルで［テーブルエディタ］ボタンを選択する。テーブルセルに赤色のアウトラインが表示され、タグによってラベルが付けられる。赤いアウトラインはテーブルセルと厳密に一致するものではないが、それによってセルが正しくタグ付けされているかどうかを確認できる</p></item></olist>
-<p>次の画像は、TouchUp 読み上げ順序ツールのサンプルテーブルを示している。「Results」ヘッダが 2つのサブヘッダにまたがって表示されており、左側にあるその他のヘッダは「Results」ヘッダ内の 2つの行にまたがっている。</p>
-<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF20/table-1.jpg" alt="スクリーンショット：TouchUp 読み上げ順序ツール内のテーブル。Word の場合と同様に、テーブルの「Results」ヘッダは 2つのサブヘッダにまたがって表示されており、左側にあるその他のヘッダは「Results」ヘッダ内の 2 つの行にまたがっている。" height="584" width="822"/></p><p>次の画像は、テーブルエディターでのサンプルテーブルを示している。セルには赤色のアウトラインが付けられ、各セルのタブが表示されている。変換時に、「Results」ヘッダが正しく分割されず、2つのサブヘッダにまたがっていない。右側にあるヘッダは 2つのセルに正しく分割されず、「Results」ヘッダにまたがっていない。さらに、正しく分割されなかったセルが 1つのセルに結合されている。</p>
-<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF20/table-2.jpg" alt="スクリーンショット：テーブルセルと各セルのタグを示している、テーブルエディターでのサンプルテーブル。テーブルエディターは、「Results」ヘッダが正しく分割されず、2 つのサブヘッダにまたがっていないことを示している。その他のヘッダも正しく分割および結合されていない。" height="285" width="520"/></p><p>「Results」ヘッダを修復するには、次の操作を行う。 </p>
-<olist><item><p>テーブル内でヘッダを選択する（選択されると、青色のアウトラインが表示される）</p></item><item><p>コンテキストメニューにアクセスする</p></item><item><p>［テーブルセルのプロパティ］を選択する</p></item><item><p>［テーブルセルのプロパティ］ダイアログボックスで、「列のスパン」を「1」から「2」に変更する</p></item><item><p>［OK］を押す。変更により正しくないテーブル構造が生じた場合には、警告が表示される。この場合、変更は正しい。変更したセルは、次の画像に示されているように、新しい範囲を示すために色が変わる</p></item></olist>
-<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF20/table-2a.jpg" alt="スクリーンショット：この事例でタグ付けが間違っているヘッダを修復するために「列のスパン」が「2」に変更された、［テーブルセルのプロパティ］ダイアログボックス" height="473" width="686"/></p><p>同様に、「Results」ヘッダの左側にある正しく分割されていないヘッダセルを修復するには、次の操作を行う。</p>
-<olist><item><p>列内で上部のセルを選択する（選択されると、青色のアウトラインが表示される）</p></item><item><p>コンテキストメニューにアクセスする</p></item><item><p>［テーブルセルのプロパティ］を選択する</p></item><item><p>［テーブルセルのプロパティ］ダイアログボックスで、「行のスパン」を「1」から「2」に変更する</p></item><item><p>［OK］を押す。次の画像は、左側にあるヘッダセルが修正され、最後のヘッダセルが修正された状態を示している</p></item></olist>
-<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF20/table-2b.jpg" alt="スクリーンショット：この事例でタグ付けが間違っているヘッダを修復するために「行のスパン」が「2」に変更された、［テーブルセルのプロパティ］ダイアログボックス" height="474" width="789"/></p><p>次の画像は、修復されたサンプルテーブルを示している。</p>
-<p><img class="eximg" src="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF20/table-3a.jpg" alt="スクリーンショット：テーブルエディター内の修復されたサンプルテーブル。これで、元の Word の表と同じテーブル構造になっている。" height="303" width="519"/></p><p>この事例のサンプルとして、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF20/table.docx" linktype="examples">テーブル構造を修復するサンプル (Word ファイル)</loc> と <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/PDF20/table.pdf" linktype="examples">テーブル構造を修復するサンプル (PDF ファイル)</loc>がある。</p>
-</description>
-    </eg-group>
-    <eg-group>
-      <head>テーブルの構造エレメントを使用してテーブルをマークアップする</head>
-      <description><p>次のコードフラグメントは、事例 1 ～ 3 に示すような単純なテーブル（ヘッダ行とデータ行）で一般的に使用されるコードを示している。</p>
-</description>
-      <codeblock xml:space="preserve"><![CDATA[
-95 0 obj                % テーブルの構造エレメント
+         <head>Repairing table cells using the Table Editor in the TouchUp
+    					Reading Order tool in Adobe Acrobat 9 Pro</head>
+         <description>
+            <p>This example is shown with Adobe Acrobat Pro. There are other software tools that perform similar functions. See the list of other software tools in <specref ref="pdf_notes_acc-sup_files_applications"/>.</p>
+            <p>This example uses a table that was marked up correctly when it was
+    						created in Microsoft Word. Some table headers span two rows in the
+    						header row; one table header spans two columns. </p>
+            <p>
+               <image>
+                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
+                       source="/WAI/WCAG20/Techniques/working-examples/PDF20/table-word.jpg"
+                       height="289"
+                       width="516"/>
+                  <alt>A correctly marked up table in Word, with complex headers, before conversion to PDF.</alt>
+               </image>  
+            </p>
+            <p>To check the table in the PDF document: </p>
+            <olist>
+               <item>
+                  <p> Advanced &gt; Accessibility &gt; TouchUp Reading Order... </p>
+               </item>
+               <item>
+                  <p> Select the table by clicking the number in the top left hand corner 
+    						of the table (3 in the reading order in the image below). </p>
+               </item>
+               <item>
+                  <p> Select the Table Editor button on the TouchUp Reading Order panel.
+    						The table cells will be outlined in red and labeled with their tags.
+    						The red outlines may not exactly match up to the table cells but
+    						you should be able to determine if the cells are tagged correctly. </p>
+               </item>
+            </olist>
+            <p>The following image shows the example table in the TouchUp Reading
+    						Order tool. Note that the Results header appears to span two sub-headers
+    						and the other headers to the left span the two rows in the Results
+    						header. </p>
+            <p>
+               <image>
+                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
+                       source="/WAI/WCAG20/Techniques/working-examples/PDF20/table-1.jpg"
+                       height="584"
+                       width="822"/>
+                  <alt>Table in the TouchUp Reading Order tool. As in Word, the table Results header appears to span two sub-headers and the other headers to the left span the two rows in the Results header.</alt>
+               </image>  
+            </p>
+            <p>The following images shows the example table in the Table Editor.
+    						The cells are outlined in red, and the tab for each cell is displayed.
+    						Upon conversion, the Results header was incorrectly split and does
+    						not span its two sub-headers. The headers to the right were incorrectly
+    						split into 2 cells each and do not span the Results headers. In addition,
+    						the incorrectly split cells were merged into one cell. </p>
+            <p>
+               <image>
+                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
+                       source="/WAI/WCAG20/Techniques/working-examples/PDF20/table-2.jpg"
+                       height="285"
+                       width="520"/>
+                  <alt>Example table in the Table Editor, showing table cells and the tag for each cell. The Table Editor shows the Results header was incorrectly split and does not span its two sub-headers; and other headers were also incorrectly split and merged.</alt>
+               </image>  
+            </p>
+            <p>To repair the Results header: </p>
+            <olist>
+               <item>
+                  <p> Select the header in the table (it will be outlined in blue when
+    						selected) </p>
+               </item>
+               <item>
+                  <p> Access the context menu </p>
+               </item>
+               <item>
+                  <p> Select Table Cell Properties... </p>
+               </item>
+               <item>
+                  <p> In the Table Cell Properties dialog, change the Column Span from
+    							1 to 2 </p>
+               </item>
+               <item>
+                  <p> Press OK. You'll get a warning that the change might result in
+    								a malformed table structure. In this case, the change is correct.
+    								The cell you changed should change color to show the new span, as
+    								shown in the following image. </p>
+               </item>
+            </olist>
+            <p>
+               <image>
+                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
+                       source="/WAI/WCAG20/Techniques/working-examples/PDF20/table-2a.jpg"
+                       height="473"
+                       width="686"/>
+                  <alt>The Table Cells Properties dialog showing the Column Span changed to 2 to repair a mistagged header in this example.</alt>
+               </image>  
+            </p>
+            <p>Similarly, to repair the incorrectly split header cells to the left
+    						of Results header: </p>
+            <olist>
+               <item>
+                  <p> Select the top cell in the column (it will be outlined in blue
+    						when selected) </p>
+               </item>
+               <item>
+                  <p> Access the context menu </p>
+               </item>
+               <item>
+                  <p> Select Table Cell Properties... </p>
+               </item>
+               <item>
+                  <p> In the Table Cell Properties dialog, change the Row Span from
+    							1 to 2 </p>
+               </item>
+               <item>
+                  <p> Press OK. The following image shows the correction being made
+    								to the last header cell, with the corrected header cells to its left. </p>
+               </item>
+            </olist>
+            <p>
+               <image>
+                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
+                       source="/WAI/WCAG20/Techniques/working-examples/PDF20/table-2b.jpg"
+                       height="474"
+                       width="789"/>
+                  <alt>The Table Cells Properties dialog showing the Row Span changed to 2 to repair a mistagged header in this example.</alt>
+               </image>  
+            </p>
+            <p>The following image shows the repaired example table. </p>
+            <p>
+               <image>
+                  <img xmlns:xlink="http://www.w3.org/1999/xlink"
+                       source="/WAI/WCAG20/Techniques/working-examples/PDF20/table-3a.jpg"
+                       height="303"
+                       width="519"/>
+                  <alt>The repaired example table in the Table Editor. It now has the same table structure as the original Word table.</alt>
+               </image>  
+            </p>
+            <p>This example is shown in operation in the <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="table.docx"
+                    linktype="examples">working example of repairing table structure (Word file)</loc> and <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="table.pdf"
+                    linktype="examples">working example of repairing table structure (PDF file)</loc>.</p>
+         </description>
+      </eg-group>
+      <eg-group>
+         <head>Marking up a table using table structure elements</head>
+         <description>
+            <p>The following code fragment illustrates code that is typical for a
+    					simple table (header row and data row) such as shown in Examples 1-3: </p>
+            <codeblock xml:space="preserve"><![CDATA[95 0 obj                %Structure element for a table
  << 
   /A 39 0 R
   /K[96 0 R 101 0 R 106 0 R 111 0 R]
   /P 93 0 R
-  /S/Table              % 標準構造タイプはテーブル
+  /S/Table              %standard structure type is table
  >> 
  endobj
-96 0 obj                % テーブル行の構造エレメント
+96 0 obj                %Structure element for a table row
  << 
   /K[97 0 R 98 0 R 99 0 R 100 0 R]
   /P 95 0 R
-  /S/TR                 % 標準構造タイプはテーブル行
+  /S/TR                 %standard structure type is table row
  >> 
  endobj
-97 0 obj                % テーブルヘッダの構造エレメント
+97 0 obj                %Structure element for a table header
  <</A[23 0 R 120 0 R]
    /K 1
    /P 96 0 R
-   /S/TH                 % 標準構造タイプはテーブルヘッダ
+   /S/TH                 %standard structure type is table head
    /Pg 8 0 R
  >> 
 endobj
-104 0 obj                % テーブルデータの構造エレメント（セルのコンテンツ）
+104 0 obj                %Structure element for table data (cell contents)
  << 
   /A 29 0 R
   /K 7
   /P 101 0 R
-  /S/TD                  % 標準構造タイプはテーブルデータ
+  /S/TD                  %standard structure type is table data
   /Pg 8 0 R
  >> 
-endobj]]></codeblock>
-    </eg-group>
+endobj
+]]></codeblock>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -99,15 +231,42 @@ endobj]]></codeblock>
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item><p>テーブルエディターで修復されたテーブルについて、次のいずれかの確認を行う。</p>
-<ulist><item><p>PDF 文書をスクリーンリーダーで読み上げると、テーブルヘッダおよびデータセル間の論理的関係を維持する方法で表の情報が読み上げられる（表のヘッダセルを読み上げるためにヒューリスティック手法が用いられないようにスクリーンリーダーを構成すること）</p></item><item><p>PDF エディターを使用し、適切な <code>TR</code>、<code>TH</code> および <code>TD</code> タグが正しい読み上げ順序でテーブルツリー内の階層に配置されていることを確認する</p></item><item><p>テーブルエレメントを表示できるツールを使用して PDF 文書を開き、テーブル構造を表示して、適切な <code>TR</code>、<code>TH</code> および <code>TD</code> 構造が含まれていることを確認する</p></item><item><p>アクセシビリティ API を通じて文書を表示するツールを使用して、テーブル構造に適切な TR、THおよびTD 構造が含まれ、正しい読み上げ順序と階層になっていることを確認する</p></item></ulist></item>
-      </olist>
-    </procedure>
-    <expected-results>
-      <ulist>
-        <item>
-          <p>#1 is true. </p>
+         <olist>
+            <item>
+               <p>For a table that has been repaired with the Table Editor, confirm
+    					one of the following:</p>
+               <ulist>
+                  <item>
+                     <p> Read the PDF document with a screen reader, listening to hear
+    						that the tabular information is presented in a way that preserves
+    						logical relationships among the table header and data cells.
+    						(Configure the screen reader to not use heuristics to read table
+    						header cells.) </p>
+                  </item>
+                  <item>
+                     <p> Using a PDF editor, verify that the appropriate <emph>TR</emph>, <emph>TH</emph>,
+    							and <emph>TD</emph> tags are in the proper reading order and hierarchy
+    							in the table tree. </p>
+                  </item>
+                  <item>
+                     <p> Use a tool which is capable of showing the table elements
+    								to open the PDF document, view the table structure, and verify
+    								that it contains the appropriate TR, TH, and TD structures. </p>
+                  </item>
+                  <item>
+                     <p> Use a tool that exposes the document through the accessibility
+    									API, and verify that the table structure contains the appropriate
+    									TR, TH, and TD structures, and that they are in the proper reading
+    									order and hierarchy. </p>
+                  </item>
+               </ulist>
+            </item>
+         </olist>
+      </procedure>
+      <expected-results>
+         <ulist>
+            <item>
+               <p>#1 is true. </p>
             </item>
          </ulist>
       </expected-results>

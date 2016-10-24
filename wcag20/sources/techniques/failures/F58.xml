@@ -2,34 +2,50 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F58">
-   <short-name>達成基準 2.2.1 の不適合事例 － サーバサイドの達成方法を用いて、タイムアウト後にページを自動的にリダイレクトしている</short-name>
+   <short-name>Failure of Success Criterion 2.2.1 due to using server-side techniques to automatically
+                    redirect pages after a time-out</short-name>
    <applicability>
       <ulist>
-      <item>
-        <p>サーバサイドのスクリプト言語全て</p>
-      </item>
-      <item>
-        <p>制限時間に関する達成基準の例外に当てはまらないコンテンツ</p>
-      </item>
-    </ulist>
+         <item>
+            <p> Any server-side scripting language </p>
+         </item>
+         <item>
+            <p> Content does not meet the exceptions in the Success Criterion for
+                                permitted time limits. </p>
+         </item>
+      </ulist>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-required-behaviors" relationship="failure"/>
    </applies-to>
    <ua-issues>
       <ua-issue name="IE" version="6.0">
-      <p>Refreshヘッダは、HTTP/1.1、HTTP/1.0ともに定義されていないが、多くのブラウザでサポートされている（Windows のFirefox 1.0とIE 6で検証。）</p>
-    </ua-issue>
+         <p> The Refresh header is not defined in HTTP/1.1 or HTTP/1.0, but it is
+                            widely supported by browsers (tested in Firefox 1.0 and IE 6 on
+                            Windows).</p>
+      </ua-issue>
    </ua-issues>
    <description>
-    <p>開発者は、サーバサイドのスクリプト言語を使って、標準ではないHTTPヘッダ「Refresh」を、タイムアウト（単位：秒）及び指定されたタイムアウト時間後にリダイレクトするURIとともに指定することができる。もし時間間隔が短すぎると、全盲の人はスクリーンリーダーでページを読み終わらないうちに、予期せずページが更新されてしまい、スクリーンリーダーがページの先頭から読み上げてしまう。目の見える利用者も、予期しないリフレッシュによって混乱させられる。</p>
-    <p>HTTPヘッダは、<code>Refresh: {秒で表された時間}; url={新しい場所のURI}</code>のように設定する。URIを省略することも可能で、周期的にページを更新し続けることになる。これも同様の問題を引き起こす。この場合に設定されるHTTPヘッダは<code>Refresh: {秒で表された時間}</code>となる。</p>
-  </description>
+      <p> Server-side scripting languages allow developers to set the non-standard
+                        HTTP header "Refresh" with a time-out (in seconds) and a URI to which the
+                        browser is redirected after the specified time-out. If the time interval is
+                        too short, people who are blind will not have enough time to make their
+                        screen readers read the page before the page refreshes unexpectedly and
+                        causes the screen reader to begin reading at the top. Sighted users may also
+                        be disoriented by the unexpected refresh.</p>
+      <p>The HTTP header that is set is <code><![CDATA[Refresh: {time in seconds}; url={URI of
+                            new location}]]></code>. It is also possible to omit the URI and obtain a
+                        periodically refreshing page, which causes the same problem. The HTTP header
+                        that is set is <code><![CDATA[Refresh: {time in seconds}]]></code>.</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <description><p>次の事例は、時間によるサーバサイドのリダイレクトがJavaサーブレット又はJavaServer Pages（JSP）により実装されているため、不適合である。</p>
-</description>
-      <code><![CDATA[
+         <description>
+            <p> The following example is a failure because a timed server-side
+                                redirect is implemented in Java Servlets or JavaServer Pages
+                            (JSP).</p>
+         </description>
+         <code><![CDATA[
 public void doGet (HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
         response.setContentType("text/html");
@@ -37,25 +53,29 @@ public void doGet (HttpServletRequest request, HttpServletResponse response)
 	response.setHeader("Refresh", "10; URL=TargetPage.html");
 	out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
 	 \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
-	out.println("<html><head><title>リダイレクト</title></head><body>");
-	out.println("<p>このページは10秒後にリダイレクトします。</p>");
+	out.println("<html><head><title>Redirect</title></head><body>");
+	out.println("<p>This page will redirect you in 10 seconds.</p>");
 	out.println("</body></html>");
-  }]]></code>
-    </eg-group>
-    <eg-group role="failure">
-      <description><p>次の事例は、時間によるサーバサイドのリダイレクトがVBScriptを伴ったActive Server Pages（ASP）により実装されているため、不適合である。</p>
-</description>
-      <code><![CDATA[
+  }
+]]></code>
+      </eg-group>
+      <eg-group role="failure">
+         <description>
+            <p>The following example is a failure because a timed server-side
+                                redirect is implemented in Active Server Pages (ASP) with VBScript.</p>
+         </description>
+         <code><![CDATA[
  <% @Language = "VBScript" %>
  <% option explicit 
  Response.Clear
  Response.AddHeader "Refresh", "5; URL=TargetPage.htm"
  %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
- <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+ <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
  …
- <!--リダイレクトが実行される前に表示されるコンテンツのHTMLソース-->]]></code>
-    </eg-group>
+ <!--HTML code for content that is shown before the redirect is triggered-->
+ ]]></code>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -89,16 +109,19 @@ public void doGet (HttpServletRequest request, HttpServletResponse response)
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>ウェブページが描画された際、利用者の行動を伴わず、一定時間後に自動的に他のページへリダイレクトされる。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> When a Web page is rendered, check to see if it automatically
+                                    redirects to another page after some period of time without the
+                                    user taking any action. </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>そのようなリダイレクトがみつかった場合、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
+               <p> If such a redirect is found then this failure condition applies
+                                    and content fails the Success Criterion.</p>
             </item>
          </ulist>
       </expected-results>

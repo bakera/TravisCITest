@@ -2,45 +2,59 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F8">
-   <short-name>達成基準 1.2.2 の不適合事例 － キャプションがいくつかの発話内容又は重要な効果音を省略している</short-name>
+   <short-name>Failure of Success Criterion 1.2.2 due to captions omitting some dialogue or important
+                    sound effects</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p> Applies to all technologies. </p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-captions" relationship="failure"/>
    </applies-to>
    <description>
-    <p>この文書では、キャプションを含む全てのウェブコンテンツ技術に対する不適合事例について述べている。「キャプション」が（逐語的、又は要点のいずれかで）全ての発話内容、及び全ての重要な音を含んでいない場合、その「キャプション」は実質的にキャプションとはいえない。</p>
-    <p>注記：キャプションでは、読みやすくするため、また見る人に非常に速く読ませるのを強いることのないように、発話内容を簡略化することがある。これは標準的な手法であり、無効なキャプションとはならない。</p>
-  </description>
+      <p> This describes a failure condition for all techniques involving captions. If
+                        the "caption" does not include all of the dialogue (either verbatim or in
+                        essence) as well as all important sounds then the 'Captions' are not real
+                        captions. </p>
+      <p> NOTE: Captions sometimes simplify the spoken text both to make it easier to
+                        read and to avoid forcing the viewer to read at very high speed. This is
+                        standard procedure and does not invalidate a caption. </p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <head>不適合事例　1</head>
-      <description><p>キャプションとはいえない字幕の事例：</p>
-<ulist><item><p>発話内容（簡略化した発話内容の場合もある）を含むが、重要な音についての説明がないテキスト</p></item><item><p>内容の一部分の発話内容が省略されたテキスト</p></item></ulist>
-</description>
-    </eg-group>
+         <description>
+            <p> Examples of text streams that are not captions include: </p>
+            <ulist>
+               <item>
+                  <p>text that contains the dialogue (possibly simplified dialogue) but that does not describe important sounds 
+                  </p>
+               </item>
+               <item>
+                  <p> text that omits dialogue during portions of the material </p>
+               </item>
+            </ulist>
+         </description>
+      </eg-group>
    </examples>
    <resources/>
    <related-techniques/>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>キャプションを表示させてコンテンツを見る。</p>
-        </item>
-        <item>
-          <p>全ての発話内容がキャプションで示されている。</p>
-        </item>
-        <item>
-          <p>全ての重要な音がキャプションに記述されている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> View the material with captioning turned on. </p>
+            </item>
+            <item>
+               <p> Check that all dialogue is accompanied by a caption. </p>
+            </item>
+            <item>
+               <p> Check that all important sounds are captioned. </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.及び3.を満たしていない場合、この不適合の条件が適用され、そのコンテンツは達成基準及を満たしていないことになる。</p>
+               <p>If check #2 and check #3 are false, then this failure condition applies and the content fails the Success Criterion.</p>
             </item>
          </ulist>
       </expected-results>

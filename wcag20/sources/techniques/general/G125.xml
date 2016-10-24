@@ -2,25 +2,29 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G125">
-   <short-name>関連するウェブページへナビゲートするリンクを提供する</short-name>
+   <short-name>Providing links to navigate to related Web pages</short-name>
    <applicability>
-      <p>リンクを含む全てのウェブコンテンツ技術</p>
+      <p>All technologies that contain links</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-mult-loc" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、関連するウェブページへのリンクを提供することによって利用者が追加情報の場所を特定できるようにすることである。
-	それは、達成基準 2.4.5の実装に十分なコンテンツを配置するための一連の達成方法の一つである。
-	リンクは、World Wide Webの基本的な構成要素であり、ウェブを相互接続されたウェブコンテンツにするメカニズムである。大半のウェブコンテンツ制作者は、ウェブページを制作する場合に無意識にこの技術を用いている。</p>
-  </description>
+      <p>The objective of this technique is to make it possible for users to locate additional information by providing links to related Web pages.
+            It is one of a series of techniques for locating content that are sufficient for addressing Success Criterion 2.4.5. 
+            Links are a basic component of the World Wide Web. They are the mechanism that makes the Web an interconnected Web of content. Most authors employ this technique automatically when creating Web pages.</p>
+   </description>
    <examples>
       <eg-group>
-      <head>例１</head>
-      <description><p><loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html">ウェブ・コンテンツ・アクセシビリティ・ガイドライン 2.0</loc>は、ガイドラインと達成基準の中で使われる用語を定義したドキュメントへのリンク、異なる達成基準をどのように満たすかを説明したドキュメントへのリンク、
-		そのセクションの異なるサブセクションへのリンクを含む各セクションの目次、及び<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/WAI/WCAG20/from10/comparison/">Comparison of WCAG 1.0 checkpoints to WCAG 2.0（英語）</loc>へのリンクを含んでいる。利用者がこのドキュメントを拾い読みするときは、これらのリンクをたどって関連情報を探すことができる。</p>
-</description>
-    </eg-group>
+         <description>
+            <p>The
+                <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="http://www.w3.org/TR/WCAG20/">Web Content Accessibility Guidelines 2.0</loc>
+                contains links to definitions of terms used in guidelines and Success Criteria, links to documents explaining how to meet different Success Criteria, a table of contents for each section containing links to different subsections of that section, and  a
+                <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="http://www.w3.org/WAI/WCAG20/from10/comparison/">Comparison of WCAG 1.0 checkpoints to WCAG 2.0</loc>. As users browse the document, they can follow these links to find related information.</p>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -42,17 +46,17 @@
    </related-techniques>
    <tests>
       <procedure>
-      <p>ウェブページ内の各リンクに対して：</p>
-      <olist>
-        <item>
-          <p>そのリンクが関連する情報へのリンクである。</p>
-        </item>
-      </olist>
-    </procedure>
+         <p>For each link in the Web page:</p>
+         <olist>
+            <item>
+               <p>Check whether the link leads to related information.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1.を満たしている。</p>
+               <p>Check #1 is true.</p>
             </item>
          </ulist>
       </expected-results>

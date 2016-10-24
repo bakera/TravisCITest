@@ -2,83 +2,92 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SCR14">
-   <short-name>スクリプトを用いて、不可欠ではないアラートの表示を任意にする</short-name>
+   <short-name>Using scripts to make nonessential alerts optional</short-name>
    <applicability>
-      <p>緊急ではない情報提供のアラートにスクリプトを使用するウェブコンテンツ技術</p>
+      <p>Scripting technologies which use scripting alerts for non-emergency communication.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-postponed" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、メッセージ(アラート)を含むダイアログを利用者に表示することである。アラートが表示されたとき、それがフォーカスされると、利用者はそれを閉じるためにダイアログのOKボタンを押さなければならない。これらのアラートにフォーカスが移ってしまうと、特に、緊急ではない情報に使用されたとき、利用者の気が散ってしまうかもしれない。今日の名言、役に立つ小技、又は特定のイベントまでのカウントダウンなど、緊急ではない目的のアラートは、利用者がウェブページに提供された選択肢でそれらを有効にすることなしには現れないようにする。</p>
-    <p>この達成方法では、アラートを表示するかどうかの利用者の選択を保存するJavaScriptのグローバル変数に割り当てる。初期値はfalseにする。 ラッパー関数は、アラートを表示する前にこの変数の値をチェックするために作成される。alert() 関数を直接呼び出すよりもむしろ、アラートを表示するすべての呼び出しをこのラッパー関数にかけるようにする。ページの上部には、ページでのアラートの表示を利用者が有効にするためのボタンを提供する。この達成方法は訪問ベースで1回の訪問ごとに作動する。ページが読みこまれるたび、アラートは無効にされ、利用者は手動でそれらを有効にしなければならない。あるいは、コンテンツ制作者は、利用者の選択をセッションを越えて保存するためにクッキーを使用することができる。</p>
-  </description>
+      <p>The objective of this technique is to display a dialog containing a message (alert) to the user.  When the alert is displayed, it receives focus and the user must activate the OK button on the dialog to dismiss it. Since these alerts cause focus to change they may distract the user, especially when used for non-emergency information. Alerts for non-emergency purposes such as displaying a quote of the day, helpful usage tip, or count down to a particular event, are not presented unless the user enables them through an option provided in the Web page.</p>
+      <p>This technique assigns a global JavaScript variable to store the user preference for displaying alerts. The default value is false. A wrapper function is created to check the value of this variable before displaying an alert. All calls to display an alert are made to this wrapper function rather than calling the alert() function directly. Early in the page, a button is provided for the user to enable the display of alerts on the page. This technique works on a visit by visit basis.     Each time the page is loaded, alerts will be disabled and the user must manually enable them. Alternatively, the author could use cookies to store user preferences across sessions.</p>
+   </description>
    <examples>
       <eg-group>
-      <description><p>以下のスクリプトは、利用者が「アラートを利用する」というボタンを選択するなら、10秒ごとにアラートボックスに名言を表示する。利用者は再び「アラートを利用しない」を選択することで、名言のアラートボックスを非表示にすることができる。</p>
-</description>
-      <code><![CDATA[
+         <description>
+            <p>The script below will display a quote in an alert box every ten seconds, if the user selects the "Turn Alerts On" button. The user can turn the quotes off again by choosing "Turn Alerts Off".</p>
+         </description>
+         <code><![CDATA[
 <script type="text/javascript">
-var bDoAlerts = false;  // アラートを表示するかどうか指定するグローバル変数
-/* アラートを有効／無効にする関数。
- * param ブーリアン型 bOn - trueでアラートを有効、falseで無効。
+var bDoAlerts = false;  // global variable which specifies whether to 
+                                       // display alerts or not
+/* function to enable/disable alerts.
+ * param boolean bOn - true to enable alerts, false to disable them.
 */
 function modifyAlerts(isEnabled) {
    bDoAlerts = isEnabled;
 }
-/* アラート表示のラッパー関数。bDoAlertsの値をチェックし
-* bDoAlertsがtrueのときに alert() 関数を呼び出すだけ。
+/* wrapper function for displaying alerts.  Checks the value of bDoAlerts
+*and only calls the alert() function when bDoAlerts is true.
 */
 function doAlert(aMessage) {
     if (bDoAlerts) {
        alert(aMessage);
     }
 }
-// 例 - 名言を表示するループ。
-var gCounter = -1;  // カウンタを保存するグローバル変数
-// quotes変数は名言のリストで初期化される
+// example usage - a loop to display famous quotes.
+var gCounter = -1;  // global to store counter
+// quotes variable would be initialized with famous quotations
 var quotes = new Array("quote 1", "quote 2", "quote 3", "quote 4", "quote 5");
 function showQuotes() {
-   if (++gCounter &amp;gt;= quotes.length) {★「&amp;gt;」は「>」ではないでしょうか？★
+   if (++gCounter &gt;= quotes.length) {
      gCounter = 0;
    }
    doAlert(quotes[gCounter]);
    setTimeout("showQuotes();", 10000);
 }
 showQuotes();
-</script>]]></code>
-      <description><p>ページの本文内には、アラートを有効にしたり無効する方法を含める。以下はひとつの例である：</p>
-</description>
-      <code><![CDATA[
+</script>
+]]></code>
+         <description>
+            <p>Within the body of the page, include a way to turn the alerts on and off. Below is one example:</p>
+         </description>
+         <code><![CDATA[
 <body>
-<p>アラートボックスを使用した名言の表示を有効にするには、以下のボタンを押してください。<br />
+<p>Press the button below to enable the display of famous quotes 
+using an alert box<br />
 <button id="enableBtn" type="button" onclick="modifyAlerts(true);">
-アラートを利用する</button><br />
+Turn Alerts On</button><br />
 <button id="disableBtn" type="button" onclick="modifyAlerts(false);">
-アラートを利用しない</button></p>]]></code>
-      <description><p>このコードを実装したサンプル： <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="working-examples/SCR14/enablealerts.html" linktype="examples">アラートの実装例</loc></p>
-</description>
-    </eg-group>
+Turn Alerts Off</button></p>
+]]></code>
+         <description>
+            <p>Working example of this code: <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="enablealerts.html"
+                    linktype="examples">Demonstration of Alerts</loc>.</p>
+         </description>
+      </eg-group>
    </examples>
    <tests>
       <procedure>
-      <p>JavaScriptを使用した緊急ではないアラートをサポートするウェブページにおいて：</p>
-      <olist>
-        <item>
-          <p>ウェブページを読み込んだ際、緊急ではないアラートが表示されない。</p>
-        </item>
-        <item>
-          <p>緊急ではないアラートを有効にするメカニズムがある。</p>
-        </item>
-        <item>
-          <p>緊急ではないアラートを有効にすると、アラートが表示される。</p>
-        </item>
-      </olist>
-    </procedure>
+         <p>For a Web page that supports non-emergency interruptions using a JavaScript alert:</p>
+         <olist>
+            <item>
+               <p>Load the Web page and verify that no non-emergency alerts are displayed.</p>
+            </item>
+            <item>
+               <p>Verify there is a mechanism to activate the non-emergency alerts.</p>
+            </item>
+            <item>
+               <p>Activate the non-emergency alerts and verify that the alerts are displayed.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>上記の全てを満たしている。</p>
+               <p>For a Web page that supports non-emergency interruptions using a JavaScript alert, checks 1, 2, and 3 above are true.</p>
             </item>
          </ulist>
       </expected-results>

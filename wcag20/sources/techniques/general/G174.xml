@@ -2,9 +2,9 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G174">
-   <short-name>十分なコントラスト比のあるコントロールを提供して、利用者が十分なコントラストのある表現に変換できるようにする</short-name>
+   <short-name>Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</short-name>
    <applicability>
-      <p>あらゆるウェブコンテンツ技術</p>
+      <p>Any technology.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-contrast" relationship="sufficient"/>
@@ -12,28 +12,54 @@
       <conformance-criterion idref="cc1" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>テキストとそのページの一部の背景の間のコントラストが<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#visual-audio-contrast-contrast" linktype="guideline">達成基準1.4.3</loc>または<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#visual-audio-contrast7" linktype="guideline">1.4.6</loc>のコントラストレベルを満たすように作られていない場合、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#cc1" linktype="guideline">適合要件 1</loc>における「代替バージョン」を用いる
-ことでこれらのガイドラインを満たすことが可能である。ページのリンク又はコントロールは、ページを変更することによって
-全ての側面を適合させたり、閲覧者を求められるレベルに適合した新しいバージョンのページに導いたりすることができる。<phrase diff="add">また、そのリンクまたはコントロールをウェブページ上の目立つところに置くことによって、利用者が適合しているコンテンツにアクセスしやすくなる。</phrase></p>
-    <p>この達成方法を正しく用いるためには、次の三つを満たさなければならない。</p>
-    <olist>
-      <item>
-        <p>オリジナルページにあるリンクやコントロール自身は、求められる達成基準のコントラスト要求を満たさなければならない（もし利用者がコントロールを見ることができない場合、新しいページに行くためにそれを使用することができないかもしれない）。</p>
-      </item>
-      <item>
-        <p>新しいページはオリジナルページと同様に全ての情報と機能性を含んでいなければならない。</p>
-      </item>
-      <item>
-        <p>新しいページは求められる適合レベルのための全ての達成基準に適合すべきである（つまり、新しいページは求められたコントラストレベルは確保しているが他は適合していないということであってはならない）。</p>
-      </item>
-    </olist>
-    <p>この達成方法は、ページの代替バージョンのテキスト（又はテキストの画像）に背景と4.5:1のコントラストがある、及び大きいサイズのテキスト（又は大きなテキストの画像）に背景と3:1のコントラストがあることによって達成基準1.4.3を満たすために用いることができる。もしページの代替バージョンに7:1のコントラストのあるテキスト（テキストの画像）と4.5:1のコントラストのある大きいサイズのテキスト（又は大きなテキストの画像）があるならば、それは達成基準1.4.3と1.4.6の両方を満たしている。</p>
-    <note>
-      <p class="prefix">この達成方法は、非適合コンテンツのための<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#conforming-alternate-versiondef" linktype="guideline">適合している代替バージョン</loc>である現在のページにスタイルを切り替える達成方法と組み合わせることで用いることができる。詳しくは、
-<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29.html" linktype="css">C29: スタイル・スイッチャーを用いて、適合している代替バージョンを提供する</loc>と<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/UNDERSTANDING-WCAG20/conformance.html#uc-conforming-alt-versions-head" linktype="undertanding">適合している代替バージョンを理解する</loc>を参照。</p>
-    </note>
-  </description>
-   <examples/>
+      <p>When the contrast between the text and its background for some portion of the page has not been designed to meet the contrast level for
+            <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="visual-audio-contrast-contrast"
+              linktype="guideline">Success Criterion 1.4.3</loc>
+            or
+            <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="visual-audio-contrast7"
+              linktype="guideline">1.4.6</loc>, it is possible to meet these guidelines using the "Alternate Version" clause in the conformance requirements (<loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="cc1"
+              linktype="guideline">Conformance Requirement 1</loc>). A link or control on the page can either change the page so that all aspects conform, or it could take the viewer to a new version of the page that does conform at the desired level. Placing the link or control prominently on the page will assist users in accessing the conforming content readily.</p>
+      <p>For this technique to be used successfully, three things must be true:</p>
+      <olist>
+         <item>
+            <p>The link or control on the original page must itself meet the contrast requirement of the desired SC. (If the user cannot see the control they may not be able to use it to go to the new page.)</p>
+         </item>
+         <item>
+            <p>The new page must contain all the same information and functionality as the original page.</p>
+         </item>
+         <item>
+            <p>The new page must conform to all of the SC for the desired level of conformance. (i.e., the new page cannot just have the desired level of contrast but otherwise not conform).</p>
+         </item>
+      </olist>
+      <p>This technique can be used to meet Success Criterion 1.4.3 by having text (or images of text) on the alternate version of the page be 4.5:1 contrast and any large text (or images of large text) be 3:1 contrast with its background. If the alternate version of the page has all text (or images of text) with 7:1 contrast and large text (or images of large text) with 4.5:1 contrast then it would satisfy both Success Criterion 1.4.3 and 1.4.6.</p>
+      <note>
+         <p>This technique can be used in combination with a style switching technique to present a page that is a
+              <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                 href="conforming-alternate-versiondef"
+                 linktype="glossary">conforming alternate version</loc>
+              for non-conforming content. Refer to
+              <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29" linktype="css">C29: Using a style switcher to provide a conforming alternate version</loc>
+              and
+              <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                 href="conformance"
+                 locn-note="uc-conforming-alt-versions-head"
+                 linktype="understanding">Understanding Conforming Alternate Versions</loc>
+              for more information.</p>
+      </note>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>A page with some headlines that do not meet the 3:1 contrast requirements has a high contrast (5:1) link at the top of the page that takes the user to a new version of the page with minimum 4.5:1 contrast on all text and images of text.</p>
+         </item>
+         <item>
+            <p>A page uses shaded backgrounds for effect but results in text to background contrast of 4:1. A control at the top of the page says "high contrast". Clicking on it causes different styles to be used and dropping the background colors to achieve 7:1 contrast.</p>
+         </item>
+      </ulist>
+   </examples>
    <related-techniques>
       <relatedtech idref="G17"/>
       <relatedtech idref="G18"/>
@@ -42,22 +68,22 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>オリジナルページ上に代替バージョンへのアクセスを提供するリンクやコントロールがある。</p>
-        </item>
-        <item>
-          <p>オリジナルページのリンクやコントロールが、該当する適合レベルの全ての達成基準に適合している。</p>
-        </item>
-        <item>
-          <p>代替バージョンのページが、コントラスト及び該当する適合レベルの他の全ての達成基準を満たしている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Check that a link or control exists on the original page that provides access to the alternate version.</p>
+            </item>
+            <item>
+               <p>Check that the link or control on the original page conforms to all success criteria for the conformance level being tested.</p>
+            </item>
+            <item>
+               <p>Check that the alternate version meets the contrast and all other success criteria for the conformance level being tested.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>上記の全てを満たしている。</p>
+               <p>All three checks are true.</p>
             </item>
          </ulist>
       </expected-results>

@@ -2,59 +2,59 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F80">
-   <short-name>達成基準 1.4.4 の不適合事例：　視覚的に描画されたテキストを200％まで拡大していく際に、テキストベースのフォーム・コントロールのサイズが変更されない</short-name>
+   <short-name>Failure of Success Criterion 1.4.4 when text-based form controls do not resize when visually rendered text is resized up to 200%</short-name>
    <applicability>
-      <p>HTML、XHTML及びCSS</p>
+      <p>HTML, XHTML, and CSS</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-scale" relationship="failure"/>
    </applies-to>
    <description>
-    <p>この不適合の条件の目的は、テキストのサイズ変更が、それに応じてテキストベースのフォーム・コントロールを拡大しない時に発生する問題を説明するものである。テキストは利用者が要求するテキストサイズで表示されないので、利用者がテキストの入力及び入力したものを読むのに苦労するかもしれないことを意味している。</p>
-    <p>テキストベースのフォーム・コントロールは、ボタンと同様に入力ボックス（テキスト及びテキストエリア）を含んでいる。</p>
-  </description>
+      <p>The objective of this failure condition is to describe a problem that occurs when changing the size of text does not cause the text-based form controls to resize accordingly. This means that the user may have difficulty entering text and being able to read what they have entered because the text is not displayed at the text size required by the user.</p>
+      <p>Text-based form controls include input boxes (text and textarea) as well as buttons.</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <head>お問い合わせフォーム</head>
-      <description><p>お問い合わせフォームは、いくらかの前置き情報、及び利用者が名、姓、電話番号及び電子メールアドレスを入力するためのフォーム・コントロールがある。見出し、前置きのテキスト及びフォーム・コントロールのラベルは、拡張性のある方法で実装されているが、フォームのコントロール自体は拡張性のある方法では実装されていない。</p>
-<p>XHTMLコンポーネント：</p>
-</description>
-      <code role="xhtml"><![CDATA[
-<h1>お問い合わせ</h1>
- <p>あなたの個人情報をご記入いただければ、できるだけ早くご連絡いたします。なお、すべての入力項目が必須項目となっております。</p>
- <label for="fname">名</label><input type="text" name="fname" id="fname" /><br />
- <label for="lname">姓</label><input type="text" name="lname" id="lname" /><br />
- <label for="phone">電話</label><input type="text" name="phone" id="phone" /><br />
- <label for="email">電子メール</label><input type="text" name="email" id="email" /><br />
- <input type="submit" name="Submit" value="送信" id="Submit" />]]></code>
-      <description><p>CSS：</p>
-</description>
-      <code role="css"><![CDATA[
-h1 { font-size: 2em; }
+         <head>A Contact Form</head>
+         <description>
+            <p>A Contact Us form has some introductory information and then form controls for users to enter their first name, last name, telephone number and email address. The heading, introductory text and form control labels have been implemented in a scalable way but the form controls themselves have not.</p>
+            <p>The XHTML component:</p>
+         </description>
+         <code role="xhtml"><![CDATA[ <h1>Contact Us</h1>
+ <p>Please provide us with your details and we will contact you as soon as we can. Note that all of the form fields are required.</p>
+ <label for="fname">First Name</label><input type="text" name="fname" id="fname" /><br />
+ <label for="lname">Last Name</label><input type="text" name="lname" id="lname" /><br />
+ <label for="phone">Telephone</label><input type="text" name="phone" id="phone" /><br />
+ <label for="email">Email</label><input type="text" name="email" id="email" /><br />
+ <input type="submit" name="Submit" value="Submit" id="Submit" />]]></code>
+         <description>
+            <p>The CSS component:</p>
+         </description>
+         <code role="css"><![CDATA[ h1 { font-size: 2em; }
  p, label { font-size: 1em; }
  input {font-size: 12pt}]]></code>
-    </eg-group>
+      </eg-group>
    </examples>
    <resources/>
    <related-techniques/>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>利用者が入力したテキストを受け取るテキストベースのフォーム・コントロールにテキストを入力する。</p>
-        </item>
-        <item>
-          <p>200％までコンテンツのテキストサイズを拡大する。</p>
-        </item>
-        <item>
-          <p>テキストベースのフォーム・コントロール内のテキストが200％まで拡大したことを確認する。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Enter some text into text-based form controls that receive user entered text. </p>
+            </item>
+            <item>
+               <p>Increase the text size of the content by 200%.</p>
+            </item>
+            <item>
+               <p>Check that the text in text-based form controls has increased by 200%.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>3．を満たしていなければ、不適合の条件が適用され、コンテンツはこれらの達成基準に不適合となる。</p>
+               <p>If check #3 is false, then the failure condition applies and the content fails these Success Criteria.</p>
             </item>
          </ulist>
       </expected-results>

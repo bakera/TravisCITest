@@ -2,9 +2,9 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F41">
-   <short-name>達成基準 2.2.1、達成基準 2.2.4、及び 達成基準 3.2.5 の不適合事例 － meta要素によるタイムアウト付きのリフレッシュを用いている</short-name>
+   <short-name>Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh to reload the page</short-name>
    <applicability>
-      <p>HTML 及び XHTML</p>
+      <p>HTML and XHTML</p>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-required-behaviors" relationship="failure"/>
@@ -14,58 +14,62 @@
                          relationship="failure"/>
    </applies-to>
    <description>
-    <p><code>meta</code><code>http-equiv</code>のリフレッシュは、定期的にページを更新したり、利用者を別のページにリダイレクトしたりするためにしばしば用いられる。もし時間間隔が短すぎると、全盲の人はスクリーンリーダーでページを読み終わらないうちに、予期せずページが更新されてしまい、スクリーンリーダーがページの先頭から読み上げてしまう。目の見える利用者も、予期しないリフレッシュによって混乱させられる。</p>
-  </description>
+      <p> 
+         <code><![CDATA[meta]]></code>
+						   <code><![CDATA[http-equiv]]></code> of refresh is often used to periodically refresh
+                        pages or to redirect users to another page. If the time interval is too
+                        short, and there is no way to turn auto-refresh off, people who are blind will not have enough time to make their screen
+                        readers read the page before the page refreshes unexpectedly and causes the
+                        screen reader to begin reading at the top. Sighted users may also be
+                        disoriented by the unexpected refresh.</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <description><p>この非推奨例では、利用者ページが一定間隔で変化する。コンテンツ制作者はこの手法を「プッシュ」テクノロジーのシミュレートに用いるべきではない。制作者は、利用者がページを読むのにどれくらいの時間を必要とするかを予期することはできない。早すぎるリフレッシュは利用者を混乱させることになる。コンテンツ制作者は周期的なリフレッシュを避け、利用者自身にいつ最新の情報がほしいかを選択させるべきである。（<att>content</att>属性内の数字はリフレッシュまでの秒数である。）</p>
-</description>
-      <code><![CDATA[
-<html xmlns="http://www.w3.org/1999/xhtml">   
+         <description>
+            <p> This is a deprecated example that changes the user's page at regular
+                                intervals. Content developers should not use this technique to
+                                simulate "push" technology. Developers cannot predict how much time
+                                a user will require to read a page; premature refresh can disorient
+                                users. Content developers should avoid periodic refresh and allow
+                                users to choose when they want the latest information. (The number
+                                in the <code><![CDATA[content]]></code> attribute is the refresh interval in
+                                seconds.)</p>
+         </description>
+         <code><![CDATA[
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>     
-    <title>WCAG 2.0のためのHTMLの達成方法</title>     
+    <title>HTML Techniques for WCAG 2.0</title>     
     <meta http-equiv="refresh" content="60" />   
   </head>   
   <body>
     ...     
   </body> 
-</html>]]></code>
-    </eg-group>
-    <eg-group role="failure">
-      <description><p>これは、利用者を数秒後に別のページにリダイレクトする非推奨例である。コンテンツ制作者はこの代わりに、サーバーサイドのリダイレクトを使用すべきである。（<att>content</att>属性内の数字はリフレッシュまでの秒数である。）</p>
-</description>
-      <code><![CDATA[
-<html xmlns="http://www.w3.org/1999/xhtml">   
-  <head>     
-    <title>チューダー朝</title>     
-    <meta http-equiv="refresh" content="10;URL='http://example.com/'" />   
-  </head>   
-  <body>
-    <p>このページは<a href="http://example.com/">example.com</a>へ移動します。
-    私たちは独自のドメイン名を取得しました。数秒後にリダイレクトします。 
-    みなさまのリンクとお気に入りのアップデートをお願いいたします。</p>
-  </body> 
-</html>]]></code>
-    </eg-group>
+</html>
+]]></code>
+      </eg-group>
    </examples>
-   <related-techniques>
-     <relatedtech idref="SVR1"/>
-  </related-techniques>
-  <tests>
+   <related-techniques />
+   <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>ドキュメント内の<el>meta</el>要素を探す。</p>
-        </item>
-        <item>
-          <p>それぞれの<el>meta</el>要素に関して、<att>http-equiv</att>属性の値に「refresh」（大文字小文字を区別しない）が含まれており、<att>content</att>属性に0より大きい（秒を表す）値がある。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> Find <code><![CDATA[meta]]></code> elements in the document. </p>
+            </item>
+            <item>
+               <p>For each <code><![CDATA[meta]]></code> element, check if it contains
+               the <code><![CDATA[http-equiv]]></code> attribute with value "refresh" (case-insensitive) and
+               the <code><![CDATA[content]]></code> attribute with a number (representing seconds) equals to or greater than 0 and without "; url=" (case-insensitive). </p>
+            </item>
+            <item>
+               <p>check to see if there is a mechanism to turn off the refresh. </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.を満たしている場合、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
+               <p>If step 2 is true and step 3 is false then this failure condition applies and content
+                                    fails these Success Criteria. </p>
             </item>
          </ulist>
       </expected-results>

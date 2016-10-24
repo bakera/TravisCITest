@@ -2,60 +2,66 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F50">
-   <short-name>達成基準 2.2.2 の不適合事例 － 点滅させるスクリプトを用いていて、その点滅を5秒以内に停止させるメカニズムがない</short-name>
+   <short-name>Failure of Success Criterion 2.2.2 due to a script that causes a blink effect without a
+                    mechanism to stop the blinking at 5 seconds or less</short-name>
    <applicability>
-      <p>スクリプトで制御されたコンテンツの点滅をサポートするウェブコンテンツ技術</p>
+      <p>Technologies that support script-controlled blinking of content.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-pause" relationship="failure"/>
    </applies-to>
    <description>
-    <p>スクリプトを用いてコンテンツの表示、非表示を定期的に切り換えることで、コンテンツを点滅させることができる。スクリプトが5秒以内に点滅を止めるためのメカニズムを含まない場合は不適合となる。点滅を停止させるための達成方法をどのように修正するかについての情報は<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="SCR22.html" linktype="script">SCR22： スクリプトを用いて、点滅を制御し、5秒以内に停止させる</loc>(Scripting) を参照。</p>
-  </description>
+      <p>Scripts can be used to blink content by toggling the content's visibility on and off at regular intervals. It is a failure for the script not to include a mechanism to stop the blinking at 5 seconds or earlier. See <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="SCR22"
+              linktype="script">Using scripts to control blinking and stop it in five seconds or less</loc> for information about how to modify the technique to stop the blinking.</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <description><p>以下の例では点滅するコンテンツのためにスクリプトが使用されているが、点滅は5秒後に止まるのではなく、無期限に点滅し続ける。</p>
-</description>
-      <code><![CDATA[
+         <description>
+            <p>The following example uses script to blink content, but the blink
+                                continues indefinitely rather than stopping after five seconds.</p>
+         </description>
+         <code><![CDATA[
 ...
 <script type="text/javascript">
 <!--
-// 点滅「on」状態
+// blink "on" state
 function show()
 {
 	if (document.getElementById)
 	document.getElementById("blink1").style.visibility = "visible";
 	settime-out("hide()", 450);
 }
-// 点滅「off」状態
+// blink "off" state
 function hide()
 {
 	if (document.getElementById)
 	document.getElementById("blink1").style.visibility = "hidden";
 	settime-out("show()", 450);
 }
-// 開始
+// kick it off
 show();
 //-->
 </script>
 ...
-<span id="blink1">このコンテンツは点滅します。</span>]]></code>
-    </eg-group>
+<span id="blink1">This content will blink</span>
+]]></code>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="SCR22"/>
    </related-techniques>
    <tests>
       <procedure>
-      <p>点滅しているそれぞれのインスタンスに対して：</p>
-      <olist>
-        <item>
-          <p>点滅が5秒以内で止まる。</p>
-        </item>
-      </olist>
-    </procedure>
+         <p>For each instance of blinking content:</p>
+         <olist>
+            <item>
+               <p>Determine if the blinking stops in 5 seconds or less.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
-         <p>1.を満たしていない場合、コンテンツは達成基準を満たしていないことになる。</p>
+         <p>If #1 is false, then the content fails the Success Criterion.</p>
       </expected-results>
    </tests>
 </technique>

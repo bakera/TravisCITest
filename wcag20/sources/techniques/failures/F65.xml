@@ -2,46 +2,90 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F65">
-   <short-name>達成基準 1.1.1 の不適合事例 － <el>img</el>要素、<el>area</el>要素、及び <code>type "image"</code> の<el>input</el>要素の<att>alt</att>属性を省略している</short-name>
+   <short-name>Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</short-name>
    <applicability>
-      <p>HTML 及び XHTML</p>
+      <p>HTML and XHTML</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="failure"/>
    </applies-to>
    <description>
-    <p>この文書では、画像の代替テキストに関する不適合条件について解説する。画像に対して<att>alt</att>属性が指定されていない場合、支援技術はその画像を識別するための情報やその画像の目的を利用者に対して伝えることができない。</p>
-    <p>支援技術の中には、altテキストが指定されていない場合に画像のファイル名を読み上げて情報を補おうとするものもあるだろう。しかし、多くの理由から単にファイル名に依存するだけでは不十分である。たとえば、画像ファイルにその目的が分かるような分かりやすい名前がついているとは限らず（例：images/nav01.gif）、また技術仕様上もそういった分かりやすいファイル名をつける必要はない。また、altテキストが指定されていない場合でもその画像ファイル名を読み上げない支援技術もあるだろう。</p>
-  </description>
+      <p>This describes a failure condition for text alternatives on images. If there is no source of text to provide an alternative for the image then assistive technologies are not able to identify the image or to convey its purpose to the user. The <att>alt</att> attribute continues to be the preferred way to provide alternative text for images. Appropriate WAI-ARIA attributes may be used to provide alternative text, as long as they are accessibility supported.  For more information about accessibility support, see <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="http://www.w3.org/WAI/GL/2014/WD-UNDERSTANDING-WCAG20-20140107/appendixB.html">Documenting Accessibility Support</loc>. The Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification describes the <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="http://www.w3.org/TR/wai-aria/roles#textalternativecomputation"> Text Alternative Computation</loc>, for computing the text alternative from the HTML and WAI-ARIA attributes of an element.</p>
+      <p>
+Some Assistive Technologies attempt to compensate for the missing text alternatives by reading the file name of the image. But it is insufficient to rely simply on the file name for many reasons. For example, file names may not be descriptive (e.g., images/nav01.gif), and technology specifications do not require descriptive file names. And some Assistive Technologies do not read the file name if there is no text alternative provided via HTML attributes.
+</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <head>不適合となる altテキストが存在しない場合</head>
-      <description><p>以下のコード例において、スクリーンリーダーを使っている人は画像の目的を知ることはできない。（訳注：スクリーンリーダーを利用している利用者ーに限らず、ブラウザの設定を変更して画像を非表示にしている場合や点字ディスプレイを利用している利用者ーなども同様である。）</p>
-</description>
-      <code role="html401"><![CDATA[
-    <img src="../images/animal.jpg" />]]></code>
-    </eg-group>
+         <head>Missing text alternative</head>
+         <description>
+            <p>In the code example below, the person using a screen reader would not know the purpose of the image.</p>
+         </description>
+         <code role="html401"><![CDATA[
+<img src="../images/animal.jpg" />
+]]></code>
+      </eg-group>
    </examples>
-   <resources/>
+   <resources>
+      <see-also>
+         <ulist>
+            <item>
+               <p>
+                  <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                       href="http://www.w3.org/TR/html-aapi/#accessible-name-and-description-calculation"> HTML to Platform Accessibility APIs Implementation Guide: Accessible Name and Description Calculation</loc>
+               </p>
+            </item>
+            <item>
+               <p>
+                  <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                       href="http://www.w3.org/TR/wai-aria/roles#textalternativecomputation"> Accessible Rich Internet Applications (WAI-ARIA) 1.0, Section 5.2.7.3. Text Alternative Computation</loc>
+               </p>
+            </item>
+         </ulist>
+      </see-also>
+   </resources>
    <related-techniques>
       <relatedtech idref="H67"/>
+      <relatedtech idref="H37"/>
+      <relatedtech idref="ARIA10"/>
       <!-- Using aria-labelledby to provide a text alternative for non-text content-->
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>すべての<el>img</el>要素、<el>area</el>要素および<att>type</att>属性の値が<code>"image"</code>の<el>input</el>要素を特定する</p>
-        </item>
-        <item>
-          <p>これらの要素に対して<att>alt</att>属性が指定されている</p>
-        </item>
-      </olist>
-    </procedure>
+         <p>Identify <el>img</el>, <el>area</el> and <el>input</el> elements of type <attval>image</attval>. For each of these elements:</p>
+         <olist>
+            <item>
+               <p>
+									         <phrase>Check if the <att>alt</att> attribute is present. 
+									</phrase>
+               </p>
+            </item>
+            <item>
+               <p>
+                  <phrase>Check if <att>aria-labelledby</att> attribute is present AND references one or more id elements in the page AND check if <att>aria-labelledby</att> is <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                          href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#accessibility-supporteddef"> accessibility supported</loc>.</phrase>
+								       </p>
+            </item>
+            <item>
+               <p>
+                  <phrase>Check if the <att>aria-label</att> attribute is present AND check if <att>aria-label</att> is <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                          href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#accessibility-supporteddef">accessibility supported</loc>.</phrase>
+               </p>
+            </item>
+            <item>
+               <p>
+                  <phrase>Check if the <att>title</att> attribute is present AND check if <att>title</att> is <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                          href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#accessibility-supporteddef"> accessibility supported</loc>.</phrase>
+               </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.を満たしていない場合、この不適合条件が適用され、達成基準に不適合となる。</p>
+               <p>If all of #1, #2, #3 and #4 are false then this failure condition applies.</p>
             </item>
          </ulist>
       </expected-results>

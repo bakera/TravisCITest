@@ -39,14 +39,11 @@
       <xsl:when test="$bytech= 1"></xsl:when>
      
       <xsl:otherwise>
-   <xsl:apply-templates select="trdisclaimer"/>
-    <p align="center">[<a href="#contents">contents</a>]<xsl:text> </xsl:text>
-    </p>
     <div class="head">
       <xsl:if test="not(/spec/@role='editors-copy')">
         <p>
           <a href="http://www.w3.org/">
-            <img src="http://www.w3.org/Icons/w3c_home" alt="W3C" height="48" width="72"/>
+          	<img src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C" height="48" width="72"/>
           </a>
           <xsl:choose>
             <xsl:when test="/spec/@w3c-doctype='memsub'">
@@ -149,8 +146,8 @@
             </a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
         </xsl:otherwise>
       </xsl:choose>
+    	<hr/>
     </div>
-    <hr/>
 
     <xsl:apply-templates select="notice"/>
     <xsl:apply-templates select="abstract"/>
@@ -164,7 +161,7 @@
 	
 	<xsl:template name="toc">
 		    <xsl:if test="$toc.level &gt; 0">
-      <div class="toc">
+      <div id="toc">
         <xsl:text>
 </xsl:text>
         <hr/>
@@ -173,7 +170,7 @@
             <xsl:with-param name="conditional" select="0"/>
             <xsl:with-param name="default.id" select="'contents'"/>
           </xsl:call-template>
-          <xsl:text>目次</xsl:text>
+          <xsl:text>Table of Contents</xsl:text>
         </h2>
         <ul class="toc">
           <xsl:choose>
@@ -181,8 +178,8 @@
               <xsl:apply-templates select="//div1" mode="tocquickref"/>
             </xsl:when>
             <xsl:otherwise>
-                <li><a href="#abstract">概要 </a></li>
-            	<li><a href="#status">この文書のステータス </a></li>
+                <li><a href="#abstract">Abstract </a></li>
+            	<li><a href="#status">Status of This Document </a></li>
               <xsl:apply-templates select="//div1[not(@id = 'placeholders')]" mode="toc"/>
             </xsl:otherwise>
           </xsl:choose>
@@ -199,15 +196,15 @@
                   <xsl:with-param name="conditional" select="0"/>
                   <xsl:with-param name="default.id" select="'appendices'"/>
                 </xsl:call-template>
-                <xsl:text>付録</xsl:text>
-                <!-- xsl:choose>
+                <xsl:text>Appendi</xsl:text>
+                <xsl:choose>
                   <xsl:when test="count(../back/div1 | ../back/inform-div1) &gt; 1">
                     <xsl:text>ces</xsl:text>
                   </xsl:when>
                   <xsl:otherwise>
                     <xsl:text>x</xsl:text>
                   </xsl:otherwise>
-                </xsl:choose -->
+                </xsl:choose>
               </h3>
               <ul class="toc">
                 <xsl:apply-templates mode="toc" select="../back/div1[not(@id='placeholders')] | ../back/inform-div1"/>
@@ -223,8 +220,8 @@
             </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
+      	<hr/>
       </div>
-      <hr/>
     </xsl:if>
 
 	</xsl:template>
@@ -255,10 +252,10 @@
         <xsl:otherwise>
           <em><xsl:choose>
             <xsl:when test="$notenumber = '1'">
-              <xsl:text>注記: </xsl:text>
+              <xsl:text>Note: </xsl:text>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:text>注記 </xsl:text>
+              <xsl:text>Note </xsl:text>
               <xsl:number count="p" format="1"/>:
 					</xsl:otherwise>
           </xsl:choose></em>
@@ -266,42 +263,6 @@
       </xsl:choose>
       <xsl:apply-templates/>
     </p>
-  </xsl:template>
-  <!-- Translators notes -->
-  <xsl:template match="trnote">
-    <div class="note">
-      <xsl:apply-templates/>
-    </div>
-  </xsl:template>
-  <xsl:template match="trnote/p">
-    <xsl:variable name="notenumber">
-      <xsl:value-of select="count(ancestor::trnote/p)"/>
-    </xsl:variable>
-    <p class="prefix">
-      <xsl:if test="../@id">
-        <a name="{../@id}" id="{../@id}"/>
-      </xsl:if>
-      <xsl:choose>
-        <xsl:when test="../@role='nonumber'"/>
-        <xsl:otherwise>
-          <em><xsl:choose>
-            <xsl:when test="$notenumber = '1'">
-              <xsl:text>訳注： </xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:text>訳注 </xsl:text>
-              <xsl:number count="p" format="1"/>：
-					</xsl:otherwise>
-          </xsl:choose></em>
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates/>
-    </p>
-  </xsl:template>
-  <xsl:template match="translationcredit">
-    <div class="translationcredit">
-      <xsl:apply-templates/>
-    </div>
   </xsl:template>
   <!-- note: an example in the spec -->
   <!-- see also note/p -->
@@ -428,7 +389,7 @@
           <xsl:with-param name="conditional" select="0"/>
           <xsl:with-param name="default.id" select="'status'"/>
         </xsl:call-template>
-        <xsl:text>この文書のステータス</xsl:text>
+        <xsl:text>Status of This Document</xsl:text>
       </h2>
       <xsl:choose>
         <xsl:when test="/spec/@w3c-doctype='review'">
@@ -461,6 +422,7 @@
             <link rel="stylesheet" type="text/css" href="slicenav.css"/>
             
             <xsl:call-template name="css"/>
+        		<xsl:call-template name="additional-head"/>
             <xsl:if test="$show.diff.markup != 0">
               <script type="text/javascript" src="diffmarks.js"><xsl:text> </xsl:text></script>
               <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" type="text/css" href="diffs.css" />
@@ -468,12 +430,12 @@
           </head>
           <body class="slices">
             <div id="masthead">
-              <p class="logo"><a href="http://www.w3.org/"><img width="72" height="48" alt="W3C" src="http://www.w3.org/Icons/w3c_home"/></a></p>
-              <p class="collectiontitle"><a href="./">WCAG 2.0 達成方法集</a></p></div>
+            	<p class="logo"><a href="http://www.w3.org/"><img width="72" height="48" alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"/></a></p>
+              <p class="collectiontitle"><a href="./">Techniques for WCAG 2.0</a></p></div>
             <div id="skipnav"><p class="skipnav"><a href="#maincontent">Skip to Content (Press Enter)</a></p></div>
             <a name="top"><xsl:text> </xsl:text> </a>
             <!-- TOP NAVIGATION BAR
-            <ul id="navigation"><li><strong><a href="Overview#contents" title="Table of Contents">目次</a></strong></li><li><strong><a href="intro" title="Introduction to Techniques for WCAG 2.0"><abbr title="Introduction">イントロダクション</abbr></a></strong></li></ul> -->
+            <ul id="navigation"><li><strong><a href="Overview#contents" title="Table of Contents">Contents</a></strong></li><li><strong><a href="intro" title="Introduction to Techniques for WCAG 2.0"><abbr title="Introduction">Intro</abbr></a></strong></li></ul> -->
             <div class="div1"><a name="maincontent"> </a>
               <h1 id="techs"> <xsl:value-of select="//header/title"/> for WCAG 2.0</h1>
             	<p>This Web page lists <xsl:value-of select="//header/title"/> from <a href="Overview.html">Techniques for WCAG 2.0: Techniques and Failures for Web Content Accessibility Guidelines 2.0</a>. Technology-specific techniques do not replace the general techniques: content developers should consider both general techniques and technology-specific techniques as they work toward conformance.</p>
@@ -488,7 +450,7 @@
           		<hr />
           	</xsl:if>
           	<div class="footer"><p class="copyright">This Web page is part of <a href="Overview.html">Techniques for WCAG 2.0</a>. The entire document is also available as a <a href="complete.html">single HTML file</a>. See the <a href="http://www.w3.org/WAI/intro/wcag20">The WCAG 2.0 Documents</a> for an explanation of how this document fits in with other Web Content Accessibility Guidelines (WCAG) 2.0 documents.
-              </p><p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © <xsl:apply-templates select="//pubdate/year"/><xsl:text> </xsl:text><a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p></div></body></html>
+          	</p><p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © <xsl:apply-templates select="//pubdate/year"/><xsl:text> </xsl:text><a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p></div><script src="//www.w3.org/scripts/TR/2016/fixup.js" type="text/javascript"></script></body></html>
       </xsl:when>
       <xsl:otherwise>
         <html>
@@ -510,6 +472,7 @@
             </title>
         		<xsl:call-template name="canonical-link"/>
             <xsl:call-template name="css"/>
+        		<xsl:call-template name="additional-head"/>
             <xsl:if test="$show.diff.markup != 0">
               <script type="text/javascript" src="diffmarks.js"><xsl:text> </xsl:text></script>
                 <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" type="text/css" href="diffs.css" />
@@ -530,7 +493,7 @@
               <h1>WCAG 2.0 Conformance Proposals for 04 January 2007</h1>
               <p><em>Updated 18 January based on survey comments and meeting resolutions.</em></p>
               <p>The following is a set of draft revisions for the conformance section of WCAG 2.0. It includes an updated version of the conformance and glossary sections. For the most up-to-date version of WCAG 2.0, please refer to the <a href="http://w3.org/WAI/GL/WCAG20/">latest internal working draft</a>.</p> 
-              <div class="toc">
+              <div id="toc">
               <hr/><h2><a id="contents" name="contents"> </a>Table of Contents</h2><ul class="toc"><li><a href="#conformance">Conformance</a>
               <ul class="toc">
               <li><a href="#ua-tech"> User agents, technology-independence and "relied upon" technologies 
@@ -549,9 +512,9 @@
               <xsl:apply-templates select="//back/inform-div1[@id='glossary']"/>-->
             <xsl:apply-templates/>
             <xsl:if test="//footnote[not(ancestor::table)]">
-              <hr/>
               <div class="endnotes">
-                <xsl:text> </xsl:text>
+              	<hr/>
+              	<xsl:text> </xsl:text>
                 <h3>
                   <xsl:call-template name="anchor">
                     <xsl:with-param name="conditional" select="0"/>
@@ -564,6 +527,7 @@
                 </dl>
               </div>
             </xsl:if>
+          	<script src="//www.w3.org/scripts/TR/2016/fixup.js" type="text/javascript"></script>
           </body>
         </html>
       </xsl:otherwise>
@@ -669,8 +633,8 @@
         <xsl:value-of select="$node/@id"/>
       </xsl:when>
       <xsl:otherwise>
-        <!-- xsl:message terminate="yes">Generating ID for <"<xsl:value-of select="$node"/>"<xsl:text>: </xsl:text><xsl:call-template name="genPath"/></xsl:message -->
-<xsl:value-of select="generate-id($node)"/>
+      	<xsl:message terminate="yes">Generating ID for <!--"<xsl:value-of select="$node"/>"<xsl:text>: </xsl:text>--><xsl:call-template name="genPath"/></xsl:message>
+        <xsl:value-of select="generate-id($node)"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -1278,19 +1242,19 @@
   <!--BBC: Added hadling for current vs. previous editors -->
   <xsl:template match="authlist">
     <dt>
-      <xsl:text>編集者</xsl:text>
-      <!-- xsl:if test="count(author) &gt; 1">
+      <xsl:text>Editor</xsl:text>
+      <xsl:if test="count(author) &gt; 1">
         <xsl:text>s</xsl:text>
-      </xsl:if -->
+      </xsl:if>
       <xsl:text>:</xsl:text>
     </dt>
     <xsl:apply-templates select="author[@role='current']"/>
     <xsl:if test="child::author[@role='past']">
       <dt>
-        <xsl:text>過去の編集者</xsl:text>
-        <!-- xsl:if test="count(author) &gt; 1">
+        <xsl:text>Previous Editor</xsl:text>
+        <xsl:if test="count(author) &gt; 1">
           <xsl:text>s</xsl:text>
-        </xsl:if -->
+        </xsl:if>
         <xsl:text>:</xsl:text>
       </dt>
       <xsl:apply-templates select="author[@role='past']"/>
@@ -1452,13 +1416,13 @@
 			<xsl:if test="$id">
 				<xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
 			</xsl:if>
-			<h2>達成方法に関する重要な情報</h2>
-			<p>これらの達成方法(参考)の使用法及び、それらがWCAG2.0達成基準(規定)とどのように関係するかに関する重要な情報については、<a href="{$guide-src//publoc/loc[@href]}understanding-techniques.html">Understanding Techniques for WCAG Success Criteria</a> を参照のこと。
-適用（対象）セクションは、その達成方法の範囲について説明しており、特定の技術に関する達成方法があるからといって、WCAG2.0を満たすコンテンツを作成する際に、常にその技術が使用可能であるわけではない。</p>
+			<h2>Important Information about Techniques</h2>
+			<p>See <a href="{$guide-src//publoc/loc[@href]}understanding-techniques.html">Understanding Techniques for WCAG Success Criteria</a> for important information about the usage of these informative techniques and how they relate to the normative WCAG 2.0 success criteria. The Applicability section explains the scope of the technique, and the presence of techniques for a specific technology does not imply that the technology can be used in all situations to create content that meets WCAG 2.0.</p>
 		</div>
 	</xsl:template>
 	
 	<!-- Only output stuff suited to the current maturity -->
+  <xsl:template match="*[@role = 'int-review' and /spec/@status != 'int-review']"/>
   <xsl:template match="*[@role = 'ext-review' and /spec/@status != 'ext-review']"/>
   <xsl:template match="*[@role = 'final' and /spec/@status != 'final']"/>
 

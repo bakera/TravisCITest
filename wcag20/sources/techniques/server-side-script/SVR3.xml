@@ -2,54 +2,63 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SVR3">
-   <short-name>HTTPリファラを用いて、適合しているコンテンツからしか適合していないコンテンツにアクセスできないようにする</short-name>
+   <short-name>Using HTTP referer to ensure that the only way to access non-conforming content is from conforming content</short-name>
    <applicability>
-      <p>サーバサイドのスクリプトを用いて生成されたコンテンツで、コンテンツの適合したバージョンがHTTPリファラによって不適合バージョンの代替として提供されているもの</p>
+      <p>Content created using server-side scripting where a conforming version of content is provided as an alternative to a non-conforming version based on HTTP Referer.</p>
    </applicability>
    <applies-to>
       <conformance-criterion idref="cc1" relationship="sufficient"/>
    </applies-to>
    <ua-issues><!-- BBC: I was unable to find good resources on where these UA issues come up. However, indications seem to be that this was a larger issue in the IE 4.0 era... -->
-      <ua-issue>
-      <p>一部の利用者ーエージェントでHTTPリファラヘッダをサポートしていなかったり、送信しないように設定されていたり、又はプロキシやファイアウォールにより取り除かれたりすることがあるため、一部の利用者ーはこの達成方法で実装されている場合には不適合なコンテンツへのアクセスができなくなる可能性がある。</p>
-    </ua-issue>
-  </ua-issues>
-  <description>
-    <p>この達成方法の目的は、不適合及び適合したバージョンが両方提供されているときに、利用者がコンテンツのアクセシブルなバージョンを取得できることを保証することである。</p>
-    <p><loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#cc1" linktype="guideline">適合要件 1</loc>は、「<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#conforming-alternate-versiondef" linktype="glossary">適合している代替バージョン</loc>」がある限り、不適合なページが適合の範囲内に含まれることを認めている。コンテンツ制作者にとって、不適合なコンテンツの中から適合しているコンテンツへのアクセシビリティ・サポーテッドなリンクを含むことは常に可能とはいえない。そこで、不適合のバージョンへは適合しているページからしか到達できないようにするために、コンテンツ制作者はサーバサイドのスクリプト技術（例：PHP、ASP、JSP）に依存しなければならなくなる。</p>
-    <p>この達成方法は、不適合のコンテンツへは、適合しているページからしか到達できないことを保証するための、<code><![CDATA[HTTP referer]]></code>により提供される情報の利用方法について説明する。<code><![CDATA[HTTP referer]]></code>ヘッダは利用者ーエージェントによって設定され、（もしあれば）利用者ーエージェントが不適合なページを参照する際のページのURIを含む。</p>
-    <p>この方法を実装するために、コンテンツ制作者は不適合なページそれぞれについて、コンテンツの適合しているバージョンのURIを特定する。ページの不適合なバージョンへのリクエストを受け取った際に、サーバは<code><![CDATA[HTTP referer]]></code>ヘッダの値と、適合しているバージョンのURIを比較して、不適合バージョンへのリンクが適合しているバージョンからのものであるかどうかを判断する。不適合バージョンは<code><![CDATA[HTTP referer]]></code>が不適合バージョンのURIと一致したときにだけ提供される。それ以外の時には、利用者はコンテンツの適合したバージョンへとリダイレクトされる。HTTPリファラヘッダ内のURIを比較する際に、URI中にクエリーやtargetのような関連のない変化も考慮に入れる必要があることに注意すべきである。</p>
-  </description>
+      <ua-issue name="general" version="4-">
+         <p>Because some user agents do not support the HTTP referer header, can be configured not to send one, or are behind a proxy or firewall that strips it out, it is possible that some users will be unable to access the non-conforming content when this technique is implemented.</p>
+      </ua-issue>
+   </ua-issues>
+   <description>
+      <p>The objective of this technique is to ensure that users can obtain an accessible version of content where both non-conforming and conforming versions are provided.</p>
+      <p>
+         <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="cc1"
+              linktype="guideline">Conformance Requirement 1</loc> allows non-conforming pages to be included within the scope of conformance as long as they have a "<loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="conforming-alternate-versiondef"
+              linktype="glossary">conforming alternate version</loc>". It is not always possible for authors to include accessibility supported links to conforming content from within non-conforming content. Therefore, authors may need to rely on the use of Server Side Scripting technologies (ex. PHP, ASP, JSP) to ensure that the non-conforming version can only be reached from a conforming page.</p>
+      <p>This technique describes how to use information provided by the <code><![CDATA[HTTP referer]]></code> to ensure that non-conforming content can only be reached from a conforming page. The <code><![CDATA[HTTP referer]]></code> header is set by the user agent and contains the URI of the page (if any) which referred the user agent to the non-conforming page.</p>
+      <p>To implement this technique, an author identifies the URI for the conforming version of the content, for each non-conforming page. When a request for the non-conforming version of a page is received, the server compares the value of the <code><![CDATA[HTTP referer]]></code> header against the URI of the conforming version to determine whether the link to the non-conforming version came from the conforming version. The non-conforming version is only served if the <code><![CDATA[HTTP referer]]></code> matches the URI of the non-conforming version. Otherwise, the user is redirected to the conforming version of the content. Note that when comparing the URI in the HTTP referer header, non-relevant variations in the URI, such as in the query and target, should be taken into account.</p>
+   </description>
    <examples>
       <eg-group>
-      <head>インタラクティブな物理プロセスのデモ</head>
-      <description><p>オンラインの物理の授業では、インタラクティブな物理プロセスのデモを提供するために専用のモデリング言語を使用する。そのモデリング言語のための利用者ーエージェントは支援技術との互換性がない。そのサイトは利用者が適合するプロセスとモデルの説明を含むページからインタラクティブなデモにアクセスしようとしない限り、サーバがそのリクエストを不適合バージョンへのリンクを含む、適合しているページへとリダイレクトする、HTTPリファラを使用するスクリプトを含んでいる。生徒は不適合のインタラクティブなバージョンへのアクセスを選択する事ができるが、そうしない生徒もプロセスについて学ぶことができる。</p>
-</description>
-    </eg-group>
-    <eg-group>
-      <head>PHPでHttpリファラを使う</head>
-      <description><p>次の例は、この達成方法がPHPでどのように使われるかを説明している。conforming.phpとnon-conforming.phpという不適合なコンテンツへのアクセスが適合しているコンテンツからのみとなるようにするために連携する2つのファイルを含む。</p>
-<p>conforming.php:</p>
-</description>
-      <code role="php"><![CDATA[
+         <head>Interactive demonstrations of physical processes</head>
+         <description>
+            <p>An online physics course uses a proprietary modeling language to provide interactive demonstrations of physical processes. The user agent for the modeling language is not compatible with assistive technology. The site includes a script that uses the HTTP referer to ensure that unless users attempt to access the interactive demonstration from a page that contains a conforming description of the process and models, the server redirects the request to a conforming page which contains a link to the non-conforming version. Students may choose to access the non-conforming, interactive version, but those who do not are still able to learn about the process.</p>
+         </description>
+      </eg-group>
+      <eg-group>
+         <head>Using Http referer in PHP</head>
+         <description>
+            <p>The following example illustrates how this technique can be used in PHP. It includes two files, conforming.php and non-conforming.php which work together to ensure that the only way to access non-conforming content is from conforming content.</p>
+            <p>conforming.php:</p>
+         </description>
+         <code role="php"><![CDATA[
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-    		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    		<title>適合しているコンテンツ</title>
+    		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    		<title>Conforming Content</title>
     	</head>
 	<body>
-		<h1>これは適合しているページです。</h1>
-		<p>ここから、<a href="non-conforming.php">不適合なページ</a>へと移動する
-		ことができます。</p>
+		<h1>This is a conforming page</h1>
+		<p>From here, you can visit the <a href="non-conforming.php">non-conforming 
+		page</a>. </p>
 	</body>
-</html>]]></code>
-      <description><p>non-conforming.php:</p>
-</description>
-      <code role="php"><![CDATA[
+</html>
+    				]]></code>
+         <description>
+            <p>non-conforming.php:</p>
+         </description>
+         <code role="php"><![CDATA[
 <?php 
-// リクエストが「conforming.php」という文字列を含むファイルから来た場合、ページをレンダリングする。
+// if the request comes from a file that contains the string "conforming.php" then render the page
 	if(stristr($_SERVER['HTTP_REFERER'], "conforming.php")) {
 ?>
 
@@ -57,24 +66,29 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>不適合コンテンツ</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Non-Conforming Content</title>
 	</head>
 	<body>
-		<h1>これは不適合なページです。</h1>
-		<p> <?php echo $_SERVER['HTTP_REFERER']; ?>から来たので、このページにあるコンテンツを見ることができます。
+		<h1>This is a non-conforming page</h1>
+		<p>Because you came from <?php echo $_SERVER['HTTP_REFERER']; ?>, you are 
+			able to view the content on this page. </p>
 	</body>
 </html>
 <?php
 }
-// 参照するページがconforming.phpではない場合、利用者を適合しているバージョンにリダイレクトする。
+// if the referring page is not conforming.php, then redirect the user to the conforming version
 else  {
 header("Location: conforming.php");
 }
-?>]]></code>
-      <description><p>このコードの実装サンプル：<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/SVR3/non-conforming.php" xlink:type="simple" linktype="examples">SVR3の実装サンプル</loc></p>
-</description>
-    </eg-group>
+?>					
+    				]]></code>
+         <description>
+            <p>A working example, <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="non-conforming.php"
+                    linktype="examples">Conforming content</loc>, is available.</p>
+         </description>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G136"/>
@@ -85,22 +99,33 @@ header("Location: conforming.php");
    </related-techniques>
    <tests>
       <procedure>
-      <p>不適合コンテンツに対して、WCAGに適合している代替バージョンが提供されている場合：</p>
-      <olist>
-        <item>
-          <p>宣言している適合レベルでWCAGに適合していないページで、HTTPリファラの使用によってアクセシブルな代替バージョンが提供されているものを特定する。</p>
-        </item>
-        <item>
-          <p>不適合のコンテンツのURIを開く。</p>
-        </item>
-        <item><p>開いたページが次のうちの一つである：</p>
-						<olist><item><p>不適合のコンテンツの<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#conforming-alternate-versiondef" linktype="glossary">適合する代替バージョン</loc></p></item><item><p>適合する代替バージョンと不適合のコンテンツ双方へのリンクを含むページ</p></item></olist></item>
-      </olist>
-    </procedure>
-    <expected-results>
-      <ulist>
-        <item>
-          <p>3.a.又は3.b.を満たしている。</p>
+         <p>Where WCAG-conforming alternatives are provided for non-conforming content:</p>
+         <olist>
+            <item>
+               <p>Identify pages that do not conform to WCAG at the conformance Level claimed where accessible alternatives are served based on HTTP Referrer.</p>
+            </item>
+            <item>
+               <p>Visit the URI of the non-conforming content.</p>
+            </item>
+            <item>
+               <p>Verify that the resulting page is one of the following:</p>
+               <olist>
+                  <item>
+                     <p>a <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                             href="conforming-alternate-versiondef"
+                             linktype="glossary">conforming alternate version</loc> for the non-conforming content</p>
+                  </item>
+                  <item>
+                     <p>a page that includes a link to both the conforming alternate version and the non-conforming content</p>
+                  </item>
+               </olist>
+            </item>
+         </olist>
+      </procedure>
+      <expected-results>
+         <ulist>
+            <item>
+               <p>Check #3.1 or #3.2 is true.</p>
             </item>
          </ulist>
       </expected-results>

@@ -2,32 +2,50 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G95">
-   <short-name>非テキストコンテンツの簡単な説明を提供する、簡潔な代替テキストを提供する</short-name>
+   <short-name>Providing short text alternatives that provide a brief description of
+          the non-text content</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p>Applies to all technologies</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="cosufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、元の非テキストコンテンツと同じ目的を果たし、同じ情報を提示しようとすると代替テキストが長くなりすぎてしまう場合、又は代替テキストのみではこの目的を達成できない場合に用いられる。そのような場合に、非テキストコンテンツを簡単に説明する簡潔な代替テキストを提供するために、この達成方法を用いる（長い代替テキストは、非テキストコンテンツと同じ目的を果たし、同じ情報を提示するという別の達成方法を併用することで提供される。）。</p>
-    <p>代替テキストにどのようなテキストを含めればよいかを決める際は、以下の質問について考えてみるとよい：</p>
-    <ulist>
-      <item>
-        <p>なぜこの非テキストコンテンツがここにあるのか？</p>
-      </item>
-      <item>
-        <p>それはどのような情報を示しているのか？</p>
-      </item>
-      <item>
-        <p>それはどのような目的を果たすのか？</p>
-      </item>
-      <item>
-        <p>非テキストコンテンツを使用することができない場合、何という言葉を使って同じ機能及び（又は）情報を伝達するか？</p>
-      </item>
-    </ulist>
-  </description>
-   <examples/>
+      <p>This technique is used when the text needed to serve the same purpose and
+            present the same information as the original non-text content is too lengthy
+            or when this goal cannot be achieved with text alone. In that case this
+            technique is used to provide a short text alternative that briefly describes
+            the non-text content. (A long text alternative is then provided using
+            another technique such that the combination serves the same purpose and
+            presents the same information as the original non-text content.)</p>
+      <p>In deciding what text to include in the alternative, it is often a good idea
+            to consider the following questions:</p>
+      <ulist>
+         <item>
+            <p>Why is this non-text content here?</p>
+         </item>
+         <item>
+            <p>What information is it presenting?</p>
+         </item>
+         <item>
+            <p>What purpose does it fulfill?</p>
+         </item>
+         <item>
+            <p>If I could not use the non-text content, what words would I use to
+                convey the same function and/or information?</p>
+         </item>
+      </ulist>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>A chart showing sales for October has an short text
+                alternative of "October sales chart". It also has a long
+                description that provides all of the information on the
+                chart.</p>
+         </item>
+      </ulist>
+   </examples>
    <resources>
       <see-also/>
    </resources>
@@ -41,14 +59,15 @@
       <procedure>
          <olist>
             <item>
-               <p>非テキストコンテンツの簡潔な説明を提供している簡単な代替テキストがある。</p>
+               <p>Check for the presence of a short text alternative that provides
+                  a brief description of the non-text content.</p>
             </item>
          </olist>
       </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1.を満たしている。</p>
+               <p>Check #1 is true.</p>
             </item>
          </ulist>
       </expected-results>

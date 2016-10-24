@@ -2,21 +2,22 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G124">
-   <short-name>ページの先頭に、コンテンツの各エリアへのリンクを追加する</short-name>
+   <short-name>Adding links at the top of the page to each area of the content</short-name>
    <applicability>
-      <p>リンク機能を提供するウェブコンテンツ技術すべて。</p>
+      <p>All technologies that contain links</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-skip" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、コンテンツの異なるセクションへのリンクのリストを提供することによって、文書のブロックをバイパスするメカニズムを提供することである。このリストにある複数のリンクは、コンテンツの最初にある小さな目次のようなものであり、その中のリンクはコンテンツ内のさまざまなセクションへフォーカスを設定する。この達成方法は、ポータルサイトのような多くの独立したセクションがあるページに対して特に有効である。これはセクション内でのブロックをスキップする他の達成方法と組み合わせることもできる。</p>
-  </description>
+      <p>The objective of this technique is to provide a mechanism to bypass blocks of material by providing a list of links to the different sections of the content. The links in this list, like a small table of contents at the beginning of the content, set focus to the different sections of the content. This technique is particularly useful for pages with many independent sections, such as portals. It may also be combined with other techniques for skipping blocks within a section.</p>
+   </description>
    <examples>
       <eg-group>
-      <description><p>サイト内のウェブページはすべて、そのページのメインコンテンツ、検索フィールド、及びナビゲーションバーにナビゲートする3つのリンクで始まる。</p>
-</description>
-    </eg-group>
+         <description>
+            <p>The Web pages on a site all start with three links that navigate to the main content of that Web page, the search field, and the navigation bar.</p>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -36,26 +37,26 @@
    </related-techniques>
    <tests>
       <procedure>
-      <p>この目的のために提供されているリンク一式にある各リンクに対して：</p>
-      <olist>
-        <item>
-          <p>ウェブページの中でそのリンクより前にあるコントロールは、その一式にある他のリンクだけである。</p>
-        </item>
-        <item>
-          <p>各リンクの説明（リンクテキスト）がコンテンツ内のあるセクションへのリンクであることを説明している。</p>
-        </item>
-        <item>
-          <p>そのリンクが常に表示されている、又はキーボード・フォーカスを受け取ったときに表示される。</p>
-        </item>
-        <item>
-          <p>そのリンクを起動（実行）すると、コンテンツの目的のセクションへフォーカスを移動させる。</p>
-        </item>
-      </olist>
-    </procedure>
+         <p>For each link in the set of links provided for this purpose:</p>
+         <olist>
+            <item>
+               <p>Check that the only controls in the Web page that precede the link are other links in the set.</p>
+            </item>
+            <item>
+               <p>Check that the description of each link communicates that it links to some section of the content.</p>
+            </item>
+            <item>
+               <p>Check that the link is either always visible or visible when it has keyboard focus.</p>
+            </item>
+            <item>
+               <p>Check that activating the link moves the focus to that section of the content.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>上記全てを満たしている。</p>
+               <p>All checks above are true.</p>
             </item>
          </ulist>
       </expected-results>

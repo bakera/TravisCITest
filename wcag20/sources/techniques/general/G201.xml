@@ -2,34 +2,47 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G201">
-   <short-name>新しいウィンドウを開くときには利用者ーに事前に知らせる</short-name>
+   <short-name>Giving users advanced warning when opening a new window</short-name>
    <applicability>
-      <p>新しいウィンドウを開くウェブページ</p>
+      <p>Pages that open new windows</p>
    </applicability>
    <applies-to>
-    <success-criterion idref="consistent-behavior-receive-focus"/>
-    <success-criterion idref="consistent-behavior-unpredictable-change"/>
+	   <guideline idref="consistent-behavior" relationship="advisory"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、自動的に新しいウィンドウまたはタブを開く前に利用者ーに知らせることである。リンクを押下したときに自動的に新しいウィンドウを開くことは、もし事前にそのことを知らせていなければ、視覚的なコンテンツを知覚するのに困難を伴う利用者ーや認知障害のある利用者ーが混乱する原因となりうる。事前に知らせることによって、利用者ーは現在のウィンドウから離れるかどうかを判断することができるようになる。また、利用者ーが新しいウィンドウを開くことを選んだ場合にも、元のウィンドウに戻りやすくなる。さらに、ブラウザの[戻る]ボタンが使えないことや、直前まで自分がいた場所を見つけるためには元のウィンドウに戻らなければならないことを利用者ーが理解する手助けにもなる。</p>
-  </description>
+      <p>The objective of this technique is to provide a warning before automatically
+            opening a new window or tab. Opening new windows automatically when
+            a link is activated can be disorienting for people who have difficulty
+            perceiving visual content, and for some people with cognitive disabilities,
+            if they are not warned in advance. Providing a warning allows the user
+            to decide it they want to leave the current window, and the warning
+            will help them find their way back, if they do decide they would like
+            to go to the new window. It will help them understand that the "back" button
+            will not work and that they have to return to the last window they
+            had open, in order to find their previous location.</p>
+   </description>
    <examples>
       <eg-group>
-      <head>コントロールを説明するテキストで知らせる</head>
-      <description><p>コントロールを説明する識別名またはラベルを用いて、新しいウィンドウで開くことを知らせることができる。</p>
-</description>
-      <code xml:space="preserve"><![CDATA[
-       <a href="knitting.html" target="_blank">編み物のすべて 
-              （新しいウィンドウで開く）</a>]]></code>
-    </eg-group>
-    <eg-group>
-      <head>CSSを用いて、新しいウィンドウが開く前に知らせる</head>
-      <description><p>以下のコードでは、CSSを用いて新しいウィンドウが開く前に知らせている。</p>
-</description>
-      <code xml:space="preserve"><![CDATA[
-       <html>
+         <head>Including the warning in the text describing a control</head>
+         <description>
+            <p>The name or label that describes a control can include the warning
+                about opening in a new window.</p>
+         </description>
+         <code xml:space="preserve"><![CDATA[
+              <a href="knitting.html" target="_blank">All about Knitting 
+                (opens in new window)</a>
+            ]]></code>
+      </eg-group>
+      <eg-group>
+         <head>Using CSS to provide a warning before opening a new window</head>
+         <description>
+            <p>The code below uses CSS to provide a warning before opening a new
+                window.</p>
+         </description>
+         <code xml:space="preserve"><![CDATA[
+              <html>
                 <head>
-                <title>ポップアップによる警告</title>
+                <title>Pop-Up Warning</title>
                 <style type="text/css">
                 body {
                 margin-left:2em;
@@ -68,16 +81,24 @@
                 </style>
                 </head>
                 <body>
-                <h1>ポップアップによる警告</h1>
-                <p> これは <a class="info" href="popup_advisory_technique.html"
-                 target="_blank"><strong>外部へのリンク</strong>
-                 <span>新しいウィンドウで開く</span></a>の事例です。
+                <h1>Pop-Up Warning</h1>
+                <p> This is an example of an <a class="info"
+                href="popup_advisory_technique.html" target="_blank">
+                <strong>External link</strong><span>Opens a new
+                window</span></a>
                 </p>
                 </body>
-                </html>]]></code>
-      <description><p>参考：<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="working-examples/G201/new-window.html" linktype="examples">CSSを用いて、新しいウィンドウが開く前に知らせるサンプル：英語</loc></p>
-</description>
-    </eg-group>
+                </html>
+            ]]></code>
+         <description>
+            <p>A
+                <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="new-window.html"
+                    linktype="examples">working
+                  example of Using CSS to provide a warning before opening a new window</loc>
+                is available.</p>
+         </description>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="H83"/>
@@ -86,20 +107,23 @@
    </related-techniques>
    <tests>
       <procedure>
-      <p>利用者の要求による状況の変化が生じた際に新しいウィンドウまたはタブで開くリンクに対して：</p>
-      <olist>
-        <item>
-          <p>このリンクは新しいウィンドウを開くことが支援技術（音声ブラウザ/スクリーンリーダー）によって読み上げられる。</p>
-        </item>
-        <item>
-          <p>このリンクは新しいウィンドウを開くことが視覚的に示されている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <p>For each link that opens automatically in a new window or tab when
+              a change of context is initiated by a user request:</p>
+         <olist>
+            <item>
+               <p>Check that there is a warning spoken in assistive technology that
+                  this link opens to a new window.</p>
+            </item>
+            <item>
+               <p>Check that there is a visual warning in text that this link opens
+                  to a new window.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1. および 2. を満たしている。</p>
+               <p>Checks #1 and check #2 are true.</p>
             </item>
          </ulist>
       </expected-results>

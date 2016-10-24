@@ -2,29 +2,32 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G164">
-   <short-name><phrase diff="chg">フォームの送信後に、利用者がそのオンラインでのリクエスト（またはトランザクション）を修正またはキャンセルできる一定の時間を提供する</phrase> <phrase diff="del">フォームの送信後に、利用者が注文を変更又はキャンセルできる一定の時間を提供する</phrase></short-name>
+   <short-name>Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request</short-name>
    <applicability>
-      <p>フォームを提供する全てのウェブコンテンツ技術</p>
+      <p>All technologies that provide forms.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="minimize-error-reversible" relationship="sufficient"/>
       <success-criterion idref="minimize-error-reversible-all" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、注文を変更又はキャンセルできる猶予期間を提供することによって、利用者が誤った注文をしてしまった際にその内容を変更又はキャンセルできるようにすることである。一般的には、契約又は注文は法的な義務であり、キャンセルすることができない。しかしながら、ウェブサイトにおいては、この機能を提供し、利用者が注文内容を間違えてしまった際には、注文を変更又はキャンセルできるようにすることが可能である。</p>
-    <p>ウェブコンテンツでは、フォームを送信した後、キャンセル可能期間がどのくらいなのか、及びどのような手続きで注文をキャンセルするかを利用者に伝える必要がある。注文をキャセルする手続きがオンラインでは利用できない場合もあり得る。例えば、ウェブページ上に記載された住所宛に書面による通知が必要な場合である。</p>
-  </description>
+      <p>The objective of this technique is to allow users to recover from errors made when placing an order by providing them with a period of time during which they can cancel or change the order. In general, a contract or an order is a legal commitment and cannot be canceled. However, a Web site may choose to offer this capability, and it provides a way for users to recover from errors.</p>
+      <p>The Web content would need to tell the user how long the cancellation period is after submitting the form and what the procedure would be to cancel the order. The cancellation procedure may not be possible online. It may, for instance, require written notice be sent to an address listed on the Web page.</p>
+      <p>After submitting the form, the user is informed of the length of the cancellation period and the procedure for canceling the transaction. It's best to provide the cancellation procedure at the same website where the transaction was submitted so that it is as easy to cancel as it was to submit and to accommodate users who may be unable to use other mechanisms. But, if necessary, the cancellation procedure may be provided through some other mechanism or combination of mechanisms as long as it has equivalent cross-disability accessibility. In this case, users are warned prior to submitting the form that they will not be able to cancel their order online.</p>
+   </description>
    <examples>
       <eg-group>
-      <head>オンラインショッピング</head>
-      <description><p>オンラインショッピングのウェブサイトで、24時間以内であれば利用者が購入をキャンセルできるようにしている。そのウェブサイトでは彼らの方針を説明しており、電子メールで利用者に送られる注文確認書の方針の要約も含まれている。24時間以降は購入した物は利用者宛に発送され、キャンセルすることはできない。</p>
-</description>
-    </eg-group>
-    <eg-group>
-      <head>カスタムオーダー</head>
-      <description><p>あるウェブサイトでオーダーメイドのスポーツジャケットを販売している。顧客は生地を選び、身体の寸法を仕立て店に送る。ウェブサイトは注文の変更やキャンセルに対して3日の猶予を与えている。その顧客の寸法に合わせて生地が裁断されると、注文の変更又はキャンセルはできなくなる。そして、会社の方針がウェブサイト上で説明されている。</p>
-</description>
-    </eg-group>
+         <head>Online shopping</head>
+         <description>
+            <p>An online shopping Web site lets users cancel purchases up to 24 hours after they have been made. The Web site explains their policy, and includes a summary of the policy on the purchase receipt emailed to the user. After 24 hours, the purchase will be shipped to the user and can no longer be canceled.</p>
+         </description>
+      </eg-group>
+      <eg-group>
+         <head>Custom orders</head>
+         <description>
+            <p>A Web site sells custom sports jackets that are made to order. The customer chooses the fabric and provides body measurements for the tailor. The Web site gives customers up to three days to change or cancel an order. Once the material has been cut to the customer's specifications, it is no longer possible to change or cancel the order. The company policy is described on its Web site.</p>
+         </description>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G98"/>
@@ -33,19 +36,19 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>注文のキャンセル又は変更をすることが可能な期間についてウェブページ上に記述がある。</p>
-        </item>
-        <item>
-          <p>注文のキャンセル、又は変更のための手続きについてウェブページ上に記述がある。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Check that the Web page describes the time period to cancel or change an order.</p>
+            </item>
+            <item>
+               <p>Check that the Web page describes the process for canceling or changing an order.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1.及び 2.を満たしている。</p>
+               <p>Checks #1 and #2 are true.</p>
             </item>
          </ulist>
       </expected-results>

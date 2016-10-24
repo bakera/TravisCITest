@@ -2,9 +2,9 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SM1">
-   <short-name>SMIL 1.0で拡張した音声ガイドを追加する</short-name>
+   <short-name>Adding extended audio description in SMIL 1.0</short-name>
    <applicability>
-      <p>SMIL 1.0 プレーヤーが利用可能な場合</p>
+      <p> Applies whenever SMIL 1.0 player is available </p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-audio-desc" relationship="sufficient"/>
@@ -12,16 +12,16 @@
       <success-criterion idref="media-equiv-extended-ad" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、会話の合間に入れられるよりも多くの音声ガイドを、視聴覚素材に付加することである。</p>
-    <p>SMIL 1.0 にはこれを達成する簡単な方法がないが、連続して順番に再生される複数のファイルに、音声ファイル及び映像ファイルを分割することによって実装できる。この方法によって追加した音声ガイドは、視聴覚コンテンツが停止している間に再生される。映像ファイルの最後のフレームは、画面に表示されたまま一時停止し、その間に音声ファイルが再生される。</p>
-    <p>これにより、映像は最初から最後まで再生されるように見えながらも、ところどころで停止して、その間に長めの音声ガイドが提供される。そして、音声ガイドが終了すると、映像の再生が自動的に再開する。</p>
-    <p>この拡張した音声ガイドのオン／オフを操作するには、スクリプトを使用して、拡張した音声ガイドを含んだSMILスクリプト及び含まないSMILスクリプトの2つの間で切り替えることによって実装できる。又は、スクリプトを使用して、拡張した音声ガイドをSMILファイルに追加したりSMILファイルから削除したりすることもできる。そうすることで、映像クリップは、単純に順序どおり再生されることになる。</p>
-    <p>スクリプトが使用できない場合は、2つのバージョンの映像を提供することによって可能となる。つまり、1つは拡張した音声ガイドを含んだバージョン、もう1つは含まないバージョンを提供するのである。</p>
-  </description>
+      <p> The purpose of this technique is to allow there to be more audio description than will fit into the gaps in the dialogue of the audio-visual material.</p>
+      <p>With SMIL 1.0 there is no easy way to do this but it can be done by breaking the audio and video files up into a series of files that are played sequentially. Additional audio description is then played while the audio-visual program is frozen. The last frame of the video file is frozen so that it remains on screen while the audio file plays out.</p>
+      <p>The effect is that the video appears to play through from end to end but freezes in places while a longer audio description is provided. It then continues automatically when the audio description is complete.</p>
+      <p>To turn the extended audio description on and off one could use script to switch back and forth between two SMIL scripts, one with and one without the extended audio description lines. Or script could be used to add or remove the extended audio description lines from the SMIL file so that the film clips would just play sequentially.</p>
+      <p>If scripting is not available then two versions of the video could be provided, one with and one without extended audio descriptions.</p>
+   </description>
    <examples>
       <eg-group>
-      <head>拡張した音声ガイドのあるSMIL 1.0の映像、メインのメディアを4箇所で停止して拡張した音声ガイドを挿入している</head>
-      <code><![CDATA[
+         <head>SMIL 1.0 Video with audio descriptions that pause the main media in 4 locations to allow extended audio description</head>
+         <code><![CDATA[   
 <?xml version="1.0" encoding="UTF-8"?>
 <smil xmlns:qt="http://www.apple.com/quicktime/resources/smilextensions" 
 xmlns="http://www.w3.org/TR/REC-smil" qt:time-slider="true">
@@ -61,11 +61,13 @@ xmlns="http://www.w3.org/TR/REC-smil" qt:time-slider="true">
    </seq>
   </par>
 </body>
-</smil>]]></code>
-      <description><p>上記のマークアップは、5つの <code><![CDATA[<par>]]></code> セグメントに分割されている。各セグメントに <code><![CDATA[<video>]]></code> と <code><![CDATA[<audio>]]></code> のタグが1つずつある（ただし、最後の <code><![CDATA[<par>]]></code> に <code><![CDATA[<audio>]]></code> がないのは意図的なものである）。拡張した音声ガイドの通常の使い方は、音声ガイドが提供される間、メインのメディアを一時停止するというものである。SMIL 1.0でこれを実現するには、映像クリップの開始と終了を指定する「<code><![CDATA[clip-begin]]></code>」と「<code><![CDATA[clip-end]]></code>」を設定して、その「<code><![CDATA[clip-begin]]></code>」と「<code><![CDATA[clip-end]]></code>」で定義されるよりも長い再生時間をクリップに設定する。<code><![CDATA[fill=「freeze」]]></code>は、拡張した音声ガイドの再生中、映像の最後のフレームを保持する。<code><![CDATA[<audio>]]></code> タグには「<code><![CDATA[begin]]></code>」の属性があり、その前の <code><![CDATA[<video>]]></code> タグで定義された「<code><![CDATA[clip-end]]></code>」の値と同じ値を持っている。</p>
-<p>「<code><![CDATA[clip-begin]]></code>」「<code><![CDATA[clip-end]]></code>」「dur」の値を決めるにあたっては、音声ガイドが開始及び終了する前の映像部分の時間と、拡張した音声ガイドの全体の長さを調べる必要がある。「<code><![CDATA[clip-begin]]></code>」と「<code><![CDATA[clip-end]]></code>」は、それ自体の値を定義するが、「<code><![CDATA[dur]]></code>」の値は、「<code><![CDATA[clip-begin]]></code>」と「<code><![CDATA[clip-end]]></code>」によって定義される拡張した音声ガイド及び映像クリップを合計した長さとなる。最初の <code><![CDATA[<par>]]></code> では、映像クリップが0秒で始まり、5.4秒で終わる。そして記述の長さは3.3秒だ。このため、「<code><![CDATA[dur]]></code>」の値は、5.4 + 3.3 = 8.7秒となる。</p>
-</description>
-    </eg-group>
+</smil>
+]]></code>
+         <description>
+            <p>The markup above is broken into five <code><![CDATA[<par>]]></code> segments. In each, there is a <code><![CDATA[<video>]]></code> and an <code><![CDATA[<audio>]]></code> tag (the last <code><![CDATA[<par>]]></code> has no <code><![CDATA[<audio>]]></code> tag intentionally). The convention with extended audio descriptions is that the main media pauses during the description. The way to make this happen in SMIL 1.0 is to set a "<code><![CDATA[clip-begin]]></code>" and "<code><![CDATA[clip-end]]></code>" which dictate the start and end of the video clip, and to set a duration for the clip that is longer than what is defined by the "<code><![CDATA[clip-begin]]></code>" and "<code><![CDATA[clip-end]]></code>". The <code><![CDATA[fill="freeze"]]></code> holds the last frame of the video during the extended description. The <code><![CDATA[<audio>]]></code> tag has a "<att>begin</att>" attribute with a value that is equal to the "<code><![CDATA[clip-end]]></code>" value of the preceding <code><![CDATA[<video>]]></code> tag.</p>
+            <p>To determine the values for "<code><![CDATA[clip-begin]]></code>," "<code><![CDATA[clip-end]]></code>", and "<code><![CDATA[dur]]></code>", find the start and end time of the portion of the video being described, and find out the total length of the extended audio description. The "<code><![CDATA[clip-begin]]></code>" and "<code><![CDATA[clip-end]]></code>" define their own values, but the "<att>dur</att>" value is the sum of the length of the extended description and the clip defined by the "<code><![CDATA[clip-begin]]></code>" and "<code><![CDATA[clip-end]]></code>". In the first <code><![CDATA[<par>]]></code>, the video clip starts at 0 seconds, ends at 5.4 seconds, and the description length is 3.3 seconds, so the "<att>dur</att>" value is 5.4s + 3.3s = 8.7s.</p>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -109,22 +111,22 @@ xmlns="http://www.w3.org/TR/REC-smil" qt:time-slider="true">
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>拡張した音声ガイドのあるファイルを再生する。</p>
-        </item>
-        <item>
-          <p>音声ガイドのあるファイルを再生する。</p>
-        </item>
-        <item>
-          <p>映像がところどころ一時停止して、拡張した音声ガイドが再生される。</p>
-        </item>
-      </olist>
-    </procedure>
-    <expected-results>
-      <ulist>
-        <item>
-          <p>3.を満たしている。</p>
+         <olist>
+            <item>
+               <p> Play file with extended audio descriptions</p>
+            </item>
+            <item>
+               <p> Play file with audio description </p>
+            </item>
+            <item>
+               <p>Check whether video freezes in places and plays extended audio description</p>
+            </item>
+         </olist>
+      </procedure>
+      <expected-results>
+         <ulist>
+            <item>
+               <p> #3 is true </p>
             </item>
          </ulist>
       </expected-results>

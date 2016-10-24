@@ -2,37 +2,53 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F22">
-   <short-name>達成基準 3.2.5 の不適合事例：　利用者が要求していないウィンドウを開く</short-name>
+   <short-name>Failure of Success Criterion 3.2.5 due to opening windows that are not requested by the
+                    user</short-name>
    <applicability>
-      <p>全般</p>
+      <p>General </p>
    </applicability>
    <applies-to>
       <success-criterion idref="consistent-behavior-no-extreme-changes-context"
                          relationship="failure"/>
    </applies-to>
    <description>
-    <p>この文書では、利用者が期待しないときに、新しいウィンドウが開くことによる不適合事例について述べている。新しいウィンドウは、利用者が閲覧又は操作している場所からフォーカスを奪ってしまう。利用者が利用者ーインタフェースを操作したことで、オプションダイアログのように新しいウィンドウが開くことがわかっている場合は問題にならないが、予期せずポップアップウィンドウが開いてしまう場合がには問題となる。</p>
-  </description>
+      <p> Failure due to opening new windows when the user does not expect them. New
+                        windows take the focus away from what the user is reading or doing. This is
+                        fine when the user has interacted with a piece of User Interface and expects
+                        to get a new window, such as an options dialogue. The failure comes when
+                        pop-ups appear unexpectedly. </p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <head>不適合事例1:</head>
-      <description><p>ウェブページをナビゲートしているとき、新しいウィンドウが既存の利用者ーエージェントのウィンドウの前面に現れ、フォーカスが新しいウィンドウに移動する。</p>
-</description>
-    </eg-group>
-    <eg-group role="failure">
-      <description><p>利用者がリンクをクリックすると、新しいウィンドウが現れる。元のリンクには新しいウィンドウを開くことを予告するテキストがない。</p>
-</description>
-    </eg-group>
-    <eg-group role="failure">
-      <description><p>利用者がウェブページのボディをクリックすると新しいウィンドウが現れる。クリックしたエリアに機能があるということは全く示されていない。</p>
-</description>
-    </eg-group>
-    <eg-group role="failure">
-      <description><p>ウェブページ内の装飾されてないテキストを利用者がクリックすると、新しいウィンドウが開く。ウェブページにはそのエリアに機能があるという視覚的な表示は何もない。
-                
-              </p>
-</description>
-    </eg-group>
+         <head/>
+         <description>
+            <p>When a user navigates to a page, a new window appears over the
+                                existing user agent window, and the focus is moved to the new
+                                window.</p>
+         </description>
+      </eg-group>
+      <eg-group role="failure">
+         <head/>
+         <description>
+            <p> A user clicks on a link, and a new window appears. The original link
+                                has no associated text saying that it will open a new window. </p>
+         </description>
+      </eg-group>
+      <eg-group role="failure">
+         <head/>
+         <description>
+            <p>A user clicks on the body of a page and a new window appears. No
+                                indication that the area that was clicked has functionality is
+                                present. </p>
+         </description>
+      </eg-group>
+      <eg-group role="failure">
+         <head/>
+         <description>
+            <p>A user clicks on undecorated text within the page and a new window
+                                appears. The page has no visible indication that the area is functional.    </p>
+         </description>
+      </eg-group>
    </examples>
    <resources/>
    <related-techniques>
@@ -40,34 +56,42 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>ウェブページを表示させる。</p>
-        </item>
-        <item>
-          <p>新しい（追加の）ウィンドウが開く。</p>
-        </item>
-        <item>
-          <p>ウェブページ上のリンク及びボタンのような、アクションのある要素を探し出す。</p>
-        </item>
-        <item>
-          <p>各要素を操作する。</p>
-        </item>
-        <item>
-          <p>要素を操作すると新しいウィンドウが開く。</p>
-        </item>
-        <item>
-          <p>ウィンドウを開かせた要素にウィンドウを開くことを示す関連づけられたテキストがある。そのテキストはリンクの中に表示されている、又はHTMLのtitle属性といった非表示の関連づけで利用できる。【訳注：<el>a</el>要素内でアイコン画像を用いる際は、代替テキストで示されていればよい。また、title属性の使用は推奨できない。】</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> Load the Web page. </p>
+            </item>
+            <item>
+               <p> Check if new (additional) windows open. </p>
+            </item>
+            <item>
+               <p> Find every actionable element, such as links and buttons, in the
+                                    Web page. </p>
+            </item>
+            <item>
+               <p> Activate each element. </p>
+            </item>
+            <item>
+               <p> Check if activating the element opens a new window. </p>
+            </item>
+            <item>
+               <p> Check if elements that open new windows have associated text
+                                    saying that will happen. The text can be displayed in the link,
+                                    or available through a hidden association such as an HTML title
+                                    attribute. </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
-         <item>
-          <p>2.に該当すれば、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
-        </item>
-        <item>
-          <p>5.に該当して、6.を満たしていなければ、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
-        </item>
+         <ulist>
+            <item>
+               <p> If step #2 is true, the failure condition applies and the content
+                                    fails the Success Criterion </p>
+            </item>
+            <item>
+               <p> If step #5 is true and step #6 is false, the failure condition applies and
+                                    the content fails the Success Criterion </p>
+            </item>
+         </ulist>
       </expected-results>
    </tests>
 </technique>

@@ -2,30 +2,29 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SCR26">
-   <short-name>動的なコンテンツをDOMのそのトリガーとなる要素の直後に挿入する</short-name>
+   <short-name>Inserting dynamic content into the Document Object Model immediately following its trigger element</short-name>
    <applicability>
-      <p>HTML及びXHTML、スクリプト</p>
+      <p>HTML and XHTML, script</p>
    </applicability>
-   <applies-to>
-      <success-criterion idref="keyboard-operation-keyboard-operable"/>
+   <applies-to><!--success-criterion idref="keyboard-operation-keyboard-operable"/-->
       <success-criterion idref="navigation-mechanisms-focus-order" relationship="sufficient"/>
-      <success-criterion idref="navigation-mechanisms-focus-visible"/>
+      <!--success-criterion idref="navigation-mechanisms-focus-visible"/-->
    </applies-to>
    <description>
-    <p>この達成方法の目的は、Document Object Model（DOM）に挿入された利用者ーインタフェースの要素をタブ順序及びスクリーンリーダーの読み上げ順序が利用者ーエージェント標準のふるまいによって正しく設定されるような方法で配置することである。この達成方法は、メニューやダイアログのように隠れているものと表示されているもの、全ての利用者ーインタフェース要素に利用することができる。</p>
-    <p>スクリーンリーダーの読み上げ順序は、Document Object Model内のHTML又はXHTMLの要素の順序に基づいており、それはタブ順序についても同様である。この達成方法では、新しいコンテンツをDOMのそのトリガーとなる要素の直後に挿入する。トリガーとなる要素は、リンク又はボタンでなければならず、スクリプトはそのonclickイベントにより呼び出されなければならない。これらの要素はもともとフォーカス可能であり、そのonclickイベントはデバイスに依存しない。フォーカスは選択された要素に残り、その後に挿入された新しいコンテンツは、タブ順序及びスクリーンリーダーの読み上げ順序の両方において、次の順番となる。</p>
-    <p>この達成方法は同期された更新にも利用できることに注目して欲しい。（AJAXと呼ばれることのある）非同期の更新では、支援技術に非同期のコンテンツが挿入されたことを通知するために追加の達成方法が必要となる。</p>
-  </description>
+      <p>The objective of this technique is to place inserted user interface elements into the Document Object Model (DOM) in such a way that the tab order and screen-reader reading order are set correctly by the default behavior of the user agent. This technique can be used for any user interface element that is hidden and shown, such as menus and dialogs.</p>
+      <p>The reading order in a screen-reader is based on the order of the HTML or XHTML elements in the Document Object Model, as is the default tab order. This technique inserts new content into the DOM immediately following the element that was activated to trigger the script. The triggering element must be a link or a button, and the script must be called from its onclick event. These elements are natively focusable, and their onclick event is device independent. Focus remains on the activated element and the new content, inserted after it, becomes the next thing in both the tab order and screen-reader reading order.</p>
+      <p>Note that this technique works for synchronous updates. For asynchronous updates (sometimes called AJAX), an additional technique is needed to inform the assistive technology that the asynchronous content has been inserted. </p>
+   </description>
    <examples>
       <eg-group>
-      <description><p>この例では、リンクがクリックされた際にメニューを生成し、そのリンクの後に挿入する。リンクのonclickイベントは新しいメニューのためのIDをパラメータとして渡すShowHideスクリプトを呼び出すために使用される。</p>
-</description>
-      <code role="xhtml"><![CDATA[
-&lt;a href="#" onclick="ShowHide('foo',this)"&gt;切り替え&lt;/a&gt; ]]></code>
-      <description><p>ShowHideスクリプトは新しいメニューを含むdivを生成し、リンクを挿入する。最終行がスクリプトの核心となる。スクリプトのトリガーとなる要素の親を探し、新しい子として生成されたdivをそれに追加する。これにより、新しいdivはDOM内でリンクの次になる。利用者がタブを押したときには、フォーカスがメニュー内で最初のフォーカス可能な項目となる生成されたリンクに移動する。</p>
-</description>
-      <code role="script"><![CDATA[
-ShowHide関数(id,src)
+         <description>
+            <p>This example creates a menu when a link is clicked and inserts it after the link. The onclick event of the link is used to call the ShowHide script, passing in an ID for the new menu as a parameter.</p>
+         </description>
+         <code role="xhtml"><![CDATA[<a href="#" onclick="ShowHide('foo',this)">Toggle</a>]]></code>
+         <description>
+            <p>The ShowHide script creates a div containing the new menu, and inserts a link into it. The last line is the core of the script. It finds the parent of the element that triggered the script, and appends the div it created as a new child to it. This causes the new div to be in the DOM after the link. When the user hits tab, the focus will go to the first focusable item in the menu, the link we created.</p>
+         </description>
+         <code role="script"><![CDATA[function ShowHide(id,src)
 {
 	var el = document.getElementById(id);
 	if (!el)
@@ -42,29 +41,30 @@ ShowHide関数(id,src)
 	{
 		el.style.display = ('none' == el.style.display ? 'block' : 'none');
 	}
-} ]]></code>
-      <description><p>CSSはdivおよびリンクをメニューのように見せるために利用される。</p>
-</description>
-    </eg-group>
+}]]></code>
+         <description>
+            <p>CSS is used to make the div and link look like a menu.</p>
+         </description>
+      </eg-group>
    </examples>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>ポップアップではないダイアログのトリガーとなる全てのエリアを探す。</p>
-        </item>
-        <item>
-          <p>そのダイアログがボタン又はリンクのクリックイベントによりトリガーされる。</p>
-        </item>
-        <item>
-          <p>スクリプトによって生成されたDOMを調査できるツールを使って、ダイアログがDOM内で次の位置にきている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Find all areas of the page that trigger dialogs that are not pop-up windows.</p>
+            </item>
+            <item>
+               <p>Check that the dialogs are triggered from the click event of a button or a link.</p>
+            </item>
+            <item>
+               <p>Using a tool that allows you to inspect the DOM generated by script, check that the dialog is next in the DOM.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.及び3.を満たしている。</p>
+               <p>#2 and #3 are true.</p>
             </item>
          </ulist>
       </expected-results>

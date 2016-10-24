@@ -2,20 +2,32 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G193">
-   <short-name>ウェブページでアシスタントによるヘルプを提供する</short-name>
+   <short-name>Providing help by an assistant in the Web page</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p>All technologies.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="minimize-error-context-help" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、ウェブページを利用する際の支援となるマルチメディアのアバターを使ったヘルプを提供することである。アバターを使ったヘルプは、テキストを読むことが難しい認知障害のある利用者に特に役立つ。また、視覚情報を利用することで、提示された題材に集中するのに役立つことがある。</p>
-    <note>
-      <p class="prefix">マルチメディアのアバターは<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#media-equiv" linktype="guideline">ガイドライン 1.2</loc>の関連する達成基準も満たさなければならない。</p>
-    </note>
-  </description>
-   <examples/>
+      <p>The purpose of this technique is to provide help using a multimedia avatar that provides assistance in using the Web page. An avatar can be particularly helpful to people with cognitive disabilities who may have trouble reading text. The use of visuals will help some people to focus on the material presented.</p>
+      <note>
+         <p>The multimedia avatar must also satisfy relevant Success Criterion in
+              <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                 href="media-equiv"
+                 linktype="guideline">Guideline 1.2</loc>.</p>
+      </note>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>The home page of an online banking application has an embedded avatar named Vanna. She gives new online banking clients a tour of the features provided in the application. The assistant can be started and stopped and paused. The client can rewind and fast forward through the material. A text alternative of the information is available from a link next to the avatar.</p>
+         </item>
+         <item>
+            <p>A volunteer site has a welcoming page for new volunteers. In it there is an application form. On the right side of the page there an interactive multimedia file with an avatar that explains all the features and sections of the application form.</p>
+         </item>
+      </ulist>
+   </examples>
    <related-techniques>
       <relatedtech idref="G71"/>
       <relatedtech idref="G103"/>
@@ -23,19 +35,19 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>ウェブページにアシスタント機能がある。</p>
-        </item>
-        <item>
-          <p>アシスタントはそのページの内容の理解を手助けする情報を提供している。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Check that there is an assistant in the Web page.</p>
+            </item>
+            <item>
+               <p>Check that the assistant provides information to help understand the content of the page.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>上記の全てを満たしている。</p>
+               <p>All of the above checks are true.</p>
             </item>
          </ulist>
       </expected-results>

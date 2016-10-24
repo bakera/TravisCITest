@@ -2,38 +2,47 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G93">
-   <short-name>オープン・キャプション（常に表示）を提供する</short-name>
+   <short-name>Providing open (always visible) captions</short-name>
    <applicability>
-      <p>（クローズドキャプションをサポートしていないものを含む）あらゆる同期したメディアのウェブコンテンツ技術</p>
+      <p>Any synchronized media technology, even ones that do not support closed captions.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-captions" relationship="sufficient"/>
       <success-criterion idref="media-equiv-real-time-captions" relationship="cosufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、聴覚に障害のある利用者や視聴覚コンテンツの発話の聞き取りに困難のある利用者に対して、コンテンツを目で見るための方法を提供することである。この達成方法では、発話及び重要な音が伝えている情報が全てテキストとして映像トラックに組み込まれる。つまり、テキストは常に表示されることになり、利用者ーエージェントによるキャプションのサポートは特に必要としない。</p>
-    <p>注記：キャプションは、字幕とは異なる。字幕は、発話内容のみをテキストで提供するものであって、重要な音の情報を含まない。</p>
-  </description>
-   <examples/>
+      <p>The objective of this technique is to provide a way for people who are deaf or otherwise have trouble hearing the dialogue in audio visual material to be able to view the material.  With this technique all of the dialogue and important sounds are embedded as text in the video track.  As a result they are always visible and no special support for captioning is required by the user agent.</p>
+      <p>NOTE: Captions should not be confused with subtitles. Subtitles provide text of only the dialogue and do not include important sounds.</p>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>In order to ensure that everyone can view their online movies, even if users do not know how to turn on captions in their media player, a library association puts the captions directly into the video.</p>
+         </item>
+         <item>
+            <p>A news organization provides open captions on all of its material.</p>
+         </item>
+      </ulist>
+   </examples>
    <resources/>
    <related-techniques>
       <relatedtech idref="G87"/>
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>クローズドキャプションをオフにした状態で同期したメディアを見る。</p>
-        </item>
-        <item>
-          <p>（発話内容及び重要な音の伝えている情報全ての）キャプションが表示されている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Watch the synchronized media with closed captioning turned off.</p>
+            </item>
+            <item>
+               <p>Check that captions (of all dialogue and important sounds) are visible.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2. を満たしている。</p>
+               <p>#2 is true</p>
             </item>
          </ulist>
       </expected-results>

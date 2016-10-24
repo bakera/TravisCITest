@@ -2,52 +2,70 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F85">
-   <short-name>達成基準 2.4.3 の不適合事例 － 連続するナビゲーション順序において、トリガーとなるコントロールに隣接していないダイアログ又はメニューを用いている</short-name>
+   <short-name>Failure of Success Criterion 2.4.3 due to using dialogs or menus that are not adjacent to their trigger control in the sequential navigation order</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p>All technologies.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-focus-order" relationship="failure"/>
    </applies-to>
    <description>
-    <p>この文書では、連続するナビゲーション順序の中での順番が原因で、キーボードだけで操作している利用者がウェブページ上に実装されたダイアログ又はメニューのインタフェースコンポーネントの操作が困難になってしまう不適合事例について述べている。ボタン又はリンクを起動してウェブページ上のダイアログ又はメニューを開いたとき、利用者の次の行動は、ダイアログ又はメニューを操作することである。ダイアログ又はメニューが、連続するナビゲーション順序の中で、トリガーとなるコントロールと連続していない場合、キーボードだけで操作している利用者がダイアログ又はメニューを操作することが困難になる。</p>
-  </description>
+      <p>This describes the failure condition that results when a Web page opens a dialog or menu interface component embedded on the page in a way that makes it difficult for a keyboard user to operate because of its position in the sequential navigation order. When the user opens the dialog or menu embedded on the page by activating a button or link, his next action will be to interact with the dialog or menu. If <phrase>focus is not set to the dialog or menu, and it</phrase> is not adjacent to the trigger control in the sequential navigation order, it will be difficult for the keyboard user to operate the dialog or menu.</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <head>ウェブページ上のダイアログ又はメニューが連続するナビゲーション順序の最後に追加されている</head>
-      <description><p>DHTMLのメニュー又はダイアログは、起動されると、動的に生成され、視覚的にはトリガーの近くに配置され、DOMの最後に付け加えられる。DOMの最後に付け加えられるため、連続するナビゲーション順序の最後となる。利用者は、メニュー又はダイアログを操作するまでに、ページ上の残りの部分をタブ操作で進んで行かなければならない。</p>
-</description>
-    </eg-group>
-    <eg-group role="failure">
-      <head>ページ上に実装されたメニューを閉じるとフォーカスがドキュメントに設定される</head>
-      <description><p>DHTMLのメニューが閉じられるとき、メニューはウェブページから削除又は隠されてフォーカスはドキュメントの先頭に設定される。利用者はメニューを開いた場所までナビゲーション順序の最初からタブを操作しなおさなければならない。</p>
-</description>
-    </eg-group>
+         <head>Adding a dialog or menu embedded on the page to the end of the sequential navigation order</head>
+         <description>
+            <p>When a DHTML menu or dialog is activated, it is created dynamically, positioned visually near the trigger, and appended to the end of the DOM. Because it is appended to the end of the DOM, it is at the end of the sequential navigation order. The user must tab through the rest of the web page before he can interact with the dialog or menu.</p>
+         </description>
+      </eg-group>
+      <eg-group role="failure">
+         <head>Setting focus to the document after dismissing a menu embedded on the page</head>
+         <description>
+            <p>When a menu is dismissed, it is removed or hidden from the web page and focus is set to the document. The user must tab from the beginning of the navigation sequence to reach the point from which the menu was opened.</p>
+         </description>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="SCR26"/>
    </related-techniques>
    <tests>
       <procedure>
-      <p>トリガーとなるコントロールによって開くウェブページ上のあらゆるメニュー又はダイアログに対して：</p>
-      <olist>
-        <item><p>トリガーとなるコントロールをキーボードで起動させる。</p>
-                
-                        <ulist><item><p>a. メニュー又はダイアログにフォーカスがある。</p></item><item><p>b. 連続するナビゲーション順序においてフォーカスを進めていくと、メニュー又はダイアログにフォーカスが置かれる。</p></item></ulist></item>
-        <item><p>メニュー又はダイアログを閉じる。</p>
-                
-                        <ulist><item><p>a. トリガーとなるコントロールにフォーカスがある。</p></item><item><p>b. 連続するナビゲーション順序においてフォーカスを後ろに戻すと、トリガーとなるコントロールにフォーカスが置かれる。</p></item></ulist></item>
-      </olist>
-    </procedure>
+         <p>For each menu or dialog embedded on a Web page that is opened via a trigger control:</p>
+         <olist>
+            <item>
+               <p>Activate the trigger control via the keyboard.</p>
+               <ulist>
+                  <item>
+                     <p>Check whether focus is in the menu or dialog.</p>
+                  </item>
+                  <item>
+                     <p>Check whether advancing the focus in the sequential navigation order puts focus in the menu or dialog.</p>
+                  </item>
+               </ulist>
+            </item>
+            <item>
+               <p>Dismiss the menu or dialog.</p>
+               <ulist>
+                  <item>
+                     <p>Check whether focus is on the trigger control.</p>
+                  </item>
+                  <item>
+                     <p>Check whether advancing the focus backwards in the sequential navigation order puts focus in the trigger control.</p>
+                  </item>
+               </ulist>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
-        <item>
-          <p>1a.及び1b.を両方とも満たしていなければ、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。 </p>
-        </item>
-        <item>
-          <p>2a.及び2b.を両方とも満たしていなければ、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
-        </item>
-      </ulist>
+            <item>
+               <p>If both points under step 1 are false, then this failure condition applies and the content fails this success criterion.</p>
+            </item>
+            <item>
+               <p>If both points under step 2 are false, then this failure condition applies and the content fails this success criterion.</p>
+            </item>
+         </ulist>
       </expected-results>
    </tests>
 </technique>

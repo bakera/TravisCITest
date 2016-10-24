@@ -2,26 +2,42 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F37">
-   <short-name>達成基準 3.2.2 の不適合事例 － ラジオボタン、チェックボックス、又はセレクトリストを変更すると、事前の予告なしに新しいウィンドウを開いている</short-name>
+   <short-name>Failure of Success Criterion 3.2.2 due to launching a new window without prior warning
+                    when the selection of a radio button, check box or select list is changed</short-name>
    <applicability>
-      <p>HTML 及び XHTML</p>
+      <p>HTML and XHTML</p>
    </applicability>
    <applies-to>
       <success-criterion idref="consistent-behavior-unpredictable-change" relationship="failure"/>
    </applies-to>
    <ua-issues>
       <ua-issue name="IE" version="6">
-      <p>onclickを持つラジオボタンがフォーカスを受け取る時、Internet Explorer 6 は onclickイベントも引き起こす。この動作を防ぐためには他のイベント・ハンドラ（onxxx属性）を追加する。</p>
-    </ua-issue>
+         <p>Internet Explorer 6 also triggers the onclick event when a radio button
+                            with onclick receives focus; adding other event handlers (onxxx
+                            attributes) to prevent this does not work. </p>
+      </ua-issue>
    </ua-issues>
    <description>
-    <p>この文書では、ラジオボタン、チェックボックス、又はセレクトリストの項目のステータスを変更することによって新しいウィンドウが開く場合に発生する不適合事例について解説する。要素が選択された時、状況の変化（フォームの送信、新しいページを開く、新しいウィンドウ）を引き起こす<el>input</el>要素を生成するために、スクリプトを使用することができる。開発者は代わりに送信ボタンを使用するか（<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="G80.html" linktype="general">G80： 状況の変化を開始する実行ボタンを提供する</loc>を参照）、又はそこで起こる動作を明確に示す必要がある。</p>
-  </description>
+      <p> This document describes a failure that occurs when changing the selection of a
+                        radio button, a check box or an item in a select list causes a new window to
+                        open. It is possible to use scripting to create an <code><![CDATA[input]]></code>
+                        element that causes a change of context (submit the form, open a new page, a
+                        new window) when the element is selected. Developers can instead use a
+                        submit button (see <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="G80"
+              linktype="general">Providing a submit
+                            button to initiate a change of context</loc>) or clearly indicate the
+                        expected action. </p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <description><p>下記の例では、送信ボタンを使うのではなく、ラジオボタンが選択されたときにフォームが処理されるため、達成基準を満たしていない。</p>
-</description>
-      <code><![CDATA[
+         <head/>
+         <description>
+            <p> The example below fails the Success Criterion because it processes
+                                the form when a radio button is selected instead of using a submit
+                                button. </p>
+         </description>
+         <code><![CDATA[  
 <script type="text/JavaScript"> 
   function goToMirror(theInput) {
    var mirrorSite = "http://download." + theInput.value + "/"; 
@@ -30,7 +46,7 @@
 </script>
   …
 <form name="mirror_form" id="mirror_form" action="" method="get">
-       <p>ミラーダウンロードサイトを選択して下さい：</p> 
+       <p>Please select a mirror download site:</p> 
        <p> 
        <input type="radio" onclick="goToMirror(this);" name="mirror" 
        id="mirror_belnet" value="belnet.be" /> 
@@ -46,26 +62,30 @@
        <label for="mirror_voxel">voxel (<abbr>US</abbr>)</label><br /> 
        </p> 
 </form>]]></code>
-    </eg-group>
+      </eg-group>
    </examples>
    <resources/>
    <related-techniques/>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>ページの中からフォームを探す。</p>
-        </item>
-        <item>
-          <p>フォーム・コントロールのラジオボタン、チェックボックス、又はセレクトリストの項目のステータスを変更すると、新しいウィンドウが立ち上がるかどうかを確認する。</p>
-        </item>
-        <item>
-          <p>ステップ2の結果として生成されたそれぞれの新しいウィンドウが、事前に利用者に警告されているか確認する。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> Find each form in a page. </p>
+            </item>
+            <item>
+               <p> For each form control that is a radio button, check box or an
+                                    item in a select list, check if changing the selection of the
+                                    control launches a new window. </p>
+            </item>
+            <item>
+               <p> For each new window resulting from step 2, check if the user is
+                                    warned in advance. </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
-         <p>3.を満たしていない場合、この不適合条件が適用され、コンテンツは達成基準に不適合となる。</p>
+         <p> If step #3 is false, then this failure condition applies and content
+                            fails the Success Criterion.</p>
       </expected-results>
    </tests>
 </technique>

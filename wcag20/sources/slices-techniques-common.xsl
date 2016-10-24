@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
   <xsl:import href="diffspec-tech.xsl"/>
 	<xsl:param name="output.dir" select="'.'"/>
+	<xsl:param name="output.dir.prefix" select="'file:///'"/>
 	<xsl:param name="slices" select="1"/>
 	<xsl:param name="show.diff.markup" select="'0'"/>
 	
@@ -33,7 +34,7 @@
     <xsl:variable name="prev" select="(preceding::div1)[last()]"/>
     <xsl:variable name="next" select="(following::technique | following::div2)[1]"/>
       	<xsl:variable name="filename"><xsl:apply-templates select="." mode="slice-techniques-filename"/></xsl:variable>
-      	<xsl:result-document method="xml" href="file:///{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
+      	<xsl:result-document method="xml" href="{$output.dir.prefix}{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
         <html>
         	<xsl:if test="/spec/header/langusage/language">
         		<xsl:attribute name="lang"><xsl:value-of select="/spec/header/langusage/language/@id"/></xsl:attribute>
@@ -41,7 +42,7 @@
         	</xsl:if>
         	<head>
             <title>
-              <xsl:apply-templates select="head" mode="text"/>  | WCAG 2.0 達成方法集
+              <xsl:apply-templates select="head" mode="text"/>  | Techniques for WCAG 2.0
             </title>
         		<xsl:call-template name="canonical-link"/>
             <link rel="stylesheet" type="text/css" href="slicenav.css"/>
@@ -49,8 +50,9 @@
               <script type="text/javascript" src="diffmarks.js"><xsl:text> </xsl:text></script>
             </xsl:if>
             <xsl:call-template name="css"/>
+        		<xsl:call-template name="additional-head"/>
           </head>
-         <body class="slices">
+         <body class="slices toc-inline">
           <xsl:if test="$show.diff.markup != 0">
             <xsl:attribute name="onload">jscheck()</xsl:attribute>
           </xsl:if>
@@ -79,7 +81,7 @@
   	<xsl:variable name="filename">
   		<xsl:apply-templates select="." mode="slice-techniques-filename"/>
   	</xsl:variable>
-  	<xsl:result-document method="xml" href="file:///{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
+  	<xsl:result-document method="xml" href="{$output.dir.prefix}{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
         <html>
         	<xsl:if test="/spec/header/langusage/language">
         		<xsl:attribute name="lang"><xsl:value-of select="/spec/header/langusage/language/@id"/></xsl:attribute>
@@ -87,7 +89,7 @@
         	</xsl:if>
         	<head>
             <title>
-              <xsl:apply-templates select="head" mode="text"/>  | WCAG 2.0 達成方法集
+              <xsl:apply-templates select="head" mode="text"/>  | Techniques for WCAG 2.0
             </title>
         		<xsl:call-template name="canonical-link"/>
             <link rel="stylesheet" type="text/css" href="slicenav.css"/>
@@ -95,8 +97,9 @@
               <script type="text/javascript" src="diffmarks.js"><xsl:text> </xsl:text></script>
             </xsl:if>
             <xsl:call-template name="css"/>
+        		<xsl:call-template name="additional-head"/>
           </head>
-            <body class="slices">
+            <body class="slices toc-inline">
           <xsl:if test="$show.diff.markup != 0">
             <xsl:attribute name="onload">jscheck()</xsl:attribute>
           </xsl:if>
@@ -131,7 +134,7 @@
     	<xsl:variable name="filename">
     		<xsl:apply-templates select="." mode="slice-techniques-filename"/>
     	</xsl:variable>
-    	<xsl:result-document method="xml" href="file:///{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
+    	<xsl:result-document method="xml" href="{$output.dir.prefix}{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
     	    <html>
     	    	<xsl:if test="/spec/header/langusage/language">
     	    		<xsl:attribute name="lang"><xsl:value-of select="/spec/header/langusage/language/@id"/></xsl:attribute>
@@ -139,16 +142,17 @@
     	    	</xsl:if>
     	    	<head>
               <title>
-								<xsl:value-of select="@id"></xsl:value-of>:<xsl:text> </xsl:text><xsl:apply-templates select="short-name" mode="text"/> | WCAG 2.0 達成方法集
+								<xsl:value-of select="@id"></xsl:value-of>:<xsl:text> </xsl:text><xsl:apply-templates select="short-name" mode="text"/> | Techniques for WCAG 2.0
               </title>
     	    		<xsl:call-template name="canonical-link"/>
               <xsl:call-template name="css"/>
               <link rel="stylesheet" type="text/css" href="slicenav.css"/>
+    	    		<xsl:call-template name="additional-head"/>
               <xsl:if test="$show.diff.markup != 0">
               <script type="text/javascript" src="diffmarks.js"><xsl:text> </xsl:text></script>
             </xsl:if>
             </head>
-            <body class="slices">
+            <body class="slices toc-inline">
           <xsl:if test="$show.diff.markup != 0">
             <xsl:attribute name="onload">jscheck()</xsl:attribute>
           </xsl:if>
@@ -187,7 +191,7 @@
     	<xsl:variable name="filename">
     		<xsl:apply-templates select="." mode="slice-techniques-filename"/>
     	</xsl:variable>
-    	<xsl:result-document method="xml" href="file:///{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
+    	<xsl:result-document method="xml" href="{$output.dir.prefix}{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
     	    <html>
     	    	<xsl:if test="/spec/header/langusage/language">
     	    		<xsl:attribute name="lang"><xsl:value-of select="/spec/header/langusage/language/@id"/></xsl:attribute>
@@ -195,16 +199,17 @@
     	    	</xsl:if>
     	    	<head>
               <title>
-				<xsl:apply-templates select="head" mode="text"/> | WCAG 2.0 達成方法集
+				<xsl:apply-templates select="head" mode="text"/> | Techniques for WCAG 2.0
               </title>
     	    		<xsl:call-template name="canonical-link"/>
               <xsl:call-template name="css"/>
               <link rel="stylesheet" type="text/css" href="slicenav.css"/>
+    	    		<xsl:call-template name="additional-head"/>
               <xsl:if test="$show.diff.markup != 0">
               <script type="text/javascript" src="diffmarks.js"><xsl:text> </xsl:text></script>
             </xsl:if>
             </head>
-            <body class="slices">
+            <body class="slices toc-inline">
           <xsl:if test="$show.diff.markup != 0">
             <xsl:attribute name="onload">jscheck()</xsl:attribute>
           </xsl:if>
@@ -236,7 +241,7 @@
       	<xsl:variable name="filename">
       		<xsl:apply-templates select="." mode="slice-techniques-filename"/>
       	</xsl:variable>
-      	<xsl:result-document method="xml" href="file:///{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
+      	<xsl:result-document method="xml" href="{$output.dir.prefix}{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
       	    <html>
       	    	<xsl:if test="/spec/header/langusage/language">
       	    		<xsl:attribute name="lang"><xsl:value-of select="/spec/header/langusage/language/@id"/></xsl:attribute>
@@ -245,7 +250,7 @@
       	    	<head>
             <title>
               <xsl:apply-templates select="head" mode="text"/>
-              <xsl:text> </xsl:text> | WCAG 2.0 達成方法集
+              <xsl:text> </xsl:text> | Techniques for WCAG 2.0
             </title>
       	    		<xsl:call-template name="canonical-link"/>
             <link rel="stylesheet" type="text/css" href="slicenav.css"/>
@@ -253,8 +258,9 @@
               <script type="text/javascript" src="diffmarks.js"><xsl:text> </xsl:text></script>
             </xsl:if>
             <xsl:call-template name="css"/>
+      	    		<xsl:call-template name="additional-head"/>
           </head>
-          <body class="slices">
+          <body class="slices toc-inline">
           <xsl:if test="$show.diff.markup != 0">
             <xsl:attribute name="onload">jscheck()</xsl:attribute>
           </xsl:if>
@@ -287,7 +293,7 @@
       	<xsl:variable name="filename">
       		<xsl:apply-templates select="." mode="slice-techniques-filename"/>
       	</xsl:variable>
-      	<xsl:result-document method="xml" href="file:///{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
+      	<xsl:result-document method="xml" href="{$output.dir.prefix}{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
       	    <html>
       	    	<xsl:if test="/spec/header/langusage/language">
       	    		<xsl:attribute name="lang"><xsl:value-of select="/spec/header/langusage/language/@id"/></xsl:attribute>
@@ -295,7 +301,7 @@
       	    	</xsl:if>
       	    	<head>
             <title>
-              <xsl:apply-templates select="head" mode="text"/> | WCAG 2.0 達成方法集
+              <xsl:apply-templates select="head" mode="text"/> | Techniques for WCAG 2.0
 						</title>
       	    		<xsl:call-template name="canonical-link"/>
             <link rel="stylesheet" type="text/css" href="slicenav.css"/>
@@ -303,8 +309,9 @@
               <script type="text/javascript" src="diffmarks.js"><xsl:text> </xsl:text></script>
             </xsl:if>
             <xsl:call-template name="css"/>
+      	    		<xsl:call-template name="additional-head"/>
           </head>
-          <body class="slices">
+          <body class="slices toc-inline">
           <xsl:if test="$show.diff.markup != 0">
             <xsl:attribute name="onload">jscheck()</xsl:attribute>
           </xsl:if>
@@ -330,7 +337,7 @@
   	<xsl:variable name="filename">
   		<xsl:apply-templates select="." mode="slice-techniques-filename"/>
   	</xsl:variable>
-  	<xsl:result-document method="xml" href="file:///{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
+  	<xsl:result-document method="xml" href="{$output.dir.prefix}{$output.dir}/{$filename}" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" indent="no">
         <html>
         	<xsl:if test="/spec/header/langusage/language">
         		<xsl:attribute name="lang"><xsl:value-of select="/spec/header/langusage/language/@id"/></xsl:attribute>
@@ -347,14 +354,14 @@
         		<xsl:call-template name="canonical-link"/>
                       <link rel="stylesheet" type="text/css" href="additional.css"/>
             <xsl:call-template name="css"/>
+        		<xsl:call-template name="additional-head"/>
           </head>
           <body>
-            <a name="top" > </a>
             <xsl:apply-templates/>
             <xsl:if test="//footnote">
-              <hr/>
               <div class="endnotes">
-                <h3>
+              	<hr/>
+              	<h3>
                   <a name="endnotes">
                     <xsl:text>End Notes</xsl:text>
                   </a>
@@ -369,6 +376,7 @@
               <xsl:with-param name="next" select="$next"/>
             </xsl:call-template>
             <!--xsl:call-template name="footer"></xsl:call-template-->
+          	<script src="//www.w3.org/scripts/TR/2016/fixup.js" type="text/javascript"></script> 
           </body>
         </html>
   		</xsl:result-document>
@@ -383,10 +391,10 @@
     <xsl:comment> TOP NAVIGATION BAR </xsl:comment>
     <ul id="navigation" >
       <li>
-        <strong><a href="Overview.html#contents" title="Table of Contents">目次</a></strong>
+        <strong><a href="Overview.html#contents" title="Table of Contents">Contents</a></strong>
       </li>
       <li>
-        <strong><a href="intro.html" title="Introduction to Techniques for WCAG 2.0"><abbr title="Introduction">イントロダクション</abbr></a></strong>
+        <strong><a href="intro.html" title="Introduction to Techniques for WCAG 2.0"><abbr title="Introduction">Intro</abbr></a></strong>
       </li>
       <xsl:choose>
         <xsl:when test="$prev">
@@ -394,7 +402,7 @@
             <a>
               <xsl:attribute name="title"><xsl:call-template name="href.nav"><xsl:with-param name="target" select="$prev"/></xsl:call-template></xsl:attribute>
               <xsl:attribute name="href"><xsl:call-template name="href.target"><xsl:with-param name="target" select="$prev"/><!--<xsl:with-param name="just.filename" select="1"/>--></xsl:call-template></xsl:attribute>
-             <xsl:element name="strong">前:<xsl:text> </xsl:text></xsl:element>
+             <xsl:element name="strong">Previous:<xsl:text> </xsl:text></xsl:element>
                 <xsl:call-template name="href.nav.short">
                 <xsl:with-param name="target" select="$prev"/>
               </xsl:call-template>
@@ -409,7 +417,7 @@
             <a>
               <xsl:attribute name="title"><xsl:call-template name="href.nav"><xsl:with-param name="target" select="$next"/></xsl:call-template></xsl:attribute>
               <xsl:attribute name="href"><xsl:call-template name="href.target"><xsl:with-param name="target" select="$next"/><!--<xsl:with-param name="just.filename" select="1"/>--></xsl:call-template></xsl:attribute>
-              <xsl:element name="strong">次:<xsl:text> </xsl:text></xsl:element>
+              <xsl:element name="strong">Next:<xsl:text> </xsl:text></xsl:element>
               <xsl:call-template name="href.nav.short">
                 <xsl:with-param name="target" select="$next"/>
               </xsl:call-template>
@@ -436,13 +444,13 @@
     <xsl:comment> BOTTOM NAVIGATION BAR </xsl:comment>
     <ul id="navigationbottom" >
       <li>
-        <strong><a href="#top">このページの先頭へ</a></strong>
+        <strong><a href="#top">Top</a></strong>
       </li>
       <li>
-        <strong><a href="Overview.html#contents" title="Table of Contents">目次</a></strong>
+        <strong><a href="Overview.html#contents" title="Table of Contents">Contents</a></strong>
       </li>
       <li>
-        <strong><a href="intro.html" title="Introduction to Techniques for WCAG 2.0"><abbr title="Introduction">イントロダクション</abbr></a></strong>
+        <strong><a href="intro.html" title="Introduction to Techniques for WCAG 2.0"><abbr title="Introduction">Intro</abbr></a></strong>
       </li>
       <xsl:choose>
         <xsl:when test="$prev">
@@ -450,7 +458,7 @@
             <a>
               <xsl:attribute name="title"><xsl:call-template name="href.nav"><xsl:with-param name="target" select="$prev"/></xsl:call-template></xsl:attribute>
               <xsl:attribute name="href"><xsl:call-template name="href.target"><xsl:with-param name="target" select="$prev"/><!--<xsl:with-param name="just.filename" select="1"/>--></xsl:call-template></xsl:attribute>
-              <xsl:element name="strong">前:<xsl:text> </xsl:text></xsl:element>
+              <xsl:element name="strong">Previous:<xsl:text> </xsl:text></xsl:element>
               <xsl:call-template name="href.nav.short">
                 <xsl:with-param name="target" select="$prev"/>
               </xsl:call-template>
@@ -465,7 +473,7 @@
             <a>
               <xsl:attribute name="title"><xsl:call-template name="href.nav"><xsl:with-param name="target" select="$next"/></xsl:call-template></xsl:attribute>
               <xsl:attribute name="href"><xsl:call-template name="href.target"><xsl:with-param name="target" select="$next"/><!--<xsl:with-param name="just.filename" select="1"/>--></xsl:call-template></xsl:attribute>
-              <xsl:element name="strong">次:<xsl:text> </xsl:text></xsl:element>
+              <xsl:element name="strong">Next:<xsl:text> </xsl:text></xsl:element>
               <xsl:call-template name="href.nav.short">
                 <xsl:with-param name="target" select="$next"/>
               </xsl:call-template>
@@ -504,32 +512,32 @@
     <xsl:variable name="gl" select="$gl-src//*[@id = current()/@id]"/>
     <ul id="navbar" >
     	<li>
-    		<a href="#{@id}-disclaimer">達成方法に関する重要な情報</a>
+    		<a href="#{@id}-disclaimer">Important Information about Techniques</a>
     	</li>
         <li>
-          <a href="#{@id}-applicability">適用（対象）</a>
+          <a href="#{@id}-applicability">Applicability</a>
         </li>
                 <li>
-          <a href="#{@id}-description">解説</a>
+          <a href="#{@id}-description">Description</a>
         </li>
       <xsl:if test="examples">
         <li>
-          <a href="#{@id}-examples">事例</a>
+          <a href="#{@id}-examples">Examples</a>
         </li>
       </xsl:if>
             <xsl:if test="resources">
         <li>
-          <a href="#{@id}-resources">参考リソース</a>
+          <a href="#{@id}-resources">Resources</a>
         </li>
       </xsl:if>
             <xsl:if test="related-techniques">
         <li>
-          <a href="#{@id}-related-techs">関連する達成方法</a>
+          <a href="#{@id}-related-techs">Related Techniques</a>
         </li>
       </xsl:if>
             <xsl:if test="tests">
         <li>
-          <a href="#{@id}-tests">検証</a>
+          <a href="#{@id}-tests">Tests</a>
         </li>
             </xsl:if>
     	<xsl:if test="tech-info">
@@ -643,7 +651,7 @@
 				</xsl:when>
     <xsl:otherwise>
       <!-- @@ check on parenthetical - seems less than ideal -->
-      <xsl:apply-templates select="head" mode="text"/> (<a><xsl:attribute name="href"><xsl:call-template name="href.target"><xsl:with-param name="target" select="."/></xsl:call-template></xsl:attribute>all <xsl:apply-templates select="head" mode="text"/> on one page</a>)
+      <xsl:apply-templates select="head" mode="text"/> <a><xsl:attribute name="href"><xsl:call-template name="href.target"><xsl:with-param name="target" select="."/></xsl:call-template></xsl:attribute> (all <xsl:apply-templates select="head" mode="text"/> on one page)</a>
     </xsl:otherwise>
   </xsl:choose>
 						
@@ -680,7 +688,7 @@
 	</xsl:template>
 
 <xsl:template name="skipnav">
-<div id="masthead"><p class="logo"><a href="http://www.w3.org/"><img width="72" height="48" alt="W3C" src="http://www.w3.org/Icons/w3c_home" /></a></p><p class="collectiontitle"><a href="./">Techniques for WCAG 2.0</a></p></div>
+	<div id="masthead"><p class="logo"><a href="http://www.w3.org/"><img width="72" height="48" alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" /></a></p><p class="collectiontitle"><a href="./">Techniques for WCAG 2.0</a></p></div>
 <div id="skipnav"><p class="skipnav"><a href="#maincontent">Skip to Content (Press Enter)</a></p>	</div>
 
 <xsl:if test="$show.diff.markup != 0">
@@ -693,9 +701,8 @@
 
 <xsl:template name="footer">
 <div class="footer">
-	<!-- p class="copyright">This Web page is part of <a href="Overview.html">Techniques and Failures for Web Content Accessibility Guidelines 2.0</a><xsl:call-template name="footer-latest-version-ref"/>. The entire document is also available as a <a href="complete.html">single HTML file</a>. See the <a href="http://www.w3.org/WAI/intro/wcag20">The WCAG 2.0 Documents</a> for an explanation of how this document fits in with other Web Content Accessibility Guidelines (WCAG) 2.0 documents. To send public comments, please follow the <a href="http://www.w3.org/WAI/WCAG20/comments/">Instructions for Commenting on WCAG 2.0 Documents</a>.
- </p -->
-<p class="copyright">このページは、「<a href="Overview.html">WCAG 2.0 達成方法集<![CDATA[&nbsp;]]>WCAG 2.0の達成方法と不適合事例</a>」の一部である。Web Content Accessibility Guidelines (WCAG) 2.0 関連文書群において、この「WCAG 2.0 達成方法集」がその他の文書とどのような関係にあるかは、<a href="http://www.w3.org/WAI/intro/wcag20">The WCAG 2.0 Documents（英語）</a>を参照のこと。</p>
+	<p class="copyright">This Web page is part of <a href="Overview.html">Techniques and Failures for Web Content Accessibility Guidelines 2.0</a><xsl:call-template name="footer-latest-version-ref"/>. The entire document is also available as a <a href="complete.html">single HTML file</a>. See the <a href="http://www.w3.org/WAI/intro/wcag20">The WCAG 2.0 Documents</a> for an explanation of how this document fits in with other Web Content Accessibility Guidelines (WCAG) 2.0 documents. To send public comments, please follow the <a href="http://www.w3.org/WAI/WCAG20/comments/">Instructions for Commenting on WCAG 2.0 Documents</a>.
+ </p>
 	<p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © <xsl:apply-templates select="//pubdate/year"/><xsl:text> </xsl:text><a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p></div>
 </xsl:template>
   

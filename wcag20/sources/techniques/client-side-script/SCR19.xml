@@ -2,74 +2,108 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SCR19">
-   <short-name>状況の変化を引き起こすことのないように、select要素のonchangeイベントを用いる</short-name>
+   <short-name>Using an onchange event on a select element without causing a change of
+                    context</short-name>
    <applicability>
-      <p>スクリプトをサポートするHTML及びXHTML。この達成方法では、JavaScript 1.4 の try/catch 構文を用いる。</p>
+      <p> HTML and XHTML with support for scripting. This technique uses the try/catch
+                        construct of JavaScript 1.4. </p>
    </applicability>
    <applies-to>
+      <success-criterion idref="consistent-behavior-unpredictable-change"
+                         relationship="sufficient"/>
       <success-criterion idref="consistent-behavior-no-extreme-changes-context"
                          relationship="sufficient"/>
    </applies-to>
    <ua-issues>
       <ua-issue name="" version="">
-      <p>この達成方法は、Firefox1.5とIE6の両方で、JAWS 7.0とWindowEyes 5.5を使用したWindows XPで検証されている。ブラウザでJavaScriptを有効にしなければならないことに注意する。</p>
-    </ua-issue>
+         <p>This technique has been tested on Windows XP using JAWS 7.0 and WindowEyes 5.5 with both Firefox 1.5 and IE 6. Note that JavaScript must be enabled in the browser. </p>
+      </ua-issue>
    </ua-issues>
    <description>
-    <p>この達成方法の目的は、ウェブページの他の要素を更新するselect要素においてonchangeイベントを正しく使用する方法を示すことである。この達成方法は、状況の変化を引き起こさない。ウェブページに一つかそれ以上のselect要素があるとき、一方のonchangeイベントは、そのウェブページの別のselect要素における選択肢を更新できる。そして、select要素によって必要とされるデータのすべてが、ウェブページの中に含まれている。</p>
-    <p>ウェブページでの音声読み上げ順序において、選択によって変更されるアイテムが、トリガーとなるselect要素の後にあることに注意することが重要である。これは、支援技術が変化を察知するのを確実にし、変更されたアイテムがフォーカスされたとき、利用者は新しいデータを認識する。なお、この達成方法は、利用者ーエージェントによるJavaScriptのサポート状況に依存する。</p>
-  </description>
+      <p> The objective of this technique is to demonstrate how to correctly use an
+                        onchange event with a select element to update other elements on the Web page. This technique will not cause a change of context. When there are one
+                        or more select elements on the Web page, an onchange event on one, can
+                        update the options in another select element on the Web page. All of the
+                        data required by the select elements is included within the Web page. </p>
+      <p> It is important to note that the select item which is modified is after the
+                        trigger select element in the reading order of the Web page. This ensures
+                        that assistive technologies will pick up the change and users will encounter
+                        the new data when the modified element receives focus. This technique relies
+                        on JavaScript support in the user agent. </p>
+   </description>
    <examples>
       <eg-group>
-      <description><p>この事例には、2つのselect要素がある。最初のselect要素でアイテムが選択されたとき、二つめのselect要素の選択肢が適切に更新される。最初のselect要素には、大陸のリストがある。そして、二つめのselect要素には、選択された大陸に位置する国々の一部のリストがある。onchangeイベントは、大陸の選択に連動している。大陸の選択が変わると、国の選択肢は、ドキュメント・オブジェクト・モデル(DOM)を通してJavaScriptを用いて変更される。必要であるすべてのデータ、国と大陸のリスト、はウェブページの中に含まれている。</p>
-<p>以下のコードの概要：</p>
-<ulist><item><p>トリガーとなるselect要素の大陸ごとの国々のリストを含むcountryLists配列
-                                    </p></item><item><p>大陸のselect要素のonchangeイベントによって呼ばれるcountryChange() 関数</p></item><item><p>ウェブページの本文のselect要素を作成するXHTMLコード</p></item></ulist>
-</description>
-      <code><![CDATA[
+         <description>
+            <p> This example contains two select elements. When an item is selected
+                                in the first select, the choices in the other select are updated
+                                appropriately. The first select element contains a list of
+                                continents. The second select element will contain a partial list of
+                                countries located in the selected continent. There is an onchange
+                                event associated with the continent select. When the continent
+                                selection changes, the items in the country select are modified
+                                using JavaScript via the Document Object Model (DOM). All of the
+                                data required, the list of countries and continents, is included
+                                within the Web page. </p>
+            <p>Overview of the code below</p>
+            <ulist>
+               <item>
+                  <p> countryLists array variable which contains the list of
+                                        countries for each continent in the trigger select element.
+                                    </p>
+               </item>
+               <item>
+                  <p> countryChange() function which is called by the onchange
+                                        event of the continent select element. </p>
+               </item>
+               <item>
+                  <p> The XHTML code to create the select elements in the body of
+                                        the Web page. </p>
+               </item>
+            </ulist>
+         </description>
+         <code><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
   <head> 
     <meta http-equiv="content-type" content="text/xhtml; charset=utf-8" /> 
-    <title>動的なセレクトメニュー</title> 
-
+    <title>Dynamic Select Statements</title> 
 <script type="text/javascript">
  //<![CDATA[ 
- // 国の選択項目のリストに現れるのと同じ順の選択可能な国の配列 
+ // array of possible countries in the same order as they appear in the country selection list 
  var countryLists = new Array(4) 
- countryLists["empty"] = ["国を選択してください"]; 
- countryLists["North America"] = ["カナダ", "アメリカ合衆国", "メキシコ"]; 
- countryLists["South America"] = ["ブラジル", "アルゼンチン", "チリ", "エクアドル"]; 
- countryLists["Asia"] = ["ロシア", "中国", "日本"]; 
- countryLists["Europe"]= ["イギリス", "フランス", "スペイン", "ドイツ"]; 
- /* CountryChange() はselect要素のonchangeイベントから呼び出される。 
- * param selectObj - onchangeイベントで生成されるselectオブジェクト。
+ countryLists["empty"] = ["Select a Country"]; 
+ countryLists["North America"] = ["Canada", "United States", "Mexico"]; 
+ countryLists["South America"] = ["Brazil", "Argentina", "Chile", "Ecuador"]; 
+ countryLists["Asia"] = ["Russia", "China", "Japan"]; 
+ countryLists["Europe"]= ["Britain", "France", "Spain", "Germany"]; 
+ /* CountryChange() is called from the onchange event of a select element. 
+ * param selectObj - the select object which fired the on change event. 
  */ 
  function countryChange(selectObj) { 
- // 選択された選択肢のインデックスを得る 
+ // get the index of the selected option 
  var idx = selectObj.selectedIndex; 
- // 選択された選択肢の値を得る 
+ // get the value of the selected option 
  var which = selectObj.options[idx].value; 
- // countryLists 配列から項目のリストを検索するために選択された選択肢の値を使う 
+ // use the selected option value to retrieve the list of items from the countryLists array 
  cList = countryLists[which]; 
- // そのIDを通して国のselect要素を得る
+ // get the country select element via its known id 
  var cSelect = document.getElementById("country"); 
- // 国のリストから現在の選択肢を削除する 
+ // remove the current options from the country select 
  var len=cSelect.options.length; 
  while (cSelect.options.length > 0) { 
  cSelect.remove(0); 
  } 
  var newOption; 
- // 新しい選択肢を生成する 
+ // create new options 
  for (var i=0; i<cList.length; i++) { 
  newOption = document.createElement("option"); 
- newOption.value = cList[i];  // 選択肢の文字列と値は同じとする 
+ newOption.value = cList[i];  // assumes option string and value are the same 
  newOption.text=cList[i]; 
- // 新しい選択肢を追加する 
+ // add the new option 
  try { 
- cSelect.add(newOption);  // これはDOMをサポートするブラウザでは失敗するが、IEには必要 
+ cSelect.add(newOption);  // this will fail in DOM browsers but is needed for IE 
  } 
  catch (e) { 
  cSelect.appendChild(newOption); 
@@ -80,32 +114,31 @@
 </script>
 </head>
 <body>
-  <noscript>このページはJavaScriptが有効で、関数が正しく動作可能である必要があります。</noscript>
-
-  <h1>動的なセレクトメニュー</h1>
-  <label for="continent">大陸を選択</label>
+  <noscript>This page requires JavaScript be available and enabled to function properly</noscript>
+  <h1>Dynamic Select Statements</h1>
+  <label for="continent">Select Continent</label>
   <select id="continent" onchange="countryChange(this);">
-    <option value="empty">大陸を選択してください</option>
-
-    <option value="North America">北米</option>
-    <option value="South America">南米</option>
-    <option value="Asia">アジア</option>
-    <option value="Europe">ヨーロッパ</option>
-
+    <option value="empty">Select a Continent</option>
+    <option value="North America">North America</option>
+    <option value="South America">South America</option>
+    <option value="Asia">Asia</option>
+    <option value="Europe">Europe</option>
   </select>
   <br/>
-  <label for="country">国を選択</label>
+  <label for="country">Select a country</label>
   <select id="country">
-    <option value="0">国を選択してください</option>
-
+    <option value="0">Select a country</option>
   </select>
 </body>
  </html>]]></code>
-      <description><p>このコードの実装サンプル：<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="working-examples/SCR19/dynselect.html" linktype="examples">動的なセレクトメニュー</loc>
-              
-                     </p>
-</description>
-    </eg-group>
+         <description>
+            <p> Here is a working example: <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="dynselect.html"
+                    linktype="examples">Dynamic
+                                    Select</loc> 
+            </p>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -116,35 +149,48 @@
                        href="http://usability.com.au/2008/09/accessible-forms-using-wcag-2-0/">Accessible Forms using WCAG 2.0</loc>
                </p>
             </item>
+             <item>
+               <p>
+                  <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                       href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#context-changedef">Change of context definition</loc>
+               </p>
+            </item>
          </ulist>
       </see-also>
    </resources>
    <related-techniques/>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>トリガーとなるselect要素(この事例では、大陸を選択するセレクトメニュー)で、選択肢の値を変える。</p>
-        </item>
-        <item>
-          <p>トリガーによって更新されたselect要素(この事例では、国を選択するセレクトメニュー)へ移動する。</p>
-        </item>
-        <item>
-          <p>適切な選択肢の値が、2. のselect要素に表示されている。</p>
-        </item>
-        <item>
-          <p>選択肢の値を変えることなく、1. のトリガーとなるselect要素へ移動する。</p>
-        </item>
-        <item>
-          <p>適切な選択肢の値が、関連付けられた要素（2. のselect要素）にまだ表示されている。</p>
-        </item>
-      </olist>
-      <p>関連付けられた要素（2. のselect要素）の変化が認識されることを確かめるために、select要素を支援技術を用いて検証することが望ましい。</p>
-    </procedure>
+         <olist>
+            <item>
+               <p> Navigate to the trigger select element (in this example, the one
+                                    to select continents) and change the value of the select. </p>
+            </item>
+            <item>
+               <p> Navigate to the select element that is updated by the trigger
+                                    (in this example, the one to select countries). </p>
+            </item>
+            <item>
+               <p> Check that the matching option values are displayed in the other
+                                    select element. </p>
+            </item>
+            <item>
+               <p> Navigate to the trigger select element, navigate through the
+                                    options but do not change the value. </p>
+            </item>
+            <item>
+               <p> Check that the matching option values are still displayed in the
+                                    associated element. </p>
+            </item>
+         </olist>
+         <p>It is recommended that the select elements are tested with an assistive
+                            technology to verify that the changes to the associated element are
+                            recognized. </p>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>3. 及び 5. を満たしている。</p>
+               <p> Step #3 and #5 are true. </p>
             </item>
          </ulist>
       </expected-results>

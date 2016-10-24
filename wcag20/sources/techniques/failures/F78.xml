@@ -2,52 +2,55 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F78">
-   <short-name>達成基準 2.4.7 の不適合事例：　要素のアウトライン及びボーダーを視覚的なフォーカスインジケーターを除去する又は非表示にするようにスタイル指定する</short-name>
+   <short-name>Failure of Success Criterion 2.4.7 due to styling element outlines and borders in a way that removes or renders non-visible the visual focus indicator</short-name>
    <applicability>
-      <p>あらゆるウェブコンテンツ技術</p>
+      <p>Any technology</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-focus-visible" relationship="failure"/>
    </applies-to>
    <description>
-    <p>この文書は、利用者ーエージェントでデフォルトに指定されているキーボードフォーカスの視覚的なインジケーターが非表示になっている、又はコンテンツ制作者が提供する視覚的なフォーカスインジケーターが提供されずに、ページ上の他のスタイル指定により非表示にされる時に起こる不適合の条件について述べている。フォーカスインジケーターを非表示に指定することで、利用者ーエージェントはフォーカスインジケーターを表示しなくなる。他のスタイル指定によって、フォーカスインジケーターが提示されていても見づらくなることがある。例えばフォーカスのアウトラインと同じように見えるアウトライン、又はフォーカスインジケーターと同じ色になっているため識別できない太いボーダーといったものである。</p>
-  </description>
+      <p>This describes a failure condition that occurs when the user agent's default visual indication of keyboard focus is turned off or rendered non-visible by other styling on the page without providing an author-supplied visual focus indicator. Turning off the focus indicator instructs the user agent not to present the focus indicator. Other styling may make it difficult to see the focus indicator even though it is present, such as outlines that look the same as the focus outline, or thick borders that are the same color as the focus indicator so it cannot be seen against them.</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <head>CSSを用いて、フォーカスインジケーターを表示しないようにする</head>
-      <description><p>下記のCSSの事例では、デフォルトのフォーカスインジケーターを除去しているため、視覚的に認識可能なフォーカスインジケーターを提供するという要求に不適合となる。</p>
-</description>
-      <code role="css"><![CDATA[:focus {outline: none}]]></code>
-    </eg-group>
-    <eg-group role="failure">
-      <head>要素のアウトラインが、フォーカスインジケーターと視覚的に類似している</head>
-      <description><p>下記のCSSの事例は、リンクの周辺にフォーカスインジケーターと同じように見えるアウトラインを生成するものである。たとえ利用者ーエージェントがフォーカスインジケーターを表示しているとしても、利用者にはどの要素が実際にフォーカスを持つのか判別できない。</p>
-</description>
-      <code role="css"><![CDATA[a {outline: thin dotted black}]]></code>
-    </eg-group>
-    <eg-group role="failure">
-      <head>要素が、フォーカスインジケーターを覆い隠すボーダーを持つ</head>
-      <description><p>下記のCSSの事例では、フォーカスインジケーターがボーダーの上に表示されたときに、フォーカスインジケーターに対してコントラストが十分でないボーダーをリンクの周辺に生成している。この場合、フォーカスインジケーターがボーダーのすぐ外側に表示されているが、両方とも黒で、ボーダーがフォカスインジケーターよりも太くなっている。これにより、「視覚的に認識可能」の定義を満たさない。</p>
-</description>
-      <code role="css"><![CDATA[a {border: medium solid black}]]></code>
-    </eg-group>
+         <head>The focus indicator is turned off with CSS</head>
+         <description>
+            <p>The following CSS example will remove the default focus indicator, which fails the requirement to provide a visible focus indicator.</p>
+         </description>
+         <code role="css"><![CDATA[:focus {outline: none}]]></code>
+      </eg-group>
+      <eg-group role="failure">
+         <head>The outline of elements is visually similar to the focus indicator</head>
+         <description>
+            <p>The following CSS example will create an outline around links that looks the same as the focus indicator. This makes it impossible for users to determine which one in fact has the focus, even though the user agent does draw the focus indicator.</p>
+         </description>
+         <code role="css"><![CDATA[a {outline: thin dotted black}]]></code>
+      </eg-group>
+      <eg-group role="failure">
+         <head>Elements have a border that occludes the focus indicator</head>
+         <description>
+            <p>The following CSS example creates a border around links that does not have enough contrast for the focus indicator to be seen when drawn on top of it. In this case the focus indicator is drawn just ouside the border, but as both are black and the border is thicker than the focus indicator, it no longer meets the definition of "visible".</p>
+         </description>
+         <code role="css"><![CDATA[a {border: medium solid black}]]></code>
+      </eg-group>
    </examples>
    <resources/>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>フォーカスを、ページ上のすべてのフォーカス可能な要素に合わせる。</p>
-        </item>
-        <item>
-          <p>フォーカスインジケーターが視覚的に認識可能である。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Set the focus to all focusable elements on a page.</p>
+            </item>
+            <item>
+               <p>Check that the focus indicator is visible.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.を満たしていない場合、この不適合の条件が適用され、そのコンテンツは達成基準及を満たしていないことになる。</p>
+               <p>#2 is true.</p>
             </item>
          </ulist>
       </expected-results>

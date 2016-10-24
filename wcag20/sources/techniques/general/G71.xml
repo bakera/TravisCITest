@@ -2,27 +2,29 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G71">
-   <short-name>すべてのウェブページにヘルプへのリンクを提供する</short-name>
+   <short-name>Providing a help link on every Web page</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p>All technologies.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="minimize-error-context-help" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、各ウェブページに少なくとも１つのヘルプ情報へのリンクを用意して、利用者がフォームにデータを入力する際に、状況依存のヘルプを提供することである。リンクは、そのウェブページのための情報があるヘルプページへ遷移する。もう一つの方法は、インタラクティブなコントロールのひとつひとつにヘルプページへのリンクを提供する。このリンクを当該コントロールのすぐ前か後に配置することで、そのコントロールで問題があった場合、利用者が簡単にそのリンクまでタブで移動することができる。そのヘルプ情報をブラウザの新しいウィンドウで表示することで、それまでにフォームに入力されたデータは失われずに済む。注意：リンクがヘルプ情報を提供する唯一の手段ではない。</p>
-  </description>
+      <p>The objective of this technique is to provide context sensitive help for users as they enter data in forms by providing at least one link to the help information on each Web page. The link targets a help page with information specific to that Web page. Another approach is to provide a help link for every interactive control. Positioning this link immediately before or after the control allows users to easily tab to it if they have problems in the control. Displaying the help information in a new browser window ensures that any data that has already been entered into the form will not be lost. NOTE: A link is not the only means to provide help.</p>
+   </description>
    <examples>
       <eg-group>
-      <description><p>下記の達成方法の例は、ヘルプ情報へのリンクを含んだラベル要素を示している。ラベル要素内にヘルプ情報へのリンクを置く事で、スクリーンリーダーの利用者が入力フォームのコントロールを利用する際にヘルプのリンクにアクセスすることが可能になる。</p>
-</description>
-      <code><![CDATA[
-      <form action="test.html">
-	<label for="test">テストコントロール
-	<a href="help.html" target="_blank">ヘルプ</a></label>
-	<input type="text" name="test" id="test" />
-</form>]]></code>
-    </eg-group>
+         <description>
+            <p>The example below shows a label element that includes a help link. Including the help link within the label element allows screen reader users to have access to the help link when interacting with the input form control.</p>
+         </description>
+         <code><![CDATA[
+              <form action="test.html">
+                <label for="test">Test control
+                <a href="help.html" target="_blank">Help</a></label>
+                <input type="text" name="test" id="test" />
+                </form>
+            ]]></code>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G184"/>
@@ -30,23 +32,22 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>フォームが含まれるウェブページを特定する。</p>
-        </item>
-        <item>
-          <p>そのページ内に、このウェブページ又は、その他のリソース内に含まれる、フォームの全ての項目を入力するためのヘルプ情報へのリンクが一つ以上提供されている。</p>
-        </item>
-        <item>
-          <p>インタラクティブなコントロールのすぐ前、又は後ろに、そのコントロールのためのヘルプ情報へのリンクがある。
-		</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Identify a Web page that contains forms.</p>
+            </item>
+            <item>
+               <p>Determine if there is at least one link to help information explaining how to complete the form on this Web page.</p>
+            </item>
+            <item>
+               <p>Determine if there are links either before or after each interactive control to  information specific to that control.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.又は3.を満たしている。</p>
+               <p>Either #2 or #3 are true.</p>
             </item>
          </ulist>
       </expected-results>

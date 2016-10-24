@@ -2,75 +2,104 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F69">
-   <short-name>達成基準 1.4.4 の不適合事例：　視覚的に描画されたテキストを200％まで拡大した際に、テキスト、画像又はコントロールが、切り取られたり、端が欠けたり、又は覆い隠されたりする</short-name>
+   <short-name>Failure of Success Criterion 1.4.4 when resizing visually rendered text up to 200 percent causes the text, image or controls to be clipped, truncated or obscured</short-name>
    <applicability>
-      <p>HTML、XHTML及びCSS</p>
+      <p>HTML, XHTML and CSS</p>
    </applicability>
    <applies-to>
       <success-criterion idref="visual-audio-contrast-scale" relationship="failure"/>
    </applies-to>
    <description>
-    <p>この文書は、テキストのサイズ変更によって、テキストが切り取られたり、端が欠けたり、又は覆い隠されたりして、利用者がテキストを入手できなくなるという不適合事例について述べている。一般的に、この不適合事例は、利用者ーエージェントのレイアウトエンジンが、HTML内の新しいフォントサイズについてのレイアウトヒントのすべてには対応できない場合に発生する。これが発生する方法には、下記のようなものがある：</p>
-    <ulist>
-      <item>
-        <p>囲み要素の <code>overflow</code> プロパティを<code>hidden</code> に設定する</p>
-      </item>
-      <item>
-        <p>コンテンツを絶対配置にして使用する</p>
-      </item>
-      <item>
-        <p>新しいフォントサイズで表示されたコンテンツに対して、十分な大きさがないポップアップを作成する</p>
-      </item>
-    </ulist>
-    <note diff="add"><p class="prefix"> WCAGワーキンググループは、この不適合事例の検証方法に多くの誤解があることを確認している。この不適合事例の文書を次回の更新時に修正する予定である。それまでは、コンテンツが「十分な達成方法」のいずれかを用いて達成基準を満たしていれば、この不適合事例には該当しないと考えてよい。</p>
-</note>
-  </description>
+      <p>The objective of this failure condition is to describe a problem that occurs when changing the size of text causes text to be clipped, truncated, or obscured, so that it is no longer available to the user. In general, this failure occurs when there is no way for a user agent's layout engine to honor all the layout hints in the HTML at the new font size. Some of the ways in which this can occur include:</p>
+      <ulist>
+         <item>
+            <p>Setting the <code><![CDATA[overflow]]></code> property of the enclosing element to <code><![CDATA[hidden]]></code>
+							     </p>
+         </item>
+         <item>
+            <p>Using absolutely positioned content</p>
+         </item>
+         <item>
+            <p>Creating popups that aren't big enough for their content at the new font size</p>
+         </item>
+      </ulist>
+      <!--<p>This failure applies to both text resize and zoom resize, and support for either is sufficient to avoid the failure. </p>-->
+      <note>
+         <p>The Working Group has discovered many misunderstandings about how to test this failure. We are planning to revise this failure in a future update. Until then, if the content passes the success criterion using any of the listed sufficient techniques, then it does not meet this failure.</p>
+      </note>
+   </description>
    <examples>
       <eg-group role="failure">
-      <description><p>フォントサイズはスケーラブルな方法で設定されているが、コンテナは固定ピクセルサイズに設定されている。灰色のボーダーは、テキストのコンテナの境界線を示している。テキストが拡大されるとき、そのコンテナからあふれ、次のパラグラフを覆い隠す。</p>
-</description>
-      <code role="css"><![CDATA[
-<div style="font-size:100%; width:120px; height:100px; border: thin solid gray;> 
+         <head/>
+         <description>
+            <p>The font size is set in a scalable way, but the container is set to a fixed pixel size. A gray border shows the boundaries of the text container. When the text is resized, it spills out of its container, and obsures the next paragraph.</p>
+         </description>
+         <code role="css"><![CDATA[
+<div style="font-size:100%; width:120px; height:100px; border: thin solid gray;"> 
   Now is the time for all good men to come to the aid of their country. 
 </div>
-<p>Now is the time for all good men to come to the aid of their country.</p>]]></code>
-      <description>
-        <p>事例 1のサンプルイメージ：<br/></p>
-        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" source="http://www.w3.org/TR/2008/NOTE-WCAG20-TECHS-20081211/working-examples/F69/F69-obscured.gif" alt="コンテナの枠の外にあふれ、ページの他のテキストを覆い隠しているテキスト。"/>
-      </description>
-    </eg-group>
-    <eg-group role="failure">
-      <description><p>この事例は、コンテナがテキストを切り取るように設定されることを除けば、前の不適合事例と同じである。テキストは次のパラグラフに流れ出してはいないが、端が欠けている。これも不適合事例である。</p>
-</description>
-      <code role="css"><![CDATA[
-<div style="font-size:100%; width:120px; height:100px; overflow: hidden; border: thin solid gray;>
+<p>Now is the time for all good men to come to the aid of their country.</p>
+]]></code>
+         <description>
+            <p>Illustration of example 1:</p>
+            <graphic xmlns:xlink="http://www.w3.org/1999/xlink"
+                     source="/WAI/WCAG20/Techniques/working-examples/F69/F69-obscured.gif"
+                     alt="Example showing text that spills outside of its container, obscuring other text on the page."/>
+            <!--<note><p>This example would fail only in environments which do not support zoom functionality.</p></note>-->
+         </description>
+      </eg-group>
+      <eg-group role="failure">
+         <head/>
+         <description>
+            <p>This example is identical to the last one, except that the container is set to clip the text. The text is no longer bleeding into the next paragraph, but now it is truncated. This is also a failure.</p>
+         </description>
+         <code role="css"><![CDATA[
+<div style="font-size:100%; width:120px; height:100px; overflow: hidden; border: thin solid gray;">
  Now is the time for all good men to come to the aid of their country. 
 </div>
-<p>Now is the time for all good men to come to the aid of their country.</p>]]></code>
-      <description>
-        <p>事例 2のサンプルイメージ<br/></p>
-        <graphic xmlns:xlink="http://www.w3.org/1999/xlink" source="http://www.w3.org/TR/2008/NOTE-WCAG20-TECHS-20081211/working-examples/F69/F69-truncated.gif" alt="拡大したテキストのために端が欠けたテキスト。"/>
-      </description>
-    </eg-group>
+<p>Now is the time for all good men to come to the aid of their country.</p>
+]]></code>
+         <description>
+            <p>Illustration of example 2:</p>
+            <graphic xmlns:xlink="http://www.w3.org/1999/xlink"
+                     source="/WAI/WCAG20/Techniques/working-examples/F69/F69-truncated.gif"
+                     alt="Example showing text that truncated due to resized text."/>
+            <!--<note><p>This example would fail only in environments which do not support zoom functionality.</p></note>-->
+         </description>
+      </eg-group>
+      <!--
+					<eg-group role="failure">
+						<description>
+							<p>The page uses frame but scrolling is set to "no". When the page size is increased using zoom, the content is hidden. </p>
+							<codeblock><![CDATA[<frameset rows="30%,*">
+  <frame src="frameScrollingNo.html" scrolling=”no”>
+  <frame src="main.html" >
+</frameset>]]></codeblock>
+							<p>The section where scrolling is set to "no" gets truncated when the screen size is increased using browser zoom function, as shown in the image below.</p>
+							<p><image><img source="/WAI/WCAG20/Techniques/working-examples/F69/frame_no-scrollbars.png"/><alt>Illustration of example 3: Frame with no scrollbars</alt></image></p>
+						</description>
+					</eg-group>
+					-->
    </examples>
    <related-techniques/>
    <tests>
       <procedure>
-      <note diff="add"><p class="prefix"> WCAGワーキンググループは、この不適合事例の検証方法に多くの誤解があることを確認している。この不適合事例の文書を次回の更新時に修正する予定である。それまでは、コンテンツが「十分な達成方法」のいずれかを用いて達成基準を満たしていれば、この不適合事例には該当しないと考えてよい。</p>
-</note>
-      <olist>
-        <item>
-          <p>コンテンツのテキストの文字サイズを200％拡大する。</p>
-        </item>
-        <item>
-          <p>テキストが切り取られたり、端が欠けたり、又は覆い隠されたりしていない。</p>
-        </item>
-      </olist>
-    </procedure>
+         <note>
+            <p>The Working Group has discovered many misunderstandings about how to test this failure. We are planning to revise this failure in a future update. Until then, if the content passes the success criterion using any of the listed sufficient techniques, then it does not meet this failure.</p>
+         </note>
+         <olist>
+            <item>
+               <p>Increase the text size of the content by 200%.</p>
+            </item>
+            <item>
+               <p>Check that no text is clipped, truncated, or obscured.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.を満たしていなければ、不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
+               <p>If check #2 is false, then the failure condition applies and the content fails these Success Criteria.</p>
             </item>
          </ulist>
       </expected-results>

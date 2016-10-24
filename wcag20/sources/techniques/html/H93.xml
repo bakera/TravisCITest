@@ -2,64 +2,83 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="H93">
-   <short-name>ウェブページの<att>id</att>属性値が一意的（ユニーク）であるようにする</short-name>
+   <short-name>Ensuring that <att>id</att> attributes are unique on a Web page</short-name>
    <applicability>
-      <p>HTMLのウェブページすべて</p>
+      <p>All HTML pages</p>
    </applicability>
    <applies-to>
       <success-criterion idref="ensure-compat-parses" relationship="cosufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、異なる要素に同一の<att>id</att>属性値があることによって、支援技術がコンテンツを解析しようとする際に問題が生じるエラーを回避することである。このエラーは、ウェブページに重複した<att>id</att>属性値がないことを確認することによって回避できる。人的に確認することができるほか、HTMLのバージョンを特定するメカニズムを用いてHTML文書をバリデートすることによって確認することが可能である。コンテンツ制作者が利用できるバリデータがいくつかあり、この種のエラーはバリデーションの結果レポートで言及される。このようなバリデーションに文書型宣言は絶対に必要というわけではないが、文書型宣言を明記することによってバリデータをより容易に使用できるようになる。</p>
-  </description>
+      <p>The objective of this technique is to avoid key errors that are known
+    				to cause problems for assistive technologies when they are trying to
+    				parse content that has the same <att>id</att> attribute on different elements.
+    				These errors can be avoided by making sure the Web page does not have
+    				duplicate <att>id</att> values. This can be done manually or by using HTML's mechanism
+    				to specify the technology and technology version, and validating the
+    				document for this condition. There are several validators that the
+    				developer can use; validation reports generally mention this type of
+    				error. The document type declaration is not strictly necessary for
+    				this type of evaluation, but specifying the document type declaration
+    				makes it easier to use a validator. </p>
+   </description>
    <examples>
       <eg-group>
-      <head>HTML バリデータ</head>
-      <description><p>HTMLのウェブページに文書型宣言（!DOCTYPE宣言ともよばれる）がある。コンテンツ制作者は、オフラインまたはオンラインのバリデータ（下記の参考リソースを参照）を用いて、あるウェブページで同一の<att>id</att>属性値が一度だけしか用いられていないことを確認することができる。例えば、W3Cのバリデータは、ある<att>id</att>属性値が二回使われているのを発見すると、「ID "X" はすでに定義済みである」というふうにレポートする。</p>
-</description>
-    </eg-group>
+         <head>HTML Validators</head>
+         <description>
+            <p>HTML pages include a document type declaration (sometimes referred
+    						to as !DOCTYPE statement). The developer can use offline or online
+    						validators (see Resources below) to check that id attributes values
+    						are only used once on a page. The W3C validador, for example, will
+    						report ID   "X already defined" when it encounters the second
+    						use of an id value. </p>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
          <ulist>
             <item>
-               <p><loc xmlns:xlink="http://www.w3.org/1999/xlink"
+               <p>
+									         <loc xmlns:xlink="http://www.w3.org/1999/xlink"
                        href="http://www.w3.org/QA/Tips/Doctype">Do
     					not forget to add a doctype by the W3C Quality Assurance Initiative
     					explains what doctypes are and why you should use them</loc>. </p>
             </item>
             <item>
-               <p><loc xmlns:xlink="http://www.w3.org/1999/xlink"
+               <p>
+									         <loc xmlns:xlink="http://www.w3.org/1999/xlink"
                        href="http://www.w3.org/QA/2002/04/valid-dtd-list.html">Recommended
     						DTDs to use in your Web document by the W3C Quality Assurance Initiative
     						is a list of commonly used declarations</loc>. </p>
             </item>
             <item>
-               <p><loc xmlns:xlink="http://www.w3.org/1999/xlink"
+               <p>
+									         <loc xmlns:xlink="http://www.w3.org/1999/xlink"
                        href="http://www.chami.com/html-kit/faq/pages/validate_tools.html">How
     							do I validate my code or check for possible errors? describes the
     							tools in the free editor HTML-Kit for checking HTML, CSS and XML</loc>. </p>
             </item>
          </ulist>
-         <p>その他の参考リソースは、<loc xmlns:xlink="http://www.w3.org/1999/xlink"
+         <p>For other resources, see <loc xmlns:xlink="http://www.w3.org/1999/xlink"
                  href="G134"
-                 linktype="general">G134: ウェブページをバリデートする</loc>を参照のこと。</p>
+                 linktype="general">G134: Validating Web pages</loc>. </p>
       </see-also>
    </resources>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>そのウェブページで、すべての<att>id</att>属性値が一意的（ユニーク）である。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> Check that all id attribute values are unique on the web page. </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
-        <item>
-          <p>1. を満たしている。</p>
-        </item>
-      </ulist>
+            <item>
+               <p> Check 1 is true. </p>
+            </item>
+         </ulist>
       </expected-results>
    </tests>
    <admin>

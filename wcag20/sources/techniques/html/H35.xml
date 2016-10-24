@@ -2,60 +2,66 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="H35">
-   <short-name><el>applet</el>要素に代替テキストを提供する</short-name>
+   <short-name> Providing text alternatives on <el>applet</el> elements </short-name>
    <applicability>
-      <p><el>applet</el>要素が非推奨ではない場合に、Javaアプレットを読み込んでいるHTML及びXHTMLドキュメント</p>
+      <p> HTML and XHTML Documents that load Java applets where <el>applet</el> is not deprecated.
+          </p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="sufficient"/>
    </applies-to>
    <ua-issues>
       <ua-issue name="" version="">
-      <ulist>
-        <item>
-          <p>この達成方法は、支援技術が十分にサポートしていないものである。HTML仕様書は、アプレットに対する代替テキストはその要素が描画できないときに表示される、と説明している。そのため、利用者ーエージェントがJavaアプレットをサポートしていないか、Javaアプレットが読み込み中止に設定されていないかぎり、<el>applet</el>要素のボディにある代替テキストは利用者ーに提供されない。</p>
-        </item>
-        <item>
-          <p>Windows用のIE 6と、Windowsで動作するFirefox 1.5とOpera 9とでは、<el>applet</el>要素の代替テキストの扱いが異なる。IEは<el>applet</el>要素のボディに含まれるテキストを表示するが、<att>alt</att>属性は表示しない。一方、FirefoxとOperaは、<att>alt</att>属性を表示するが、ボディに含まれるテキストは表示しない。</p>
-        </item>
-      </ulist>
-    </ua-issue>
+         <ulist>
+            <item>
+               <p>This technique is not supported well by assistive technologies. The HTML specification explains that text alternatives for applets are to be displayed when the element cannot be rendered. Therefore, text alternatives that are included in the body of <el>applet</el> elements may not be available to users unless the user agent either does not support or has been configured not to render applets. </p>
+            </item>
+            <item>
+               <p>IE 6 for Windows and Firefox 1.5 and Opera 9 on Windows treat alternative text for the applet element differently. IE will display the body text of the applet element and not the <att>alt</att> attribute. Firefox and Opera will display the <att>alt</att> attribute but not the body text. </p>
+            </item>
+         </ulist>
+      </ua-issue>
    </ua-issues>
    <description>
-    <p>この達成方法の目的は、アプレットのラベルを提供する<att>alt</att>属性を用いること及び<el>applet</el>要素のボディに代替テキストを提供することによって、アプレットに対する代替テキストを提供することである。この達成方法では、利用者ーエージェントごとに、<att>alt</att>属性及び<el>applet</el>要素のボディのサポート状況が異なるため、両方のメカニズムを必要としている。</p>
-  </description>
+      <p> Provide a text alternative for an applet by using the <att>alt</att> attribute to label an applet
+            and providing the text alternative in the body of the applet element. In this technique, both mechanisms
+            are required due to the varying support of the <att>alt</att> attribute and applet body text by
+            user agents. </p>
+   </description>
    <examples>
       <eg-group>
-      <head>三目並べゲームのアプレット</head>
-      <description/>
-      <code><![CDATA[<applet code="tictactoe.class" width="250" height="250" alt="三目並べゲーム">
-   三目並べゲーム
-</applet> ]]></code>
-    </eg-group>
+         <head>An applet to play the tic-tac-toe game. </head>
+         <description/>
+         <code><![CDATA[<applet code="tictactoe.class" width="250" height="250" alt="tic-tac-toe game">
+   tic-tac-toe game
+</applet>  ]]></code>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G94"/>
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p><el>applet</el>要素のソースコードを見る。</p>
-        </item>
-        <item>
-          <p>アプレットに対する代替テキストが<el>applet</el>要素の<att>alt</att>属性にある</p>
-        </item>
-        <item>
-          <p>アプレットに対する代替テキストが<el>applet</el>要素のボディの中にある。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> View the source code of the applet element </p>
+            </item>
+            <item>
+               <p> Check that the applet element contains an <att>alt</att> attribute with a text alternative
+                  for the applet </p>
+            </item>
+            <item>
+               <p> Check that the applet element contains a text alternative for the applet in the
+                  body of the applet element </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
-        <item>
-          <p>2.及び3.を満たしている。</p>
-        </item>
-      </ulist>
-     </expected-results>
+            <item>
+               <p> Checks #2 and #3 are true. </p>
+            </item>
+         </ulist>
+      </expected-results>
    </tests>
 </technique>

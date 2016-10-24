@@ -2,22 +2,41 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G82">
-   <short-name>非テキストコンテンツの目的を特定する代替テキストを提供する</short-name>
+   <short-name>Providing a text alternative that identifies the purpose of the non-text content</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p>Applies to all technologies</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、非テキストコンテンツの完全な機能を提供できないとしても、代替テキストを介して有用な情報を提供することである。</p>
-    <p>代替テキストは、時として、オリジナルの非テキストコンテンツとまったく同じ目的には使えないことがある（例えば、2次元で素早く標的を定めるスキルや目と手の連動スキルを開発するためのアプレットなど）。そういったケースでは、この達成方法を用いて、非テキストコンテンツの目的を説明する。</p>
-  </description>
+      <p>The purpose of this technique is to provide useful information via the text
+            alternative even if the full function of the non-text content cannot be
+            provided.</p>
+      <p>Sometimes, a text alternative cannot serve the same purpose as the original
+            non-text content (for example an applet meant to develop two dimensional
+            rapid targeting skills and eye hand coordination.) In these cases this
+            technique is used. With this technique a description of the purpose of the
+            non-text content is provided.</p>
+   </description>
    <examples>
       <eg-group>
-      <description><ulist><item><p>目と手のコーディネーションスキルを開発するためのアプレットに、「マウスと動く標的を使用して目と手の連動スキルを開発するアプレット」という代替テキストが付けられている。</p></item><item><p>丸いディスクの端を押してリモートカメラを制御し、真ん中のスライダーを使ってズームを調整するカメラのアプレットに、「リモートビデオカメラの照準とズームのコントロール」という代替テキストが付けられている。</p></item></ulist>
-</description>
-    </eg-group>
+         <description>
+            <ulist>
+               <item>
+                  <p>An eye-hand coordination development applet has the
+                    following text alternative "Applet that uses the mouse and
+                    moving targets to develop eye-hand coordination"</p>
+               </item>
+               <item>
+                  <p>A camera applet that has a round disk where you push on the
+                    edges to control a remote camera and a slider in the middle
+                    for zooming has the following text alternative "Control for
+                    aiming and zooming remote video camera".</p>
+               </item>
+            </ulist>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also/>
@@ -32,22 +51,23 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>非テキストコンテンツを取り除く、非表示にする、又は覆い隠す。</p>
-        </item>
-        <item>
-          <p>非テキストコンテンツを代替テキストに置き換える。</p>
-        </item>
-        <item>
-          <p>非テキストコンテンツそのものはなかったとしても、代替テキストによって同じ情報が得られる。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>remove, hide, or mask the non-text content</p>
+            </item>
+            <item>
+               <p>replace it with the text alternative</p>
+            </item>
+            <item>
+               <p>check that the purpose of the non-text content is clear - even
+                  if function is lost.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>3. を満たしている。</p>
+               <p>#3 is true.</p>
             </item>
          </ulist>
       </expected-results>

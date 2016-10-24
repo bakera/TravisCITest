@@ -2,59 +2,75 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F66">
-   <short-name>達成基準 3.2.3 の不適合事例：　ナビゲーションリンクをさまざまなページで相対的に異なる順序で提示する</short-name>
+   <short-name>Failure of Success Criterion 3.2.3 due to presenting navigation links in a different relative order on different pages</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p>Applies to all technologies</p>
    </applicability>
    <applies-to>
       <success-criterion idref="consistent-behavior-consistent-locations" relationship="failure"/>
    </applies-to>
    <description>
-    <p>この文書では、ウェブページ一式の中にある複数のウェブページ上で繰り返されているナビゲーションメカニズム（達成基準 3.2.3）を含むすべての達成方法における不適合の条件を説明している。メカニズムが、2ページ又はそれ以上のページに異なる順序でリンクの順番を提示する場合に、不適合が起こる。</p>
-  </description>
+      <p>This describes a failure condition for  all techniques involving navigation mechanisms that are repeated on multiple Web pages within a set of Web pages (Success Criterion 3.2.3). If the mechanism presents the order of links in a different order on two or more pages, then the failure is triggered.
+</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <head>2つの異なるページで相対的に異なる順序で一連のリンクを提示しているXHTMLメニュー</head>
-      <description><p>異なる順序でリンクを提示するナビゲーションメカニズムの例。</p>
-<p><emph role="bold">1ページ目のメニュー</emph></p>
-</description>
-      <code role="html401"><![CDATA[
-    <div id="menu"> 
-    <a href="Brazil.htm">ブラジル</a><br />
-    <a href="Canada.htm">カナダ</a><br />
-    <a href="Germany.htm">ドイツ</a><br />
-    <a href="Poland.htm">ポーランド</a> 
-</div>]]></code>
-      <description><p><emph role="bold">2ページ目のメニュー</emph></p>
-</description>
-      <code role="html401"><![CDATA[
-    <div id="menu"> 
-    <a href="Canada.htm">カナダ</a><br />
-    <a href="Brazil.htm">ブラジル</a><br />
-    <a href="Germany.htm">ドイツ</a><br />
-    <a href="Poland.htm">ポーランド</a> 
-</div>]]></code>
-    </eg-group>
+         <head>An XHTML menu presenting a series of links that are in a different relative order on two different pages</head>
+         <description>
+            <p>Examples of a navigation mechanism that presents links in a different order.</p>
+            <p> 
+               <emph role="bold">Page 1 Menu</emph> 
+            </p>
+         </description>
+         <code role="html401"><![CDATA[
+<div id="menu"> 
+    <a href="Brazil.htm">Brazil</a><br />
+    <a href="Canada.htm">Canada</a><br />
+    <a href="Germany.htm">Germany</a><br />
+    <a href="Poland.htm">Poland</a> 
+</div>
+]]></code>
+         <description>
+            <p> 
+               <emph role="bold">Page 2 Menu</emph> 
+            </p>
+         </description>
+         <code role="html401"><![CDATA[
+<div id="menu"> 
+    <a href="Canada.htm">Canada</a><br />
+    <a href="Brazil.htm">Brazil</a><br />
+    <a href="Germany.htm">Germany</a><br />
+    <a href="Poland.htm">Poland</a> 
+</div>
+]]></code>
+      </eg-group>
    </examples>
    <resources/>
    <related-techniques/>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>ナビゲーションメカニズムが複数のウェブページ上で使用されている。</p>
-        </item>
-        <item>
-          <p>各ページのナビゲーションメカニズムのデフォルトのプレゼンテーションで、リンクリストが各ウェブページ上で相対的に同一の順番になっている。</p>
-        </item>
-      </olist>
-      <note><p class="prefix">「相対的に同一の順番」は、あるページではリンク項目間に二次的なナビゲーション項目があるかもしれないことを意味する。これらが存在しても、この検証の結果に影響を及ぼすことはない。</p>
-	</note>
-    </procedure>
+         <olist>
+            <item>
+               <p>
+Check to see if a navigation mechanism is being used on more than one Web page.
+    </p>
+            </item>
+            <item>
+               <p>
+Check the default presentation of the navigation mechanism on each page to see if the list of links are in the same relative order on each Web page.
+    </p>
+            </item>
+         </olist>
+         <note>
+            <p>"Same relative order" means that secondary navigation items may be in between the link items on some pages. They can be present without affecting the outcome of this test.</p>
+         </note>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1．及び2．を満たしていなければ、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
+               <p>
+If #1 is true and #2 is false, then this failure condition applies and content fails the Success Criterion.
+    </p>
             </item>
          </ulist>
       </expected-results>

@@ -2,9 +2,9 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SM2">
-   <short-name>SMIL 2.0で拡張した音声ガイドを追加する</short-name>
+   <short-name>Adding extended audio description in SMIL 2.0</short-name>
    <applicability>
-      <p>SMIL 2.0 プレーヤーが利用可能な場合</p>
+      <p> Applies whenever SMIL 2.0 player is available </p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-audio-desc" relationship="sufficient"/>
@@ -12,17 +12,27 @@
       <success-criterion idref="media-equiv-extended-ad" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、会話の合間に入れられるよりも多くの音声ガイドを、視聴覚素材に付加することである。</p>
-    <p>SMIL 2.0では、特定の音声ファイルを特定のタイミングで再生するよう指定し、音声ファイルが再生される間は、画面が表示されたまま一時停止できる。</p>
-    <p>これにより、映像は最初から最後まで再生されるように見えながらも、ところどころで停止して、その間に長めの音声ガイドが提供される。そして、音声ガイドが終了すると、映像の再生は自動的に再開する。</p>
-    <p>この拡張した音声ガイドのオン／オフを操作するには、スクリプトを使用して、拡張した音声ガイドを含んだSMILスクリプト及び含まないSMILスクリプトの2つの間で切り替えることによって実装できる。又は、スクリプトを使用して、拡張した音声ガイドをSMILファイルに追加したりSMILファイルから削除したりすることもできる。そうすることで、映像クリップは、単純に順序どおり再生されることになる。</p>
-    <p>スクリプトが使用できない場合は、2つのバージョンの映像を提供することによって可能となる。つまり、1つは拡張した音声ガイドを含んだバージョン、もう1つは含まないバージョンを提供するのである。</p>
-  </description>
+      <p> The purpose of this technique is to allow there to be more audio description
+                        than will fit into the gaps in the dialogue of the audio-visual material. </p>
+      <p> With SMIL 2.0 it is possible to specify that particular audio files be
+                        played at particular times, and that the program be frozen (paused) while
+                        the audio file is being played. </p>
+      <p> The effect is that the video appears to play through from end to end but
+                        freezes in places while a longer audio description is provided. It then
+                        continues automatically when the audio description is complete. </p>
+      <p> To turn the extended audio description on and off one could use script to
+                        switch back and forth between two SMIL scripts, one with and one without the
+                        extended audio description lines. Or script could be used to add or remove
+                        the extended audio description lines from the SMIL file so that the film
+                        clips would just play uninterrupted. </p>
+      <p> If scripting is not available then two versions of the SMIL file could be
+                        provided, one with and one without extended audio description. </p>
+   </description>
    <examples>
       <eg-group>
-      <head>拡張した音声ガイドのある映像</head>
-      <code><![CDATA[
-<smil xmlns="//www.w3.org/2001/SMIL20/Language"> 
+         <head>Video with extended audio description.</head>
+         <code><![CDATA[
+<smil xmlns="http://www.w3.org/2001/SMIL20/Language"> 
 <head> 
 <layout> 
 <root-layout backgroundColor="black" height="266" width="320"/> 
@@ -41,8 +51,8 @@ height="144" width="320"/>
 </priorityClass> 
 </excl> 
 </body> 
-     </smil>]]></code>
-    </eg-group>
+     </smil> ]]></code>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -78,19 +88,20 @@ height="144" width="320"/>
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>拡張した音声ガイドのあるファイルを再生する。</p>
-        </item>
-        <item>
-          <p>映像がところどころ一時停止して、拡張した音声ガイドが再生される。</p>
-        </item>
-      </olist>
-    </procedure>
-    <expected-results>
-      <ulist>
-        <item>
-          <p>2.を満たしている。</p>
+         <olist>
+            <item>
+               <p> Play file with extended audio description </p>
+            </item>
+            <item>
+               <p> Check whether video freezes in places and plays extended audio
+                                    description </p>
+            </item>
+         </olist>
+      </procedure>
+      <expected-results>
+         <ulist>
+            <item>
+               <p> #2 is true </p>
             </item>
          </ulist>
       </expected-results>

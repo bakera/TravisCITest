@@ -2,7 +2,7 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="C28">
-   <short-name>em単位を用いて、テキストコンテナのサイズを指定する</short-name>
+   <short-name>Specifying the size of text containers using em units</short-name>
    <applicability>
       <p>CSS</p>
    </applicability>
@@ -11,57 +11,53 @@
    </applies-to>
    <ua-issues>
       <ua-issue name="IE" version="6">
-      <p>
-Windows版のInternet Explorer 6のハイコントラスト・モードでは、入れ子になったテーブル内の%指定されたフォントを極端に大きく表示してしまう。
-Firefox及びIE6より後のバージョンのIEでは、ハイコントラスト・モードでもフォントの大きさは変化せず、この問題は発生しない。</p>
-    </ua-issue>
+         <p>In Internet Explorer 6, Windows High Contrast Mode will resize percent-based fonts in nested tables to be too large. Firefox and later versions of IE do not resize fonts in High Contrast Mode, and don't have this issue. </p>
+      </ua-issue>
    </ua-issues>
    <description>
-    <p>この達成方法の目的は、テキストを含むボックス又はテキストの入力を受け付けるボックスの幅及び又は高さを、<code>em</code>単位を用いて指定することである。
-これによって、文字サイズを変更できる利用者ーエージェントは、文字サイズの設定の変更に連動させてテキストを含むボックスの大きさも変更できるようになる。</p>
-    <p>テキストを含むボックスの幅及び又は高さを他の単位を使って指定していると、文字サイズの拡大によってテキストがボックスに入りきらなくなり、その一部が見えなくなってしまう危険性がある。</p>
-    <p>大枠のボックス（コンテナ）は、一般にウェブページ内のテキストの配置をコントロールし、そこにはレイアウトのための要素と構造を示す要素、及びフォームのコントロールを含むことができる。</p>
-  </description>
+      <p>The objective of this technique is to specify the width and/or height of containers, that contain text or that will accept text input, in <code><![CDATA[em]]></code> units. This will allow user agents that support text resizing to resize the text containers in line with changes in text size settings. </p>
+      <p>The width and/or height of text containers that have been specified using other units risk text cropping because it falls outside the container boundaries when the text size has been increased. </p>
+      <p>The containers generally control the placement of text within the Web page and can include layout elements, structural elements and form controls. </p>
+   </description>
    <examples>
       <eg-group>
-      <head>:  テキストを含むレイアウト用のボックスのサイズにem単位を使う</head>
-      <description><p>
-この事例では、ウェブページのメインコンテンツ領域の左側にナビゲーション・メニューを配置するために、<att>id</att>属性の値として「nav_menu」を指定した<el>div</el>要素を使用している。
-ナビゲーション・メニューは、<el>id</el>属性の値として「nav_list」を指定したテキストリンクのリストで構成されている。ナビゲーションのリンクを含むコンテナの幅は<code>em</code>単位で指定されている。</p>
-</description>
-      <code><![CDATA[#nav_menu { width: 20em; height: 100em }
+         <head> Em units for sizes for layout container containing text </head>
+         <description>
+            <p>In this example, a <el>div</el> element, with <att>id</att> value of "nav_menu", is used to position the navigation menu along the left-hand side of the main content area of the Web page. The navigation menu consists of a list of text links, with <att>id</att> value of "nav_list." The text size for the navigation links and the width of the container are specified in <code><![CDATA[em]]></code> units. </p>
+         </description>
+         <code><![CDATA[
+#nav_menu { width: 20em; height: 100em }
 
-#nav_list { font-size: 100%; }]]></code>
-    </eg-group>
-    <eg-group>
-      <head>: テキストベースのフォームのコントロールにem単位を使う</head>
-      <description><p>
-この事例では、テキストを含む、又は利用者によるテキスト入力を受け付ける<el>input</el>要素に「form1」というクラス名を指定している。
-フォンサイズを<code>パーセント</code>単位で、これらの要素の幅を<code>em</code>単位で定義するためにCSSの規則が用いられている。
-これによって、フォーム・コントロール内のテキストは、部分的に欠けて見えなくなってしまうことなく文字サイズの変更に合わせてリサイズされるようになる（フォーム・コントロールの幅自身も文字サイズに合わせてリサイズされるようになるため）。</p>
-</description>
-      <code><![CDATA[input.form1 { font-size: 100%; width: 15em; }]]></code>
-    </eg-group>
-    <eg-group>
-      <head>: ドロップダウン・ボックスにem単位を使う</head>
-      <description><p>
-この事例では、<el>select</el>要素に「pick」というクラス名を指定している。
-フォンサイズを<code>パーセント</code>単位で、幅を<code>em</code>単位で定義するためにCSSの規則が使用されている。
-これによって、フォーム・コントロール内のテキストは、部分的に欠けて見えなくなってしまうことなく文字サイズの変更に合わせてリサイズされるようになる。
-</p>
-</description>
-      <code><![CDATA[select.pick { font-size: 100%; width: 10em; }]]></code>
-    </eg-group>
-    <eg-group>
-      <head>:テキストベースではないフォームのコントロールにem単位を使う</head>
-      <description><p>
-この事例では、チェックボックス又はラジオボタンの<el>input</el>要素に「choose」というクラス名を指定している。
-これらの要素の幅と高さを<code>em</code>単位で定義するためにCSSの規則が使用されている。
-これによって、フォーム・コントロールは、文字サイズの変更に合わせてリサイズされるようになる。
-</p>
-</description>
-      <code><![CDATA[input.choose { width: 1.2em; height: 1.2em; }]]></code>
-    </eg-group>
+#nav_list { font-size: 100%; }
+]]></code>
+      </eg-group>
+      <eg-group>
+         <head>Em units for text-based form controls </head>
+         <description>
+            <p>In this example, <el>input</el> elements that contain text or accept text input by the user have been given the class name "form1." CSS rules are used to define the font size in <code><![CDATA[percent]]></code> units and width for these elements in <code><![CDATA[em]]></code> units. This will allow the text within the form control to resize in response to changes in text size settings without being cropped (because the width of the form control itself also resizes according to the font size). </p>
+         </description>
+         <code><![CDATA[
+input.form1 { font-size: 100%; width: 15em; }
+]]></code>
+      </eg-group>
+      <eg-group>
+         <head>Em units in dropdown boxes </head>
+         <description>
+            <p>In this example, <el>select</el> elements have been given the class name "pick." CSS rules are used to define the font size in <code><![CDATA[percent]]></code> units and width in <code><![CDATA[em]]></code> units. This will allow the text within the form control to resize in response to changes in text size settings without being cropped. </p>
+         </description>
+         <code><![CDATA[
+input.pick { font-size: 100%; width: 10em; }
+]]></code>
+      </eg-group>
+      <eg-group>
+         <head>Em units for non-text-based form controls </head>
+         <description>
+            <p>In this example, <el>input</el> elements that define checkboxes or radio buttons have been given the class name "choose." CSS rules are used to define the width and height for these elements in em units. This will allow the form control to resize in response to changes in text size settings. </p>
+         </description>
+         <code><![CDATA[
+input.choose { width: 1.2em; height: 1.2em; }
+]]></code>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="C12"/>
@@ -71,19 +67,19 @@ Firefox及びIE6より後のバージョンのIEでは、ハイコントラス�
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>テキストを含む、又はテキストの入力を受け付けるコンテナを特定する。</p>
-        </item>
-        <item>
-          <p>そのコンテナの幅及び又は高さは<code>em</code>単位で指定されている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <ulist>
+            <item>
+               <p>Identify containers that contain text or allow text input.</p>
+            </item>
+            <item>
+               <p>Check the container's width and/or height are specified in <code><![CDATA[em]]></code> units.</p>
+            </item>
+         </ulist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.を満たしている。</p>
+               <p>Check #2 is true.</p>
             </item>
          </ulist>
       </expected-results>

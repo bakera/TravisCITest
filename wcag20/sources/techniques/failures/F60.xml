@@ -2,28 +2,39 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F60">
-   <short-name>達成基準 3.2.5 の不適合事例：　利用者が入力フィールドにテキストを入力すると新しいウィンドウを開く</short-name>
+   <short-name>Failure of Success Criterion 3.2.5 due to launching a new window when a user enters
+                    text into an input field</short-name>
    <applicability>
-      <p>全般</p>
+      <p>General</p>
    </applicability>
    <applies-to>
       <success-criterion idref="consistent-behavior-no-extreme-changes-context"
                          relationship="failure"/>
    </applies-to>
    <description>
-    <p>この文書では、エラーの通知以外で、利用者のテキストフィールドへの入力に反応して新しいウィンドウが開く不適合事例について述べている。</p>
-  </description>
+      <p>This document describes a failure that occurs when a new window is created in
+                        response to a user filling in a text field for other than error reporting.
+                    </p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <head>不適合事例:</head>
-      <description><p>不適合となる推奨できない事例：利用者が郵便の宛先の入力をしている。郵便番号の入力をすると、彼の町で利用できるサービスの広告が記載された新しいウィンドウが開く。</p>
-</description>
-    </eg-group>
-    <eg-group role="failure">
-      <head>適合事例:</head>
-      <description><p>許容できる事例：利用者がフォームの郵便の宛先の入力をしている。郵便番号のフィールドを入力をすると、有効な郵便番号であるかどうかを検証するスクリプトが実行される。値が無効な場合はフィールドへの入力方法を説明したウィンドウが開く。</p>
-</description>
-    </eg-group>
+         <head/>
+         <description>
+            <p> This is a deprecated example showing a failure: A user is filling in
+                                his mailing address. When he fills in his postal code, a new window
+                                opens containing advertisements for services available in his city.
+                            </p>
+         </description>
+      </eg-group>
+      <eg-group role="failure">
+         <head/>
+         <description>
+            <p>This example is acceptable: A user is filling in his mailing address
+                                in a form. When he fills in the postal code field, a script runs to
+                                validate that it is a valid postal code. If the value is not valid,
+                                a window opens with instructions on how to fill in the field. </p>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also/>
@@ -33,25 +44,28 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>全てのテキストフィールドを探し出す。</p>
-        </item>
-        <item>
-          <p>各テキストフィールドの値を変更する。</p>
-        </item>
-        <item>
-          <p>新しいウィンドウが開く。</p>
-        </item>
-        <item>
-          <p>新しく開いたウィンドウにエラーメッセージがあり、ウィンドウを閉じて元のフォーム要素にフォーカスを戻すボタンがある。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> Find all text input form fields </p>
+            </item>
+            <item>
+               <p> Change the value in each form field </p>
+            </item>
+            <item>
+               <p> Check if new windows open </p>
+            </item>
+            <item>
+               <p> For any new windows that open, check if they contain an error
+                                    message and a button that closes the window returning focus to
+                                    the initiating form element. </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>3.に該当して、4.を満たしていなければ、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
+               <p> If #3 is true and #4 is false then failure condition applies and
+                                    the content fails this Success Criterion. </p>
             </item>
          </ulist>
       </expected-results>

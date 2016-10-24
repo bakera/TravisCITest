@@ -2,104 +2,110 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SCR32">
-   <short-name>クライアントサイドのバリデーションを提供し、DOMを介してエラーテキストを追加する</short-name>
+   <short-name>Providing client-side validation and adding error text via the DOM</short-name>
    <applicability>
-      <p>HTML又はXHTMLで使用されるスクリプト。</p>
+      <p>Script used with HTML or XHTML.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="minimize-error-identified" relationship="sufficient"/>
       <success-criterion idref="minimize-error-suggestions" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、クライアントサイドでフォームフィールドの検証に失敗したときにエラーメッセージを表示する方法について説明することである。アンカー要素はリスト中でエラーメッセージを表示させる際に使用され、検証が必要なフィールドの上に挿入される。フォーカスをエラーメッセージの場所に移し、利用者の注意を引くために、アンカー要素がエラーメッセージに使用される。アンカー要素の<code>href</code>は、エラーがみつかったフィールドへのページ内リンクを含む。</p>
-    <p>配置されたアプリケーションにおいて、もしJavaScriptが無効になっていれば、クライアントサイドの検証は行われない。そのため、この達成方法はスクリプトが適合性において信頼できる、又はサーバーサイドの検証技術があらゆるエラーを発見し、エラーを含むフィールドの情報とともにページを返すように用いられている場合のみ、十分であるといえる。</p>
-  </description>
+      <p>The objective of this technique is to demonstrate the display of an error message when client side validation of a form field has failed. Anchor elements are used to display the error messages in a list and are inserted above the fields to be validated. Anchor elements are used in the error messages so that focus can be placed on the error message(s), drawing the user's attention to it. The <att>href</att> of the anchor elements contain an in-page link which references the fields where error(s) have been found. </p>
+      <p>In a deployed application, if Javascript is turned off, client side validation will not occur. Therefore, this technique would only be sufficient in situations where scripting is relied upon for conformance or when server side validation techniques are also used to catch any errors and return the page with information about the fields with errors. </p>
+   </description>
    <examples>
       <eg-group>
-      <description><p>この事例は必須のフィールドを検証し、さらに特定の書式が必要なフィールドを検証する。エラーがみつかったとき、スクリプトはエラーメッセージの一覧をDOMに挿入し、フォーカスをそこへ移動する。</p>
-<graphic xmlns:xlink="http://www.w3.org/1999/xlink" source="http://www.w3.org/TR/2008/NOTE-WCAG20-TECHS-20081211/working-examples/SCR32/form2.jpg" alt="サンプルの画面イメージ：スクリーンショットは、正しく記入が行われていないいくつかのフィールドのエラーメッセージをあらわしている。エラーメッセージはリンクリストでフォームの先頭近くに現れる。"/>
-<p> <em>HTML及びJavascriptのコード</em> </p>
-<p>これは事例のフォームのHTMLである：</p>
-</description>
-      <code><![CDATA[
+         <description>
+            <p>This example validates required fields as well as fields where a specific format is required. When an error is identified, the script inserts a list of error messages into the DOM and moves focus to them.</p>
+            <graphic xmlns:xlink="http://www.w3.org/1999/xlink"
+                     source="/WAI/WCAG20/Techniques/working-examples/SCR32/form2.jpg"
+                     alt="Screenshot showing the error messages for several fields that were not filled out correctly. Error messages appear as a list of links near the top of the form."/>
+            <p>
+               <emph role="strong">HTML and Javascript code </emph>
+            </p>
+            <p>Here is the HTML for the example form: </p>
+         </description>
+         <code><![CDATA[
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="ja">
+<html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>    
-        <title>フォームの検証</title>
+        <title>Form Validation</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link href="css/validate.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript" src="scripts/validate.js"/>
     </head>
     <body>
 
-        <h1>フォームの検証</h1>
+        <h1>Form Validation</h1>
 
-        <p>以下のフォームは、もしスクリプトが利用可能であれば送信前に検証されるが、
-		そうでなければサーバー上で検証される。任意と書かれた以外のすべての
-		フィールドは必須である。送信時にエラーがみつかった場合、フォームはキャンセルされて
-		エラー一覧がフォームの先頭に表示される。</p>
+        <p>The following form is validated before being submitted if scripting is available,
+            otherwise the form is validated on the server. All fields are required, except those
+            marked optional. If errors are found in the submission, the form is cancelled and 
+            a list of errors is displayed at the top of the form.</p>
 
-        <p> 下に貴方の情報を入力してください。 </p>
+        <p> Please enter your details below. </p>
 
-        <h2>フォームの検証</h2>
+        <h2>Validating Form</h2>
 
         <form id="personalform" method="post" action="index.php">
             <div class="validationerrors"/>
             <fieldset>
-                <legend>個人情報詳細</legend>
+                <legend>Personal Details</legend>
                 <p>
-                    <label for="forename">名前を入力してください</label>
+                    <label for="forename">Please enter your forename</label>
                     <input type="text" size="20" name="forename" id="forename" class="string"
                         value=""/>
                 </p>
                 <p>
-                    <label for="age">年齢を入力してください</label>
+                    <label for="age">Please enter your age</label>
                     <input type="text" size="20" name="age" id="age" class="number" value=""/>
                 </p>
                 <p>
-                    <label for="email">電子メールアドレスを入力してください</label>
+                    <label for="email">Please enter your email address</label>
                     <input type="text" size="20" name="email" id="email" class="email" value=""/>
                 </p>
             </fieldset>
             <p>
-                <input type="submit" name="signup" value="登録"/>
+                <input type="submit" name="signup" value="Sign up"/>
             </p>
         </form>
-        <h2>2番目のフォーム</h2>
+        <h2>Second Form</h2>
         <form id="secondform" method="post" action="index.php#focuspoint">
             <div class="validationerrors"/>
             <fieldset>
-                <legend>2番目のフォームの詳細</legend>
+                <legend>Second Form Details</legend>
                 <p>
-                    <label for="suggestion">提案内容を入力</label>
+                    <label for="suggestion">Enter a suggestion</label>
                     <input type="text" size="20" name="suggestion" id="suggestion" 
                       class="string" value=""/>
                 </p>
                 <p>
-                    <label for="optemail">貴方のメールアドレスを入力してください（任意）</label>
+                    <label for="optemail">Please enter your email address (optional)</label>
                     <input type="text" size="20" name="optemail" id="optemail"
                         class="optional email" value=""/>
                 </p>
                 <p>
-                    <label for="rating">この提案を評価してください</label>
+                    <label for="rating">Please rate this suggestion</label>
                     <input type="text" size="20" name="rating" id="rating" 
                       class="number" value=""/>
                 </p>
                 <p>
-                    <label for="jibberish">合言葉を入力してください（任意）</label>
+                    <label for="jibberish">Enter some jibberish (optional)</label>
                     <input type="text" size="20" name="jibberish" id="jibberish" value=""/>
                 </p>
 
             </fieldset>
             <p>
-                <input type="submit" name="submit" value="提案の追加"/>
+                <input type="submit" name="submit" value="Add Suggestion"/>
             </p>
         </form>
     </body>
-</html>]]></code>
-      <description><p>以下は検証を行ってエラーメッセージを挿入するJavaScriptである：</p>
-</description>
-      <code><![CDATA[
+</html>                      ]]></code>
+         <description>
+            <p>Here is the Javascript which performs the validation and inserts the error messages: </p>
+         </description>
+         <code><![CDATA[
 window.onload = initialise;
 
 function initialise()
@@ -107,7 +113,7 @@ function initialise()
    var objForms = document.getElementsByTagName('form');
    var iCounter;
 
-   // フォームそれぞれにイベント・ハンドラを追加
+   // Attach an event handler for each form
    for (iCounter=0; iCounter<objForms.length; iCounter++)
    {
       objForms[iCounter].onsubmit = function(){return validateForm(this);};
@@ -115,7 +121,7 @@ function initialise()
 }
 
 
-// フォームのイベント・ハンドラ
+// Event handler for the form
 function validateForm(objForm)
 {
    var arClass = [];
@@ -126,8 +132,8 @@ function validateForm(objForm)
    var objError, objExisting, objNew, objTitle, objParagraph, objAnchor, objPosition;
    var strLinkID, iFieldCounter, iClassCounter, iCounter;
 
-   // 部分識別子を固有にするため、
-   // フォームのid又はnameを取得する
+   // Get the id or name of the form, to make a unique
+   // fragment identifier
    if (objForm.id)
    {
       strLinkID = objForm.id + 'ErrorID';
@@ -137,10 +143,10 @@ function validateForm(objForm)
       strLinkID = objForm.name + 'ErrorID';
    }
 
-   // validationクラスを探索するため、inputフォーム・コントロールをループする
+   // Iterate through input form controls, looking for validation classes
    for (iFieldCounter=0; iFieldCounter<objField.length; iFieldCounter++)
    {
-      // フィールドのクラスを取得し、適切なクラスを探す
+      // Get the class for the field, and look for the appropriate class
       arClass = objField[iFieldCounter].className.split(' ');
       for (iClassCounter=0; iClassCounter<arClass.length; iClassCounter++)
       {
@@ -195,10 +201,10 @@ function validateForm(objForm)
 
    if (iErrors > 0)
    {
-      // validではない場合、エラーメッセージを表示する
+      // If not valid, display error messages
       objError = objForm.getElementsByTagName('div');
       
-      // 存在しているエラーを探す
+      // Look for existing errors
       for (iCounter=0; iCounter<objError.length; iCounter++)
       {
          if (objError[iCounter].className == 'validationerrors')
@@ -214,26 +220,25 @@ function validateForm(objForm)
 
       if (iErrors == 1)
       {
-         objAnchor.appendChild(document.createTextNode('送信した中にエラーが1つあります'));
+         objAnchor.appendChild(document.createTextNode('1 Error in Submission'));
       }
       else
       {
-         objAnchor.appendChild(document.createTextNode('送信した中にエラーが' + iErrors + '個あります'));
+         objAnchor.appendChild(document.createTextNode(iErrors + ' Errors in Submission'));
       }
       objAnchor.href = '#' + strLinkID;
       objAnchor.className = 'submissionerror';
 
       objTitle.appendChild(objAnchor);
-      objParagraph.appendChild(document.createTextNode('以下をご確認ください'));
-
+      objParagraph.appendChild(document.createTextNode('Please review the following'));
       objNew.className = 'validationerrors';
 
       objNew.appendChild(objTitle);
       objNew.appendChild(objParagraph);
       objNew.appendChild(objList);
       
-      // 既にエラーがある場合、新しいエラーと交換する。
-      // それ以外の場合、フォームの先頭に新しいエラーを追加する。
+      // If there were existing error, replace them with the new lot,
+      // otherwise add the new errors to the start of the form
       if (objExisting)
       {
          objExisting.parentNode.replaceChild(objNew, objExisting);
@@ -244,36 +249,36 @@ function validateForm(objForm)
          objForm.insertBefore(objNew, objPosition);
       }
 
-      // 待ち時間の設定
+      // Allow for latency
       setTimeout(function() { objAnchor.focus(); }, 50);
       
-      // フォームを送信しない
+      // Don't submit the form
       objForm.submitAllowed = false;
       return false;
    }
 
-   // フォームを送信
+   // Submit the form
    return true;
 }
 
-// 問題のあるフィールドコントロールを指すリスト項目にリンクを追加する関数
+// Function to add a link in a list item that points to problematic field control
 function addError(objList, strError, strID, strErrorID)
 {
    var objListItem = document.createElement('li');
    var objAnchor = document.createElement('a');
    
-   // フォーム・コントロールへの部分識別子
+   // Fragment identifier to the form control
    objAnchor.href='#' + strID;
 
-   // エラーの見出しに向けたターゲットにする
+   // Make this the target for the error heading
    if (strErrorID.length > 0)
    {
       objAnchor.id = strErrorID;
    }
 
-   // エラーメッセージ用のラベルプロンプトを使う
+   // Use the label prompt for the error message
    objAnchor.appendChild(document.createTextNode(strError));
-   // フォーム・コントロールにフォーカスを当てるために、キーボード及びマウスイベントを追加する
+   // Add keyboard and mouse events to set focus to the form control
    objAnchor.onclick = function(event){return focusFormField(this, event);};
    objAnchor.onkeypress = function(event){return focusFormField(this, event);};
    objListItem.appendChild(objAnchor);
@@ -284,42 +289,42 @@ function focusFormField(objAnchor, objEvent)
 {
    var strFormField, objForm;
 
-   // キーボードでもリンクが機能するようにする
-   if (objEvent &amp;&amp; objEvent.type == 'keypress')
+   // Allow keyboard navigation over links
+   if (objEvent && objEvent.type == 'keypress')
    {
-      if (objEvent.keyCode != 13 &amp;&amp; objEvent.keyCode != 32)
+      if (objEvent.keyCode != 13 && objEvent.keyCode != 32)
       {
          return true;
       }
    }
 
-   // フォーム・コントロールにフォーカスを当てる
+   // set focus to the form control
    strFormField = objAnchor.href.match(/[^#]\w*$/);
    objForm = getForm(strFormField);
    objForm[strFormField].focus();
    return false;
 }
 
-// 与えられたフォームフィールドの名前から、フォーム要素を返す関数
+// Function to return the form element from a given form field name
 function getForm(strField)
 {
    var objElement = document.getElementById(strField);
 
-   // 適切なフォームを探す
+   // Find the appropriate form
    do
    {
       objElement = objElement.parentNode;
-   } while (!objElement.tagName.match(/form/i) &amp;&amp; objElement.parentNode);
+   } while (!objElement.tagName.match(/form/i) && objElement.parentNode);
 
    return objElement;
 }
 
-// リスト中のエラーを記録する関数
+// Function to log the error in a list
 function logError(objField, objLabel, objList, strErrorID)
 {
    var iCounter, strError;
 
-   // エラープロンプトのラベルを探す
+   // Search the label for the error prompt
    for (iCounter=0; iCounter<objLabel.length; iCounter++)
    {
       if (objLabel[iCounter].htmlFor == objField.id)
@@ -331,12 +336,12 @@ function logError(objField, objLabel, objList, strErrorID)
    addError(objList, strError, objField.id, strErrorID);
 }
 
-// 検証ルーティン - 要求事項として
+// Validation routines - add as required
 
 function isString(strValue, arClass)
 {
-   var bValid = (typeof strValue == 'string' &amp;&amp; strValue.replace(/^\s*|\s*$/g, '') 
-     !== '' &amp;&amp; isNaN(strValue));
+   var bValid = (typeof strValue == 'string' && strValue.replace(/^\s*|\s*$/g, '') 
+     !== '' && isNaN(strValue));
 
    return checkOptional(bValid, strValue, arClass);
 }
@@ -351,7 +356,7 @@ function isEmail(strValue, arClass)
 
 function isNumber(strValue, arClass)
 {
-   var bValid = (!isNaN(strValue) &amp;&amp; strValue.replace(/^\s*|\s*$/g, '') !== '');
+   var bValid = (!isNaN(strValue) && strValue.replace(/^\s*|\s*$/g, '') !== '');
 
    return checkOptional(bValid, strValue, arClass);
 }
@@ -361,7 +366,7 @@ function checkOptional(bValid, strValue, arClass)
    var bOptional = false;
    var iCounter;
 
-   // optionalについて確認
+   // Check if optional
    for (iCounter=0; iCounter<arClass.length; iCounter++)
    {
       if (arClass[iCounter] == 'optional')
@@ -370,16 +375,20 @@ function checkOptional(bValid, strValue, arClass)
       }
    }
 
-   if (bOptional &amp;&amp; strValue.replace(/^\s*|\s*$/g, '') === '')
+   if (bOptional && strValue.replace(/^\s*|\s*$/g, '') === '')
    {
       return true;
    }
 
    return bValid;
-   }]]></code>
-      <description><p>このコードの実装サンプルは、PHP、JavaScript、CSS及びXHTMLで実装されている：<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/SCR32/index.php" linktype="examples">フォーム検証の例</loc></p>
-</description>
-    </eg-group>
+   }
+   ]]></code>
+         <description>
+            <p>Working example of this technique implemented using PHP, Javascript, CSS and XHTML: <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="index.php"
+                    linktype="examples">Form Validation Example</loc>.</p>
+         </description>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G83"/>
@@ -388,34 +397,35 @@ function checkOptional(bValid, strValue, arClass)
    </related-techniques>
    <tests>
       <procedure>
-      <p>アンカータグと上記の達成方法による適切なスクリプトを用いて、エラーメッセージを作成する。</p>
-      <olist>
-        <item>
-          <p>ページを読み込む。</p>
-        </item>
-        <item>
-          <p>エラーメッセージと結びつけられたフィールドに適切な値を入力し、エラーメッセージが表示されない。</p>
-        </item>
-        <item>
-          <p>エラーメッセージと結びつけられたフィールドに不適切な値を入力し、そのフィールドに適したエラーメッセージが表示される。</p>
-        </item>
-        <item>
-          <p>エラーメッセージにフォーカスが当たる。</p>
-        </item>
-        <item>
-          <p>表示されたエラーメッセージと関連するフィールドに適切な値を入力し、エラーメッセージがなくなる。</p>
-        </item>
-        <item>
-          <p>アンカータグによってエラーメッセージと関連付けられたすべてのフィールドに対して、繰り返す。</p>
-        </item>
-      </olist>
-      <note><p class="prefix">上記の手順を、支援技術を用いて実行することも推奨する。</p>
-		</note>
-    </procedure>
+         <p>Create error messages using anchor tags and appropriate scripting via the technique above. </p>
+         <olist>
+            <item>
+               <p>Load the page.</p>
+            </item>
+            <item>
+               <p>Enter a valid value in the field(s) associated with an error message and verify that no error messages are displayed. </p>
+            </item>
+            <item>
+               <p>Enter an invalid value in the field(s) associated with an error message and verify that the correct error message for the field is displayed. </p>
+            </item>
+            <item>
+               <p>Verify that the error messages receive focus.</p>
+            </item>
+            <item>
+               <p>Enter a valid value in the field(s) associated with the displayed error message and verify that the error message is removed. </p>
+            </item>
+            <item>
+               <p>Repeat for all fields with associated error messages created via anchor tags. </p>
+            </item>
+         </olist>
+         <note>
+            <p>It is recommended that you also run the above procedure using an assistive technology. </p>
+         </note>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2、3、4 及び 5 の全てを満たしている。</p>
+               <p>Checks #2, #3, #4, and #5 are all true.</p>
             </item>
          </ulist>
       </expected-results>

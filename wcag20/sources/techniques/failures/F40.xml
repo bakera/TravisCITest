@@ -2,39 +2,53 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="F40">
-   <short-name>達成基準 2.2.1 及び 達成基準 2.2.4 の不適合事例 － meta要素による制限時間付きのリダイレクトを用いている
+   <short-name>Failure of Success Criterion 2.2.1 and 2.2.4 due to using meta redirect with a time limit
         </short-name>
    <applicability>
-      <p>すべてのページ</p>
+      <p> All pages</p>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-required-behaviors" relationship="failure"/>
       <success-criterion idref="time-limits-postponed" relationship="failure"/>
    </applies-to>
    <description>
-    <p><code>meta</code><code>http-equiv</code>の{time-out}; url=...はしばしば、自動的に利用者をリダイレクトする目的で使用される。これが時間をおいて発生した場合、予期しない状況の変化によって利用者の邪魔をする可能性がある。</p>
-    <p>タイムアウトが0に設定されている場合には、<el>meta</el>要素をリダイレクトのために利用することが容認される。なぜなら、リダイレクトが即時に行われるので、状況の変化として知覚できないからである。しかしながら、これを実行するためにはサーバーサイドの達成方法を用いることが望ましい。<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="SVR1.html" linktype="server">SVR1： クライアントサイドではなく、サーバサイドで自動リダイレクトを実装する</loc>(SERVER) 参照のこと。</p>
-  </description>
+      <p> 
+         <code><![CDATA[meta]]></code>
+						   <code><![CDATA[http-equiv]]></code> of {time-out}; url=... is often used to
+                        automatically redirect users. When this occurs after a time delay, it is an
+                        unexpected change of context that may interrupt the user.</p>
+      <p>It is acceptable to use the <code><![CDATA[meta]]></code> element to create a redirect
+                        when the time-out is set to zero, since the redirect is instant and will not
+                        be perceived as a change of context. However, it is preferable to use
+                        server-side methods to accomplish this. See <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="SVR1"
+              linktype="server">Implementing automatic redirects on the server side
+                            instead of on the client side</loc>.</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <description><p>以下のページは5秒後にhttp://www.example.com/newpageというURIへリダイレクトされるため、不適合である。</p>
-</description>
-      <code><![CDATA[
-<html xmlns="http://www.w3.org/1999/xhtml">
+         <description>
+            <p> The page below is a failure because it will redirect to the URI
+                                http://www.example.com/newpage after a time limit of 5 seconds.</p>
+         </description>
+         <code><![CDATA[
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
    <head>     
-      <title>使用禁止！</title>     
+      <title>Do not use this!</title>     
       <meta http-equiv="refresh"
       content="5; url=http://www.example.com/newpage" />   
    </head>   
    <body>     
       <p>       
-         ブラウザがリフレッシュをサポートしている場合、5秒後に
-         <a href="http://www.example.com/newpage">新しいサイト</a>        
-         に移動します。サポートしていない場合には、リンクを選択してください。     
+         If your browser supports Refresh, you'll be       
+         transported to our        
+         <a href="http://www.example.com/newpage">new site</a>        
+         in 5 seconds, otherwise, select the link manually.     
       </p>   
    </body> 
-</html>]]></code>
-    </eg-group>
+</html>
+]]></code>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -48,22 +62,25 @@
          </ulist>
       </see-also>
    </resources>
-   <related-techniques/>
+   <related-techniques>
+      <relatedtech idref="SVR1"/>
+      <relatedtech idref="H76"/>
+   </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>ページを表示させる。</p>
-        </item>
-        <item>
-          <p>一定の時間が経過しても、ページがリダイレクトされない。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> View a page. </p>
+            </item>
+            <item>
+               <p> Check that the page does not redirect after a time-out. </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <olist>
             <item>
-               <p>2.を満たしていれば、この不適合事例が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
+               <p>If check #2 is false, this failure condition applies and content fails the Success Criterion.</p>
             </item>
          </olist>
       </expected-results>

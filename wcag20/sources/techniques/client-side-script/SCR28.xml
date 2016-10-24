@@ -2,23 +2,25 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SCR28">
-   <short-name>展開可能及び折り畳み可能なメニューを用いて、コンテンツのブロックをバイパスする</short-name>
+   <short-name>Using an expandable and collapsible menu to bypass block of content</short-name>
    <applicability>
-      <p>クライアントサイド・スクリプティングを提供するウェブコンテンツ技術</p>
+      <p>Technologies that provide client side scripting.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-skip" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法は、繰り返される構成要素を利用者のコントロールの下でメニューを展開したり折りたたんだりできるメニューの中に置くことで、その構成要素をスキップできるようにする。利用者は、メニューを折りたたむことで繰り返される構成要素をスキップできる。利用者は、メニューの要素を隠したり削除したりする利用者ーインターフェースを呼び出すことができる。関連情報には、ナビゲーションをスキップするメカニズムを提供するために利用できるメニュー、ツールバー及びツリーの達成方法をいくつか挙げている。</p>
-    <note><p class="prefix">類似の方法は、サーバーサイドスクリプティングを用いて修正後のウェブページを読み込むことでも実装できる。</p>
-		</note>
-  </description>
+      <p>This technique allows users to skip repeated material by placing that material in a menu that can be expanded or collapsed under user control. The user can skip the repeated material by collapsing the menu. The user invokes a user interface control to hide or remove the elements of the menu. The resources section lists several techniques for menus, toolbars and trees, any of which can be used to provide a mechanism for skipping navigation.</p>
+      <note>
+         <p>Similiar approaches can be implemented using server-side scripting and reloading a modified version of the Web page.</p>
+      </note>
+   </description>
    <examples>
       <eg-group>
-      <description><p>ウェブページの先頭にあるナビゲーションリンクは、すべてHTML、CSS及びJavaScriptを用いて実装されているメニュー項目である。ナビゲーションバーが展開しているとき、ナビゲーションのリンクは利用可能になっている。ナビゲーションバーがたたまれているとき、リンクは利用不可能である。</p>
-</description>
-      <code><![CDATA[
+         <description>
+            <p>The navigation links at top of a Web page are all entries in a menu implemented using HTML, CSS, and Javascript. When the navigation bar is expanded, the navigation links are available to the user. When the navigation bar is collapsed, the links are not available.</p>
+         </description>
+         <code><![CDATA[
 ...
 
   <script type="text/javascript">
@@ -30,23 +32,28 @@
 
 ...
 
-  <a href="#" onclick="toggle("navbar")">ナビゲーションバー切り替え</a>
+  <a href="#" onclick="toggle('navbar')">Toggle Navigation Bar</a>
 
-  <ul> id="navbar">
-  <li><a href="http://target1.html">リンク 1</a></li>
-  <li><a href="http://target2.html">リンク 2</a></li>
-  <li><a href="http://target3.html">リンク 3</a></li>
-  <li><a href="http://target4.html">リンク 4</a></li>
+  <ul id="navbar">
+  <li><a href="http://target1.html">Link 1</a></li>
+  <li><a href="http://target2.html">Link 2</a></li>
+  <li><a href="http://target3.html">Link 3</a></li>
+  <li><a href="http://target4.html">Link 4</a></li>
   </ul>
 
-... ]]></code>
-      <description><p>このコードの実装サンプル：<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/SCR28/toggle-navbar.html" linktype="examples">ナビゲーションバーをリンクで切り替える</loc></p>
-</description>
-    </eg-group>
-    <eg-group>
-      <description><p>一連のウェブページのための目次はそれぞれのページの先頭近くで繰り返される。目次の先頭にあるボタンで、利用者はそれを消したり復元したりできる。</p>
-</description>
-      <code><![CDATA[
+...
+]]></code>
+         <description>
+            <p>Working example of this code: <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="toggle-navbar.html"
+                    linktype="examples">Toggle navigation bar with a link</loc>.</p>
+         </description>
+      </eg-group>
+      <eg-group>
+         <description>
+            <p>The table of contents for a set of Web pages is repeated near the beginning of each Web page. A button at the beginning of the table of contents lets the user remove or restore it on the page.</p>
+         </description>
+         <code><![CDATA[
 ...
 
    <script type="text/javascript">
@@ -58,15 +65,19 @@
 
   ...
 
-  <button onclick="return toggle('toc');">目次切り替え</button>
+  <button onclick="return toggle('toc');">Toggle Table of Contents</button>
   <div id="toc">
     ...
   </div>
 
-...]]></code>
-      <description><p>このコードの実装サンプル：<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/SCR28/toggle-toc.html" linktype="examples">目次をボタンで切り替える</loc></p>
-</description>
-    </eg-group>
+...
+]]></code>
+         <description>
+            <p>Working example of this code: <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="toggle-toc.html"
+                    linktype="examples">Toggle table of contents with a button</loc>.</p>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -99,22 +110,22 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>利用者ーインタフェースコントロールで、繰り返されるコンテンツを展開したり折りたたんだりできるかをチェックする。</p>
-        </item>
-        <item>
-          <p>コンテンツが展開されたとき、それがプログラムで解釈可能なコンテンツに含まれていて、論理的な場所で読み上げ順序があるかをチェックする。</p>
-        </item>
-        <item>
-          <p>コンテンツが折りたたまれているとき、それがプログラムで解釈可能でない部分にあることをチェックする。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Check that some user interface control allows the repeated content to be expanded or collapsed.</p>
+            </item>
+            <item>
+               <p>Check that when the content is expanded, it is included in the programmatically determined content at a logical place in the reading order.</p>
+            </item>
+            <item>
+               <p>Check that when the content is collapsed, it is not part of the programmatically determined content.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>上記のすべての項目を満たしている。</p>
+               <p>All checks above are true.</p>
             </item>
          </ulist>
       </expected-results>

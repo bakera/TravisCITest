@@ -2,29 +2,36 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SCR36">
-   <short-name>静的なウィンドウ又はエリアにある、動きのあるテキスト、スクロールするテキスト、又は自動更新されるテキストを利用者が表示できるメカニズムを提供する</short-name>
+   <short-name>Providing a mechanism to allow users to display moving, scrolling, or auto-updating text in a static window or area</short-name>
    <applicability>
-      <p>動く、点滅する、又はテキストを更新し、静的なテキスト・ブロックを生成する全てのウェブコンテンツ技術</p>
+      <p>Any technology that moves, blinks, or updates text and can create a static block of text. </p>
    </applicability>
    <applies-to>
       <success-criterion idref="time-limits-required-behaviors" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>スペースが限られているために、スクロールするテキストを表示するウェブページがある。小さなテキストウィンドウの中でテキストをスクロールさせることにより、その速度にあわせて読むことができる利用者にはコンテンツが利用可能となるが、それよりも速度が読むのが遅い利用者や、支援技術の利用者にとっては問題となる。この達成方法では、動きを止めて、テキスト・ブロック全体を静的に利用可能にするメカニズムを提供する。テキストは別ウィンドウかページ中の（より大きな）セクションで利用可能になるだろう。そうすることで、利用者はテキストを自分の速度で読むことができる。</p>
-    <p>この達成方法は、動いているテキストが全て同時に画面に表示できない場合（例：長いチャットでの会話）には適用されない。</p>
-    <note><p class="prefix"><em>Note: </em>この達成方法は、不適合のコンテンツのための<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#conforming-alternate-versiondef" linktype="glossary">適合している代替バージョン</loc>のページを表示するためのスタイルスイッチの達成方法とあわせて利用できる。詳細については、<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29.html" linktype="css">C29： スタイル・スイッチャーを用いて、適合している代替バージョンを提供する</loc> (CSS)及び<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/UNDERSTANDING-WCAG20/conformance.html#uc-conforming-alt-versions-head" linktype="understanding">適合している代替バージョンを理解する</loc>を参照のこと。</p>
-		</note>
-  </description>
+      <p>Some Web pages display scrolling text because there is limited space available. Scrolling the text in a small text window makes the content available for users who can read quickly enough, but causes problems for users who read more slowly or use assistive technology. This technique provides a mechanism to stop the movement and make the entire block of text available statically. The text may be made available in a separate window or in a (larger) section of the page. Users can then read the text at their own speed. </p>
+      <p>This technique does not apply when the text that is moving can not be displayed all at once on the screen (e.g., a long chat conversation).</p>
+      <note>
+         <p>This technique can be used in combination with a style switching technique to present a page that is a <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                 href="conforming-alternate-versiondef"
+                 linktype="glossary">conforming alternate version</loc> for non-conforming content. Refer to <loc xmlns:xlink="http://www.w3.org/1999/xlink" href="C29" linktype="css">C29: Using a style switcher to provide a conforming alternate version</loc> and <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                 href="conformance"
+                 locn-note="uc-conforming-alt-versions-head"
+                 linktype="understanding">Understanding Conforming Alternate Versions</loc> for more information. </p>
+      </note>
+   </description>
    <examples>
       <eg-group>
-      <head>スクロールするテキストを展開する</head>
-      <description><p>大きなテキスト・ブロックがページ中の小さなマーキーの範囲をスクロールする。ボタンにより、利用者はスクロールを止め、テキスト・ブロック全体を表示することができる。</p>
-<note><p class="prefix">このコード例ではCSSとJavaScriptの両方が利用可能で有効になっている必要がある。 </p>
-				</note>
-<p>CSS部分：</p>
-</description>
-      <code role="css"><![CDATA[
-#scrollContainer {
+         <head>Expanding Scrolling Text in Place </head>
+         <description>
+            <p>A large block of text is scrolled through a small marquee area of the page. A button lets the user stop the scrolling and display the entire block of text. </p>
+            <note>
+               <p>This code example requires that both CSS and JavaScript be turned on and available. </p>
+            </note>
+            <p>The CSS component:</p>
+         </description>
+         <code role="css"><![CDATA[#scrollContainer {
         visibility: visible;
         overflow: hidden;
         top: 50px; left: 10px;
@@ -46,11 +53,11 @@
       .scrolling #scrollingText {
         position: absolute;
       }
-      </a> ]]></code>
-      <description><p>スクリプト及びHTMLコンテンツ：</p>
-</description>
-      <code role="css"><![CDATA[
-<script type="text/javascript">
+      </a>    ]]></code>
+         <description>
+            <p>The script and HTML content:</p>
+         </description>
+         <code role="css"><![CDATA[<script type="text/javascript">
 
       var tid;
       function init() {
@@ -75,23 +82,27 @@
         if (scr.className == 'scrolling') {
           scr.className = 'notscrolling';
           clearInterval(tid);
-           document.getElementById('scrollButton').value="格納";
+           document.getElementById('scrollButton').value="Shrink";
         } else {
           scr.className = 'scrolling';
           initScrolling();
-          document.getElementById('scrollButton').value="展開";
+          document.getElementById('scrollButton').value="Expand";
         }
       }
-  <input type="button" id="scrollButton" value="展開" onclick="toggle()" />
+  <input type="button" id="scrollButton" value="Expand" onclick="toggle()" />
   <div id="scrollContainer" class="scrolling">
     <div id="scrollingText" class="on">
-    .... スクロールするテキスト ...
+    .... Text to be scrolled ...
     </div>
   </div>
-... ]]></code>
-      <description><p>このコードの実装サンプル：<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.w3.org/TR/WCAG20-TECHS/working-examples/SCR36/scrolltext.html" linktype="examples">スクロールするテキストを展開</loc></p>
-</description>
-    </eg-group>
+...
+]]></code>
+         <description>
+            <p>Working example of this code: <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+                    href="scrolltext.html"
+                    linktype="examples">Expanding Scrolling Text in Place</loc>.</p>
+         </description>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G4"/>
@@ -99,9 +110,5 @@
       <relatedtech idref="SCR33"/>
       <relatedtech idref="SCR22"/>
    </related-techniques>
-   <tests>
-   <procedure>
-      <p>この達成方法についての検証項目はない。</p>
-   </procedure>
-   </tests>
+   <tests/>
 </technique>

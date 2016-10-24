@@ -2,46 +2,49 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G89">
-   <short-name>所定のデータ書式及び入力例を提供する</short-name>
+   <short-name>Providing expected data format and example</short-name>
    <applicability>
-      <p>利用者から情報を集め、利用者が入力できる書式に制約のあるページ</p>
+      <p>Pages that collect information from users, and restrict the format the user can use.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="minimize-error-cues" relationship="cosufficient"/>
       <success-criterion idref="minimize-error-context-help" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、利用者が入力しなければならないデータ書式の制約を通知することによって、利用者が入力エラーを回避しやすくすることである。これは、書式の特徴を記述するか、入力データに求められる書式の例を提供することによって対処できる。</p>
-    <note><p class="prefix">日付や時刻のように、様々な記述方法があるデータ書式については、利用者にとって最も入力しやすい書式を選択できるオプションを提供するとよい。</p>
-	</note>
-  </description>
+      <p>The objective of this technique is to help the user avoid input errors by informing them about restrictions on the format of data that they must enter. This can be done by describing characteristics of the format or providing a sample of the format the data should have.</p>
+      <note>
+         <p>For data formats with common variations, such as dates and times, it may be useful to provide a preference option so users can use the format that is most comfortable to them.</p>
+      </note>
+   </description>
    <examples>
       <eg-group>
-      <head>事例１</head>
-      <description><p>日付を入力するHTMLのフォーム・コントロールでは、<el>label</el>要素内において、入力する日付はアメリカ合衆国の多くの利用者が想定する月-日-年の書式ではなく、日-月-年の書式でなければならないことを示している。</p>
-</description>
-      <code><![CDATA[<label for="date">日付 (dd-mm-yyyy)</label>
-<input type="text" name="date" id="date" />]]></code>
-    </eg-group>
+         <description>
+            <p>The following HTML form control for a date indicates in the label that the date must be in day-month-year format, not month-day-year as many users in the United States may assume.</p>
+         </description>
+         <code><![CDATA[
+              <label for="date">Date (dd-mm-yyyy)</label>
+                <input type="text" name="date" id="date" />
+            ]]></code>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G184"/>
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>所定の書式でしか利用者の入力データを受け付けないフォーム・コントロールを特定する。</p>
-        </item>
-        <item>
-          <p>1.で特定した各フォーム・コントロールが、求めている書式情報を提供している。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Identify form controls that will only accept user input data in a given format.</p>
+            </item>
+            <item>
+               <p>Determine if each of the form controls identified in 1 provides information about the expected format.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.を満たしている。</p>
+               <p>#2 is true.</p>
             </item>
          </ulist>
       </expected-results>

@@ -2,19 +2,28 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G185">
-   <short-name>HOMEページからサイト上の全てのウェブページにリンクする</short-name>
+   <short-name>Linking to all of the pages on the site from the home page</short-name>
    <applicability>
-      <p>リンク機能を提供する全てのウェブコンテンツ技術</p>
+      <p>All technologies that contain links.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="navigation-mechanisms-mult-loc" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、利用者が小規模なウェブサイト内の全ての情報を探し出すことが可能となるように、HOMEページから全てのウェブページへのリンクを提供することである。サイトのページ数が十分に少ない時、HOMEページにおいて直接サイトマップの情報を提供することができる。ウェブサイト内のHOMEページ以外のページは、HOMEページへのリンクを提供する。</p>
-    <p>このように、HOMEページに一つで二つのメカニズムを持たせることができる。一つは各ページへの通常のナビゲーションを提供することであり、もう一つはサイトの事実上のサイトマップにもなることである。</p>
-    <p>サイト内の全てのウェブページは、全ての他のページへのリンクを提供し、一連のそれらのリンクは<loc xmlns:xlink="http://www.w3.org/1999/xlink" href="http://www.ciaj.or.jp/access/web/docs/WCAG20/Overview.html#navigation-mechanisms-mult-loc" linktype="guideline">達成基準 3.2.3 (一貫したナビゲーション)</loc>を満たしている。</p>
-  </description>
-   <examples/>
+      <p>The objective of this technique is to make it possible for users to locate all the information in a small Web site by providing links to all Web pages from the home page. When the number of pages in the site is small enough, the home page can contain site map information directly. The other pages in the Web site contain links to the home page.</p>
+      <p>In this way, the home page serves as two mechanisms in one. It provides the usual navigation to pages. It also is a de facto site map to the site.</p>
+      <p>All the Web pages in the site may contain links to all the other pages, and those sets of links satisfy
+            <loc xmlns:xlink="http://www.w3.org/1999/xlink"
+              href="navigation-mechanisms-mult-loc"
+              linktype="guideline">Success Criterion 3.2.3 (Consistent Navigation)</loc>.</p>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>A small commercial Web site for a consultant contains a home page, a Contacts page for contacting the consultant, a page describing the consultant's background, and a page with examples of the consultant's work. Each page contains a navigation bar that links to all the other pages in the site.</p>
+         </item>
+      </ulist>
+   </examples>
    <related-techniques>
       <relatedtech idref="G61"/>
       <relatedtech idref="G63"/>
@@ -24,19 +33,19 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>HOMEページは、ウェブサイト内の全ての他のページへのリンクを提供している。</p>
-        </item>
-        <item>
-          <p>ウェブサイト内の他のページは、HOMEページへのリンクを提供している。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Check that the home page contains links to all other pages in the Web site.</p>
+            </item>
+            <item>
+               <p>Check that all other pages in the Web site contain links to the home page.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>上記全てを満たしている。</p>
+               <p>All of the above checks are true.</p>
             </item>
          </ulist>
       </expected-results>

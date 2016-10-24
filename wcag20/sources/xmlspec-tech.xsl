@@ -72,7 +72,7 @@
         </xsl:choose>
       </xsl:with-param>
 			<xsl:with-param name="id"><xsl:value-of select="../@id"/>-description</xsl:with-param>
-			<xsl:with-param name="text">解説</xsl:with-param>
+			<xsl:with-param name="text">Description</xsl:with-param>
 		</xsl:call-template>
 		<div class="textbody"><xsl:apply-templates/></div>
 	</xsl:template>
@@ -81,9 +81,9 @@
 
    <xsl:template match="examples">
       <xsl:choose>
-        <xsl:when test="$slices= 1"> <h2 class="small-head" id="{../@id}-examples">事例</h2></xsl:when>
-        <xsl:when test="$bytech=1"> <h3 class="small-head" id="{../@id}-examples">事例</h3></xsl:when>
-        <xsl:otherwise> <h4 class="small-head" id="{../@id}-examples">事例</h4></xsl:otherwise>
+        <xsl:when test="$slices= 1"> <h2 class="small-head" id="{../@id}-examples">Examples</h2></xsl:when>
+        <xsl:when test="$bytech=1"> <h3 class="small-head" id="{../@id}-examples">Examples</h3></xsl:when>
+        <xsl:otherwise> <h4 class="small-head" id="{../@id}-examples">Examples</h4></xsl:otherwise>
       </xsl:choose>
 		  
 						<xsl:apply-templates/>
@@ -106,11 +106,11 @@
 					<xsl:call-template name="copy-common-atts"/>
 					<xsl:choose>
           <xsl:when test="$slices=1"><h3 class="small-head" id="{../../@id}-failex{$exnumber}">
-					不適合事例 <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if><xsl:value-of select="head"></xsl:value-of></h3></xsl:when>
+					Failure Example <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if><xsl:value-of select="head"></xsl:value-of></h3></xsl:when>
 					  <xsl:when test="$bytech=1"><h4 class="small-head" id="{../../@id}-failex{$exnumber}">
-					    不適合事例 <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if><xsl:value-of select="head"></xsl:value-of></h4></xsl:when>
+					    Failure Example <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if><xsl:value-of select="head"></xsl:value-of></h4></xsl:when>
           <xsl:otherwise><h5 class="small-head" id="{../../@id}-failex{$exnumber}">
-					不適合事例 <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if><xsl:value-of select="head"></xsl:value-of></h5></xsl:otherwise>
+					Failure Example <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if><xsl:value-of select="head"></xsl:value-of></h5></xsl:otherwise>
         </xsl:choose>
 					
 							<div class="example">
@@ -120,9 +120,9 @@
 			</xsl:when>
 			<xsl:otherwise>
 			<xsl:choose>
-    <xsl:when test="$slices=1"><h3 class="small-head" id="{../../@id}-ex{$exnumber}">事例 <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head[@role='fail']"><xsl:text> (failure)</xsl:text></xsl:if><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if> <xsl:value-of select="head"></xsl:value-of></h3></xsl:when>
-			  <xsl:when test="$bytech=1"><h4 class="small-head" id="{../../@id}-ex{$exnumber}">事例 <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head[@role='fail']"><xsl:text> (不適合)</xsl:text></xsl:if><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if> <xsl:value-of select="head"></xsl:value-of></h4></xsl:when>
-    <xsl:otherwise><h5 class="small-head" id="{../../@id}-ex{$exnumber}">事例 <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head[@role='fail']"><xsl:text> (不適合)</xsl:text></xsl:if><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if> <xsl:value-of select="head"></xsl:value-of></h5></xsl:otherwise>
+    <xsl:when test="$slices=1"><h3 class="small-head" id="{../../@id}-ex{$exnumber}">Example <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head[@role='fail']"><xsl:text> (failure)</xsl:text></xsl:if><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if> <xsl:value-of select="head"></xsl:value-of></h3></xsl:when>
+			  <xsl:when test="$bytech=1"><h4 class="small-head" id="{../../@id}-ex{$exnumber}">Example <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head[@role='fail']"><xsl:text> (failure)</xsl:text></xsl:if><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if> <xsl:value-of select="head"></xsl:value-of></h4></xsl:when>
+    <xsl:otherwise><h5 class="small-head" id="{../../@id}-ex{$exnumber}">Example <xsl:value-of select="$exnumber"></xsl:value-of><xsl:if test="head[@role='fail']"><xsl:text> (failure)</xsl:text></xsl:if><xsl:if test="head"><xsl:text>: </xsl:text></xsl:if> <xsl:value-of select="head"></xsl:value-of></h5></xsl:otherwise>
   </xsl:choose>
 				
 		<div class="example">
@@ -151,9 +151,9 @@
 			<xsl:text>-procedure</xsl:text>
 		</xsl:variable>
 					<xsl:choose>
-      <xsl:when test="$slices=1"><h3 class="small-head" id="{$id}">チェックポイント</h3></xsl:when>
-	<xsl:when test="$bytech=1"><h4 class="small-head" id="{$id}">チェックポイント</h4></xsl:when>
-      <xsl:otherwise><h5 class="small-head" id="{$id}">チェックポイント</h5></xsl:otherwise>
+      <xsl:when test="$slices=1"><h3 class="small-head" id="{$id}">Procedure</h3></xsl:when>
+	<xsl:when test="$bytech=1"><h4 class="small-head" id="{$id}">Procedure</h4></xsl:when>
+      <xsl:otherwise><h5 class="small-head" id="{$id}">Procedure</h5></xsl:otherwise>
     </xsl:choose>
 					
 					<xsl:apply-templates/>
@@ -161,9 +161,9 @@
 		<xsl:template match="related-techs">
 					<xsl:call-template name="copy-common-atts"/>
 					<xsl:choose>
-      <xsl:when test="$slices=1"><h3 class="small-head" id="{../../@id}-related-techs">関連する達成方法</h3></xsl:when>
-	<xsl:when test="$bytech=1"><h3 class="small-head" id="{../../@id}-related-techs">関連する達成方法</h3></xsl:when>
-      <xsl:otherwise><h5 class="small-head" id="{../../@id}-related-techs">関連する達成方法</h5></xsl:otherwise>
+      <xsl:when test="$slices=1"><h3 class="small-head" id="{../../@id}-related-techs">Related Techniques</h3></xsl:when>
+	<xsl:when test="$bytech=1"><h3 class="small-head" id="{../../@id}-related-techs">Related Techniques</h3></xsl:when>
+      <xsl:otherwise><h5 class="small-head" id="{../../@id}-related-techs">Related Techniques</h5></xsl:otherwise>
     </xsl:choose>
 					
 					<xsl:apply-templates/>
@@ -180,9 +180,9 @@
 				<xsl:text>-results</xsl:text>
 			</xsl:variable>
 			<xsl:choose>
-      <xsl:when test="$slices=1"><h3 class="small-head" id="{$id}">判定基準</h3></xsl:when>
-	<xsl:when test="$bytech=1"><h4 class="small-head" id="{$id}">判定基準</h4></xsl:when>
-      <xsl:otherwise><h5 class="small-head" id="{$id}">判定基準</h5></xsl:otherwise></xsl:choose>
+      <xsl:when test="$slices=1"><h3 class="small-head" id="{$id}">Expected Results</h3></xsl:when>
+	<xsl:when test="$bytech=1"><h4 class="small-head" id="{$id}">Expected Results</h4></xsl:when>
+      <xsl:otherwise><h5 class="small-head" id="{$id}">Expected Results</h5></xsl:otherwise></xsl:choose>
 					<xsl:apply-templates/>
 	</xsl:template>	
 	
@@ -361,15 +361,15 @@
         </xsl:choose>
       </xsl:with-param>
 				<xsl:with-param name="id"><xsl:value-of select="../@id"/>-resources</xsl:with-param>
-				<xsl:with-param name="text">参考リソース</xsl:with-param>
+				<xsl:with-param name="text">Resources</xsl:with-param>
 			</xsl:call-template>
 			<div class="textbody">
 			<xsl:choose>
 			<xsl:when test="child::node()">
-			<p>この参考リソースは、あくまでも情報提供のみが目的であり、推薦などを意味するものではない。</p>
+			<p>Resources are for information purposes only, no endorsement implied.</p>
 				<xsl:apply-templates/>
 			</xsl:when>
-			<xsl:otherwise><p>この達成方法に関する参考リソースはない。</p></xsl:otherwise>
+			<xsl:otherwise><p>No resources available for this technique.</p></xsl:otherwise>
 			</xsl:choose>
 			</div>
 		<!--</div>-->
@@ -389,7 +389,7 @@
         </xsl:choose>
       </xsl:with-param>
 				<xsl:with-param name="id"><xsl:value-of select="../@id"/>-related-techs</xsl:with-param>
-				<xsl:with-param name="text">関連する達成方法</xsl:with-param>
+				<xsl:with-param name="text">Related Techniques</xsl:with-param>
 			</xsl:call-template>
 		<div class="textbody">
 			<xsl:choose>
@@ -398,7 +398,7 @@
 				<xsl:apply-templates/>
 			</ul>
 			</xsl:when>
-			<xsl:otherwise><p>(今のところ、なし。)</p></xsl:otherwise>
+			<xsl:otherwise><p>(none currently listed)</p></xsl:otherwise>
 			</xsl:choose>
 			</div>
 		<!--</div>-->
@@ -442,7 +442,7 @@
         </xsl:choose>
       </xsl:with-param>
 				<xsl:with-param name="id"><xsl:value-of select="$id"/></xsl:with-param>
-				<xsl:with-param name="text">検証</xsl:with-param>
+				<xsl:with-param name="text">Tests</xsl:with-param>
 			</xsl:call-template>
 			<div class="textbody">
 			  <xsl:choose>
@@ -450,7 +450,7 @@
 			      <xsl:apply-templates/>
 			    	<!-- MC: Need a much better way to test technique type -->
 			    	<xsl:if test="not(ancestor::div1[@id = 'failures'])">
-			    		<p>注意：この達成方法が「達成基準を満たすことのできる達成方法」の一つである場合、このチェックポイントや判定基準を満たしていなければ、それはこの達成方法が正しく用いられていないことを意味するが、必ずしも達成基準を満たしていないことにはならない。場合によっては、別の達成方法によってその達成基準が満たされていることもありうる。</p>
+			    		<p>If this is a sufficient technique for a success criterion, failing this test procedure does not necessarily mean that the success criterion has not been satisfied in some other way, only that this technique has not been successfully implemented and can not be used to claim conformance.</p>
 			    	</xsl:if>
 			    </xsl:when>
 			    <xsl:otherwise><p>No tests available for this technique.</p></xsl:otherwise>
@@ -467,7 +467,7 @@
 			<xsl:call-template name="heading">
         <xsl:with-param name="level" select="$headlevel"/>
 				<xsl:with-param name="id"><xsl:value-of select="../@id"/>-applicability</xsl:with-param>
-				<xsl:with-param name="text">適用（対象）</xsl:with-param>
+				<xsl:with-param name="text">Applicability</xsl:with-param>
 			</xsl:call-template>
 			<div class="textbody">
 				<xsl:apply-templates/>
@@ -579,9 +579,9 @@
 		<div class="ua-issues">
 			<xsl:call-template name="copy-common-atts"/>
 			<xsl:choose>
-    <xsl:when test="$slices=1"><h2 class="small-head" id="{$uanumber}">ユーザーエージェント及び支援技術によるサポート</h2></xsl:when>
-    <xsl:when test="$bytech=1"><h3 class="small-head" id="{$uanumber}">ユーザーエージェント及び支援技術によるサポート</h3></xsl:when>
-    <xsl:otherwise><h4 class="small-head" id="{$uanumber}">ユーザーエージェント及び支援技術によるサポート</h4></xsl:otherwise>
+    <xsl:when test="$slices=1"><h2 class="small-head" id="{$uanumber}"> User Agent and Assistive Technology Support Notes</h2></xsl:when>
+    <xsl:when test="$bytech=1"><h3 class="small-head" id="{$uanumber}"> User Agent and Assistive Technology Support Notes</h3></xsl:when>
+    <xsl:otherwise><h4 class="small-head" id="{$uanumber}"> User Agent and Assistive Technology Support Notes</h4></xsl:otherwise>
   </xsl:choose>
 			
 			<p>See <a href="/WAI/WCAG20/Techniques/ua-notes/{ancestor::div1/@id}#{ancestor::technique/@id}">User Agent Support Notes for <xsl:value-of select="ancestor::technique/@id"/></a>.<xsl:if test="ancestor::div1/div2"> Also see <a><xsl:attribute name="href"><xsl:call-template name="href.target"><xsl:with-param name="target" select="ancestor::div1/div2[1]"/></xsl:call-template></xsl:attribute><xsl:value-of select="ancestor::div1/div2[1]/head"/></a>.</xsl:if></p>
@@ -610,7 +610,7 @@
 	        <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" type="text/css" href="diffs.css" />
 	    </xsl:if>
 	    <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" type="text/css">
-	        <xsl:attribute name="href"><xsl:text>http://www.w3.org/StyleSheets/TR/</xsl:text>
+	        <xsl:attribute name="href"><xsl:text>https://www.w3.org/StyleSheets/TR/2016/</xsl:text>
 	        	<xsl:choose>
 	        		<!-- Editor's review drafts are a special case. -->
 	        		<xsl:when test="/spec/@role='editors-copy'">W3C-ED</xsl:when>
@@ -639,7 +639,7 @@
 	</xsl:template>
 	<xsl:template match="eg-group/code">
 	    <div class="code">
-	        <p><strong>コード例:</strong></p>
+	        <p><strong>Example Code:</strong></p>
 		        <pre><code>
 				<xsl:apply-templates/>
 		        </code></pre>
@@ -668,10 +668,10 @@
 			</xsl:variable>
 			<xsl:element name="p">
 				<!--BBC changed id="referenced" to class to avoid duplicate ID problem w/ validation -->
-				<xsl:attribute name="class">referenced</xsl:attribute>これは、次の達成基準に関連する<xsl:choose>
-      <xsl:when test="ancestor::div1[@role='failures']">failure不適合事例である:</xsl:when>
-      <xsl:otherwise>達成方法である:</xsl:otherwise>
-    </xsl:choose></xsl:element>
+				<xsl:attribute name="class">referenced</xsl:attribute>This <xsl:choose>
+      <xsl:when test="ancestor::div1[@role='failures']">failure</xsl:when>
+      <xsl:otherwise>technique</xsl:otherwise>
+    </xsl:choose> relates to:</xsl:element>
 			<ul>
 				<xsl:apply-templates select="guideline" mode="relates"/>
 				<xsl:apply-templates select="success-criterion" mode="screlates"/>
@@ -686,7 +686,7 @@
 				<xsl:variable name="filename"><xsl:apply-templates select="$guide-src//*[@id = $id]" mode="slice-understanding-filename"/></xsl:variable>
 				<xsl:variable name="fragment"><xsl:if test="$id != substring-before($filename, '.')">#<xsl:value-of select="$id"/></xsl:if></xsl:variable>
 			    <a href="{$guide-src//publoc/loc[@href]}{$filename}{fragment}">
-					ガイドライン <xsl:number level="multiple" count="div2 | div3" format="1.1 "/> (<xsl:call-template name="sc-handle"><xsl:with-param name="handleid" select="@id"/></xsl:call-template>)を理解する
+					Understanding Guideline <xsl:number level="multiple" count="div2 | div3" format="1.1 "/> (<xsl:call-template name="sc-handle"><xsl:with-param name="handleid" select="@id"/></xsl:call-template>)
 				</a>
 			</xsl:for-each>
 		</li>
@@ -697,7 +697,7 @@
 		<xsl:variable name="fragment"><xsl:if test="$id != substring-before($filename, '.')">#<xsl:value-of select="$id"/></xsl:if></xsl:variable>
 		<li>
 			<a href="{$gl-src//publoc/loc[@href]}#{$id}">
-				達成基準<xsl:text> </xsl:text><xsl:call-template name="sc-number"><xsl:with-param name="id" select="$id"/></xsl:call-template> (<xsl:call-template name="sc-handle"><xsl:with-param name="handleid" select="$id"/></xsl:call-template>)</a> 
+				Success Criterion<xsl:text> </xsl:text><xsl:call-template name="sc-number"><xsl:with-param name="id" select="$id"/></xsl:call-template> (<xsl:call-template name="sc-handle"><xsl:with-param name="handleid" select="$id"/></xsl:call-template>)</a> 
 			<ul>
 				<li>
 				    <a href="{$quickref-src//publoc/loc[@href]}#{$id}">
@@ -706,7 +706,7 @@
 				</li>
 				<li>
 				    <a href="{$guide-src//publoc/loc[@href]}{$filename}{fragment}">
-						達成基準 <xsl:call-template name="sc-number"><xsl:with-param name="id" select="$id"/></xsl:call-template> (<xsl:call-template name="sc-handle"><xsl:with-param name="handleid" select="$id"/></xsl:call-template>)を理解する
+						Understanding Success Criterion <xsl:call-template name="sc-number"><xsl:with-param name="id" select="$id"/></xsl:call-template> (<xsl:call-template name="sc-handle"><xsl:with-param name="handleid" select="$id"/></xsl:call-template>)
 					</a>
 				</li>
 			</ul>
@@ -796,22 +796,25 @@
 	<!-- overriding toc template to do some custom stuff for techniques -->
 		<xsl:template name="toc">
 		    <xsl:if test="$toc.level &gt; 0">
-      <div class="toc">
+		    		<xsl:if test="$bytech != 1">
+		    			<div>
+		    				<hr/>
+		    				<h2>
+			    				<xsl:call-template name="anchor">
+			    					<xsl:with-param name="conditional" select="0"/>
+			    					<xsl:with-param name="default.id" select="'contents'"/>
+			    				</xsl:call-template>
+			    				<xsl:text>Sections</xsl:text>
+			    			</h2>
+			    			<ul>
+			    				<xsl:apply-templates select="//div1[not(@id = 'placeholders')] | //inform-div1" mode="toc"><xsl:with-param name="local.toc.level" select="1"/></xsl:apply-templates>
+			    			</ul>
+		    			</div>
+		    		</xsl:if>
+      <div id="toc">
+      	<h2>Table of Contents</h2>
         <xsl:text>
 </xsl:text>
-        <hr/>
-        <h2>
-          <xsl:call-template name="anchor">
-            <xsl:with-param name="conditional" select="0"/>
-            <xsl:with-param name="default.id" select="'contents'"/>
-          </xsl:call-template>
-          <xsl:text>目次</xsl:text>
-        </h2>
-      	<xsl:if test="$bytech != 1">
-      	<ul>
-      		<xsl:apply-templates select="//div1[not(@id = 'placeholders')] | //inform-div1" mode="toc"><xsl:with-param name="local.toc.level" select="1"/></xsl:apply-templates>
-      	</ul>
-      		</xsl:if>
         <ul class="toc">
           <xsl:choose>
             <xsl:when test="$quickref='1'">
@@ -820,8 +823,8 @@
             <xsl:otherwise>
             	<!-- Links to abstract and status are local on main doc but need to point to main doc in bytech version -->
             	<xsl:variable name="toc.base"><xsl:if test="$bytech = 1"><xsl:value-of select="$techsthisversion"/></xsl:if></xsl:variable>
-            	<li><a href="{$toc.base}#abstract">概要 </a></li>
-            	<li><a href="{$toc.base}#status">この文書のステータス</a></li>
+            	<li><a href="{$toc.base}#abstract">Abstract </a></li>
+            	<li><a href="{$toc.base}#status">Status of This Document </a></li>
               <xsl:apply-templates select="//div1[not(@id = 'placeholders')] | //inform-div1" mode="toc"/>
             </xsl:otherwise>
           </xsl:choose>
@@ -865,8 +868,8 @@
             -->
           </xsl:otherwise>
         </xsl:choose>
+      	<hr/>
       </div>
-      <hr/>
     </xsl:if>
 
 	</xsl:template>

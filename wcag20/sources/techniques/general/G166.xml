@@ -2,44 +2,45 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G166">
-   <short-name>重要な映像コンテンツを説明する音声を提供する</short-name>
+   <short-name>Providing audio that describes the important video content and describing it as such</short-name>
    <applicability>
-      <p>映像コンテンツを実装できる全てのウェブコンテンツ技術</p>
+      <p>All technologies that can contain video content</p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-av-only-alt" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>映像しか含まないコンテンツは、全盲の利用者及びロービジョンの利用者にとってはアクセシブルではない。そのため、これらの利用者が音声による代替コンテンツを利用できることが重要である。その一つの方法として、映像に含まれている情報を説明する音声トラックを提供する方法がある。この音声は、例えばMP3のように、インターネット上で一般的に使われている音声フォーマットである必要がある。</p>
-  </description>
+      <p>Video-only content is inaccessible to people who are blind and to some who have low vision. Therefore, it is important for them to have an audio alternative. One way of doing this is to provide an audio track describing the information in the video. The audio should be a common audio format used on the internet, such as MP3.</p>
+   </description>
    <examples>
       <eg-group>
-      <description><p>ウェブページに、宇宙船の火星着陸シーンの映像しか含まないプレゼンテーションへのリンクがある。そして、この映像へのリンクは、宇宙船の写真である。この映像を説明する音声ファイルへのリンクが、映像の近くにある。これは、次のHTMLコード例のようになるだろう。</p>
-</description>
-      <code><![CDATA[
-<a href="../video/marslanding.mp4"><img src="../images/spaceship.jpg" 
-   alt="火星着陸（映像のみ）" width="193" height="255"/></a>
-<br />
-<a href="Mars_landing_audio.mp3">映像「火星着陸」の音声ガイド</a>
-]]></code>
-    </eg-group>
+         <description>
+            <p>A Web page has a link to a video-only presentation of a spaceship landing on Mars. The link to the video is a picture of a spaceship. Near the video is a link to an audio file of a person describing the video. This would look something like the following code example in HTML.</p>
+         </description>
+         <code><![CDATA[
+              <a href="../video/marslanding.mp4"><img src="../images/spaceship.jpg" 
+                alt="Mars landing, video-only" width="193" height="255"/></a>
+                <br />
+                <a href="Mars_landing_audio.mp3">Audio description of "Mars Landing"</a>
+            ]]></code>
+      </eg-group>
    </examples>
    <related-techniques>
       <relatedtech idref="G159"/>
    </related-techniques>
    <tests>
       <procedure>
-      <p>映像しか含まないウェブページに対して：</p>
-      <olist>
-        <item>
-          <p>映像しか含まないコンテンツの直前又は直後に、<phrase diff="add">映像のコンテンツを説明する</phrase>代替の音声コンテンツへのリンクがある。</p>
-        </item>
-      </olist>
-    </procedure>
+         <p>For a Web page that contains video-only content:</p>
+         <olist>
+            <item>
+               <p>Check that there is link to an audio alternative which describes the contents of the video immediately before or after the video-only content.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1. を満たしている。</p>
+               <p>Check #1 is true.</p>
             </item>
          </ulist>
       </expected-results>

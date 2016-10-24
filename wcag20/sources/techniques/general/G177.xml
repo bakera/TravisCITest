@@ -2,18 +2,33 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G177">
-   <short-name>テキストの修正候補を提示する</short-name>
+   <short-name>Providing suggested correction text</short-name>
    <applicability>
-      <p>フォーマット、値及び又は入力のタイプに制限があり、利用者のデータ入力を受け付けるコンテンツ</p>
+      <p>Content that accepts user data input, with restrictions on the format, value, and/or type of the input.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="minimize-error-suggestions" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、利用者が入力した情報が受け付けられないとき、正しいと思われるテキストを推測できる場合には、そのテキストを提示することである。修正候補としては、正しい綴りのテキストや、あらかじめ蓄積されているテキスト群にある類似したテキストなどが含まれる。</p>
-    <p>フォームによって修正候補の提示方法は異なるが、エラーが発生した入力欄の横、ページの他の部分に表示することもできるし、検索機能やリンクを用いて修正候補の一覧が掲載されている他のURIに誘導することもできる。可能であれば、修正候補は利用者にとって利用しやすい方法で提示すべきである。たとえば、誤った情報が送信されたとき、利用者が意図した内容をチェックボックスやラジオボタンを用いて選択できるような形式で修正候補の一覧を提示するような方法が考えられる。修正候補や修正候補へのリンクは、たとえば、フォームの先頭、エラーがあるフィールドの直前または直後など、エラーを含むしたフォーム・フィールドの近くに配置しなければならない。</p>
-  </description>
-   <examples/>
+      <p>The objective of this technique is to suggest correct text where the information supplied by the user is not accepted and possible correct text is known. The suggestions may include correct spelling or similar text from a known pool of possible text.</p>
+      <p>Depending on the form, suggestions could be located next to the field where the error was identified, elsewhere on the page or via a search mechanism or reference where results would be listed on another URI. Where possible, suggestions for correction should be incorporated in a way that is easy for the user. For example, an incorrect submission may return a list of possible corrections where the user can select a checkbox or radio button to indicate which option was intended. Suggestions or links to the suggestions should be placed close to the form fields they are associated with, such as at the top of the form, preceding the form fields, or next to the form fields requiring correction.</p>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>A form field requires the user to input a length of time that could range from days to years. The user enters the number "6". The server returns the form as the user had submitted it and also includes a suggested text next to the form field: "Error detected. Did you mean: 6 days, 6 weeks, 6 months or 6 years?"</p>
+         </item>
+         <item>
+            <p>The user enters an incorrectly spelled city name. The server returns the form as the user had submitted it and also includes a message at the top of the form informing the user of the error and a link to a list of city names that the user may have meant, as determined by comparing their original input to a database of city names.</p>
+         </item>
+         <item>
+            <p>A bus route trip planner allows users to enter their origin an destination, allowing users to enter street addresses, intersections and city landmarks. When a user enters "Kohl," they are prompted with a list of search results with similar matches that reads, "Your search for 'Kohl' returned the following". A select box follows the prompt lists, "Kohl Center," "Kohl's Dept. Store-East" and "Kohl's Dept. Store-West" as options the user can choose from.</p>
+         </item>
+         <item>
+            <p>A search runs a spell check on input and provides a link of alternatives if a spelling error is detected. When the user clicks on the link, the search is automatically resubmitted with the correct spelling.</p>
+         </item>
+      </ulist>
+   </examples>
    <related-techniques>
       <relatedtech idref="SCR18"/>
       <relatedtech idref="G84"/>
@@ -21,25 +36,25 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>フォーム・フィールドのうち、誤ったテキスト入力から正しいテキストを推測可能なものを抽出する。</p>
-        </item>
-        <item>
-          <p>フォームに入力し、抽出したフィールドには意図的に誤ったテキストを入力する。</p>
-        </item>
-        <item>
-          <p>利用者に対して修正候補が提示される。</p>
-        </item>
-        <item>
-          <p>修正候補、もしくは修正候補へのリンクが、エラーを含むフィールドの近くに配置されている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Identify form fields where correct text could be inferred from incorrect text.</p>
+            </item>
+            <item>
+               <p>Fill out the form, deliberately filling in the identified form fields with incorrect text.</p>
+            </item>
+            <item>
+               <p>Check that the user is presented with suggestions for the correct text.</p>
+            </item>
+            <item>
+               <p>Check that the suggestions are provided next to the form field or a link to the suggestions is provided close to the form field.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>3. 及び 4.を満たしている。</p>
+               <p>Checks #3 and #4 are true.</p>
             </item>
          </ulist>
       </expected-results>

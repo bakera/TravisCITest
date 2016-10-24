@@ -2,9 +2,9 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G138">
-   <short-name>色の手がかりを用いる際は、必ずセマンティックなマークアップを用いる</short-name>
+   <short-name>Using semantic markup whenever color cues are used</short-name>
    <applicability>
-      <p>色及びテキストをサポートするウェブコンテンツ技術すべて。</p>
+      <p>All technologies that support color and text.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="content-structure-separation-programmatic"
@@ -12,15 +12,18 @@
       <!--<success-criterion idref="visual-audio-contrast-without-color"/>-->
    </applies-to>
    <description>
-    <p>この達成方法の目的は、色とセマンティックなマークアップを組み合わせて、情報を伝達することである。ほとんどの利用者はコンテンツをすばやく読み取り、色を用いて伝達された情報をコンテンツから見つけることができる。色を見ることができない利用者に対しては、セマンティックなマークアップによって異なるタイプの手がかりを提供することができる。それによって、利用者ーエージェントは、たとえば、異なるタイプの構造に対しては異なる視覚的な表現を用いる、又は聴覚的な表現において異なる音声や音の高さを用いることによって、その意味を利用者に対して知覚可能にすることができるようになる。</p>
-    <p>ほとんどの利用者ーエージェントは、セマンティックなマークアップを用いて指定されたテキストを視覚的に区別する。支援技術の中には、適切なセマンティックマークアップを用いて制作されたコンテンツの特徴を定めるメカニズムを提供しているものもある。</p>
-  </description>
+      <p>The objective of this technique is to combine color and semantic markup to convey information. Most users can quickly scan the content to locate information conveyed by using color. For users who cannot see color, semantic markup can provide a different type of cue. User agents can then make this type of structure perceivable to the user, for example using a different visual presentation for different types of structures or by using a different voice or pitch in an auditory presentation.</p>
+      <p>Most user agents will visually distinguish text that has been identified using semantic markup. Some assistive technologies provide a mechanism for determining the characteristics of content that has been created using proper semantic markup.</p>
+      <!--Note: this paragraph also appears in H49-->
+   </description>
    <examples>
       <eg-group>
-      <head>:必須のフォーム項目に対して、色と強調を用いる</head>
-      <description><p>HTMLのフォームにいくつかの必須項目がある。必須項目のラベルは赤で表示されている。加えて、各ラベルのテキストは強い強調を示すために<el>strong</el>要素でマークアップされている。フォーム入力の説明文には、「すべての必須項目は赤で表示されており、強調されている」とあり、事例が添えられている。</p>
-</description>
-    </eg-group>
+         <head>Color and strong emphasis for required form fields</head>
+         <description>
+            <p>An HTML form contains several required fields. The labels for the required fields are displayed in red. In addition, the text of each label is marked up with the STRONG element for stronger emphasis. The instructions for 
+                completing the form indicate that "all required fields are displayed in red and are emphasized", followed by an example.</p>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -28,7 +31,7 @@
             <item>
                <p>
                 	<loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                		href="http://www.paciellogroup.com/blog/2008/02/screen-readers-lack-emphasis/">Screen Readers lack emphasis</loc>
+                		href="https://www.paciellogroup.com/blog/2008/02/screen-readers-lack-emphasis/">Screen Readers lack emphasis</loc>
                 </p>
             </item>
             <item>
@@ -41,22 +44,22 @@
       </see-also>
    </resources>
    <related-techniques>
-      <relatedtech idref="G122"/>
+      <relatedtech idref="G205"/>
       <relatedtech idref="H49"/>
    </related-techniques>
    <tests>
       <procedure>
-      <p>情報を伝達するために色の違いが使用されているコンテンツに対して：</p>
-      <olist>
-        <item>
-          <p>セマンティックなマークアップを通して同じ情報が入手可能である。</p>
-        </item>
-      </olist>
-    </procedure>
+         <p>For any content where color differences are used to convey information:</p>
+         <olist>
+            <item>
+               <p>Check that the same information is available through semantic markup.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1.を満たしている。</p>
+               <p>Check #1 is true.</p>
             </item>
          </ulist>
       </expected-results>

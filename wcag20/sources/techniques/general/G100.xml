@@ -2,22 +2,37 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G100">
-   <short-name>非テキストコンテンツの一般に認められた名前又は内容が分かる名前<phrase diff="add">となる簡潔な代替テキスト</phrase>を提供する</short-name>
+   <short-name>Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p>All technologies</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、非テキストコンテンツが特定の感覚的体験を提供することを意図している場合においても、利用者が非テキストコンテンツを特定できるようにすることである。例えば、耳が聞こえない利用者は、たとえ聞くことができなくとも、音声ファイルがどのようなものか知りたいと思うだろう。同じように、全盲の利用者も、たとえ見ることができなくとも視覚的な映像の題材がどのようなものか知りたいと思うだろう。</p>
-  </description>
+      <p>The objective of this technique is to allow users to identify the non-text
+            content even if the non-text content is intended to provide a specific
+            sensory experience. For example, a deaf person may want to know what an
+            audio instrumental file is - even if they cannot hear it. Similarly, a blind
+            person may want to know what the subject of a visual image is - even if they
+            cannot see it.</p>
+   </description>
    <examples>
       <eg-group>
-      <description><ulist><item><p>モナリザの絵には「モナリザ。レオナルド・ダ･ビンチ作」という代替テキスト がある。</p></item><item><p>音声ファイルには「テルミンを演奏している5人の小学生」という代替テキストがある。
-                                    </p></item><item><p>有名なモダンアートの作品には「赤、青、及び黄色。ピエト　モンドリアン作」という表題が付けられている。</p></item></ulist>
-</description>
-    </eg-group>
+         <description>
+            <ulist>
+               <item>
+                  <p> A painting of the Mona Lisa has an alternate text of "Mona Lisa, by Leonardo da Vinci".</p>
+               </item>
+               <item>
+                  <p> A sound file has an alternate text of "5 Grade children playing a Theramin".</p>
+               </item>
+               <item>
+                  <p> A famous modern art piece is labeled "Red, Blue and Yellow, by Piet Mondrian".</p>
+               </item>
+            </ulist>
+         </description>
+      </eg-group>
    </examples>
    <resources>
       <see-also/>
@@ -27,19 +42,19 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p><phrase diff="add">簡潔な</phrase>代替テキストで内容が分かる名前を提供している。</p>
-        </item>
-        <item>
-          <p><phrase diff="add">簡潔な</phrase>代替テキストで非テキストコンテンツに作者や他の人によって以前から付け<span>られている</span>名前を提供している。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Check that short text alternative provides a descriptive name.</p>
+            </item>
+            <item>
+               <p>Check that short text alternative provides a name that has be previously been given to the non-text content by the author or another.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1.又は2.を満たしている。</p>
+               <p>#1 or #2 is true</p>
             </item>
          </ulist>
       </expected-results>

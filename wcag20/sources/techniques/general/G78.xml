@@ -2,21 +2,38 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G78">
-   <short-name>音声ガイドを含んだ、利用者が選択可能な副音声トラックを提供する</short-name>
+   <short-name>Providing a second, user-selectable, audio track that includes audio descriptions</short-name>
    <applicability>
-      <p>音声トラック及び視覚的なコンテンツのあるウェブコンテンツ技術</p>
+      <p>Applies to any technology that has a sound track and visual content.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-audio-desc" relationship="sufficient"/>
       <success-criterion idref="media-equiv-audio-desc-only" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、視覚的に提供される情報の音声（話し言葉）バージョンを提供することで、目で見ることのできない利用者が視聴覚コンテンツを理解できるようにすることである。</p>
-    <p>今日の利用者ーエージェントのほとんどは複数の音声トラックを一つにまとめることができないため、この達成方法では、オリジナルの音声トラックを付加的な音声ガイドの入った別の音声トラックに置き換える選択肢を利用者に提供することによって、音声による追加の情報を同期したメディアに追加する。この追加された情報は、コンテンツを理解するにあたって重要な行動、登場人物、場面の変化、及びスクリーン上のテキスト（キャプション以外の文字）などに焦点を当てたものである。</p>
-    <p>この新しい情報によって、オリジナルの音声トラックに含まれた重要な音声情報が分かりにくくなってしまう（または、うるさい効果音によって新しい情報が不明瞭になってしまう）のでは役に立たないため、新しい情報は会話や効果音の合間に追加される。このため、コンテンツに追加できる情報の量は限られることになる。</p>
-    <p>（視覚的に伝えられている情報の）音声ガイドを提供する音声トラックは、利用者が選択できる代替の音声トラックとするか、又は全ての利用者が聞く標準の音声トラックとすることができる。</p>
-  </description>
-   <examples/>
+      <p>The objective of this technique is to provide an audio (spoken) version of information that is provided visually so that it is possible for people who cannot see to be able to understand audio-visual material.</p>
+      <p>Since most user agents today cannot merge multiple sound tracks, this technique adds the additional audio information to synchronized media by providing an option which allows users to replace the soundtrack with a new copy of the original soundtrack that has the additional audio description added. This added information focuses on actions, characters, scene changes and on-screen text (not captions) that are important to understanding the content.</p>
+      <p>Since it is not helpful to have this new information obscure key audio information in the original sound track (or be obscured by loud sound effects), the new information is added during pauses in dialogue and sound effects. This limits the amount of supplementary information that can be added to the program.</p>
+      <p>The soundtrack with the audio description (of visual information) can either be an alternate sound track that the user can choose, or it can be the standard sound track that everyone hears.</p>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>A travelogue of the northeast has additional audio description added during the gaps in the dialogue to let listeners who are blind know what the person is talking about at any point in time.</p>
+         </item>
+         <item>
+            <p>A video shows a woodpecker carving a nest in a tree. A button within the content allows users to turn the audio description track on or off.</p>
+         </item>
+         <item>
+            <p>A lecture has audio description added whenever the instructor says things like "and
+                <emph>this</emph>
+                is the one that is most important." The audio descriptions lets listeners who can not see the video know what "this" is.</p>
+         </item>
+         <item>
+            <p>A movie file has two audio tracks, one of which includes audio description. Users can choose either one when listening to the movie by selecting the appropriate track in their media player.</p>
+         </item>
+      </ulist>
+   </examples>
    <resources>
       <see-also>
          <ulist>
@@ -44,10 +61,9 @@
                        href="http://ncam.wgbh.org/invent_build/web_multimedia/accessible-digital-media-guide/guideline-h-multimedia#techH12">NCAM Rich Media Accessibility, Accessible SMIL Templates</loc>
                 </p>
             </item>
-            <item>
-               <p>
-                  <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                       href="http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/realtext.htm">Realtext</loc>
+            <item diff="del">
+               <p diff="del">
+                  Realtext
                 </p>
             </item>
             <item>
@@ -67,22 +83,22 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>コンテンツ自体にあるコントロール又はメディアプレーヤーの設定によって、音声ガイドを含む音声トラックを選ぶことができる。</p>
-        </item>
-        <item>
-          <p>同期したメディアの音声を聞く。</p>
-        </item>
-        <item>
-          <p>発話の合間を使って、視覚的に伝えているコンテンツの重要な情報が伝えられている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Check that the ability exists to turn on the audio track that includes audio descriptions. For example, by using a control within the content itself or by selecting a control or preference in the media player or operating system.</p>
+            </item>
+            <item>
+               <p>Listen to the synchronized media</p>
+            </item>
+            <item>
+               <p>Check to see if gaps in dialogue are used to convey important information regarding visual content</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1. 及び 3. を満たしている。</p>
+               <p>Checks #1 and #3 are true.</p>
             </item>
          </ulist>
       </expected-results>

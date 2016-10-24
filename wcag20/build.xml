@@ -588,8 +588,8 @@ Enter &quot;ant -projecthelp&quot; to get list of available build tasks</echo>
 			<param name="pubtarget" expression="${pubtarget}"/>
 			<param name="expandable" expression="true"/>
 		</xslt>
-	</target>
-
+	</target>	
+	
 	<!-- publish to http://w3c.github.io/wcag/ -->
 	<target name="gh-pages">
 		<antcall target="understanding">
@@ -605,5 +605,4 @@ Enter &quot;ant -projecthelp&quot; to get list of available build tasks</echo>
 			<param name="publoc.techniques" value="http://w3c.github.io/wcag/Techniques"/>
 		</antcall>
 	</target>
-	
 </project>

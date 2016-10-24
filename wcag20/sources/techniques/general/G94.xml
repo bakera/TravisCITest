@@ -2,35 +2,66 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G94">
-   <short-name>非テキストコンテンツに対して、それと同じ目的を果たし、同じ情報を提供する、簡潔な代替テキストを提供する</short-name>
+   <short-name>Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</short-name>
    <applicability>
-      <p>全てのウェブコンテンツ技術</p>
+      <p>Applies to all technologies.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="text-equiv-all" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、元の非テキストコンテンツと同じ目的及び情報を伝える代替テキストを作成することである。その結果、非テキストコンテンツを取り除いて代替テキストで置き換えることができ、機能や情報が失われてしまうこともない。このような代替テキストは、必ずしも非テキストコンテンツ自体について記述するとは限らない。同じ目的を果たし、同じ情報を伝達するべきである。結果的に代替テキストが非テキストコンテンツの説明のようになることがある。しかしながら、このケースは同じ目的を果たすための最善の方法である場合にのみ当てはまる。</p>
-    <p>可能であれば、簡潔な代替テキストは目的及び情報を完全に伝達すべきである。短いフレーズや文ではそれが不可能な場合は、簡潔な代替テキストでその情報の概要を提供すべきである。併せて長い代替テキストも使って情報の全てを伝達する。</p>
-    <p>代替テキストは非テキストコンテンツの代わりにならなければならない。非テキストコンテンツがページから削除され、代替テキストに置き換えられたとしても、そのページが同じ機能及び情報を提供する。代替テキストは簡潔で、できる限り有益な情報とする。</p>
-    <p>代替テキストにどのようなテキストを入れるか決める場合に、以下のような質問について考えるとよい：</p>
-    <ulist>
-      <item>
-        <p>なぜこの非テキストコンテンツがここにあるのか？</p>
-      </item>
-      <item>
-        <p>それはどのような情報を示しているのか？</p>
-      </item>
-      <item>
-        <p>それはどのような目的を果たすのか？</p>
-      </item>
-      <item>
-        <p>非テキストコンテンツを使用することができない場合、何という言葉を使って同じ機能及び（又は）情報を伝達するか？ </p>
-      </item>
-    </ulist>
-    <p>非テキストコンテンツがコンテンツを理解する上で重要な文言を含んでいる場合、代替テキストもその文言を含んでいるべきである。画像に埋め込まれたテキストが簡潔な代替テキストでは収まらない場合は、簡潔な代替テキストで説明し、併せて長い代替テキストで完全なテキストを提供すべきである。</p>
-  </description>
-   <examples/>
+      <p>The objective of this technique is to create a text alternative that serves the same purpose and presents the same information as the original non-text content.  As a result, it is possible to remove the non-text content and replace it with the text alternative and no functionality or information would be lost.   This text alternative should not necessarily describe the non-text content.  It should serve the same purpose and convey the same information.  This may sometimes result in a text alternative that looks like a description of the non-text content.  But this would only be true if that was the best way to serve the same purpose.</p>
+      <p>If possible, the short text alternative should completely convey the purpose and information.  If it is not possible to do this in a short phrase or sentence, then the short text alternative should provide a brief overview of the information.  A long text alternative would be used in addition to convey the full information.</p>
+      <p>The text alternative should be able to substitute for the non-text content. If the non-text content were removed from the page and substituted with the text, the page would still provide the same function and information. The text alternative would be brief but as informative as possible.</p>
+      <p>In deciding what text to include in the alternative, it is often a good idea to consider the following questions:</p>
+      <ulist>
+         <item>
+            <p>Why is this non-text content here?</p>
+         </item>
+         <item>
+            <p>What information is it presenting?</p>
+         </item>
+         <item>
+            <p>What purpose does it fulfill?</p>
+         </item>
+         <item>
+            <p>If I could not use the non-text content, what words would I use to convey the same function and/or information?</p>
+         </item>
+      </ulist>
+      <p>When non-text content contains words that are important to understanding the content, the alt text should include those words. If the text in the image is more than can fit in a short text alternative then it should be described in the short text alternative and a long text alternative should be provided as well with the complete text.</p>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>A search button uses an image of a magnifying glass.  The text alternative is "search" and not "magnifying glass".</p>
+         </item>
+         <item>
+            <p>A picture shows how a knot is tied including arrows showing how the ropes go to make the knot.  The text alternative describes how to tie the knot, not what the picture looks like.</p>
+         </item>
+         <item>
+            <p>A picture shows what a toy looks like from the front.  The text alternative describes a front view of the toy.</p>
+         </item>
+         <item>
+            <p>An animation shows how to change a tire. A short text alternative describes what the animation is about. A long text alternative describes how to change a tire.</p>
+         </item>
+         <item>
+            <p>A logo of the TechTron company appears next to each product in a list that is made by that and has a short text alternative that reads, "TechTron."</p>
+         </item>
+         <item>
+            <p>A chart showing sales for October has an short text alternative of  "October sales chart". It also has a long description that provides all of the information on the chart.</p>
+         </item>
+         <item>
+            <p>A heading contains a picture of the words, "The History of War" in stylized text. The alt text for the picture is "The History of War".</p>
+         </item>
+         <item>
+            <p>An image of a series of books on a shelf contains interactive areas
+                that provide the navigation means to a Web page about the particular book. The
+                text alternative "The books available to buy in this section. Select a book for
+                more details about that book." describes the picture and the interactive
+                nature.</p>
+         </item>
+      </ulist>
+   </examples>
    <resources/>
    <related-techniques>
       <relatedtech idref="G92"/>
@@ -46,27 +77,27 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>非テキストコンテンツを削除する、非表示にする、又は隠す。</p>
-        </item>
-        <item>
-          <p>代替テキストで置き換えてみる。</p>
-        </item>
-        <item>
-          <p>何も情報が失われていない（非テキストコンテンツの目的が代替テキストと一致している）。</p>
-        </item>
-        <item>
-          <p>非テキストコンテンツがコンテンツを理解する上で重要な文字情報を含んでいるならば、その文字を代替テキストに含める。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Remove, hide, or mask the non-text content</p>
+            </item>
+            <item>
+               <p>Replace it with the text alternative</p>
+            </item>
+            <item>
+               <p>Check that nothing is lost (the purpose of the non-text content is met by the text alternative)</p>
+            </item>
+            <item>
+               <p>If the non-text content contains words that are important to understanding the content, the words are included in the text alternative</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
-        <item>
-          <p>3.を満たしている。非テキストコンテンツにコンテンツを理解するために必要な文字情報が含まれているならば、4.も満たしている。</p>
-        </item>
-      </ulist>
+            <item>
+               <p>Check #3 is true. If the non-text content contains words that are important to understanding the content, check #4 is also true</p>
+            </item>
+         </ulist>
       </expected-results>
    </tests>
 </technique>

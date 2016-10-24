@@ -2,37 +2,39 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="C8">
-   <short-name>CSS の letter-spacing プロパティを用いて、単語内の文字間隔を調整する</short-name>
+   <short-name>Using CSS letter-spacing to control spacing within a word</short-name>
    <applicability>
-      <p>CSSに対応しているウェブコンテンツ技術全て</p>
+      <p>All technologies that support CSS.</p>
    </applicability>
    <applies-to>
       <success-criterion idref="content-structure-separation-sequence" relationship="cosufficient"/>
+      <success-criterion idref="visual-audio-contrast-text-presentation"
+                         relationship="sufficient"/>
+      <success-criterion idref="visual-audio-contrast-text-images" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、意味の伝わるテキストの流れを維持しながら、スタイルシートによって表示上の文字間隔を調整する方法を示すことである。
-文字間隔の量を調整するには、CSSの<code><![CDATA[letter-spacing]]></code>プロパティを使用する。
-単語の途中に空白文字を入れると意味や発音のされ方が変わってしまうため、間隔の調整はこの方法で行うことが推奨されている。</p>
-  </description>
+      <p>The objective of this technique is to demonstrate how the visual appearance of spacing in text may be enhanced via style sheets while still maintaining meaningful text sequencing. The CSS <code><![CDATA[letter-spacing]]></code> property helps developers control the amount of white space between characters. This is recommended over adding blank characters to control the spacing, since the blank characters can change the meaning and pronunciation of the word.</p>
+   </description>
    <examples>
       <eg-group>
-      <head>単語内の文字間隔を広くする</head>
-      <description><p>
-以下のCSSは、レベル2の見出しに含まれる各文字に対して1文字分に相当する間隔を加える:</p>
-</description>
-      <code role="html401"><![CDATA[
-h2 {
-	letter-spacing: 1em;
-} ]]></code>
-      <description><p>
-マークアップは以下の通り: </p>
-</description>
-      <code role="html401"><![CDATA[<h2>博物館</h2> ]]></code>
-      <description><p>
-表示結果は、およそ以下のようになる: </p>
-</description>
-      <code role="html401"><![CDATA[博　物　館]]></code>
-    </eg-group>
+         <head>Separating characters in a word </head>
+         <description>
+            <p>The following CSS would add the equivalent of a space between each character in a level-2 heading:</p>
+         </description>
+         <code role="html401"><![CDATA[h2 {	letter-spacing: 1em; }]]></code>
+         <description>
+            <p>So for the markup:</p>
+         </description>
+         <code role="html401"><![CDATA[
+<h2>Museum</h2>
+]]></code>
+         <description>
+            <p>the rendered result might look something like:</p>
+         </description>
+         <code role="html401"><![CDATA[
+M u s e u m
+]]></code>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -52,19 +54,20 @@ h2 {
    </related-techniques>
    <tests>
       <procedure>
-      <p>文字間隔が標準ではない状態で表示されている各単語に対して: </p>
-      <olist>
-        <item>
-          <p>文字間隔を調整する手段としてCSSの<code><![CDATA[letter-spacing]]></code>プロパティが用いられている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <p>For each word that appears to have non-standard spacing between characters:
+							</p>
+         <olist>
+            <item>
+               <p>Check whether the CSS <code><![CDATA[letter-spacing]]></code> property was used to control spacing.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
-        <item>
-          <p>1.を満たしている。</p>
-        </item>
-      </ulist>
+            <item>
+               <p>Check #1 is true.</p>
+            </item>
+         </ulist>
       </expected-results>
    </tests>
 </technique>

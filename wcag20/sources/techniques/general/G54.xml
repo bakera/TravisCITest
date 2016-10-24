@@ -2,21 +2,29 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="G54">
-   <short-name>映像ストリームに手話通訳を含める</short-name>
+   <short-name>Including a sign language interpreter in the video stream</short-name>
    <applicability>
-      <p>同期したメディア情報を提示する全てのウェブコンテンツ技術</p>
+      <p>Applies to all technologies that present synchronized media information</p>
    </applicability>
    <applies-to>
       <success-criterion idref="media-equiv-sign" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、耳の聞こえない又は、テキストを速く読むことができない利用者が同期したメディア情報にアクセスできるようにすることである。</p>
-    <p>主に手話でコミュニケーションをする利用者にとって、キャプションで提示されている速度ではテキストを読んで理解するのが難しかったり、場合によっては不可能であったりする。そういった利用者に対しては、聴覚情報に手話を提供することが有効である。</p>
-    <p>キャプションと手話とを両立できる一般的な方法は、単純に映像ストリームに手話通訳の映像を含めることである。ただし、この方法には、映像全体を拡大する以外には容易に拡大できない低解像度の映像になってしまうという欠点がある。</p>
-    <note><p class="prefix">映像ストリームが小さすぎる場合は、手話通訳が見にくくなる。手話通訳を含む映像ストリームを制作する場合は、映像ストリームをアクセシビリティ・サポーテッドなウェブコンテンツ技術でフルスクリーンで再生するメカニズムがあることを確認する。そうでない場合は、映像の中の手話通訳の部分が、映像ストリームがフルスクリーンになった際のサイズまで調節可能にする。</p>
-               <p class="prefix">一般的に、手話は単に墨字を符号化したものではないため、コンテンツ制作者は複数種類あるうちのどの手話を用いるかを決めなければならない。通常は主な利用者が使用している手話を用いる。さまざまな利用者を想定する場合は、複数の手話を用いる。複数の手話のための推奨達成方法を参照のこと【訳注：まだ文書化されていない。】。</p></note>
-  </description>
-   <examples/>
+      <p>The objective of this technique is to allow users who cannot hear or read text rapidly to be able to access synchronized media material.</p>
+      <p>For those who communicate primarily in sign language it is sometimes less preferable and sometimes not possible for them to read and understand text at the rate it is presented in captions.   For these latter individuals it is important to provide sign language presentation of the audio information.</p>
+      <p>One universally compatible way of doing this is to simply embed a video of the sign language interpreter in the video stream.   This has the disadvantage of providing a lower resolution image that cannot be easily enlarged without enlarging the entire image.</p>
+      <note>
+         <p>If the video stream is too small, the sign language interpreter will be indiscernible. When creating a video steam that includes a video of a sign language interpreter, make sure there is a mechanism to play the video stream full screen in the accessibility-supported content technology. Otherwise, be sure the interpreter portion of the video is adjustable to the size it would be had the entire video stream been full screen.</p>
+         <p>Since sign language is not usually a signed version of the printed language, the author has to decide which sign language to include.  Usually the sign language of the primary audience would be used.  If intended for multiple audiences, multiple sign languages may be used.  Refer to advisory techniques for multiple sign languages.</p>
+      </note>
+   </description>
+   <examples>
+      <ulist>
+         <item>
+            <p>Example 1: A television station provides a sign language interpreter in the corner of or beside its on-line news video.</p>
+         </item>
+      </ulist>
+   </examples>
    <resources>
       <see-also>
          <ulist>
@@ -55,22 +63,22 @@
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>耳が聞こえて、使用されている手話に精通した人に映像を見せる。</p>
-        </item>
-        <item>
-          <p>手話通訳が画面上に表示されている。</p>
-        </item>
-        <item>
-          <p>会話と重要な音が、画面に映っている手話通訳によって伝達されている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Have someone watch the program who can hear and is familiar with the sign language being used.</p>
+            </item>
+            <item>
+               <p>Check to see if there is a sign language interpreter on screen.</p>
+            </item>
+            <item>
+               <p>Check to see that dialogue and important sounds are being conveyed by the interpreter visible on screen.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.及び 3.を満たしている。</p>
+               <p>#2 and #3 are true</p>
             </item>
          </ulist>
       </expected-results>

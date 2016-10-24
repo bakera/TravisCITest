@@ -2,25 +2,25 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="SVR5">
-   <short-name>HTTPヘッダーで主たる自然言語を指定する</short-name>
+   <short-name>Specifying the default language in the HTTP header</short-name>
    <applicability>
-      <p>サーバサイド技術（HTTPヘッダーを設定するサーバサイドのスクリプト言語及びサーバ設定ファイルを含む）</p>
+      <p>Server-side technologies, including server-side scripting languages and server configuration files for setting HTTP headers. </p>
    </applicability>
    <applies-to>
       <success-criterion idref="meaning-doc-lang-id" relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、コンテンツの対象者を特定するために、ウェブページの主たる自然言語に関する情報を提供することである。HTTP Content-Language ヘッダーには、一つ以上の言語コードのリストを含めることが可能で、利用者ーエージェントとサーバとの間での言語ネゴシエーションに用いられる。利用者ーエージェントで言語設定が正しく設定されていれば、言語ネゴシエーションによって利用者ーは自分が設定した自然言語に合うコンテンツを見つけることができる。</p>
-    <p>ただし、HTTP Content-Language ヘッダーは、コンテンツを処理するのに用いられる自然言語を特定するためのものではないことに注意しなければならない。コンテンツを処理する自然言語は、マークアップ言語のlang属性やxml:lang属性などによって特定することができる。</p>
-    <p>この達成方法は、lang属性またはxml:lang属性の例で明記されているように、文書の主たる自然言語をHTTP Content-Language ヘッダーで挙げるようにするものである。</p>
-    <p><strong>訳注：</strong>【WCAGワーキンググループに確認中】言語ネゴシエーション (language negotiation) というのは、Accept-Languageによるコンテント・ネゴシエーションのことを指していると思われますが、このときネゴシエーションに使われるのは "Content-Language" ではなく、クライアントが送る "Accept-Language" の値です。現在、原文の記述に誤りがないかどうかを確認中です。</p>
-  </description>
+      <p>The objective of this technique is to provide information on the  primary language or languages in a Web Page, in order to identify the  audience of the content. The Content-Language HTTP header can contain a  list of one or more language codes, which can be used for language  negotiation between a user agent and a server. If the language  preferences in a user agent are set correctly, language negotiation can  help the user to find a language version of the content that suits  his/her preferences. </p>
+      <p>Note that the Content-Language HTTP header does not serve to  identify the language used for processing the content. The content  processing language can be identified by means of other techniques,  such as the attributes lang and xml:lang in markup languages. </p>
+      <p>This technique ensures that the primary language of the  document, as specified for example in the lang or xml:lang attribute,  is listed in the Content-Language HTTP header. </p>
+   </description>
    <examples>
       <eg-group>
-      <head>Javaサーブレット及びJSPによるコンテンツの自然言語設定</head>
-      <description><p>Java サーブレット又はJavaServer Pages(JSP)では、開発者は response.setHeader("Content-Language", lang)を用いることが可能で、"lang" は言語タグを表す（例えば、英語なら "en" ）：</p>
-</description>
-      <code><![CDATA[…
+         <head>Setting content language in Java Servlet and JSP</head>
+         <description>
+            <p>In Java Servlet or JavaServer Pages (JSP), developers can use response.setHeader("Content-Language", lang), in which "lang" stands for a language tag (for example, "en" for English): </p>
+         </description>
+         <code><![CDATA[…
 public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException 
 {
@@ -29,14 +29,14 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
   PrintWriter out = response.getWriter();
 …
 }]]></code>
-    </eg-group>
-    <eg-group>
-      <head>PHPによるコンテンツの自然言語設定</head>
-      <description><p>PHPでは、開発者は header メソッドで生のHTTPヘッダーを送ることができる。次の例では、自然言語をフランス語に設定している：</p>
-</description>
-      <code><![CDATA[
-&lt;?php  header('Content-language: fr');  …  ?&gt;]]></code>
-    </eg-group>
+      </eg-group>
+      <eg-group>
+         <head>Setting content language in PHP</head>
+         <description>
+            <p>In PHP, developers can send a raw HTTP header with the header method. The following example sets the language to French: </p>
+         </description>
+         <code><![CDATA[<?php  header('Content-language: fr');  …  ?>  ]]></code>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -71,19 +71,19 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
    </related-techniques>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>Live HTTP Header ビューアを用いて、"Content-Language" ヘッダーの値を確認する。</p>
-        </item>
-        <item>
-          <p>その値がウェブページの主たる自然言語と合致している。</p>
-        </item>
-      </olist>
-    </procedure>
-    <expected-results>
-      <ulist>
-        <item>
-          <p>2. を満たしている。</p>
+         <olist>
+            <item>
+               <p> Use a Live HTTP Header viewer to find the value of the "Content-Language" header. </p>
+            </item>
+            <item>
+               <p> Check that this value matches the default language of the Web page. </p>
+            </item>
+         </olist>
+      </procedure>
+      <expected-results>
+         <ulist>
+            <item>
+               <p> Step #2 is true. </p>
             </item>
          </ulist>
       </expected-results>

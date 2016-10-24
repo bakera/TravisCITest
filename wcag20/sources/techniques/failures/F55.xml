@@ -3,46 +3,56 @@
   SYSTEM "../../xmlspec.dtd">
 <technique id="F55">
    <short-name>
-          達成基準 2.1.1、達成基準 2.4.7 及び 達成基準 3.2.1 の不適合事例 － フォーカスを受け取った際に、スクリプトを用いてフォーカスを取り除いている</short-name>
+          Failure of Success Criteria 2.1.1, 2.4.7, and 3.2.1 due to using script to remove focus when focus is received</short-name>
    <applicability>
-      <p>スクリプトをサポートしているすべてのコンテンツに適用</p>
+      <p>Applies to all content that supports script.</p>
+      <p> User Agent and Assistive Technology Support Notes</p>
+      <ulist>
+         <item>
+            <p> None listed. </p>
+         </item>
+      </ulist>
    </applicability>
    <applies-to>
       <success-criterion idref="keyboard-operation-keyboard-operable" relationship="failure"/>
+      <success-criterion idref="keyboard-operation-all-funcs" relationship="failure"/>
       <success-criterion idref="navigation-mechanisms-focus-visible" relationship="failure"/>
       <success-criterion idref="consistent-behavior-receive-focus" relationship="failure"/>
    </applies-to>
    <description>
-    <p>通常はキーボードでアクセスした場合フォーカスを受け取るコンテンツが、スクリプトによってフォーカスを失うことがある。これは、デザイナーがシステムのフォーカス・インジケータを見えなくしようとするときに時々起きる。しかしながら、システムのフォーカス・インジケータは、キーボード利用者のアクセシビリティにおける重要な一部分である。また、これを実行することによってフォーカスが完全に取り除かれると、コンテンツにはマウスのようなポインティング・デバイスでしかアクセスできなくなる。</p>
-  </description>
+      <p>Content that normally receives focus when the content is accessed by keyboard may have this focus removed by scripting. This is sometimes done when designer considers the system focus indicator to be unsightly.  However, the system focus indicator is an important part of accessibility for keyboard users.  In addition, this practice removes focus from the content entirely, which means that the content can only be operated by a pointing device such as a mouse.</p>
+   </description>
    <examples>
       <eg-group role="failure">
-      <code><![CDATA[<input type="submit" onFocus="this.blur();">]]></code>
-    </eg-group>
-    <eg-group role="failure">
-      <code><![CDATA[<a onFocus="this.blur()" href="Page.html"><img src="myImage.gif"></a>]]></code>
-    </eg-group>
-    <eg-group role="failure">
-      <code><![CDATA[<a href="link.html" onfocus="if(this.blur)this.blur();">リンクの文言</a>]]></code>
-    </eg-group>
+         <code><![CDATA[<input type="submit" onFocus="this.blur();"> ]]></code>
+      </eg-group>
+      <eg-group role="failure">
+         <code><![CDATA[<a onFocus="this.blur()" href="Page.html"><img src="myImage.gif"></a> ]]></code>
+      </eg-group>
+      <eg-group role="failure">
+         <code><![CDATA[<a href="link.html" onfocus="if(this.blur)this.blur();">Link Phrase</a> ]]></code>
+      </eg-group>
    </examples>
    <resources/>
    <related-techniques/>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>キーボードを使用して、すべてのインタラクティブな要素にキーボードでアクセスできる。</p>
-        </item>
-        <item>
-          <p>それぞれの要素がフォーカスされたとき、利用者がフォーカスを移動するまでそこに残っている。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p> Use the keyboard to verify that you can get to all interactive
+                                    elements using the keyboard. </p>
+            </item>
+            <item>
+               <p> Check that when focus is placed on each element, focus remains
+                                    there until user moves it. </p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>2.を満たしていない場合、この不適合の条件が適用され、そのコンテンツは達成基準を満たしていないことになる。</p>
+               <p> If #2 is false then this failure condition applies and content
+                                    fails the Success Criterion. </p>
             </item>
          </ulist>
       </expected-results>

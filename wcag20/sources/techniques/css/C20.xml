@@ -2,49 +2,50 @@
 <!DOCTYPE technique
   SYSTEM "../../xmlspec.dtd">
 <technique id="C20">
-   <short-name>カラム幅に相対サイズを用いて、ブラウザの画面サイズを変更しても各行の文字数が平均80字（日本語は40字）以下を維持できるようにする</short-name>
+   <short-name>Using relative measurements to set column widths so that lines can average 80 characters or less when the browser is resized</short-name>
    <applicability>
       <p>CSS</p>
    </applicability>
    <applies-to>
+      <success-criterion idref="visual-audio-contrast-scale" relationship="sufficient"/>
       <success-criterion idref="visual-audio-contrast-visual-presentation"
                          relationship="sufficient"/>
    </applies-to>
    <description>
-    <p>この達成方法の目的は、1行が平均80字(日本語なら40字)以下になるようにして利用者がコンテンツを見ることができるように、CSSで指定することである。
-こうすることで、テキストの長い行を読む際に、現在読んでいる位置を維持することが困難な読字障害や視覚障害のある利用者が、より効率よくコンテンツをを閲覧したり操作したりできるようになる。
-この達成方法はまた、文字サイズの拡大に合わせてカラム幅を広くすることにもなり、それによって、文字サイズが大きくなるに従ってテキストの一部が欠けて読めなくなるような事態も発生しにくくなる。</p>
-    <p>この達成方法は、コンテンツ制作者に対して、CSSを使ってデフォルトでテキストの各行の幅を80字(日本語は40字)以下に制限することを要求するものではない、という点に注意してほしい。
-それよりもむしろ、CSSレイアウトに相対サイズを用いることを推奨して、利用者が1行80字以下で読むことができないようなカラム幅には、設定しないようにする。</p>
-  </description>
+      <p>The purpose of this technique is to ensure that CSS is used in a way that allows users to view content in such a way that line length can average 80 characters or less. This makes it possible for users with certain reading or vision disabilities that have trouble keeping their place when reading long lines of text to view and interact with the content more efficiently. This technique also allows for column width to grow wider as font sizes increase, which will reduce the possibility of clipping as the text size increases..</p>
+      <p>
+            Note that this technique does not require authors to use CSS to limit the width of lines of text to less than 80 characters in the default view. Rather, the recommendation to use relative measurements in CSS layouts helps to ensure that authors do not set column widths in such a way that makes it impossible for users to view content with line lengths of 80 characters or less. </p>
+   </description>
    <examples>
       <eg-group>
-      <description><p>
-この例では、<el>div</el>要素の幅はスタイルシートでem単位で指定されている。</p>
-<note><p class="prefix">
-CSSプロパティの<code>max-width</code>は、Internet Explorer 6 以前のバージョンではサポートされていない。</p></note>
-</description>
-      <code><![CDATA[#main_content {max-width: 70em}]]></code>
-      <description><p>
-テキストのブロックは、コンテンツ内の<el>div</el>要素の中に収められる。</p>
-</description>
-      <code><![CDATA[<div id="main_content"> 
+         <description>
+            <p>In this example the <el>div</el> width is set in ems in the stylesheet.</p>
+            <note>
+               <p>The CSS property <code><![CDATA[max-width]]></code> is not supported in versions of Internet Explorer 6 and below.</p>
+            </note>
+         </description>
+         <code><![CDATA[#main_content {max-width: 70em}]]></code>
+         <description>
+            <p>And the text block would be placed inside the <el>div</el> in the content</p>
+         </description>
+         <code><![CDATA[
+<div id="main_content"> 
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing ...</p>
 </div>]]></code>
-    </eg-group>
-    <eg-group>
-      <description><p>
-この例では、<el>div</el>要素の幅はスタイルシートでパーセントで指定されている。</p>
-</description>
-      <code><![CDATA[#main_content {width: 90%}]]></code>
-      <description><p>
-テキストのブロックは、コンテンツ内の<el>div</el>要素の中に収められる。
-</p>
-</description>
-      <code><![CDATA[<div id="main_content"> 
+      </eg-group>
+      <eg-group>
+         <description>
+            <p>In this example the <el>div</el> width is set in percent in the stylesheet</p>
+         </description>
+         <code><![CDATA[#main_content {width: 90%}]]></code>
+         <description>
+            <p>And the text block would be placed inside the <el>div</el> in the content</p>
+         </description>
+         <code><![CDATA[
+<div id="main_content"> 
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing ...</p>
 </div>]]></code>
-    </eg-group>
+      </eg-group>
    </examples>
    <resources>
       <see-also>
@@ -82,7 +83,7 @@ CSSプロパティの<code>max-width</code>は、Internet Explorer 6 以前の�
             <item>
                <p> 
                   <loc xmlns:xlink="http://www.w3.org/1999/xlink"
-                       href="http://www.maxdesign.com.au/articles/em/">Ideal line length for content</loc> 
+                       href="http://maxdesign.com.au/articles/em/">Ideal line length for content</loc> 
                </p>
             </item>
          </ulist>
@@ -90,19 +91,19 @@ CSSプロパティの<code>max-width</code>は、Internet Explorer 6 以前の�
    </resources>
    <tests>
       <procedure>
-      <olist>
-        <item>
-          <p>カラム幅が、相対的な単位で定義されている。</p>
-        </item>
-        <item>
-          <p>行の長さが、ブラウザのウィンドウをリサイズしても80字（日本語は40字）以下を維持している。</p>
-        </item>
-      </olist>
-    </procedure>
+         <olist>
+            <item>
+               <p>Test to see that the columns are defined in relative units.</p>
+            </item>
+            <item>
+               <p>Check to see that line length can be set to 80 characters or less by resizing the browser window.</p>
+            </item>
+         </olist>
+      </procedure>
       <expected-results>
          <ulist>
             <item>
-               <p>1.及び2.を満たしている。</p>
+               <p>Checks #1 and #2 are true.</p>
             </item>
          </ulist>
       </expected-results>
